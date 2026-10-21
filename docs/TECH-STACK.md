@@ -22,7 +22,7 @@ PHP 8.4.25; Laravel 13.38.0; Livewire 4.4.8; Filament 5.10.3; Media Library 11.2
 
 ## Configuración y siguientes integraciones
 
-VS00 creó Laravel limpio, manifiestos y entorno MySQL local. Confirmar las APIs efectivas de paquetes antes de escribir cada integración. Añadir solo dependencias con uso definido en la maestra o diseño técnico. Guardar instantes en UTC y convertir a **America/Cancun** para mostrar vigencias de Playa del Carmen; probar los límites de inicio/fin al implementar contenido temporal.
+VS00 creó Laravel limpio, manifiestos y entorno MySQL local. En su continuación del 21 de octubre de 2026 se configuró Boost para Codex: `boost.json`, guías en `AGENTS.md`, skills locales y servidor MCP del proyecto. Boost permanece como dependencia de desarrollo; Laravel Cloud no se seleccionó porque el alojamiento sigue pendiente. Confirmar las APIs efectivas de paquetes antes de escribir cada integración. Añadir solo dependencias con uso definido en la maestra o diseño técnico. Guardar instantes en UTC y convertir a **America/Cancun** para mostrar vigencias de Playa del Carmen; probar los límites de inicio/fin al implementar contenido temporal.
 
 Las claves de Resend, MySQL y cualquier servicio se proporcionan por variables de entorno y nunca se copian al repositorio. La instalación y pruebas locales están en [README](../README.md).
 

@@ -65,6 +65,8 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Vista previa Herd (21-10-2026):** [página temporal local](http://tugurulocal-nuevo.test/) abierta en el navegador; Vite sirvió CSS y JavaScript con respuestas 200. `APP_URL` se ajustó solo en `.env`. Las instrucciones de cada VSXX con UI ahora requieren revisar y enlazar sus URLs locales; [detalle en VS00.md](dev_changelog/VS00.md#continuación--vista-previa-con-herd-21-de-octubre-de-2026).
 
+**Continuación Boost (21-10-2026):** rama `codex/vs00-base-ejecutable-cont-20261021-1`. Boost 2.10.3, ya presente en `require-dev`, quedó configurado para Codex con guías, cinco skills y MCP; `boost.json` y la configuración del proyecto registran la integración. El servidor respondió a una inicialización MCP local. PHPUnit MySQL pasó con 5 pruebas y 14 aserciones; Composer, Pint, build y `git diff --check` pasaron. No hubo cambios de UI ni verificación de producción; [detalle en VS00.md](dev_changelog/VS00.md#continuación--configuración-de-laravel-boost-21-de-octubre-de-2026).
+
 **Bloqueos:** ninguno para VS00. La instancia MySQL usada en esta comprobación está en `/private/tmp` y es temporal; cada entorno de desarrollo debe configurar sus propias bases y credenciales fuera de Git. **Siguiente acción:** VS01, administración segura y puerta Base.
 
 ### VS01 — Administración segura

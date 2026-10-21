@@ -41,6 +41,16 @@ En cada VSXX con cambios visuales, revisa la URL afectada en Herd y enlázala en
 
 La raíz muestra únicamente un aviso temporal en español. Filament está instalado en `/admin`, pero un usuario nuevo no tiene privilegios y no puede entrar al panel; la creación segura del primer super admin, 2FA, policies y auditoría corresponden a VS01. Debugbar queda apagada por defecto y se puede habilitar solo para desarrollo local mediante `DEBUGBAR_ENABLED=true`.
 
+### Laravel Boost para Codex
+
+Boost 2.10.3 ya está en `require-dev`. VS00 configuró Codex con guías en `AGENTS.md`, skills en `.agents/skills/` y servidor MCP en `.codex/config.toml`; `boost.json` guarda las opciones para regenerarlos. No se seleccionó Laravel Cloud porque el alojamiento sigue pendiente. Después de `composer install`, una sesión nueva de Codex puede cargar el servidor MCP del proyecto. Para regenerar la configuración con la versión instalada:
+
+```sh
+php artisan boost:install --no-interaction
+```
+
+El comando actualiza el bloque delimitado de Boost en `AGENTS.md` y los archivos generados. Revisa su salida: Boost puede terminar con código cero aunque informe un fallo al escribir una integración. Las instrucciones propias de este proyecto, situadas antes del bloque generado, prevalecen ante discrepancias.
+
 ## Pendientes para el lanzamiento
 
 VS01–VS17 y contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
