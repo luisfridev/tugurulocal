@@ -1,0 +1,116 @@
+# Tu Gurú Local — Diseño técnico del proyecto nuevo
+
+**Estado:** diseño para implementar la [especificación maestra](ESPECIFICACION_MAESTRA.md). No describe software ya construido. Usar [stack objetivo](TECH-STACK.md) y las fases del [plan](PLAN_IMPLEMENTACION.md). Los identificadores R01–R10 y AC01–AC10 se definen en la maestra.
+
+## 1. Arquitectura y límites
+
+Aplicación Laravel monolítica con vistas Blade/Livewire para público y Filament para super admin. MySQL es la fuente de verdad. Los controladores y recursos Filament validan, autorizan y delegan en acciones/servicios de dominio; no duplican las reglas de elegibilidad. Los procesos programados ejecutan tareas de mantenimiento, pero **las consultas públicas calculan la vigencia en el momento de leer** para que una cola retrasada nunca deje visible una oferta o campaña vencida.
+
+Separar cuatro conceptos:
+
+1. **Editorial:** borrador, programado, publicado, pausado o archivado.
+2. **Operativo:** abierto, temporalmente cerrado o permanentemente cerrado.
+3. **Comercial:** plan Gratis/Premium/Super Premium y motivo pagada/prueba/cortesía, con período.
+4. **Publicidad:** campaña y espacio contratado, sujeto a su propio período y aprobación.
+
+La selección editorial de una lista no se deriva del plan. Un registro puede permanecer en administración aunque se oculte al público.
+
+## 2. Modelo de datos y restricciones
+
+Todas las claves foráneas relevantes tienen índices y política explícita de borrado: contenido editorial y comercial se archiva o revoca; no se elimina en cascada mientras sea auditable. Fechas de vigencia se guardan como instantes y se muestran en America/Cancun.
+
+| Entidad | Campos/relaciones mínimos y restricciones | Requisito |
+| --- | --- | --- |
+| `cities` | slug único, nombre, zona horaria, estado público. Solo Playa del Carmen activa inicialmente. | R01 |
+| `areas` | ciudad, slug único por ciudad, nombre y estado. Zona para filtros; nunca tipo de ficha. | R01 |
+| `categories` | slug único, nombre, descripción, tipo permitido y orden. Cinco registros iniciales. | R01 |
+| `listings` | ciudad, tipo `business/place`, slug global único, categoría principal, zona opcional, estado editorial y operativo, `published_at`, textos, contactos, datos Maps manuales y fecha de revisión. Índices para ciudad/estado/fecha y categoría/estado/fecha. | R02 |
+| `listing_categories` | ficha de negocio y categoría, par único; la principal también debe estar asociada. Lugar solo usa Lugares públicos. | R01–R02 |
+| `place_business_links` | Lugar, negocio, fuente o comprobación, fecha y super admin verificador; `business_listing_id` único. Validar misma ciudad, tipos correctos y vínculo real. | R04 |
+| `slug_redirects` | ruta anterior **creada en este proyecto**, destino y fecha; origen único y reservado para no reasignarlo. | R01–R02 |
+| `submissions` | datos enviados, contacto y evidencia privados, consentimiento de atribución, estado, moderador/fecha/motivo, ficha vinculada opcional. | R06 |
+| `catalog_items` | negocio, título, resumen, medio/precio opcionales, orden interno, estado y `published_at`. Índice negocio/estado; límite visible de diez. | R03 |
+| `offers` | negocio, tipo oferta/promoción, condiciones, `starts_at`, `ends_at`, estado y medio opcional; índice de vigencia y negocio. Exigir fin posterior al inicio. | R03 |
+| `editorial_lists` / `editorial_list_items` | ciudad, título, criterio, slug único por ciudad, estado, medios/SEO; pivot con posición única por lista y ficha única por lista. | R04 |
+| `blog_categories` / `blog_tags` | taxonomía editorial separada; Guías locales inicial. | R05 |
+| `blog_posts` / pivots | ciudad, slug único por ciudad, título, extracto, cuerpo sanitizado, firma de marca/persona, estado, fecha, medios/SEO, categoría y etiquetas. Índice ciudad/estado/fecha. | R05 |
+| `content_revisions` | entidad, identificador, versión/snapshot acotado, autor y fecha; restauración autorizada sin sobrescribir auditoría. | R02/R05 |
+| `plan_assignments` | negocio, nivel Premium/Super Premium, motivo, inicio/fin opcional, estado, referencia contractual, responsable. No se crean asignaciones Gratis: es el estado base derivado. | R07 |
+| `commercial_receipts` | asignación o bloque contratado, importe recibido en centavos MXN, referencia, fecha de confirmación y responsable. Solo confirmados se suman como ingreso. Prueba/cortesía no generan recibo. | R07 |
+| `sponsor_campaigns` | negocio anunciado, tipo Super Premium o contextual, ciudad, categoría/lista/Lugar cuando aplica, posición, período, material aprobado, contrato y estado. | R07 |
+| `commercial_settings` | precios mensuales en centavos MXN, indicación de IVA, WhatsApp, responsable, mensaje/plazo si se promete y aprobación. Una fila vigente administrada con historial de cambios. | R08 |
+| `interaction_events` | tipo de evento, recurso/espacio, instante y agregados sin PII; no guardar número, correo, texto de formulario ni URL con parámetros privados. | R09 |
+| `users` / `audit_events` | cuentas solo administrativas; `is_super_admin` falso por defecto, 2FA, acciones sensibles con actor/fecha/resultado. Registro público deshabilitado. | R08 |
+
+Las restricciones de unicidad de slugs, pivots y posiciones se respaldan en MySQL. Las reglas que dependen de períodos superpuestos, ciudad, estado o relaciones de varios registros se validan en una transacción de dominio y se prueban con concurrencia representativa. Crear factories útiles para escenarios publicados, borradores, vencidos, cortesía y vínculos verificados; los seeders estructurales crean ciudad y categorías, nunca negocios ficticios para producción.
+
+## 3. Acciones y consultas de dominio
+
+- **`PublishListing` / `PublicListingQuery`:** comprobar datos mínimos, aprobación, fecha y estado; devolver solo fichas elegibles. El orden orgánico es `published_at DESC, id DESC`. El listado de Lugar añade negocio hijo publicado y operativo activo. La ficha permanentemente cerrada puede seguir accesible, pero no ser patrocinada.
+- **`LinkBusinessToPlace`:** validar tipos, misma ciudad, ausencia de otro Lugar, fuente/comprobación, fecha y responsable. Rechazar vínculos inferidos por texto.
+- **`ModerateSubmission`:** estados pendiente → aprobada/rechazada/duplicada/spam. Aprobar crea o vincula **borrador**, nunca una publicación automática. El consentimiento controla el crédito visible.
+- **`PublicCatalogQuery`:** producto aprobado, hasta diez visibles por negocio, y negocio publicado con plan activo; ofertas también requieren intervalo vigente. Filtro `tipo=todos|productos|ofertas` y `categoria={slug}`. Oferta por `ends_at ASC, id ASC`; producto global por `published_at DESC, id DESC`; en ficha por orden manual.
+- **`ActivatePlan` / `EndPlan`:** autorización, historial y asignación única activa por negocio; pagada exige acuerdo y recibo confirmado, prueba exige fecha de fin, cortesía puede ser indefinida y siempre ingresa cero. Al terminar, beneficio efectivo Gratis y contenido exclusivo oculto. La renovación crea nueva asignación.
+- **`ScheduleSponsorship`:** transacción que comprueba plan Super Premium activo durante toda la campaña, negocio apto, máximo tres campañas de ciudad simultáneas y posición de categoría no superpuesta. Cada Super Premium aporta portada y una posición en su categoría principal. Bloque contextual admite solo uno activo por lista o Lugar y se contrata aparte. En lectura, publicar únicamente intervalos y materiales aprobados.
+- **`PublishEditorialList` / `PublishBlogPost`:** validar destinos públicos; preservar orden manual de lista y aislamiento de ciudad. Una entrada programada se vuelve legible al llegar `published_at` sin depender del éxito de un cron.
+- **`CommercialPageAvailability`:** /premium visible solo con ambos precios, tratamiento de IVA, número y responsable de WhatsApp aprobados. El plazo de respuesta se muestra únicamente si el equipo lo ha fijado. No se infiere un plazo ni se promete activación automática.
+- **`RecordInteraction`:** permitir solo tipos conocidos, evitar duplicaciones obvias y nunca recibir PII del navegador. Registrar fuente y destino de forma agregable.
+
+Los nombres concretos de clases pueden seguir las convenciones del Laravel nuevo, pero estas operaciones y límites deben existir como contratos independientes de Filament y del controlador.
+
+## 4. Rutas y superficies públicas
+
+| Nombre conceptual | Método/ruta | Respuesta y restricciones |
+| --- | --- | --- |
+| Inicio | GET `/` | 302 a `/playa-del-carmen`. |
+| Ciudad | GET `/{city}` | Solo ciudad pública; 404 para otra ciudad. |
+| Negocios | GET `/{city}/negocios` | `business` publicados; filtros válidos categoría/zona, paginación y orden estable. |
+| Explorar | GET `/{city}/explorar` | Catálogo elegible; filtros `tipo`/`categoria`; no página /ofertas. |
+| Categoría y zona | GET `/{city}/{category}`, `/{city}/zonas/{area}` | Solo slugs vigentes y recursos publicados. |
+| Ficha | GET `/@{listing}` | Slug global, solo ficha pública; canonical absoluto. |
+| Lista / blog | GET `/{city}/listas/{slug}`, `/{city}/blog[/{slug}]` | Ciudad y estado publicados. |
+| Recomendar | GET/POST `/recomendar` | CSRF, honeypot, validación, 3/h y 10/d por IP; confirmación neutra. |
+| Planes | GET `/premium` | 404 y sin enlaces/SEO hasta aprobar configuración. |
+| Privacidad | GET `/aviso-de-privacidad` | Texto aprobado y enlazado desde formulario y pie. |
+| Utilidad | GET `/sitemap.xml`, 404 | Sitemap solo indexables; error en español con vuelta útil. |
+
+Usar rutas nombradas. Declarar `/premium`, `/recomendar`, `/@{listing}` y las rutas específicas de ciudad antes de comodines. Las categorías reservadas no pueden colisionar con palabras de rutas. Ninguna URL de la aplicación antigua tiene tratamiento especial. Solo cambios de slug ocurridos en esta aplicación crean 301.
+
+## 5. Estados, transacciones y autorización
+
+### Visibilidad
+
+- **Ficha:** borrador/programada/pausada/archivada → privada; publicada y fecha alcanzada → ficha pública. Estado operativo cerrado permanente permite detalle informativo, pero la excluye de vitrinas y campañas.
+- **Producto/oferta:** requiere aprobación propia, negocio publicado y plan vigente. Oferta añade `starts_at <= ahora < ends_at`. El contenido histórico queda visible al admin.
+- **Lista:** requiere publicación y al menos una ficha pública válida para indexarse; entradas ocultas no cambian el orden relativo restante.
+- **Lugar:** requiere publicación propia y al menos un negocio hijo público, activo y verificado; de lo contrario no se indexa ni aparece en navegación.
+- **Post:** borrador/programado antes de hora/pausado/archivado → privado; publicado y hora alcanzada → público.
+- **Patrocinio:** requiere contrato, material aprobado, campaña y plan elegibles; el intervalo es semiabierto `inicio <= ahora < fin`. Si el negocio deja de ser apto, se oculta al instante.
+
+Filament usa policies para ver, crear, editar, publicar, borrar/restaurar y acciones masivas habilitadas. El guard administrativo no admite autorregistro. La primera cuenta se crea mediante proceso seguro local, con `is_super_admin=false` por defecto y promoción explícita; 2FA obligatorio antes de operación real. Pruebas de acceso directo y de acciones masivas verifican el límite. Cualquier archivo enviado se valida por tipo real, extensión, tamaño y autorización; PDFs no se ejecutan en el servidor.
+
+## 6. SEO, medios, privacidad y operación
+
+Metadatos generados desde contenido real, editables por el super admin. Fichas usan `/@{slug}`; posts usan slug por ciudad. Sitemap y canonical comparten el mismo resolvedor de URL. Filtros `tipo`/`categoria`, paginación vacía, borradores y /premium inactiva no se indexan. Explorar base se indexa solo si tiene contenido real; filtros llevan `noindex` y canonical al catálogo base. Los cambios de slug de contenido ya publicado crean redirección interna y actualizan enlaces nuevos.
+
+Media Library organiza imagen principal, galería, PDF de menú/flyer, material de campaña e imágenes del blog en colecciones con permiso y crédito. Guardar alt, pie, fuente/licencia y fecha de verificación cuando aplique. Generar tamaños optimizados; una ausencia se resuelve con sustituto visual, nunca con foto de otro negocio. Para videos, aceptar URL validada de YouTube/Vimeo, sin descargar archivo ni insertar HTML arbitrario.
+
+Las recomendaciones conservan contacto/evidencia en acceso restringido. Los límites usan caché por IP sin exponerla públicamente. Política de privacidad, retención y eliminación se aprueban antes del lanzamiento; no inventar un plazo legal. Copias de seguridad y restauración se prueban antes del despliegue. El reloj de la app y los tests cubre el cambio de día y los límites de vigencia de America/Cancun.
+
+## 7. Matriz mínima de pruebas
+
+| Contrato | Prueba de comportamiento |
+| --- | --- |
+| R01/AC01 | Rutas, slugs reservados, filtros, conteos y orden orgánico; ninguna /ofertas. |
+| R02/AC02 | Publicación y cierre, slug global, datos vacíos, acceso directo privado y cambio de slug interno. |
+| R03/AC03 | Cupo de diez, productos sin plan, ofertas antes/durante/después de vigencia y filtros de Explorar. |
+| R04/AC04 | Lugar único por negocio, prueba de vínculo, ciudad correcta, lista manual y retiro de fichas. |
+| R05/AC05 | Estado/fecha/ciudad de posts, autor, sanitización y permiso del editor. |
+| R06/AC06 | Envío pendiente, límites, duplicados, moderación y consentimiento de atribución. |
+| R07/AC07 | Solapamiento y cupo de campañas, cortesía con ingreso cero, pago confirmado, caducidad y etiqueta visible. |
+| R08/AC08 | Policies, acciones masivas, 2FA y ocultamiento de /premium sin configuración. |
+| R09/AC09 | Sitemap, canonical, noindex, metadatos, eventos sin PII y validación de medios. |
+| R10/AC10 | Lista de comprobación editorial y recorrido responsive/teclado con contenido aprobado. |
+
+Probar primero la ruta o servicio más estrecho, luego la suite en MySQL, Pint y build. La guía de pruebas completa y puertas de fase están en [PLAN_IMPLEMENTACION.md](PLAN_IMPLEMENTACION.md).
+

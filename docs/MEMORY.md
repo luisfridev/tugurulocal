@@ -1,0 +1,406 @@
+# Tu Gurú Local — Tablero de entregas verticales
+
+**Fecha:** 21 de octubre de 2026. **Estado:** planificación documental; todas las tareas están pendientes. No se ha creado ni probado la aplicación.
+
+## Uso, autoridad y cierre
+
+La [especificación maestra](ESPECIFICACION_MAESTRA.md) manda en producto; el [diseño técnico](DISENO_TECNICO.md) define los contratos y el [plan de implementación](PLAN_IMPLEMENTACION.md) conserva fases, puertas y trazabilidad T01–T15. Este archivo registra el orden operativo VS00–VS17, sus dependencias y evidencia. Si cambia un contrato, actualizar los documentos afectados antes de implementarlo.
+
+Una entrega funcional conecta esquema y relaciones, acciones/consultas de dominio, administración Filament, experiencia pública, autorización y pruebas observables. SEO, medición aplicable, privacidad, medios autorizados y [sistema visual](GUIA_VISUAL.md) se incorporan al crear cada superficie; VS04 y VS15 completan y verifican el conjunto. VS00–VS01 son habilitadores técnicos mínimos, no fases para construir todas las capas por separado.
+
+Estados permitidos: `pendiente`, `en curso`, `bloqueada`, `completada`. Marcar `en curso` solo al empezar la ejecución con dependencias cerradas; una tarea `bloqueada` identifica causa, responsable de resolución y condición para continuar. Marcar `completada` solo con checklist y aceptación satisfechos y evidencia real. Los campos de evidencia permanecen vacíos de resultados hasta ejecutar verificaciones; no sustituirlos por expectativas. No guardar secretos, datos personales ni evidencia privada en este archivo.
+
+En cada tarea ejecutar pruebas enfocadas de comportamiento; en tareas con UI revisar las pantallas afectadas en móvil, tableta, escritorio y teclado. Registrar comandos, entorno, resultado, fecha y revisión visual; anotar «no aplica» con motivo cuando corresponda. Al cerrar cada fase ejecutar suite completa en MySQL, Pint, build, inspección de rutas y revisión visual; añadir `git diff --check` cuando exista repositorio. SQLite no acredita integración MySQL. Las comprobaciones locales no acreditan producción.
+
+No hay lanzamientos parciales. No copiar del proyecto anterior ni añadir cuentas públicas, favoritos, votos, ranking, reseñas propias, búsqueda por texto, panel de propietarios o cobros en línea. Las capturas solo orientan el diseño. Investigar contenido e identificar insumos externos desde el inicio sin inventar datos; mantener evidencias sensibles fuera de Git. Aprobar el inventario al cerrar VS16 y la salida en VS17.
+
+## Secuencia y dependencias
+
+| ID | Entrega | Estado | Depende de | Fase |
+| --- | --- | --- | --- | --- |
+| VS00 | Base ejecutable | pendiente | Ninguna | Base |
+| VS01 | Administración segura | pendiente | VS00 | Base |
+| VS02 | Publicar y consultar una ficha Gratis | pendiente | VS01 | Editorial |
+| VS03 | Descubrir negocios | pendiente | VS02 | Editorial |
+| VS04 | Mantener URLs e indexación | pendiente | VS03 | Editorial |
+| VS05 | Recomendar y moderar | pendiente | VS04 | Editorial |
+| VS06 | Activar y terminar planes | pendiente | VS05 | Comercio |
+| VS07 | Consultar planes comerciales | pendiente | VS06 | Comercio |
+| VS08 | Publicar productos y servicios | pendiente | VS06 | Comercio |
+| VS09 | Publicar ofertas vigentes | pendiente | VS08 | Comercio |
+| VS10 | Exhibir campañas Super Premium | pendiente | VS09 | Comercio |
+| VS11 | Publicar listas editoriales | pendiente | VS10 | Colecciones |
+| VS12 | Publicar Lugares con negocios comprobados | pendiente | VS11 | Colecciones |
+| VS13 | Contratar bloques contextuales | pendiente | VS12 | Colecciones |
+| VS14 | Publicar guías del blog | pendiente | VS13 | Colecciones |
+| VS15 | Validar recorridos integrados | pendiente | VS07, VS14 | Integración |
+| VS16 | Completar contenido de salida | pendiente | VS15 | Contenido |
+| VS17 | Preparar y realizar el lanzamiento único | pendiente | VS16 | Salida |
+
+Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comparten dependencia, pero no requieren trabajo con agentes en paralelo. No cerrar Comercio hasta completar ambas ramas. No enlazar módulos pendientes desde superficies públicas.
+
+## Tareas
+
+### VS00 — Base ejecutable
+
+**Estado:** pendiente. **Dependencias:** ninguna. **Trazabilidad:** R09 / AC09; T01.
+
+**Objetivo:** arrancar una aplicación nueva con MySQL de desarrollo/pruebas y build reproducible, preservando el paquete documental.
+
+- [ ] Verificar compatibilidad real del [stack](TECH-STACK.md), fijar versiones en manifiestos y generar Laravel en una carpeta temporal vacía antes de fusionar el esqueleto sin sobrescribir documentación ni capturas.
+- [ ] Configurar PHP, MySQL, PHPUnit, Livewire, Filament y UI según el stack; almacenamiento consistente de instantes y presentación America/Cancun. Añadir dependencias con uso definido, no integraciones especulativas.
+- [ ] Preparar entorno de ejemplo sin secretos, exclusiones de archivos privados y ejecución local de pruebas/build. Mantener Debugbar solo en desarrollo.
+
+**Aceptación y fallos:** aplicación arranca, migraciones limpias conectan a MySQL y suite inicial/build pasan; una incompatibilidad de paquetes se resuelve antes de integrar APIs. No se importa contenido heredado ni se crean negocios ficticios de producción.
+
+**Pruebas y revisión:** instalación y versiones efectivas, conexión/migración MySQL, PHPUnit inicial, build y pantalla de arranque; comprobar preservación documental y exclusión de secretos. Pint cuando haya PHP; chequeo Git solo si existe repositorio.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** ninguno confirmado. Compatibilidad y servicios locales por verificar al ejecutar; credenciales locales se configuran fuera de Git.
+
+### VS01 — Administración segura
+
+**Estado:** pendiente. **Dependencias:** VS00. **Trazabilidad:** R08–R09 / AC08–AC09; T02.
+
+**Objetivo:** permitir operación administrativa exclusivamente al super admin, con autenticación reforzada y cambios auditables.
+
+- [ ] Crear el panel y bootstrap seguro de primera cuenta; `is_super_admin` falso por defecto y promoción explícita. Deshabilitar autorregistro público.
+- [ ] Aplicar 2FA, límites de intentos, sesiones seguras y policies para acciones directas, recursos y operaciones masivas; reutilizar esta protección en las tareas siguientes.
+- [ ] Registrar actor, fecha y resultado de cambios sensibles sin almacenar secretos; presentar errores y estados administrativos comprensibles.
+
+**Aceptación y fallos:** visitante y usuario sin privilegios no acceden ni ejecutan acciones por URL directa; el super admin cumple 2FA antes de operar. Ocultar un botón no sustituye autorización del servidor.
+
+**Pruebas y revisión:** accesos de visitante/no super admin/super admin, límites de login, exigencia de 2FA y operaciones directas/masivas disponibles. Revisar login/panel con teclado y ausencia de registro público. Cerrar puerta Base.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** ninguno confirmado; no registrar credenciales ni códigos de recuperación aquí.
+
+### VS02 — Publicar y consultar una ficha Gratis
+
+**Estado:** pendiente. **Dependencias:** VS01. **Trazabilidad:** R01–R02, R08–R09 / AC01–AC02, AC08–AC09; T03, T04, T06, T13.
+
+**Objetivo:** que el super admin publique un negocio Gratis y un visitante consulte su ficha completa en `/@{listing}`.
+
+- [ ] Gestionar ciudad, zonas, cinco categorías y modelo business/place; sembrar solo Playa del Carmen y taxonomía estructural. Slug global único, categoría principal asociada y secundarias válidas; reservar palabras de rutas.
+- [ ] Implementar acciones de publicación/despublicación, programación privada, archivo, recuperación, previsualización autorizada e historial; separar estado editorial del operativo.
+- [ ] Gestionar datos prácticos, fuentes/fecha de revisión, contactos verificados, FAQs, imágenes y PDF autorizados. Validar medios y proteger evidencia privada; Maps ausente permanece vacío.
+- [ ] Entregar ficha Gratis adaptable con compartir URL, reporte de datos incorrectos, canonical/metadatos y eventos de consulta/contacto sin PII. Incorporar tokens visuales, foco y alternativas de medios desde esta pantalla.
+
+**Aceptación y fallos:** solo ficha publicada con fecha alcanzada es pública; borrador, programada, pausada o archivada no se filtra por acceso directo ni previsualización. Gratis conserva información práctica y PDF; cierre permanente permite detalle informativo sin elegibilidad para vitrinas/campañas.
+
+**Pruebas y revisión:** publicación, estados/fechas, recuperación, unicidad global/categorías y permisos; contactos/Maps vacíos sin ceros, archivos inválidos rechazados y datos privados ausentes del HTML/metadatos. Revisar ficha larga, sin foto y con PDF en responsive/teclado.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** datos y medios reales aún no aprobados; usar factories solo en pruebas. Logotipo oficial pendiente para la salida.
+
+### VS03 — Descubrir negocios
+
+**Estado:** pendiente. **Dependencias:** VS02. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T04, T06, T13.
+
+**Objetivo:** recorrer Inicio, Negocios, categorías y zonas hasta una ficha elegible mediante filtros compartibles.
+
+- [ ] Implementar `/` → 302 `/playa-del-carmen`, ciudad pública, rutas específicas antes del comodín de categoría, Negocios, categorías y zonas con paginación y filtros categoría/zona.
+- [ ] Mantener orden orgánico `published_at DESC, id DESC`, incluyendo Gratis. Preparar selección editorial y recientes de Inicio con contenido aprobado, sin tarjetas vacías ni enlaces a módulos pendientes.
+- [ ] Aplicar navegación adaptable, tarjetas, estados vacíos, carga y 404 en español; no mostrar insignias de plan ni adelantos del catálogo en tarjetas orgánicas.
+- [ ] Extender SEO y medición de las superficies creadas; no presentar Lugares vacíos antes de implementar sus vínculos en VS12.
+
+**Aceptación y fallos:** filtros conservan una URL compartible y resultados estables; una ciudad no pública, una zona de otra ciudad o un slug no válido no expone contenido ajeno. No existen búsqueda por texto, ranking ni página separada de ofertas.
+
+**Pruebas y revisión:** HTTP de rutas/reservas/404, filtros, paginación, empate de fechas, inclusión Gratis y exclusión de fichas privadas. Revisar navegación móvil, filtros con teclado y contenido vacío/largo sin obstrucciones.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** ninguno adicional confirmado; el contenido de salida se aprueba en VS16.
+
+### VS04 — Mantener URLs e indexación
+
+**Estado:** pendiente. **Dependencias:** VS03. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T06.
+
+**Objetivo:** que URL pública, metadatos, enlaces y sitemap reflejen el mismo estado editorial.
+
+- [ ] Unificar resolución de URL, canonical absoluto, metadatos sociales, breadcrumbs y datos estructurados fieles al contenido visible.
+- [ ] Generar sitemap solo con URLs públicas útiles; excluir filtros, páginas vacías, privadas y módulos no disponibles. Aplicar `noindex` y canonical a la base pertinente en variantes filtradas.
+- [ ] Registrar cambios de slug de contenido publicado de este proyecto, reservar su origen y emitir 301 al destino público actual sin revelar borradores; actualizar enlaces generados.
+- [ ] Revisar políticas de indexación, redirección y eventos sin PII ya presentes; extender este contrato a cada módulo posterior.
+
+**Aceptación y fallos:** despublicar retira la URL del sitemap; redirecciones no recuperan contenido privado ni reasignan orígenes reservados. Ninguna URL heredada obtiene tratamiento especial.
+
+**Pruebas y revisión:** sitemap, canonical/noindex, metadatos/JSON-LD, cambio de slug, colisiones y despublicación del destino. Revisar breadcrumbs y enlaces visibles de las pantallas existentes.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** ninguno adicional confirmado.
+
+### VS05 — Recomendar y moderar
+
+**Estado:** pendiente. **Dependencias:** VS04. **Trazabilidad:** R06, R08–R09 / AC06, AC08–AC09; T05, T06, T13.
+
+**Objetivo:** recibir una recomendación pendiente y permitir moderarla hacia un borrador sin publicación automática ni exposición de información privada.
+
+- [ ] Crear formulario GET/POST `/recomendar`, confirmación neutra y aviso de privacidad; impedir recepción pública de datos sin texto aprobado.
+- [ ] Aplicar CSRF, honeypot, controles adicionales antibot, validación de URLs/archivos, detección de duplicados y límites 3 por hora/10 por día por IP.
+- [ ] Implementar moderación aprobada/rechazada/duplicada/spam con responsable y motivo; aprobar crea o vincula borrador y exige publicación posterior separada.
+- [ ] Separar contacto/evidencia privada y consentimiento de atribución social con identificador válido; medir envío/moderación sin PII y mantener campos con acceso restringido.
+
+**Aceptación y fallos:** envío público nunca crea ficha publicada; exceder un límite o enviar contenido inválido no elude validación. Sin consentimiento e identificador válido no hay crédito visible; correo, IP, notas y evidencia privada no aparecen en público.
+
+**Pruebas y revisión:** envío y errores, CSRF, bots, límites horarios/diarios, duplicados, archivos/URLs inválidos, decisiones de moderación, permisos y atribución. Revisar formulario con teclado virtual, foco y errores accesibles. Cerrar puerta Editorial.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** aviso, retención y eliminación de datos requieren aprobación antes de recepción pública; desarrollo y pruebas locales pueden avanzar sin publicar el formulario.
+
+### VS06 — Activar y terminar planes
+
+**Estado:** pendiente. **Dependencias:** VS05. **Trazabilidad:** R07–R09 / AC07–AC09; T07, T13.
+
+**Objetivo:** administrar beneficios e ingresos por separado y observar el plan efectivo correcto en una ficha sin depender de tareas programadas.
+
+- [ ] Implementar asignación única Premium/Super Premium con período, estado, motivo, responsable, acuerdo y referencia; Gratis es el estado derivado sin asignación activa.
+- [ ] Exigir acuerdo y pago confirmado para pagada, fin para prueba e ingreso cero para prueba/cortesía; gestionar recibos confirmados en centavos MXN e historial de renovaciones manuales.
+- [ ] Implementar pausa, revocación y vencimiento con lectura de elegibilidad al instante; conservar ficha y contenido histórico. Super Premium incluye Premium sin asignaciones simultáneas.
+- [ ] Mostrar borde diferenciado en tarjetas orgánicas y plan dentro de ficha cuando corresponda; panel de historial e ingresos autorizado y auditado. Mantener publicidad y selección editorial separadas.
+
+**Aceptación y fallos:** Gratis → Premium → Super Premium → Gratis conserva datos; al terminar el plan se retiran beneficios inmediatamente. Asignaciones incompatibles o concurrentes no se solapan; cortesía no suma ingreso y renovación crea nueva asignación.
+
+**Pruebas y revisión:** reloj fijado en inicio/fin America/Cancun, pago ausente/no confirmado, prueba sin fin, cortesía indefinida, pausa/revocación/renovación y concurrencia en MySQL. Revisar panel, ficha y borde orgánico; ausencia de insignias/adelantos en tarjetas.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** ninguno comercial impide desarrollar localmente; no activar planes pagados reales sin acuerdo y confirmación de pago.
+
+### VS07 — Consultar planes comerciales
+
+**Estado:** pendiente. **Dependencias:** VS06. **Trazabilidad:** R08–R09 / AC08–AC09; T07, T13.
+
+**Objetivo:** publicar la comparación y contacto asistido solo con configuración comercial completa y aprobada.
+
+- [ ] Administrar precios mensuales MXN de Premium/Super Premium, tratamiento de IVA, WhatsApp Business, responsable, aprobación e historial de cambios.
+- [ ] Centralizar disponibilidad de `/premium`, navegación, CTA y sitemap; si falta un dato obligatorio o aprobación, responder 404 y ocultar todos los accesos comerciales.
+- [ ] Crear comparación Gratis/Premium/Super Premium con WhatsApp para venta asistida; mostrar plazo de respuesta solo si está definido y aprobado. Incluir SEO y medición sin PII cuando la página sea elegible.
+
+**Aceptación y fallos:** cada configuración parcial mantiene oculta la página; retirar aprobación la oculta de nuevo. Un mensaje por WhatsApp no activa el plan ni promete cobro/renovación automática.
+
+**Pruebas y revisión:** combinaciones de campos ausentes, configuración no aprobada/completa, revocación, CTA, sitemap, permisos y plazo opcional. Revisar tabla comparativa adaptable, teclado y enlace de contacto.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** precios, IVA, número y responsable oficiales pendientes para activar la página; plazo pendiente solo bloquea su promesa. No inventar valores públicos.
+
+### VS08 — Publicar productos y servicios
+
+**Estado:** pendiente. **Dependencias:** VS06. **Trazabilidad:** R03, R07, R09 / AC03, AC07, AC09; T08, T13.
+
+**Objetivo:** publicar productos/servicios de negocios elegibles y descubrirlos en ficha y Explorar.
+
+- [ ] Administrar elementos con título, resumen, imagen autorizada/precio/moneda opcionales, estado, fecha y orden interno; validar máximo diez publicados por negocio mediante acción de dominio transaccional.
+- [ ] Mostrar solo elementos aprobados de negocios publicados con Premium/Super Premium activo; retirar beneficios al instante sin borrar contenido. Borradores no consumen cupo.
+- [ ] Entregar `/{city}/explorar` con filtros compartibles `tipo=todos|productos|ofertas` y `categoria`; sección de productos por fecha descendente/ID y ficha por orden manual. No simular ofertas antes de VS09.
+- [ ] Añadir vitrinas separadas de Inicio/categoría con contenido real; en categoría, después de los primeros negocios. Enlazar ficha/ancla identificable, medir apertura y aplicar SEO/estados vacíos del catálogo.
+
+**Aceptación y fallos:** undécimo publicado se rechaza, también con intentos concurrentes; un borrador adicional es válido. Sin plan o con ficha privada no hay producto público. Los resultados no modifican el orden orgánico de negocios.
+
+**Pruebas y revisión:** límites 9/10/11, concurrencia MySQL, estados, plan vencido, filtro por categoría/tipo, orden global/manual, anclas y sitemap/noindex. Revisar catálogo vacío, imagen/precio ausentes y vitrinas con teclado/responsive.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** productos y medios reales pendientes de verificación para salida; probar con factories sin sembrar demostraciones en producción.
+
+### VS09 — Publicar ofertas vigentes
+
+**Estado:** pendiente. **Dependencias:** VS08. **Trazabilidad:** R03, R07, R09 / AC03, AC07, AC09; T08, T13.
+
+**Objetivo:** mostrar ofertas y promociones aprobadas exclusivamente dentro de su período y elegibilidad comercial.
+
+- [ ] Administrar tipo, título, descripción, condiciones, inicio/fin, imagen opcional y estado; exigir fin posterior al inicio, sin cupo numérico de ofertas.
+- [ ] Integrar sección de ofertas en Explorar y ficha con `inicio <= ahora < fin`; ordenar por `ends_at ASC, id ASC` y ocultar por vencimiento, pausa o pérdida de elegibilidad sin borrar historial.
+- [ ] Dirigir «Ver todo» a `/{city}/explorar?tipo=ofertas`, con filtros compartibles, enlace a ficha/ancla, condiciones visibles, SEO y apertura de catálogo sin PII. No crear `/{city}/ofertas`.
+
+**Aceptación y fallos:** oferta futura/vencida/retirada no sale en ficha, catálogo ni vitrinas aunque el cron falle; una oferta sin condiciones válidas o intervalo correcto no se publica.
+
+**Pruebas y revisión:** antes/inicio/durante/fin/después con reloj fijado, America/Cancun y cambio de día; plan/ficha no elegible, orden con empate, filtros y ausencia de ruta /ofertas. Revisar condiciones extensas y estado vacío.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** ofertas, condiciones y medios reales por aprobar antes de salida.
+
+### VS10 — Exhibir campañas Super Premium
+
+**Estado:** pendiente. **Dependencias:** VS09. **Trazabilidad:** R07–R09 / AC07–AC09; T09, T13.
+
+**Objetivo:** contratar y mostrar carrusel de Inicio y posición de categoría con cupos, vigencias y señalización publicitaria verificables.
+
+- [ ] Administrar contrato, negocio, ciudad, categoría principal, posición, material aprobado, responsable y período; exigir negocio apto y plan Super Premium durante toda la campaña.
+- [ ] Reservar en transacción máximo tres campañas simultáneas por ciudad y posiciones de categoría sin solapamiento, con intervalos semiabiertos. Cortesías consumen cupo e ingresan cero.
+- [ ] Mostrar cada campaña elegible en carrusel y espacio contratado antes del listado orgánico, con «Patrocinado» visible/accesible; no alterar orden orgánico.
+- [ ] Incorporar avance automático, pausa y controles accesibles; desactivar avance con movimiento reducido. Registrar impresiones/clics por espacio sin PII y ocultar campañas inelegibles al consultar.
+
+**Aceptación y fallos:** cuarto cupo o misma posición en períodos superpuestos se rechazan aun con solicitudes concurrentes; períodos contiguos no se solapan. Negocio cerrado permanentemente, plan vencido o material no aprobado nunca se exhiben.
+
+**Pruebas y revisión:** tercer/cuarto cupo concurrente en MySQL, posición en conflicto, cobertura temporal del plan, inicio/fin, pausa y cortesía con ingreso cero. Revisar etiqueta en cada espacio, carrusel con teclado y movimiento reducido. Cerrar puerta Comercio con VS07–VS10 completos.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** campañas, acuerdos o cortesías y materiales reales pendientes para salida; los bloques contextuales se completan en VS13.
+
+### VS11 — Publicar listas editoriales
+
+**Estado:** pendiente. **Dependencias:** VS10. **Trazabilidad:** R04, R08–R09 / AC04, AC08–AC09; T10, T13.
+
+**Objetivo:** crear una colección con criterio editorial visible y orden manual independiente de planes y patrocinios.
+
+- [ ] Administrar ciudad, título, introducción, criterio, slug, estado, medios/SEO y membresía con posiciones únicas; publicar en `/{city}/listas/{slug}`.
+- [ ] Seleccionar fichas válidas y preservar orden manual; ocultar fichas despublicadas conservando relación administrativa y orden relativo restante. Aplicar elegibilidad propia de cada ficha.
+- [ ] Incorporar canonical, sitemap/indexabilidad según contenido, medición de consulta y diseño editorial accesible; preparar la lista de baile sin inventar sus integrantes.
+
+**Aceptación y fallos:** planes o pagos no compran membresía ni posición; lista privada no se filtra por URL/sitemap y una lista sin fichas públicas no se indexa. Un destino retirado deja de enlazarse públicamente.
+
+**Pruebas y revisión:** orden manual, unicidad de miembros/posiciones, retirada y recuperación de ficha, permisos, ciudad/slug y SEO. Revisar criterio, lectura extensa, tarjetas y vacíos con teclado.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** criterio e integrantes reales de la lista piloto por verificar; mínimo cinco al cerrar VS16. Bloque contratado pendiente de VS13.
+
+### VS12 — Publicar Lugares con negocios comprobados
+
+**Estado:** pendiente. **Dependencias:** VS11. **Trazabilidad:** R02, R04, R08–R09 / AC02, AC04, AC08–AC09; T03, T11, T13.
+
+**Objetivo:** publicar una ficha Lugar respaldada por negocios ubicados dentro y vinculados con evidencia.
+
+- [ ] Administrar vínculo entre Lugar y negocio con fuente/comprobación, fecha y super admin verificador; validar misma ciudad, tipos y un solo Lugar por negocio con restricción MySQL.
+- [ ] Publicar Lugar en `/@{listing}` y categoría Lugares públicos solo con al menos un hijo público, activo y comprobado; no inferir pertenencia por nombre, zona o plan.
+- [ ] Mostrar información del Lugar y sus negocios hijos elegibles, con borde Premium si corresponde; aplicar metadatos, sitemap y estados públicos según elegibilidad actual.
+
+**Aceptación y fallos:** sin hijos elegibles no se publica como Lugar útil ni aparece en navegación/indexación; hijo privado, cerrado o sin evidencia no sale. Desaparecer un hijo no borra el historial del vínculo.
+
+**Pruebas y revisión:** segundo Lugar rechazado, concurrencia/unicidad, ciudad y tipos inválidos, evidencia incompleta, retiro del último hijo y cambio de estado operativo. Revisar ficha padre, categoría y separación visual de hijos.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** tres Lugares reales y sus vínculos requieren evidencia antes de VS16; publicidad contextual pendiente de VS13.
+
+### VS13 — Contratar bloques contextuales
+
+**Estado:** pendiente. **Dependencias:** VS12. **Trazabilidad:** R04, R07–R09 / AC04, AC07–AC09; T09, T10, T11, T13.
+
+**Objetivo:** mostrar un bloque contratado adicional por página de lista o Lugar sin confundirlo con sus relaciones editoriales.
+
+- [ ] Completar administración y reserva transaccional del contrato contextual: destino lista/Lugar, negocio anunciado apto, período, material aprobado, responsable y recibo confirmado cuando sea pagado.
+- [ ] Impedir más de un bloque simultáneo por página, con contrato adicional separado del paquete Super Premium.
+- [ ] Mostrarlo separado de selección e hijos, siempre con «Patrocinado» y elegibilidad temporal en lectura; registrar impresiones/clics por espacio y conservar historial privado.
+
+**Aceptación y fallos:** segundo contrato superpuesto se rechaza incluso concurrentemente; contratar bloque no añade fichas a listas ni vincula negocios a Lugares. Publicidad vencida o en página no pública no se exhibe y cortesía no suma ingresos.
+
+**Pruebas y revisión:** solapamientos y límites temporales, concurrencia MySQL, contratación separada del paquete, retiro de anunciante/página, recibos, permisos y eventos sin PII. Revisar ambos tipos de página y señalización con teclado.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** contratos y materiales reales pendientes si se contratan estos bloques; no se añade un mínimo de bloques contextuales al inventario de salida.
+
+### VS14 — Publicar guías del blog
+
+**Estado:** pendiente. **Dependencias:** VS13. **Trazabilidad:** R05, R08–R09 / AC05, AC08–AC09; T12, T13.
+
+**Objetivo:** editar, programar y consultar guías locales seguras con historial, firma y SEO coherentes.
+
+- [ ] Crear taxonomía de blog separada con Guías locales y etiquetas; administrar ciudad, slug único por ciudad, extracto, cuerpo, firma marca/persona, medios, estado, fecha, SEO y revisiones recuperables.
+- [ ] Incorporar párrafos, encabezados, listas, citas, enlaces, imágenes con alt/pie, galerías, tablas simples y URLs validadas de YouTube/Vimeo; sanitizar HTML final sin aceptar incrustaciones arbitrarias.
+- [ ] Entregar índice paginado y post en `/{city}/blog` y `/{city}/blog/{slug}`, orden estable por fecha descendente/ID, enlaces internos públicos, BlogPosting y medición de consulta sin PII.
+- [ ] Aplicar publicación programada al alcanzar la hora sin depender del cron, privacidad previa, archivo y restauración autorizada con auditoría.
+
+**Aceptación y fallos:** posts privados/futuros/de otra ciudad no se filtran por URL ni sitemap; restaurar revisión no borra auditoría. HTML o vídeos no válidos se rechazan/sanitizan y los enlaces internos no exponen borradores.
+
+**Pruebas y revisión:** permiso editorial, ciudad/slug, antes/en/después de publicación, revisiones, sanitización, URLs de vídeo, orden/paginación y SEO. Revisar artículo largo, tablas, galería, firma y teclado. Cerrar puerta Colecciones.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** cinco guías reales con fuentes, firma y medios autorizados pendientes para VS16.
+
+### VS15 — Validar recorridos integrados
+
+**Estado:** pendiente. **Dependencias:** VS07, VS14. **Trazabilidad:** R01–R09 / AC01–AC09; T06, T13, T15.
+
+**Objetivo:** comprobar el sistema completo con recorridos públicos y administrativos consistentes antes de aprobar contenido real.
+
+- [ ] Revisar todas las superficies contra la guía visual y completar navegación, estados de carga/vacío/error, fotos ausentes, PDF, ofertas vencidas y `/premium` inactiva; eliminar controles de funciones excluidas.
+- [ ] Ejecutar regresiones cruzadas de publicación, cambios de slug, relaciones, Gratis → Premium → Super Premium → Gratis, cupos concurrentes y vigencias sin cron.
+- [ ] Completar métricas de fichas/listas/blog, contactos, catálogo, recomendaciones/moderación y publicidad; revisar payloads sin PII y reportes que distinguen intención de ventas/visitas confirmadas.
+- [ ] Auditar canonical/sitemap/noindex/datos estructurados, privacidad, validación de medios y autorización directa/masiva; comprobar rendimiento y accesibilidad del conjunto.
+
+**Aceptación y fallos:** retirar ficha, plan, oferta, hijo o campaña actualiza todas sus superficies en el momento correcto sin borrar historial. No quedan enlaces a módulos incompletos ni CTAs comerciales sin aprobación.
+
+**Pruebas y revisión:** suite completa MySQL, Pint, build e inspección de rutas; móvil/tableta/escritorio, teclado, lector de pantalla, zoom 200 %, contraste, objetivos táctiles y movimiento reducido. Registrar resultados y defectos corregidos, no solo una lista de checks esperados.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** ninguno adicional confirmado; defectos de integración impiden cerrar esta tarea. No acredita contenido aprobado ni funcionamiento en producción.
+
+### VS16 — Completar contenido de salida
+
+**Estado:** pendiente. **Dependencias:** VS15. **Trazabilidad:** R10 / AC10; T14.
+
+**Objetivo:** contar con inventario real aprobado, permisos y revisión pública conforme a [contenido y operación](CONTENIDO_Y_OPERACION.md).
+
+- [ ] Verificar 40 negocios y al menos cinco con categoría principal en cada una de las cuatro categorías de negocio; tres Lugares con hijos ubicados dentro y comprobados.
+- [ ] Aprobar lista de baile con mínimo cinco fichas verificadas, cinco guías duraderas y tres campañas Super Premium reales o de cortesía con material, cupo y vigencia válidos.
+- [ ] Registrar fuentes específicas, permisos, responsable y fecha de revisión de datos/medios en administración o inventario autorizado; dejar vacíos datos no confirmados. No copiar demostraciones de capturas ni datos heredados.
+- [ ] Revisar enlaces, medios, condiciones comerciales, atribución, textos legales y versión móvil; establecer mantenimiento mensual de datos cambiantes y revisión completa trimestral según operación.
+
+**Aceptación y fallos:** inventario 40/3/5/5/3 comprobado; registro sin verificación no cuenta y permanece borrador. Cortesías consumen cupo pero no ingreso; materiales sin permiso no se publican.
+
+**Pruebas y revisión:** checklist editorial con aprobación fechada y responsables, recuentos y cobertura por categoría, enlaces/medios, hijos de Lugares y recorrido real responsive/teclado. No guardar evidencia privada en Git.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** inventario, fuentes, permisos y textos legales aún no aprobados. No declarar esta tarea completada con factories o contenido de ejemplo.
+
+### VS17 — Preparar y realizar el lanzamiento único
+
+**Estado:** pendiente. **Dependencias:** VS16. **Trazabilidad:** R01–R10 / AC01–AC10; T15.
+
+**Objetivo:** desplegar una sola vez todos los módulos incluidos y el contenido aprobado, con respaldo recuperable y verificación pública.
+
+- [ ] Completar alojamiento/dominio, logotipo oficial, entorno seguro y textos legales aprobados; secretos fuera de Git, Debugbar apagada, sesiones/2FA, almacenamiento, cola y programación configurados según el entorno elegido.
+- [ ] Preparar respaldo y procedimiento de restauración/recuperación; ejecutar restauración comprobable antes del despliegue y documentar procedimiento de reversión sin exponer credenciales.
+- [ ] Revalidar inventario y vigencias al momento de salida, aprobación editorial y puerta comercial: `/premium` puede seguir oculta sin bloquear el lanzamiento si sus datos siguen pendientes.
+- [ ] Ejecutar controles finales, desplegar el conjunto y comprobar HTTP público, enlaces, medios, SEO, medición y privacidad en producción; registrar resultado separado de los checks locales y resolver fallos de salida.
+
+**Aceptación y fallos:** alojamiento, identidad final, contenido o privacidad faltantes impiden publicar; no se sustituye ningún módulo obligatorio por una pantalla incompleta. Sin precios/contacto aprobados no hay `/premium` ni CTA. Restauración fallida o verificación pública fallida impide declarar salida completada.
+
+**Pruebas y revisión:** suite MySQL, Pint, build, rutas, regresiones AC01–AC10 y recorrido responsive/teclado; restauración ensayada con evidencia, revisión editorial final y comprobaciones reales posteriores al despliegue. Registrar fecha, entorno y seguimiento de fallos de la salida.
+
+**Evidencia:** sin ejecución registrada.
+
+**Bloqueos:** alojamiento/dominio y acceso de despliegue, logotipo oficial, aprobaciones legales/editoriales y cierre VS16 pendientes; datos comerciales solo bloquean `/premium`. No hay resultados de producción registrados.
+
+## Cobertura de aceptación
+
+| Criterio de la maestra | Entregas principales | Cierre integral |
+| --- | --- | --- |
+| AC01 — Rutas, filtros y orden | VS02, VS03, VS04 | VS15, VS17 |
+| AC02 — Fichas públicas, datos y slugs | VS02, VS03, VS04, VS12 | VS15, VS17 |
+| AC03 — Catálogo, cupos y vigencias | VS08, VS09 | VS15, VS17 |
+| AC04 — Listas, Lugares y vínculos | VS11, VS12, VS13 | VS15, VS17 |
+| AC05 — Blog, programación y permisos | VS14 | VS15, VS17 |
+| AC06 — Recomendación, límites y privacidad | VS05 | VS15, VS17 |
+| AC07 — Planes, ingresos y patrocinios | VS06, VS08, VS09, VS10, VS13 | VS15, VS17 |
+| AC08 — Autorización y puerta comercial | VS01, VS07; policies en cada módulo | VS15, VS17 |
+| AC09 — SEO, accesibilidad, seguridad y medición | VS00–VS15 según superficie; SEO consolidado en VS04 | VS15, VS17 |
+| AC10 — Inventario, permisos y salida | VS16 | VS17 |
+
+## Insumos externos y registro de seguimiento
+
+| Insumo | Resolución | Puerta afectada |
+| --- | --- | --- |
+| Precios Premium/Super Premium e IVA | Propietario aporta valores; super admin aprueba ajustes | Activación pública de VS07 |
+| WhatsApp Business y responsable | Propietario aporta contacto/responsable; aprobación administrativa | Activación pública de VS07 |
+| Plazo de respuesta opcional | Equipo define y aprueba solo si se promete | Mostrar esa promesa en VS07 |
+| Aviso, retención, eliminación y textos legales | Propietario obtiene aprobación y registra versión autorizada | Recepción pública de VS05, analítica y VS17 |
+| Datos, fuentes, permisos y acuerdos/cortesías | Investigación y captura desde el inicio; aprobación editorial/comercial | VS16 y revalidación VS17 |
+| Logotipo oficial | Propietario entrega archivo maestro autorizado | VS17 |
+| Alojamiento, dominio y accesos | Propietario decide entorno; implementación configura sin guardar secretos | VS17 |
+
+Al ejecutar, completar en la tarea correspondiente: fecha, responsable, estado, evidencia y siguiente acción. Un insumo pendiente no implica que una tarea ya esté `bloqueada`: cambiar ese estado cuando efectivamente impida el trabajo o su cierre. El mantenimiento editorial posterior sigue la pauta de operación; este tablero no crea automatizaciones ni un lanzamiento adicional.
