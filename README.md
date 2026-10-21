@@ -11,6 +11,8 @@ Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ci
 
 Los cambios ya realizados se explican por tarea en [docs/dev_changelog](docs/dev_changelog/VS00.md); el primer registro corresponde a VS00.
 
+Cada intervención en una tarea `VSXX` se desarrolla en una rama Git nueva: `codex/vsXX-descripcion` al comenzar y una rama con sufijo de continuación al retomarla. El [plan](docs/PLAN_IMPLEMENTACION.md) y [AGENTS.md](AGENTS.md) detallan cómo conservar el trabajo previo.
+
 Las [capturas](docs/referencias/capturas/26-mapa-de-pantallas.jpg) orientan la composición. No aportan datos verificables ni autorizan funciones pospuestas. No se importó código, base de datos, contenido, slugs ni redirecciones del proyecto anterior.
 
 ## Desarrollo local

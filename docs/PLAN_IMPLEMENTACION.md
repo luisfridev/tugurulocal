@@ -12,6 +12,8 @@ Para la revisión local de UI, abrir la aplicación servida por Herd en `http://
 
 Ejecutar VS00–VS17 según las dependencias del tablero. Cada entrega funcional incluye sus datos, reglas de dominio, administración, UI pública, autorización, SEO, medición aplicable y pruebas. El sistema visual empieza en la primera pantalla; SEO y accesibilidad no se posponen a una fase final. VS00–VS01 son los habilitadores mínimos. Investigar contenido e identificar insumos externos desde el inicio; su aprobación de salida ocurre en VS16–VS17. Este documento conserva T01–T15 como agrupaciones de trazabilidad, no como una segunda secuencia de ejecución ni un registro de tareas completadas.
 
+Cada intervención en una tarea `VSXX` comienza en una rama Git nueva antes de modificar archivos: `codex/vsXX-descripcion` para la primera y `codex/vsXX-descripcion-cont-AAAAMMDD-N` para cada continuación. Comprobar el estado de Git y partir de una base que ya contenga las dependencias cerradas y el trabajo previo de esa tarea, integrado o en su rama anterior. No mezclar tareas ni implementar directamente en `master`. Anotar todas las ramas utilizadas en el registro de la tarea y en la evidencia resumida del tablero.
+
 ## 1. Trazabilidad de tareas y evidencia
 
 Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una agrupación T se satisface cuando se verifican todas sus partes en las entregas indicadas; no exige completar otra agrupación T entera como prerrequisito. Así, las listas y Lugares se implementan antes de sus bloques contextuales, sin dependencia circular. VS00 está completada localmente; las siguientes entregas conservan sus puertas de aceptación.

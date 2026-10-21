@@ -16,6 +16,8 @@ Lee primero [README.md](README.md), [docs/ESPECIFICACION_MAESTRA.md](docs/ESPECI
 
 ## Implementación
 
+- Cada vez que inicies una intervención en una tarea `VSXX`, confirma que sus dependencias estén cerradas y crea una rama Git nueva antes de editar. Usa `codex/vsXX-descripcion` para la primera intervención (por ejemplo, `codex/vs01-administracion-segura`) y añade `-cont-AAAAMMDD-N` para cada continuación. Parte de una base que contenga las dependencias y el trabajo previo de esa misma tarea: la base integrada si ya se incorporó, o la rama anterior de `VSXX` si sigue pendiente de integración. No desarrolles tareas VSXX directamente en `master` ni mezcles tareas distintas en una rama.
+- Comprueba el estado de Git antes de crear o cambiar de rama y conserva los cambios sin confirmar; registra cada rama usada en `docs/dev_changelog/VSXX.md` y en la evidencia de `docs/MEMORY.md`.
 - Estructura Laravel convencional: reglas de dominio en app/, rutas en routes/, esquema y datos iniciales en database/, interfaz en resources/, pruebas en tests/ y recursos Filament en app/Filament/.
 - Usa PHP con tipos explícitos, PSR-12 y Pint. Mantén servicios/acciones de negocio fuera de controladores, vistas y recursos Filament. Reutiliza componentes existentes una vez creado el proyecto.
 - Confirma las versiones instaladas antes de usar APIs de paquetes. Usa MySQL como referencia de integración y PHPUnit para pruebas observables.
