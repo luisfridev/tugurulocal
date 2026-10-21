@@ -1,6 +1,6 @@
 # Tu Gurú Local — Tablero de entregas verticales
 
-**Fecha:** 21 de octubre de 2026. **Estado:** planificación documental; todas las tareas están pendientes. No se ha creado ni probado la aplicación.
+**Fecha:** 21 de octubre de 2026. **Estado:** ejecución iniciada; VS00 completada localmente, VS01–VS17 pendientes. No hay lanzamiento ni verificación de producción.
 
 ## Uso, autoridad y cierre
 
@@ -10,7 +10,9 @@ Una entrega funcional conecta esquema y relaciones, acciones/consultas de domini
 
 Estados permitidos: `pendiente`, `en curso`, `bloqueada`, `completada`. Marcar `en curso` solo al empezar la ejecución con dependencias cerradas; una tarea `bloqueada` identifica causa, responsable de resolución y condición para continuar. Marcar `completada` solo con checklist y aceptación satisfechos y evidencia real. Los campos de evidencia permanecen vacíos de resultados hasta ejecutar verificaciones; no sustituirlos por expectativas. No guardar secretos, datos personales ni evidencia privada en este archivo.
 
-En cada tarea ejecutar pruebas enfocadas de comportamiento; en tareas con UI revisar las pantallas afectadas en móvil, tableta, escritorio y teclado. Registrar comandos, entorno, resultado, fecha y revisión visual; anotar «no aplica» con motivo cuando corresponda. Al cerrar cada fase ejecutar suite completa en MySQL, Pint, build, inspección de rutas y revisión visual; añadir `git diff --check` cuando exista repositorio. SQLite no acredita integración MySQL. Las comprobaciones locales no acreditan producción.
+Al trabajar cualquier `VSXX`, abrir o crear `docs/dev_changelog/VSXX.md` con ese ID exacto y actualizarlo al terminar cada intervención. Escribir en lenguaje claro qué se hizo y por qué, qué se verificó realmente y qué falta; fechar las continuaciones en el mismo archivo. Enlazar el registro desde la tarea correspondiente y mantenerlo coherente con su estado y evidencia resumida aquí. No generar registros vacíos para tareas pendientes ni atribuir a producción resultados locales.
+
+En cada tarea ejecutar pruebas enfocadas de comportamiento; en tareas con UI revisar en Herd las pantallas afectadas en móvil, tableta, escritorio y teclado, y enlazar sus URLs locales en `docs/dev_changelog/VSXX.md` para abrirlas en el navegador. Mantener `npm run dev` activo durante la edición visual. Registrar comandos, entorno, resultado, fecha y revisión visual; anotar «no aplica» con motivo cuando corresponda. Al cerrar cada fase ejecutar suite completa en MySQL, Pint, build, inspección de rutas y revisión visual; añadir `git diff --check` cuando exista repositorio. SQLite no acredita integración MySQL. Las comprobaciones locales no acreditan producción.
 
 No hay lanzamientos parciales. No copiar del proyecto anterior ni añadir cuentas públicas, favoritos, votos, ranking, reseñas propias, búsqueda por texto, panel de propietarios o cobros en línea. Las capturas solo orientan el diseño. Investigar contenido e identificar insumos externos desde el inicio sin inventar datos; mantener evidencias sensibles fuera de Git. Aprobar el inventario al cerrar VS16 y la salida en VS17.
 
@@ -18,7 +20,7 @@ No hay lanzamientos parciales. No copiar del proyecto anterior ni añadir cuenta
 
 | ID | Entrega | Estado | Depende de | Fase |
 | --- | --- | --- | --- | --- |
-| VS00 | Base ejecutable | pendiente | Ninguna | Base |
+| VS00 | Base ejecutable | completada | Ninguna | Base |
 | VS01 | Administración segura | pendiente | VS00 | Base |
 | VS02 | Publicar y consultar una ficha Gratis | pendiente | VS01 | Editorial |
 | VS03 | Descubrir negocios | pendiente | VS02 | Editorial |
@@ -43,21 +45,25 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 ### VS00 — Base ejecutable
 
-**Estado:** pendiente. **Dependencias:** ninguna. **Trazabilidad:** R09 / AC09; T01.
+**Estado:** completada el 21 de octubre de 2026. **Dependencias:** ninguna. **Trazabilidad:** R09 / AC09; T01.
+
+**Registro de cambios:** [VS00.md](dev_changelog/VS00.md).
 
 **Objetivo:** arrancar una aplicación nueva con MySQL de desarrollo/pruebas y build reproducible, preservando el paquete documental.
 
-- [ ] Verificar compatibilidad real del [stack](TECH-STACK.md), fijar versiones en manifiestos y generar Laravel en una carpeta temporal vacía antes de fusionar el esqueleto sin sobrescribir documentación ni capturas.
-- [ ] Configurar PHP, MySQL, PHPUnit, Livewire, Filament y UI según el stack; almacenamiento consistente de instantes y presentación America/Cancun. Añadir dependencias con uso definido, no integraciones especulativas.
-- [ ] Preparar entorno de ejemplo sin secretos, exclusiones de archivos privados y ejecución local de pruebas/build. Mantener Debugbar solo en desarrollo.
+- [x] Verificar compatibilidad real del [stack](TECH-STACK.md), fijar versiones en manifiestos y generar Laravel en una carpeta temporal vacía antes de fusionar el esqueleto sin sobrescribir documentación ni capturas.
+- [x] Configurar PHP, MySQL, PHPUnit, Livewire, Filament y UI según el stack; almacenamiento consistente de instantes y presentación America/Cancun. Añadir dependencias con uso definido, no integraciones especulativas.
+- [x] Preparar entorno de ejemplo sin secretos, exclusiones de archivos privados y ejecución local de pruebas/build. Mantener Debugbar solo en desarrollo.
 
 **Aceptación y fallos:** aplicación arranca, migraciones limpias conectan a MySQL y suite inicial/build pasan; una incompatibilidad de paquetes se resuelve antes de integrar APIs. No se importa contenido heredado ni se crean negocios ficticios de producción.
 
 **Pruebas y revisión:** instalación y versiones efectivas, conexión/migración MySQL, PHPUnit inicial, build y pantalla de arranque; comprobar preservación documental y exclusión de secretos. Pint cuando haya PHP; chequeo Git solo si existe repositorio.
 
-**Evidencia:** sin ejecución registrada.
+**Evidencia local (21-10-2026):** responsable: agente Codex, rama `codex/vs00-base-ejecutable`. Laravel se generó en `/private/tmp` y se fusionó conservando README, AGENTS, docs y las 26 capturas. PHP 8.4.25, MySQL 8.4.5 aislado por socket, Laravel 13.38.0, Livewire 4.4.8, Filament 5.10.3, Tailwind 4.3.3 y DaisyUI 5.7.50 resueltos en lockfiles. `php artisan migrate:fresh --force` pasó en `tugurulocal_nuevo_dev`, incluida la tabla de medios. `php artisan test` pasó sobre `tugurulocal_nuevo_test`: 5 pruebas, 14 aserciones; `vendor/bin/pint --test`, `npm ci --ignore-scripts --no-audit --no-fund`, `npm run build`, `composer install --dry-run --no-scripts`, `composer validate --no-check-publish`, inspección de rutas y `git diff --check` pasaron. Pantalla local revisada en navegador a 390×844, 768×1024 y 1280×800, con aviso temporal en español, sin controles de módulos pendientes. `.env`, `.env.testing`, SQLite local, vendor, node_modules y build están ignorados; ninguna cuenta o negocio fue sembrado. Esto no acredita producción.
 
-**Bloqueos:** ninguno confirmado. Compatibilidad y servicios locales por verificar al ejecutar; credenciales locales se configuran fuera de Git.
+**Vista previa Herd (21-10-2026):** [página temporal local](http://tugurulocal-nuevo.test/) abierta en el navegador; Vite sirvió CSS y JavaScript con respuestas 200. `APP_URL` se ajustó solo en `.env`. Las instrucciones de cada VSXX con UI ahora requieren revisar y enlazar sus URLs locales; [detalle en VS00.md](dev_changelog/VS00.md#continuación--vista-previa-con-herd-21-de-octubre-de-2026).
+
+**Bloqueos:** ninguno para VS00. La instancia MySQL usada en esta comprobación está en `/private/tmp` y es temporal; cada entorno de desarrollo debe configurar sus propias bases y credenciales fuera de Git. **Siguiente acción:** VS01, administración segura y puerta Base.
 
 ### VS01 — Administración segura
 

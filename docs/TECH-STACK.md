@@ -1,6 +1,6 @@
 # Stack técnico objetivo
 
-**Estado:** decisión de arquitectura para el proyecto nuevo. Las versiones exactas de paquetes se fijarán al generar los manifiestos; primero se comprobará su compatibilidad real.
+**Estado:** VS00 instaló la base y fijó versiones exactas en `composer.lock` y `package-lock.json` el 21 de octubre de 2026. Las integraciones de módulos posteriores se añaden al implementarlos.
 
 | Capa | Elección | Uso y límite |
 | --- | --- | --- |
@@ -11,14 +11,18 @@
 | Administración | Filament 5 | Panel exclusivo del super admin; las políticas y reglas viven en la aplicación. |
 | UI | Tailwind CSS 4 y DaisyUI 5 | Tokens y componentes según [guía visual](GUIA_VISUAL.md). |
 | Medios | Spatie Laravel Media Library y su integración compatible con Filament 5 | Imágenes, PDFs y derivados autorizados; verificar compatibilidad antes de instalar. |
-| Correo | Resend | Correo transaccional cuando lo requiera un flujo real; claves solo en entorno. |
+| Correo | Resend | Pendiente de instalar hasta que un flujo real requiera correo; claves solo en entorno. |
 | Desarrollo | Laravel Boost y Laravel Debugbar | Ayuda local; Debugbar nunca habilitada en producción. |
 | Vídeo | URL validada de YouTube o Vimeo | Guardar enlace, no descargar ni alojar vídeos de terceros. |
 | Pruebas | PHPUnit | Pruebas de comportamiento y regresión sobre MySQL; revisión visual manual para responsive y accesibilidad. |
 
-## Instalación futura
+## Versiones verificadas en VS00
 
-La fase 0 del [plan](PLAN_IMPLEMENTACION.md) crea Laravel limpio, manifiestos y entorno local. Confirmar las versiones mayores indicadas y las APIs de paquetes antes de escribir integración. Añadir solo dependencias con uso definido en la maestra o diseño técnico. Configurar zona horaria de negocio **America/Cancun** para mostrar vigencias de Playa del Carmen; almacenar instantes de forma consistente y probar los límites de inicio/fin.
+PHP 8.4.25; Laravel 13.38.0; Livewire 4.4.8; Filament 5.10.3; Media Library 11.23.10 y plugin Filament 5.10.3; PHPUnit 12.5.40; Tailwind 4.3.3; DaisyUI 5.7.50; Vite 8.3.5. Laravel Boost 2.10.3 y Debugbar 4.4.4 son dependencias de desarrollo. Las tipografías locales vienen de Fontsource. Los manifiestos fijan familias mayores y los lockfiles resuelven las versiones exactas.
 
-No se instalará ningún paquete en esta entrega documental. Las claves de Resend, MySQL y cualquier servicio se proporcionarán por variables de entorno y nunca se copiarán al repositorio.
+## Configuración y siguientes integraciones
+
+VS00 creó Laravel limpio, manifiestos y entorno MySQL local. Confirmar las APIs efectivas de paquetes antes de escribir cada integración. Añadir solo dependencias con uso definido en la maestra o diseño técnico. Guardar instantes en UTC y convertir a **America/Cancun** para mostrar vigencias de Playa del Carmen; probar los límites de inicio/fin al implementar contenido temporal.
+
+Las claves de Resend, MySQL y cualquier servicio se proporcionan por variables de entorno y nunca se copian al repositorio. La instalación y pruebas locales están en [README](../README.md).
 

@@ -1,6 +1,6 @@
 # Tu Gurú Local — Diseño técnico del proyecto nuevo
 
-**Estado:** diseño para implementar la [especificación maestra](ESPECIFICACION_MAESTRA.md). No describe software ya construido. Usar [stack objetivo](TECH-STACK.md) y las fases del [plan](PLAN_IMPLEMENTACION.md). Los identificadores R01–R10 y AC01–AC10 se definen en la maestra.
+**Estado:** contrato técnico para implementar la [especificación maestra](ESPECIFICACION_MAESTRA.md). VS00 ya creó la base Laravel; los módulos de dominio siguen pendientes. Usar [stack](TECH-STACK.md) y las fases del [plan](PLAN_IMPLEMENTACION.md). Los identificadores R01–R10 y AC01–AC10 se definen en la maestra.
 
 ## 1. Arquitectura y límites
 

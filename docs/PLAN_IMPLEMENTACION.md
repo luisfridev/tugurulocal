@@ -1,6 +1,6 @@
 # Tu Gurú Local — Plan de implementación del proyecto nuevo
 
-**Estado:** plan ejecutable posterior a este paquete documental. **No se ha creado ni probado la aplicación.** La [especificación maestra](ESPECIFICACION_MAESTRA.md) define R01–R10 y AC01–AC10; el [diseño técnico](DISENO_TECNICO.md) define el contrato de datos y servicios. El [tablero MEMORY.md](MEMORY.md) detalla la secuencia de entregas verticales VS00–VS17, sus estados y evidencia. Ninguna fase interna es un lanzamiento parcial.
+**Estado:** plan en ejecución; VS00 creó y probó la base local, y VS01–VS17 siguen pendientes. La [especificación maestra](ESPECIFICACION_MAESTRA.md) define R01–R10 y AC01–AC10; el [diseño técnico](DISENO_TECNICO.md) define el contrato de datos y servicios. El [tablero MEMORY.md](MEMORY.md) detalla la secuencia de entregas verticales VS00–VS17, sus estados y evidencia. Ninguna fase interna es un lanzamiento parcial.
 
 ## 0. Preparación y reglas de ejecución
 
@@ -8,11 +8,13 @@ Como esta carpeta documental ya ocupa el destino, generar Laravel 13 limpio en u
 
 Cada tarea termina con pruebas de comportamiento enfocadas. Al cerrar una fase, ejecutar suite en MySQL, `vendor/bin/pint --test` o el chequeo no mutante equivalente en CI, `npm run build`, inspección de rutas y `git diff --check`. Cuando se escriba PHP localmente, aplicar Pint según las reglas del nuevo checkout antes de validar. Registrar qué se probó realmente; SQLite no sustituye una comprobación MySQL.
 
+Para la revisión local de UI, abrir la aplicación servida por Herd en `http://tugurulocal-nuevo.test/`; configurar `APP_URL` en el `.env` ignorado por Git y mantener `npm run dev` activo durante la edición. Herd sirve PHP sin `php artisan serve`. En cada VSXX con pantallas nuevas o modificadas, revisar las URLs afectadas y enlazarlas desde su registro `docs/dev_changelog/VSXX.md`. La base MySQL de desarrollo y pruebas se configura por separado.
+
 Ejecutar VS00–VS17 según las dependencias del tablero. Cada entrega funcional incluye sus datos, reglas de dominio, administración, UI pública, autorización, SEO, medición aplicable y pruebas. El sistema visual empieza en la primera pantalla; SEO y accesibilidad no se posponen a una fase final. VS00–VS01 son los habilitadores mínimos. Investigar contenido e identificar insumos externos desde el inicio; su aprobación de salida ocurre en VS16–VS17. Este documento conserva T01–T15 como agrupaciones de trazabilidad, no como una segunda secuencia de ejecución ni un registro de tareas completadas.
 
 ## 1. Trazabilidad de tareas y evidencia
 
-Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una agrupación T se satisface cuando se verifican todas sus partes en las entregas indicadas; no exige completar otra agrupación T entera como prerrequisito. Así, las listas y Lugares se implementan antes de sus bloques contextuales, sin dependencia circular. Todas las entregas VS están inicialmente pendientes.
+Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una agrupación T se satisface cuando se verifican todas sus partes en las entregas indicadas; no exige completar otra agrupación T entera como prerrequisito. Así, las listas y Lugares se implementan antes de sus bloques contextuales, sin dependencia circular. VS00 está completada localmente; las siguientes entregas conservan sus puertas de aceptación.
 
 | ID de referencia | Entregas verticales | Contrato y resultado verificable | Prueba o revisión |
 | --- | --- | --- | --- |
@@ -56,5 +58,5 @@ Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una ag
 
 ## 4. Entrega de cada fase
 
-Actualizar estado, checklist y evidencia de cada entrega en [MEMORY.md](MEMORY.md). Anotar cambios, migraciones/configuración, comandos y pruebas ejecutadas con fecha y entorno, capturas de UI si hubo cambios visuales y riesgos pendientes. Una tarea completada exige evidencia real; conservar datos privados y secretos fuera de Git. No afirmar que producción funciona por un test local. Si una puerta falla, resolver el defecto antes de continuar al lanzamiento.
+Al comenzar cada tarea `VSXX`, crear o abrir `docs/dev_changelog/VSXX.md`; actualizar el mismo archivo al terminar cada intervención, con fecha, explicación comprensible de cambios y motivos, verificación real y pendientes. Enlazarlo desde su sección en [MEMORY.md](MEMORY.md), donde se actualizan estado, checklist y evidencia resumida. Anotar cambios, migraciones/configuración, comandos y pruebas ejecutadas con fecha y entorno, capturas de UI si hubo cambios visuales y riesgos pendientes. Una tarea completada exige evidencia real; conservar datos privados y secretos fuera de Git. No afirmar que producción funciona por un test local. Si una puerta falla, resolver el defecto antes de continuar al lanzamiento.
 
