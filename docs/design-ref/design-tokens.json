@@ -1,0 +1,1437 @@
+{
+  "metadata": {
+    "version": 1,
+    "source": "https://preview--turu-guia-local.base44.app/",
+    "authority": "../design.md",
+    "date": "2026-10-22",
+    "scope": "Web pública; base futura del panel de usuario. Filament excluido.",
+    "status": "Especificación documental; aplicación pendiente.",
+    "format": "Esquema propio: type, value, unit opcional, evidence, purpose. Los alias usan {ruta.del.token}.",
+    "fontCaveat": "Familias declaradas y estilos calculados; document.fonts devuelve faces=[] en el puente. No se certifica el archivo de fuente usado para cada glifo."
+  },
+  "reference": {
+    "color": {
+      "deep": {
+        "type": "color",
+        "value": "#2D2652",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1)",
+          "property": "background-color",
+          "computed": "rgb(45, 38, 82)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "mint": {
+        "type": "color",
+        "value": "#40E0D0",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > header > div > a > span:nth-of-type(2) > span",
+          "property": "color",
+          "computed": "rgb(64, 224, 208)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "premium": {
+        "type": "color",
+        "value": "#A958A9",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(2) > div > div:nth-of-type(1) > div > span",
+          "property": "color",
+          "computed": "rgb(169, 88, 169)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "page": {
+        "type": "color",
+        "value": "#F6F4FB",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(4) > div:nth-of-type(2) > article:nth-of-type(1) > a > div:nth-of-type(1)",
+          "property": "background-color",
+          "computed": "rgb(246, 244, 251)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "surface": {
+        "type": "color",
+        "value": "#FFFFFF",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(2) > div",
+          "property": "background-color",
+          "computed": "rgb(255, 255, 255)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "text": {
+        "type": "color",
+        "value": "#1B1730",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > header",
+          "property": "color",
+          "computed": "rgb(27, 23, 48)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "muted": {
+        "type": "color",
+        "value": "#666080",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(4) > div:nth-of-type(2) > article:nth-of-type(1) > a > div:nth-of-type(2) > p:nth-of-type(1)",
+          "property": "color",
+          "computed": "rgb(102, 96, 128)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "detail": {
+        "type": "color",
+        "value": "#202B50",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "ficha-premium-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > div:nth-of-type(1) > section",
+          "property": "background-color",
+          "computed": "rgb(32, 43, 80)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "detailBorder": {
+        "type": "color",
+        "value": "#39466C",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "ficha-premium-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > div:nth-of-type(1) > section",
+          "property": "border-color",
+          "computed": "rgb(57, 70, 108)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "detailAccent": {
+        "type": "color",
+        "value": "#80E6D8",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "ficha-premium-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > div:nth-of-type(1) > section > div > div:nth-of-type(2) > button",
+          "property": "color",
+          "computed": "rgb(128, 230, 216)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "authPrimary": {
+        "type": "color",
+        "value": "#3EE0CF",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "cuenta-acceso-390",
+          "selector": "body > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div",
+          "property": "background-color",
+          "computed": "rgb(62, 224, 207)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "authText": {
+        "type": "color",
+        "value": "#17132A",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "cuenta-acceso-390",
+          "selector": "body > div > div:nth-of-type(1) > div > div:nth-of-type(1) > h1",
+          "property": "color",
+          "computed": "rgb(23, 19, 42)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "secondarySky": {
+        "type": "color",
+        "value": "#66CCFF",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(4) > div:nth-of-type(2) > article:nth-of-type(1) > a > div:nth-of-type(2) > p:nth-of-type(4)",
+          "property": "color",
+          "computed": "rgb(102, 204, 255)",
+          "file": "measurements.json"
+        },
+        "purpose": "Color extraído; el alias semántico define su función."
+      },
+      "header": {
+        "type": "color",
+        "value": "rgba(45, 38, 82, 0.85)",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > header",
+          "property": "background-color",
+          "computed": "rgba(45, 38, 82, 0.85)",
+          "file": "measurements.json"
+        },
+        "purpose": "Opacidad medida; contrastar contra el fondo compuesto real."
+      },
+      "mutedAlpha60": {
+        "type": "color",
+        "value": "rgba(27, 23, 48, 0.6)",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(2) > div > div:nth-of-type(1) > div > p",
+          "property": "color",
+          "computed": "rgba(27, 23, 48, 0.6)",
+          "file": "measurements.json"
+        },
+        "purpose": "Opacidad medida; contrastar contra el fondo compuesto real."
+      },
+      "inverseMuted": {
+        "type": "color",
+        "value": "rgba(255, 255, 255, 0.7)",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "negocios-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section > div > p:nth-of-type(2)",
+          "property": "color",
+          "computed": "rgba(255, 255, 255, 0.7)",
+          "file": "measurements.json"
+        },
+        "purpose": "Opacidad medida; contrastar contra el fondo compuesto real."
+      },
+      "borderSubtle": {
+        "type": "color",
+        "value": "rgba(228, 223, 240, 0.9)",
+        "evidence": {
+          "classification": "medido",
+          "file": "css-observations.json",
+          "selector": ".guru-card",
+          "property": "border-top-color"
+        },
+        "purpose": "Separador decorativo; no sustituye límite funcional ni foco."
+      }
+    },
+    "focus": {
+      "width": {
+        "type": "dimension",
+        "value": 3,
+        "evidence": {
+          "classification": "medido",
+          "file": "css-observations.json",
+          "selector": ".guru-focus-ring:focus-visible",
+          "property": "outline-width",
+          "computed": "3px"
+        },
+        "purpose": "Grosor de anillo de la ficha.",
+        "unit": "px"
+      },
+      "offset": {
+        "type": "dimension",
+        "value": 4,
+        "evidence": {
+          "classification": "medido",
+          "file": "css-observations.json",
+          "selector": ".guru-focus-ring:focus-visible",
+          "property": "outline-offset",
+          "computed": "4px"
+        },
+        "purpose": "Separación de anillo y borde.",
+        "unit": "px"
+      }
+    },
+    "icon": {
+      "small": {
+        "type": "dimension",
+        "value": 14,
+        "evidence": {
+          "classification": "medido",
+          "file": "screenshots/manifest.json",
+          "property": "environmentEvidence.icons",
+          "computed": 14
+        },
+        "purpose": "Tamaño de icono observado, sin copiar trazados ni imponer una librería.",
+        "unit": "px"
+      },
+      "default": {
+        "type": "dimension",
+        "value": 16,
+        "evidence": {
+          "classification": "medido",
+          "file": "screenshots/manifest.json",
+          "property": "environmentEvidence.icons",
+          "computed": 16
+        },
+        "purpose": "Tamaño de icono observado, sin copiar trazados ni imponer una librería.",
+        "unit": "px"
+      }
+    },
+    "layout": {
+      "headerBlur": {
+        "type": "dimension",
+        "value": 8,
+        "evidence": {
+          "classification": "medido",
+          "file": "screenshots/manifest.json",
+          "property": "environmentEvidence.headerBackdrop",
+          "computed": "blur(8px)"
+        },
+        "purpose": "Separación suave de la cabecera sticky.",
+        "unit": "px"
+      },
+      "containerMax": {
+        "type": "dimension",
+        "value": 1152,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "negocios-1440",
+          "selector": "body > div > div:nth-of-type(1) > header > div",
+          "property": "max-width",
+          "computed": "1152px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "gutterMobile": {
+        "type": "dimension",
+        "value": 20,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-390",
+          "selector": "body > div > div:nth-of-type(1) > header > div",
+          "property": "padding",
+          "computed": "0px 20px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "gutterWide": {
+        "type": "dimension",
+        "value": 32,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > header > div",
+          "property": "padding",
+          "computed": "0px 32px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "headerHeight": {
+        "type": "dimension",
+        "value": 65,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > header",
+          "property": "height",
+          "computed": "65px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "bottomNavHeight": {
+        "type": "dimension",
+        "value": 60,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "categoria-comer-390",
+          "selector": "body > div > div:nth-of-type(1) > nav",
+          "property": "height",
+          "computed": "60px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "bottomReserve": {
+        "type": "dimension",
+        "value": 80,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-390",
+          "selector": "body > div > div:nth-of-type(1) > main",
+          "property": "padding",
+          "computed": "0px 0px 80px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "readingMax": {
+        "type": "dimension",
+        "value": 576,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1) > div:nth-of-type(3) > p",
+          "property": "max-width",
+          "computed": "576px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "headingMax": {
+        "type": "dimension",
+        "value": 768,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1) > div:nth-of-type(3) > h1",
+          "property": "max-width",
+          "computed": "768px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      }
+    },
+    "font": {
+      "body": {
+        "type": "fontFamily",
+        "value": "\"Inter\", system-ui, -apple-system, sans-serif",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "property": "--font-body",
+          "file": "measurements.json"
+        },
+        "purpose": "Familia declarada, no prueba de carga efectiva."
+      },
+      "heading": {
+        "type": "fontFamily",
+        "value": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "property": "--font-heading",
+          "file": "measurements.json"
+        },
+        "purpose": "Familia declarada, no prueba de carga efectiva."
+      }
+    },
+    "typography": {
+      "heroMobile": {
+        "type": "typography",
+        "value": {
+          "font-family": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+          "font-size": "36px",
+          "font-weight": "800",
+          "line-height": "37.8px",
+          "letter-spacing": "-0.9px"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-390",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1) > div:nth-of-type(3) > h1",
+          "property": "font-size",
+          "computed": "36px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      },
+      "heroTablet": {
+        "type": "typography",
+        "value": {
+          "font-family": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+          "font-size": "48px",
+          "font-weight": "800",
+          "line-height": "48px",
+          "letter-spacing": "-1.2px"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-768",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1) > div:nth-of-type(3) > h1",
+          "property": "font-size",
+          "computed": "48px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      },
+      "heroDesktop": {
+        "type": "typography",
+        "value": {
+          "font-family": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+          "font-size": "60px",
+          "font-weight": "800",
+          "line-height": "60px",
+          "letter-spacing": "-1.5px"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1) > div:nth-of-type(3) > h1",
+          "property": "font-size",
+          "computed": "60px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      },
+      "pageMobile": {
+        "type": "typography",
+        "value": {
+          "font-family": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+          "font-size": "30px",
+          "font-weight": "800",
+          "line-height": "36px",
+          "letter-spacing": "-0.75px"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "negocios-390",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section > div > h1",
+          "property": "font-size",
+          "computed": "30px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      },
+      "pageWide": {
+        "type": "typography",
+        "value": {
+          "font-family": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+          "font-size": "36px",
+          "font-weight": "800",
+          "line-height": "40px",
+          "letter-spacing": "-0.9px"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "negocios-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section > div > h1",
+          "property": "font-size",
+          "computed": "36px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      },
+      "sectionMobile": {
+        "type": "typography",
+        "value": {
+          "font-family": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+          "font-size": "24px",
+          "font-weight": "800",
+          "line-height": "32px",
+          "letter-spacing": "-0.6px"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-390",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(2) > div > div:nth-of-type(1) > div > h2",
+          "property": "font-size",
+          "computed": "24px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      },
+      "sectionWide": {
+        "type": "typography",
+        "value": {
+          "font-family": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+          "font-size": "30px",
+          "font-weight": "800",
+          "line-height": "36px",
+          "letter-spacing": "-0.75px"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(2) > div > div:nth-of-type(1) > div > h2",
+          "property": "font-size",
+          "computed": "30px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      },
+      "detailMobile": {
+        "type": "typography",
+        "value": {
+          "font-family": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+          "font-size": "24px",
+          "font-weight": "800",
+          "line-height": "26.88px",
+          "letter-spacing": "-0.8px"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "ficha-premium-390",
+          "selector": "body > div > div:nth-of-type(1) > main > div > div:nth-of-type(1) > section > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > h1",
+          "property": "font-size",
+          "computed": "24px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      },
+      "detailWide": {
+        "type": "typography",
+        "value": {
+          "font-family": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+          "font-size": "32px",
+          "font-weight": "800",
+          "line-height": "35.84px",
+          "letter-spacing": "-0.8px"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "ficha-premium-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > div:nth-of-type(1) > section > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > h1",
+          "property": "font-size",
+          "computed": "32px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      },
+      "cardTitle": {
+        "type": "typography",
+        "value": {
+          "font-family": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+          "font-size": "16px",
+          "font-weight": "700",
+          "line-height": "24px",
+          "letter-spacing": "-0.4px"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "negocios-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > div > div:nth-of-type(3) > article:nth-of-type(1) > a > div:nth-of-type(2) > div > h3",
+          "property": "font-size",
+          "computed": "16px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      },
+      "detailSection": {
+        "type": "typography",
+        "value": {
+          "font-family": "\"Baloo 2\", ui-rounded, system-ui, sans-serif",
+          "font-size": "18px",
+          "font-weight": "700",
+          "line-height": "28px",
+          "letter-spacing": "-0.45px"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "ficha-premium-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > div:nth-of-type(3) > div > div:nth-of-type(1) > h2",
+          "property": "font-size",
+          "computed": "18px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      },
+      "body": {
+        "type": "typography",
+        "value": {
+          "font-family": "Inter, system-ui, -apple-system, sans-serif",
+          "font-size": "16px",
+          "font-weight": "400",
+          "line-height": "24px",
+          "letter-spacing": "normal"
+        },
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main",
+          "property": "font-size",
+          "computed": "16px",
+          "file": "measurements.json"
+        },
+        "purpose": "Jerarquía medida por contexto; no confundir niveles de encabezado con tamaños fijos."
+      }
+    },
+    "breakpoint": {
+      "sm": {
+        "type": "dimension",
+        "value": 640,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "property": "mediaQueries",
+          "computed": "(width >= 640px)",
+          "file": "measurements.json",
+          "boundaryTested": true
+        },
+        "purpose": "Umbral CSS inclusivo; xl/xxl declarados sin cambio funcional certificado.",
+        "unit": "px"
+      },
+      "md": {
+        "type": "dimension",
+        "value": 768,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "property": "mediaQueries",
+          "computed": "(width >= 768px)",
+          "file": "measurements.json",
+          "boundaryTested": true
+        },
+        "purpose": "Umbral CSS inclusivo; xl/xxl declarados sin cambio funcional certificado.",
+        "unit": "px"
+      },
+      "lg": {
+        "type": "dimension",
+        "value": 1024,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "property": "mediaQueries",
+          "computed": "(width >= 1024px)",
+          "file": "measurements.json",
+          "boundaryTested": true
+        },
+        "purpose": "Umbral CSS inclusivo; xl/xxl declarados sin cambio funcional certificado.",
+        "unit": "px"
+      },
+      "xl": {
+        "type": "dimension",
+        "value": 1280,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "property": "mediaQueries",
+          "computed": "(width >= 1280px)",
+          "file": "measurements.json",
+          "boundaryTested": false
+        },
+        "purpose": "Umbral CSS inclusivo; xl/xxl declarados sin cambio funcional certificado.",
+        "unit": "px"
+      },
+      "xxl": {
+        "type": "dimension",
+        "value": 1536,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "property": "mediaQueries",
+          "computed": "(width >= 1536px)",
+          "file": "measurements.json",
+          "boundaryTested": false
+        },
+        "purpose": "Umbral CSS inclusivo; xl/xxl declarados sin cambio funcional certificado.",
+        "unit": "px"
+      }
+    },
+    "radius": {
+      "12": {
+        "type": "dimension",
+        "value": 12,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "negocios-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > div > div:nth-of-type(3) > article:nth-of-type(1) > div > button:nth-of-type(2)",
+          "property": "border-radius",
+          "computed": "12px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "14": {
+        "type": "dimension",
+        "value": 14,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "cuenta-acceso-390",
+          "selector": "body > div > div:nth-of-type(1) > div > div:nth-of-type(2) > button",
+          "property": "border-radius",
+          "computed": "14px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "16": {
+        "type": "dimension",
+        "value": 16,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "cuenta-acceso-390",
+          "selector": "body > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div",
+          "property": "border-radius",
+          "computed": "16px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "22": {
+        "type": "dimension",
+        "value": 22,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "ficha-premium-390",
+          "selector": "body > div > div:nth-of-type(1) > main > div > div:nth-of-type(1) > section",
+          "property": "border-radius",
+          "computed": "22px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "24": {
+        "type": "dimension",
+        "value": 24,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(2) > div",
+          "property": "border-radius",
+          "computed": "24px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      },
+      "pill": {
+        "type": "dimension",
+        "value": 9999,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > header > div > nav > a:nth-of-type(1)",
+          "property": "border-radius",
+          "computed": "9999px",
+          "file": "measurements.json"
+        },
+        "purpose": "Medida de la referencia; aplicar según el componente.",
+        "unit": "px"
+      }
+    },
+    "space": {
+      "s4": {
+        "type": "dimension",
+        "value": 4,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > header > div > nav",
+          "property": "gap",
+          "computed": "4px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s6": {
+        "type": "dimension",
+        "value": 6,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1) > div:nth-of-type(3) > span",
+          "property": "padding",
+          "computed": "6px 14px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s8": {
+        "type": "dimension",
+        "value": 8,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > header > div > nav > a:nth-of-type(1)",
+          "property": "padding",
+          "computed": "8px 16px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s12": {
+        "type": "dimension",
+        "value": 12,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(2) > div > div:nth-of-type(1)",
+          "property": "gap",
+          "computed": "12px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s14": {
+        "type": "dimension",
+        "value": 14,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1) > div:nth-of-type(3) > span",
+          "property": "padding",
+          "computed": "6px 14px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s16": {
+        "type": "dimension",
+        "value": 16,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > header > div",
+          "property": "gap",
+          "computed": "16px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s20": {
+        "type": "dimension",
+        "value": 20,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1) > div:nth-of-type(3) > p",
+          "property": "margin",
+          "computed": "20px 0px 0px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s24": {
+        "type": "dimension",
+        "value": 24,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1) > div:nth-of-type(3) > h1",
+          "property": "margin",
+          "computed": "24px 0px 0px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s28": {
+        "type": "dimension",
+        "value": 28,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(2) > div",
+          "property": "padding",
+          "computed": "28px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s32": {
+        "type": "dimension",
+        "value": 32,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > header > div",
+          "property": "padding",
+          "computed": "0px 32px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s40": {
+        "type": "dimension",
+        "value": 40,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2)",
+          "property": "margin",
+          "computed": "40px 0px 0px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s48": {
+        "type": "dimension",
+        "value": 48,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(5) > div",
+          "property": "padding",
+          "computed": "64px 48px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s56": {
+        "type": "dimension",
+        "value": 56,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(2)",
+          "property": "margin",
+          "computed": "56px 136.5px 0px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s64": {
+        "type": "dimension",
+        "value": 64,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(5) > div",
+          "property": "padding",
+          "computed": "64px 48px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s80": {
+        "type": "dimension",
+        "value": 80,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(3)",
+          "property": "margin",
+          "computed": "80px 136.5px 0px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      },
+      "s96": {
+        "type": "dimension",
+        "value": 96,
+        "evidence": {
+          "classification": "medido",
+          "measurementId": "inicio-1440",
+          "selector": "body > div > div:nth-of-type(1) > main > div > section:nth-of-type(1) > div:nth-of-type(3)",
+          "property": "padding",
+          "computed": "96px 32px",
+          "file": "measurements.json"
+        },
+        "purpose": "Paso observado; no impone el mismo espaciado a todas las secciones.",
+        "unit": "px"
+      }
+    },
+    "shadow": {
+      "card": {
+        "type": "shadow",
+        "value": "rgba(45, 38, 82, 0.04) 0px 1px 2px, rgba(45, 38, 82, 0.18) 0px 12px 32px -16px",
+        "evidence": {
+          "classification": "medido",
+          "file": "css-observations.json",
+          "selector": ".guru-card",
+          "property": "box-shadow"
+        },
+        "purpose": "Declaración CSS de referencia; hover no ejecutado con puntero."
+      },
+      "hover": {
+        "type": "shadow",
+        "value": "rgba(45, 38, 82, 0.06) 0px 2px 4px, rgba(45, 38, 82, 0.28) 0px 24px 48px -20px",
+        "evidence": {
+          "classification": "medido",
+          "file": "css-observations.json",
+          "selector": ".guru-lift:hover",
+          "property": "box-shadow"
+        },
+        "purpose": "Declaración CSS de referencia; hover no ejecutado con puntero."
+      }
+    },
+    "motion": {
+      "detail": {
+        "type": "string",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1), ease",
+        "evidence": {
+          "classification": "medido",
+          "file": "css-observations.json",
+          "selector": ".guru-lift",
+          "property": "transition-timing-function"
+        },
+        "purpose": "Declaración CSS de referencia; hover no ejecutado con puntero."
+      },
+      "lift": {
+        "type": "duration",
+        "value": 300,
+        "evidence": {
+          "classification": "medido",
+          "file": "css-observations.json",
+          "selector": ".guru-lift",
+          "property": "transition-duration",
+          "computed": "0.3s, 0.3s"
+        },
+        "purpose": "Duración declarada; no obliga a reproducir la animación.",
+        "unit": "ms"
+      },
+      "entrance": {
+        "type": "duration",
+        "value": 450,
+        "evidence": {
+          "classification": "medido",
+          "file": "css-observations.json",
+          "selector": ".guru-settle",
+          "property": "animation-duration",
+          "computed": "0.45s"
+        },
+        "purpose": "Duración declarada; no obliga a reproducir la animación.",
+        "unit": "ms"
+      }
+    },
+    "inputHeight": {
+      "type": "dimension",
+      "value": 48,
+      "evidence": {
+        "classification": "medido",
+        "measurementId": "cuenta-acceso-390",
+        "selector": "body > div > div:nth-of-type(1) > div > div:nth-of-type(2) > form > div:nth-of-type(1) > div > input",
+        "property": "height",
+        "computed": "48px",
+        "file": "measurements.json"
+      },
+      "purpose": "Medida de la referencia; aplicar según el componente.",
+      "unit": "px"
+    }
+  },
+  "semantic": {
+    "color": {
+      "brand": {
+        "type": "alias",
+        "value": "{reference.color.deep}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Anclar hero, navegación y pie en el mismo índigo."
+      },
+      "page": {
+        "type": "alias",
+        "value": "{reference.color.page}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Separar contenido del fondo lavanda."
+      },
+      "surface": {
+        "type": "alias",
+        "value": "{reference.color.surface}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Dar soporte a tarjetas y formularios."
+      },
+      "textPrimary": {
+        "type": "alias",
+        "value": "{reference.color.text}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Lectura principal sobre claro."
+      },
+      "textSecondary": {
+        "type": "alias",
+        "value": "{reference.color.muted}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Evitar texto pequeño con alfa 0.6 sobre lavanda."
+      },
+      "actionBackground": {
+        "type": "alias",
+        "value": "{reference.color.mint}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Acciones principales reconocibles."
+      },
+      "actionText": {
+        "type": "alias",
+        "value": "{reference.color.deep}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Contraste 8.47:1 sobre menta."
+      },
+      "premium": {
+        "type": "alias",
+        "value": "{reference.color.premium}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Borde orgánico, independiente de selección y patrocinio."
+      },
+      "detailBackground": {
+        "type": "alias",
+        "value": "{reference.color.detail}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Cabecera informativa de ficha."
+      },
+      "focusLight": {
+        "type": "color",
+        "value": "#8D4C94",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Adaptación de accesibilidad y lectura; no se atribuye a Base44."
+        },
+        "purpose": "Anillo visible sobre superficies claras; conserva el foco existente del proyecto."
+      },
+      "focusDark": {
+        "type": "color",
+        "value": "#40E0D0",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Adaptación de accesibilidad y lectura; no se atribuye a Base44."
+        },
+        "purpose": "Anillo visible sobre marca profunda."
+      },
+      "controlBorder": {
+        "type": "color",
+        "value": "#666080",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Adaptación de accesibilidad y lectura; no se atribuye a Base44."
+        },
+        "purpose": "Borde funcional de control con contraste; no usar el separador tenue como único límite."
+      },
+      "borderSubtle": {
+        "type": "alias",
+        "value": "{reference.color.borderSubtle}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Separador decorativo, con controlBorder para límites funcionales."
+      }
+    },
+    "font": {
+      "body": {
+        "type": "alias",
+        "value": "{reference.font.body}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Inter para lectura e interfaz."
+      },
+      "heading": {
+        "type": "alias",
+        "value": "{reference.font.heading}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Baloo 2 para voz cercana y encabezados."
+      }
+    },
+    "layout": {
+      "containerMax": {
+        "type": "alias",
+        "value": "{reference.layout.containerMax}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Ancho máximo común, con gutters incluidos."
+      },
+      "touchMin": {
+        "type": "dimension",
+        "value": 44,
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Adaptación de accesibilidad y lectura; no se atribuye a Base44."
+        },
+        "purpose": "Ampliar controles de referencia de 28–39 px para interacción táctil.",
+        "unit": "px"
+      },
+      "readingMax": {
+        "type": "string",
+        "value": "70ch",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Adaptación de accesibilidad y lectura; no se atribuye a Base44."
+        },
+        "purpose": "Límite editorial de lectura, propuesto para contenido propio largo."
+      }
+    },
+    "motion": {
+      "reducedDuration": {
+        "type": "duration",
+        "value": 0,
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Adaptación de accesibilidad y lectura; no se atribuye a Base44."
+        },
+        "purpose": "Suprimir elevación animada y entrada con movimiento reducido.",
+        "unit": "ms"
+      }
+    },
+    "focus": {
+      "width": {
+        "type": "alias",
+        "value": "{reference.focus.width}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Anillo coherente en toda la web pública."
+      },
+      "offset": {
+        "type": "alias",
+        "value": "{reference.focus.offset}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Separar el foco del borde de plan."
+      }
+    }
+  },
+  "component": {
+    "card": {
+      "radius": {
+        "type": "alias",
+        "value": "{reference.radius.24}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Reutilizar la medida apropiada a esta familia; no universalizar la forma."
+      },
+      "padding": {
+        "type": "alias",
+        "value": "{reference.space.s16}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Reutilizar la medida apropiada a esta familia; no universalizar la forma."
+      },
+      "gap": {
+        "type": "alias",
+        "value": "{reference.space.s16}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Reutilizar la medida apropiada a esta familia; no universalizar la forma."
+      }
+    },
+    "categoryCard": {
+      "padding": {
+        "type": "alias",
+        "value": "{reference.space.s20}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Reutilizar la medida apropiada a esta familia; no universalizar la forma."
+      }
+    },
+    "detailHeader": {
+      "radius": {
+        "type": "alias",
+        "value": "{reference.radius.22}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Reutilizar la medida apropiada a esta familia; no universalizar la forma."
+      },
+      "gap": {
+        "type": "alias",
+        "value": "{reference.space.s24}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Reutilizar la medida apropiada a esta familia; no universalizar la forma."
+      }
+    },
+    "input": {
+      "radius": {
+        "type": "alias",
+        "value": "{reference.radius.14}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Reutilizar la medida apropiada a esta familia; no universalizar la forma."
+      },
+      "height": {
+        "type": "alias",
+        "value": "{reference.inputHeight}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Altura común de campo; conserva área táctil."
+      }
+    },
+    "button": {
+      "radius": {
+        "type": "alias",
+        "value": "{reference.radius.12}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Reutilizar la medida apropiada a esta familia; no universalizar la forma."
+      }
+    },
+    "chip": {
+      "radius": {
+        "type": "alias",
+        "value": "{reference.radius.pill}",
+        "evidence": {
+          "classification": "inferido",
+          "basis": "Asignación semántica del proyecto a un valor medido."
+        },
+        "purpose": "Reutilizar la medida apropiada a esta familia; no universalizar la forma."
+      }
+    }
+  }
+}

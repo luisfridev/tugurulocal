@@ -7,7 +7,9 @@ Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ci
 1. [Especificación maestra](docs/ESPECIFICACION_MAESTRA.md): producto y criterios de aceptación; prevalece ante discrepancias.
 2. [Diseño técnico](docs/DISENO_TECNICO.md) y [stack](docs/TECH-STACK.md): arquitectura y versiones objetivo.
 3. [Plan](docs/PLAN_IMPLEMENTACION.md) y [tablero VS00–VS17](docs/MEMORY.md): dependencias, puertas de fase y evidencia.
-4. [Guía visual](docs/GUIA_VISUAL.md) y [contenido y operación](docs/CONTENIDO_Y_OPERACION.md): presentación y verificación editorial/comercial.
+4. [Sistema de diseño](docs/design.md) y [contenido y operación](docs/CONTENIDO_Y_OPERACION.md): autoridad visual pública y verificación editorial/comercial. La [guía visual](docs/GUIA_VISUAL.md) remite al manual; Filament conserva su sistema administrativo.
+
+El manual extrae el diseño de [la referencia Base44](https://preview--turu-guia-local.base44.app/), con [tokens](docs/design-ref/design-tokens.json), [inventario](docs/design-ref/component-inventory.md), [capturas y procedencia](docs/design-ref/screenshots/manifest.json) y [procedimiento de adopción/comparación](docs/design-ref/implementation-guide.md). Distingue valores medidos, observados, inferidos y no verificados. Antes de VS04 se integran dos entregas: documentación y, después, alineación visual de Inicio, listados, fichas y 404. [Estado de la puerta transversal](docs/MEMORY.md#puerta-transversal-de-diseno-antes-de-vs04). El código actual aún utiliza los estilos anteriores; crear el manual no acredita su aplicación.
 
 Los cambios ya realizados se explican por tarea en [docs/dev_changelog](docs/dev_changelog/VS00.md); el primer registro corresponde a VS00. Esa carpeta contiene únicamente registros Markdown, sin imágenes ni capturas; la revisión visual se documenta con URLs, tamaños de pantalla, interacciones y resultados.
 
@@ -15,7 +17,7 @@ Cada intervención en una tarea `VSXX` se desarrolla en una rama Git nueva: `cod
 
 Las [capturas](docs/referencias/capturas/26-mapa-de-pantallas.jpg) orientan la composición. No aportan datos verificables ni autorizan funciones pospuestas. No se importó código, base de datos, contenido, slugs ni redirecciones del proyecto anterior.
 
-Cada tarea aplica [Antislop según el trabajo](AGENTS.md#antislop-por-tarea), en modo `during` por defecto para este proyecto: base más los complementos de texto, UI, accesibilidad, responsive o comentarios que correspondan, junto con las skills técnicas. El [procedimiento de inicio y revisión final](docs/PLAN_IMPLEMENTACION.md#antislop-en-la-ejecución) exige evidencia de los criterios aplicables y conserva la guía visual como dirección de diseño.
+Cada tarea aplica [Antislop según el trabajo](AGENTS.md#antislop-por-tarea), en modo `during` por defecto para este proyecto: base más los complementos de texto, UI, accesibilidad, responsive o comentarios que correspondan, junto con las skills técnicas. El [procedimiento de inicio y revisión final](docs/PLAN_IMPLEMENTACION.md#antislop-en-la-ejecución) exige evidencia de los criterios aplicables y conserva design.md como dirección de diseño público.
 
 ## Desarrollo local
 
@@ -81,7 +83,7 @@ Publicar requiere logo propio autorizado, con alt y fecha manual de verificació
 
 La implementación local comenzó en `codex/vs03-descubrir-negocios`, creada desde la base integrada `b59d920`; la ampliación DEMO continuó en `codex/vs03-descubrir-negocios-cont-20261022-1` y la confirmación sin JavaScript en la continuación `-2`. La entrega se realizó desde `codex/vs03-descubrir-negocios-cont-20261022-3`. [El registro VS03](docs/dev_changelog/VS03.md) conserva las comprobaciones y la integración verificada.
 
-[PR #4 — VS03: Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4) fusionada hacia `master` el 22-10-2026 a las 16:17:35 (America/Cancun), commit `78e67bd3cee9e7b5389161ddb106ba354b306fef`. La continuación `codex/vs03-descubrir-negocios-cont-20261022-4` registra la integración comprobada. La siguiente tarea es VS04, URLs e indexación.
+[PR #4 — VS03: Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4) fusionada hacia `master` el 22-10-2026 a las 16:17:35 (America/Cancun), commit `78e67bd3cee9e7b5389161ddb106ba354b306fef`. La continuación `codex/vs03-descubrir-negocios-cont-20261022-4` registra la integración comprobada. Antes de VS04, URLs e indexación, se completa la puerta transversal de diseño y alineación visual indicada arriba.
 
 - [Inicio de Playa del Carmen](http://tugurulocal-nuevo.test/playa-del-carmen) ofrece accesos a categorías y zonas con resultados, hasta seis seleccionados manualmente y hasta seis recientes sin repetir los seleccionados.
 - [Negocios](http://tugurulocal-nuevo.test/playa-del-carmen/negocios) admite `categoria`, `zona` y `page`. Las páginas de categoría y zona permiten filtrar el contexto restante. El botón «Aplicar» envía un formulario GET y vuelve a la primera página; «Limpiar filtros» conserva la página de origen.

@@ -9,7 +9,7 @@
 | Base de datos | MySQL | Fuente de verdad de datos y pruebas de integración; no sustituir por SQLite para declarar la salida verificada. |
 | Interfaz dinámica | Livewire 4 | Interacciones que necesitan estado servidor; no crear una SPA adicional. |
 | Administración | Filament 5 | Panel exclusivo del super admin; las políticas y reglas viven en la aplicación. |
-| UI | Tailwind CSS 4 y DaisyUI 5 | Tokens y componentes según [guía visual](GUIA_VISUAL.md). |
+| UI | Tailwind CSS 4 y DaisyUI 5 | Tokens y componentes públicos según [design.md](design.md); Filament conserva sus patrones administrativos. |
 | Medios | Spatie Laravel Media Library y su integración compatible con Filament 5 | Imágenes, PDFs y derivados autorizados; VS02 integra el plugin instalado con disco privado y entrega autorizada. |
 | Correo | Resend | Pendiente de instalar hasta que un flujo real requiera correo; claves solo en entorno. |
 | Desarrollo | Laravel Boost y Laravel Debugbar | Ayuda local; Debugbar nunca habilitada en producción. |
@@ -21,6 +21,8 @@
 PHP 8.4.25; Laravel 13.38.0; Livewire 4.4.8; Filament 5.10.3; Media Library 11.23.10 y plugin Filament 5.10.3; PHPUnit 12.5.40; Tailwind 4.3.3; DaisyUI 5.7.50; Vite 8.3.5. Laravel Boost 2.10.3 y Debugbar 4.4.4 son dependencias de desarrollo. Las tipografías locales vienen de Fontsource. Los manifiestos fijan familias mayores y los lockfiles resuelven las versiones exactas.
 
 ## Configuración y siguientes integraciones
+
+El [manual de diseño](design.md) y la [guía de adopción](design-ref/implementation-guide.md) documentan la referencia Base44 y su mapeo a Blade/Tailwind 4/DaisyUI 5. La adopción visual es una intervención posterior, previa a VS04. El código actual conserva Nunito Sans e Instrument Sans; Baloo 2 e Inter son familias objetivo declaradas por la referencia, aún no instaladas aquí. Revisar licencia y autorización de cualquier nueva dependencia al implementarlas. Esta extracción no modifica CSS, paquetes ni lockfiles.
 
 VS02 ampliada usa RichEditor y ColorPicker nativos de Filament 5, el plugin Spatie instalado para logo e identidad de taxonomías y el sanitizador Symfony ya instalado con lista restringida. No añade dependencias.
 

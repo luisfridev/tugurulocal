@@ -1,0 +1,108 @@
+{
+  "source": "https://preview--turu-guia-local.base44.app/",
+  "checks": [
+    {
+      "id": "filtro-teclado",
+      "classification": "observado",
+      "action": "Comer y beber con clic; Recientes con Enter",
+      "result": {
+        "active": {
+          "background": "rgb(64, 224, 208)",
+          "boxShadow": "none",
+          "outline": "rgb(0, 95, 204) auto 1px",
+          "tag": "BUTTON",
+          "text": "Recientes"
+        },
+        "cards": 3,
+        "url": "https://preview--turu-guia-local.base44.app/explorar?categoria=comer-beber&orden=recientes",
+        "viewport": {
+          "dpr": 1,
+          "height": 844,
+          "scrollY": 0,
+          "width": 390
+        }
+      },
+      "screenshot": "estado-filtro-recientes-390.jpg"
+    },
+    {
+      "id": "orden-foco-listado",
+      "classification": "observado",
+      "result": {
+        "ariaLabel": "Votar por este negocio",
+        "boxShadow": "none",
+        "focusVisible": true,
+        "outline": "rgb(0, 95, 204) auto 1px",
+        "tag": "BUTTON"
+      }
+    },
+    {
+      "id": "cuenta-foco",
+      "classification": "observado",
+      "action": "Tab desde Email sin introducir credenciales ni enviar formulario",
+      "result": {
+        "boxShadow": "none",
+        "href": "/forgot-password",
+        "inputs": [
+          {
+            "ariaInvalid": null,
+            "autocomplete": "email",
+            "invalid": true,
+            "required": true,
+            "type": "email"
+          },
+          {
+            "ariaInvalid": null,
+            "autocomplete": "current-password",
+            "invalid": true,
+            "required": true,
+            "type": "password"
+          }
+        ],
+        "outline": "rgb(0, 95, 204) auto 1px",
+        "tag": "A",
+        "text": "Forgot password?"
+      },
+      "screenshot": "estado-cuenta-foco-390.jpg"
+    },
+    {
+      "id": "panel-futuro",
+      "classification": "observado",
+      "result": {
+        "requested": "/mi-panel",
+        "finalUrl": "https://preview--turu-guia-local.base44.app/beneficios?returnTo=%2Fmi-panel",
+        "internalLayout": "no verificado; requiere cuenta"
+      }
+    },
+    {
+      "id": "404-retorno",
+      "classification": "observado",
+      "action": "Enter en Go Home",
+      "result": {
+        "finalUrl": "https://preview--turu-guia-local.base44.app/"
+      }
+    },
+    {
+      "id": "categoria-desde-inicio",
+      "classification": "observado",
+      "action": "Enter en acceso Qué hacer",
+      "result": {
+        "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=que-hacer"
+      },
+      "screenshot": "estado-categoria-teclado-390.jpg"
+    },
+    {
+      "id": "cuenta-enlace-recuperar",
+      "classification": "observado",
+      "action": "Enter en Forgot password?; sin envío",
+      "result": {
+        "finalUrl": "https://preview--turu-guia-local.base44.app/forgot-password"
+      }
+    }
+  ],
+  "notExecuted": [
+    "hover con puntero: API sin hover documentado; solo CSS declarado",
+    "envíos reales de formularios, OAuth, cuentas y votos",
+    "lector de pantalla real, teclado virtual y dispositivo físico",
+    "zoom nativo 200% y emulación de prefers-reduced-motion"
+  ]
+}

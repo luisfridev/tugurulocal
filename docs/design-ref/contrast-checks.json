@@ -1,0 +1,106 @@
+{
+  "method": "Luminancia relativa sRGB WCAG; composición alfa antes de calcular; umbral sin redondear. Texto grande: >=24px regular o >=18.67px negrita. No certifica textos sobre fotos.",
+  "checks": [
+    {
+      "foreground": "#2D2652",
+      "background": "#40E0D0",
+      "ratio": 8.4672,
+      "normalTextAA": true,
+      "largeTextOrUI3to1": true
+    },
+    {
+      "foreground": "#1B1730",
+      "background": "#F6F4FB",
+      "ratio": 15.8864,
+      "normalTextAA": true,
+      "largeTextOrUI3to1": true
+    },
+    {
+      "foreground": "#FFFFFF",
+      "background": "#2D2652",
+      "ratio": 13.9012,
+      "normalTextAA": true,
+      "largeTextOrUI3to1": true
+    },
+    {
+      "foreground": "#A958A9",
+      "background": "#FFFFFF",
+      "ratio": 4.5105,
+      "normalTextAA": true,
+      "largeTextOrUI3to1": true
+    },
+    {
+      "foreground": "#FFFFFF",
+      "background": "#A958A9",
+      "ratio": 4.5105,
+      "normalTextAA": true,
+      "largeTextOrUI3to1": true
+    },
+    {
+      "foreground": "#40E0D0",
+      "background": "#FFFFFF",
+      "ratio": 1.6418,
+      "normalTextAA": false,
+      "largeTextOrUI3to1": false
+    },
+    {
+      "foreground": "#666080",
+      "background": "#F6F4FB",
+      "ratio": 5.4234,
+      "normalTextAA": true,
+      "largeTextOrUI3to1": true
+    },
+    {
+      "foreground": "#666080",
+      "background": "#FFFFFF",
+      "ratio": 5.9158,
+      "normalTextAA": true,
+      "largeTextOrUI3to1": true
+    },
+    {
+      "foreground": "#55E0CE",
+      "background": "#F6F4FB",
+      "ratio": 1.4878,
+      "normalTextAA": false,
+      "largeTextOrUI3to1": false
+    },
+    {
+      "foreground": "#8D4C94",
+      "background": "#F6F4FB",
+      "ratio": 5.3567,
+      "normalTextAA": true,
+      "largeTextOrUI3to1": true
+    },
+    {
+      "foreground": "#FFFFFF",
+      "background": "#202B50",
+      "ratio": 13.7904,
+      "normalTextAA": true,
+      "largeTextOrUI3to1": true
+    },
+    {
+      "foreground": "#1B1730",
+      "alpha": 0.45,
+      "background": "#F6F4FB",
+      "ratio": 2.8408,
+      "normalTextAA": false,
+      "largeTextOrUI3to1": false
+    },
+    {
+      "foreground": "#1B1730",
+      "alpha": 0.6,
+      "background": "#F6F4FB",
+      "ratio": 4.4432,
+      "normalTextAA": false,
+      "largeTextOrUI3to1": true
+    },
+    {
+      "foreground": "#1B1730",
+      "alpha": 0.7,
+      "background": "#F6F4FB",
+      "ratio": 6.1672,
+      "normalTextAA": true,
+      "largeTextOrUI3to1": true
+    }
+  ]
+}
