@@ -6,6 +6,8 @@ Fecha: 22-10-2026. Manual: [design.md](../design.md). Fuente: [Base44](https://p
 
 Base de esta intervención: `9647d0d2d47a4d7fbf6163f4c80ad89eebeb42dd`, con PR #5 de VS03 fusionada hacia master y fetch comprobado. Rama documental: `codex/sistema-diseno-referencia`. El árbol estaba limpio al comenzar. No se reabren VS02/VS03 ni se crean registros vacíos.
 
+Entrega: [PR #6](https://github.com/luisfridev/tugurulocal/pull/6), abierta hacia master y adjunta al chat. Commit inicial publicado `025b9b1e000c42c95bcfb75073f7393275aca215`; sus blobs y árbol coinciden con la entrega local. El registro de la PR se incorpora en un commit posterior de la misma rama. Integración por el propietario y alineación siguen pendientes.
+
 El [tablero](../MEMORY.md#puerta-transversal-de-diseno-antes-de-vs04) establece dos hitos: integrar este manual por PR y, después, alinear las superficies existentes mediante una rama/PR independiente antes de VS04. La documentación verificada pendiente de fusión no se marca integrada. La alineación aún no está implementada ni verificada.
 
 Secuencia concreta de la futura alineación:

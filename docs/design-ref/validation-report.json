@@ -76,5 +76,14 @@
     "integración de PR documental",
     "alineación visual en Herd antes de VS04",
     "zoom nativo 200%, lector de pantalla, teclado virtual/dispositivo y movimiento reducido en la alineación"
-  ]
+  ],
+  "publication": {
+    "pullRequest": "https://github.com/luisfridev/tugurulocal/pull/6",
+    "branch": "codex/sistema-diseno-referencia",
+    "state": "open; integración pendiente",
+    "initialPublishedCommit": "025b9b1e000c42c95bcfb75073f7393275aca215",
+    "initialVerifiedTree": "85874440b8ed7f8125c3fc8c46fd0989808032ce",
+    "initialVerifiedBlobs": 123,
+    "record": "Registro de PR incorporado en commit posterior de la misma rama."
+  }
 }

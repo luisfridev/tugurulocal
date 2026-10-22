@@ -17,6 +17,8 @@ Los valores serializados están en [design-tokens.json](design-ref/design-tokens
 
 Los grupos `reference`, `semantic` y `component` del JSON separan extracción, decisiones de uso y asignaciones por componente. Un alias semántico es una decisión inferida aunque su valor de origen sea medido. Los números de este manual se expresan en píxeles CSS; al implementar, convertir dimensiones de texto y espaciado a rem con una raíz de 16 px, manteniendo el reflujo al ampliar texto.
 
+Los nombres de captura ficha-premium y ficha-gratis son etiquetas de análisis según insignias y bloques visibles; no prueban una asignación de plan, pago ni elegibilidad del backend de Base44. En este proyecto esos estados se obtienen de sus reglas de dominio.
+
 Evidencia consultable sin volver al sitio:
 
 - [Manifiesto de capturas](design-ref/screenshots/manifest.json): 17 páginas × 3 tamaños, con viewport y página completa, más estados de interacción.

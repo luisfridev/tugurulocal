@@ -2,6 +2,8 @@
 
 Fecha: 22-10-2026. Rama: `codex/sistema-diseno-referencia`. Base: `9647d0d`. Estado: documentación verificada; integración y alineación pendientes. No acredita producción.
 
+Entrega en [PR #6](https://github.com/luisfridev/tugurulocal/pull/6), abierta hacia master y adjunta al chat. Los 123 blobs y el árbol inicial publicado `85874440b8ed7f8125c3fc8c46fd0989808032ce` coinciden con el commit local. El registro documental se incorpora a esa misma PR.
+
 Antislop activo: `during`, regla del proyecto. Se reutilizaron las lecturas vigentes de la sesión: base; UI para composición/componentes; human para accesibilidad; layoutmobile para adaptación; copywriting para documentación; Tailwind para el mapeo técnico. No se instaló una skill externa ni se modificó la configuración global. Dirección: guía editorial cercana de ciudad, ENERGY 2 / RHYTHM 2 / MOTION 1, derivada de la referencia y adaptada al producto.
 
 Los resultados siguientes valoran esta entrega documental y su extracción. No certifican que Base44 cumpla todas las reglas ni que la aplicación local ya consuma los tokens. Un defecto de la referencia se conserva como evidencia y se acompaña de una adaptación explícita; no se oculta para declarar PASS.
@@ -141,4 +143,4 @@ Los resultados siguientes valoran esta entrega documental y su extracción. No c
 
 Pendientes reales: integrar la PR documental, alinear la UI existente con PR propia, ejecutar sus pruebas técnicas y revisión en Herd, y validar los puntos de accesibilidad no ejecutados. No se instalan fuentes, no se rediseña Filament y no se habilita el panel de usuario.
 
-El tablero registrará número, URL y rama de la PR. La PR se deja abierta para revisión del propietario. La extracción verificada no implica fusión, cierre de VS04 ni despliegue.
+El tablero registra número, URL y rama de la PR #6. La PR se deja abierta para revisión del propietario. La extracción verificada no implica fusión, cierre de VS04 ni despliegue.

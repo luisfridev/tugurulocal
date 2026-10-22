@@ -8,6 +8,8 @@ Los identificadores de pantalla de las tablas resuelven en [measurements.json](m
 
 Medido significa propiedad DOM/CSS; observado significa captura o acción ejecutada; inferido significa adaptación propuesta; no verificado significa que no existe evidencia suficiente. Un comportamiento descrito en CSS no equivale a una interacción ejecutada.
 
+Premium/Gratis identifican variantes visuales de las capturas, según insignias y bloques presentes. No se consultaron asignaciones comerciales ni pagos del sitio de referencia.
+
 ## Shell, navegación y orientación
 
 | ID / componente | Anatomía y variantes de referencia | Evidencia | Adaptación y reutilización |
