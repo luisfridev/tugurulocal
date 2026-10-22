@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-22",
+  "scope": "Documentación y referencia externa; sin cambios de aplicación",
+  "checks": {
+    "json": {
+      "result": "PASS",
+      "count": 8
+    },
+    "screenshots": {
+      "result": "PASS",
+      "matrix": 51,
+      "baseImages": 102,
+      "stateImages": 3,
+      "dimensions": "exactas; DPR 1; sin reescalado posterior"
+    },
+    "measurements": {
+      "result": "PASS",
+      "screens": 51,
+      "note": "Muestras por firma; no DOM exhaustivo. H1 presente en todas; imágenes sin fallos registrados."
+    },
+    "tokens": {
+      "result": "PASS",
+      "count": 108,
+      "aliases": 25,
+      "cycles": 0,
+      "measurementReferences": "válidas"
+    },
+    "links": {
+      "result": "PASS",
+      "count": 119,
+      "errors": []
+    },
+    "copy": {
+      "result": "PASS",
+      "check": "Documentos nuevos sin rayas largas; texto histórico conservado."
+    },
+    "boostBlock": {
+      "result": "PASS",
+      "check": "Bloque generado intacto"
+    },
+    "scope": {
+      "result": "PASS",
+      "check": "Solo documentación y evidencia; código, lockfiles, datos y registros VSXX intactos."
+    },
+    "diffCheck": {
+      "result": "PASS"
+    },
+    "comparisonProcedure": {
+      "result": "PASS",
+      "cases": {
+        "self": {
+          "size": [
+            390,
+            844
+          ],
+          "mean_absolute_channel_difference": 0.0,
+          "fraction_pixels_over_8": 0.0,
+          "interpretation": "Diagnóstico, no umbral automático de aceptación"
+        },
+        "control": {
+          "size": [
+            390,
+            844
+          ],
+          "mean_absolute_channel_difference": 0.035747559444241905,
+          "fraction_pixels_over_8": 0.0003038036213391664,
+          "interpretation": "Diagnóstico, no umbral automático de aceptación"
+        },
+        "mismatch": {
+          "rejected": true
+        }
+      }
+    }
+  },
+  "pending": [
+    "integración de PR documental",
+    "alineación visual en Herd antes de VS04",
+    "zoom nativo 200%, lector de pantalla, teclado virtual/dispositivo y movimiento reducido en la alineación"
+  ],
+  "publication": {
+    "pullRequest": "https://github.com/luisfridev/tugurulocal/pull/6",
+    "branch": "codex/sistema-diseno-referencia",
+    "state": "open; integración pendiente",
+    "initialPublishedCommit": "025b9b1e000c42c95bcfb75073f7393275aca215",
+    "initialVerifiedTree": "85874440b8ed7f8125c3fc8c46fd0989808032ce",
+    "initialVerifiedBlobs": 123,
+    "record": "Registro de PR incorporado en commit posterior de la misma rama."
+  }
+}

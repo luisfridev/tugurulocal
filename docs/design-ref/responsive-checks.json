@@ -1,0 +1,59 @@
+{
+  "source": "https://preview--turu-guia-local.base44.app/",
+  "checks": [
+    {
+      "bottomNav": "block",
+      "categoryColumns": "584px",
+      "desktopNav": "none",
+      "headingSize": "36px",
+      "overflow": false,
+      "shellPadding": "20px",
+      "viewport": 639
+    },
+    {
+      "bottomNav": "block",
+      "categoryColumns": "272.5px 272.5px",
+      "desktopNav": "none",
+      "headingSize": "48px",
+      "overflow": false,
+      "shellPadding": "32px",
+      "viewport": 640
+    },
+    {
+      "bottomNav": "block",
+      "categoryColumns": "336px 336px",
+      "desktopNav": "none",
+      "headingSize": "48px",
+      "overflow": false,
+      "shellPadding": "32px",
+      "viewport": 767
+    },
+    {
+      "bottomNav": "none",
+      "categoryColumns": "336.5px 336.5px",
+      "desktopNav": "flex",
+      "headingSize": "48px",
+      "overflow": false,
+      "shellPadding": "32px",
+      "viewport": 768
+    },
+    {
+      "bottomNav": "none",
+      "categoryColumns": "464px 464px",
+      "desktopNav": "flex",
+      "headingSize": "48px",
+      "overflow": false,
+      "shellPadding": "32px",
+      "viewport": 1023
+    },
+    {
+      "bottomNav": "none",
+      "categoryColumns": "304.328px 304.336px 304.336px",
+      "desktopNav": "flex",
+      "headingSize": "60px",
+      "overflow": false,
+      "shellPadding": "32px",
+      "viewport": 1024
+    }
+  ]
+}

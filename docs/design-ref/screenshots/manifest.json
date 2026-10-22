@@ -1,0 +1,2873 @@
+{
+  "source": "https://preview--turu-guia-local.base44.app/",
+  "captureDate": "2026-10-22",
+  "timezone": "America/Cancun",
+  "format": "JPEG original del navegador",
+  "screens": [
+    {
+      "id": "inicio-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/",
+      "capturedAt": "2026-10-22T22:00:16.590Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "inicio-1440-viewport.jpg",
+      "fullFile": "inicio-1440-full.jpg",
+      "document": {
+        "height": 4005,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 11,
+        "pending": 0,
+        "total": 11
+      },
+      "readiness": [],
+      "measurementId": "inicio-1440",
+      "measurementCapturedAt": "2026-10-22T21:52:47.921Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 4005
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "inicio-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/",
+      "capturedAt": "2026-10-22T22:00:20.507Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "inicio-768-viewport.jpg",
+      "fullFile": "inicio-768-full.jpg",
+      "document": {
+        "height": 4646,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 11,
+        "pending": 0,
+        "total": 11
+      },
+      "readiness": [],
+      "measurementId": "inicio-768",
+      "measurementCapturedAt": "2026-10-22T21:52:50.598Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 4646
+        }
+      },
+      "contentWidth": 753
+    },
+    {
+      "id": "inicio-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/",
+      "capturedAt": "2026-10-22T22:00:23.837Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "inicio-390-viewport.jpg",
+      "fullFile": "inicio-390-full.jpg",
+      "document": {
+        "height": 5972,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 11,
+        "pending": 0,
+        "total": 11
+      },
+      "readiness": [],
+      "measurementId": "inicio-390",
+      "measurementCapturedAt": "2026-10-22T21:52:53.545Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 5972
+        }
+      },
+      "contentWidth": 375
+    },
+    {
+      "id": "negocios-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar",
+      "capturedAt": "2026-10-22T22:00:27.699Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "negocios-1440-viewport.jpg",
+      "fullFile": "negocios-1440-full.jpg",
+      "document": {
+        "height": 2556,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 10,
+        "pending": 0,
+        "total": 10
+      },
+      "readiness": [],
+      "measurementId": "negocios-1440",
+      "measurementCapturedAt": "2026-10-22T21:53:03.779Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 2556
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "negocios-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar",
+      "capturedAt": "2026-10-22T22:00:31.641Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "negocios-768-viewport.jpg",
+      "fullFile": "negocios-768-full.jpg",
+      "document": {
+        "height": 2690,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 10,
+        "pending": 0,
+        "total": 10
+      },
+      "readiness": [],
+      "measurementId": "negocios-768",
+      "measurementCapturedAt": "2026-10-22T21:53:06.337Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 2690
+        }
+      },
+      "contentWidth": 753
+    },
+    {
+      "id": "negocios-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar",
+      "capturedAt": "2026-10-22T22:00:36.400Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "negocios-390-viewport.jpg",
+      "fullFile": "negocios-390-full.jpg",
+      "document": {
+        "height": 3141,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 10,
+        "pending": 0,
+        "total": 10
+      },
+      "readiness": [],
+      "measurementId": "negocios-390",
+      "measurementCapturedAt": "2026-10-22T21:53:08.904Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 3141
+        }
+      },
+      "contentWidth": 375
+    },
+    {
+      "id": "categoria-comer-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=comer-beber",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=comer-beber",
+      "capturedAt": "2026-10-22T22:00:41.498Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-comer-1440-viewport.jpg",
+      "fullFile": "categoria-comer-1440-full.jpg",
+      "document": {
+        "height": 1364,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 3,
+        "pending": 0,
+        "total": 3
+      },
+      "readiness": [],
+      "measurementId": "categoria-comer-1440",
+      "measurementCapturedAt": "2026-10-22T21:53:11.823Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 1364
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "categoria-comer-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=comer-beber",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=comer-beber",
+      "capturedAt": "2026-10-22T22:00:45.456Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-comer-768-viewport.jpg",
+      "fullFile": "categoria-comer-768-full.jpg",
+      "document": {
+        "height": 1462,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 3,
+        "pending": 0,
+        "total": 3
+      },
+      "readiness": [],
+      "measurementId": "categoria-comer-768",
+      "measurementCapturedAt": "2026-10-22T21:53:14.618Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1462
+        }
+      },
+      "contentWidth": 753
+    },
+    {
+      "id": "categoria-comer-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=comer-beber",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=comer-beber",
+      "capturedAt": "2026-10-22T22:00:50.577Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-comer-390-viewport.jpg",
+      "fullFile": "categoria-comer-390-full.jpg",
+      "document": {
+        "height": 1992,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 3,
+        "pending": 0,
+        "total": 3
+      },
+      "readiness": [],
+      "measurementId": "categoria-comer-390",
+      "measurementCapturedAt": "2026-10-22T21:53:17.270Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 1992
+        }
+      },
+      "contentWidth": 375
+    },
+    {
+      "id": "categoria-que-hacer-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=que-hacer",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=que-hacer",
+      "capturedAt": "2026-10-22T22:00:54.211Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-que-hacer-1440-viewport.jpg",
+      "fullFile": "categoria-que-hacer-1440-full.jpg",
+      "document": {
+        "height": 1025,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [],
+      "measurementId": "categoria-que-hacer-1440",
+      "measurementCapturedAt": "2026-10-22T21:53:20.499Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 1025
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "categoria-que-hacer-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=que-hacer",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=que-hacer",
+      "capturedAt": "2026-10-22T22:00:57.447Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-que-hacer-768-viewport.jpg",
+      "fullFile": "categoria-que-hacer-768-full.jpg",
+      "document": {
+        "height": 1064,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [],
+      "measurementId": "categoria-que-hacer-768",
+      "measurementCapturedAt": "2026-10-22T21:53:24.438Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1064
+        }
+      },
+      "contentWidth": 753
+    },
+    {
+      "id": "categoria-que-hacer-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=que-hacer",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=que-hacer",
+      "capturedAt": "2026-10-22T22:01:01.045Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-que-hacer-390-viewport.jpg",
+      "fullFile": "categoria-que-hacer-390-full.jpg",
+      "document": {
+        "height": 1633,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [],
+      "measurementId": "categoria-que-hacer-390",
+      "measurementCapturedAt": "2026-10-22T21:53:26.989Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 1633
+        }
+      },
+      "contentWidth": 375
+    },
+    {
+      "id": "categoria-servicios-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=servicios",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=servicios",
+      "capturedAt": "2026-10-22T22:01:27.078Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-servicios-1440-viewport.jpg",
+      "fullFile": "categoria-servicios-1440-full.jpg",
+      "document": {
+        "height": 1181,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 2,
+        "pending": 0,
+        "total": 2
+      },
+      "readiness": [],
+      "measurementId": "categoria-servicios-1440",
+      "measurementCapturedAt": "2026-10-22T21:53:44.649Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 1181
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "categoria-servicios-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=servicios",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=servicios",
+      "capturedAt": "2026-10-22T22:01:30.657Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-servicios-768-viewport.jpg",
+      "fullFile": "categoria-servicios-768-full.jpg",
+      "document": {
+        "height": 1220,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 2,
+        "pending": 0,
+        "total": 2
+      },
+      "readiness": [],
+      "measurementId": "categoria-servicios-768",
+      "measurementCapturedAt": "2026-10-22T21:53:47.213Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1220
+        }
+      },
+      "contentWidth": 753
+    },
+    {
+      "id": "categoria-servicios-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=servicios",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=servicios",
+      "capturedAt": "2026-10-22T22:01:34.210Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-servicios-390-viewport.jpg",
+      "fullFile": "categoria-servicios-390-full.jpg",
+      "document": {
+        "height": 1785,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 2,
+        "pending": 0,
+        "total": 2
+      },
+      "readiness": [],
+      "measurementId": "categoria-servicios-390",
+      "measurementCapturedAt": "2026-10-22T21:53:49.339Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 1785
+        }
+      },
+      "contentWidth": 375
+    },
+    {
+      "id": "categoria-experiencias-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=experiencias",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=experiencias",
+      "capturedAt": "2026-10-22T22:01:37.732Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-experiencias-1440-viewport.jpg",
+      "fullFile": "categoria-experiencias-1440-full.jpg",
+      "document": {
+        "height": 1337,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 3,
+        "pending": 0,
+        "total": 3
+      },
+      "readiness": [],
+      "measurementId": "categoria-experiencias-1440",
+      "measurementCapturedAt": "2026-10-22T21:53:52.128Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 1337
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "categoria-experiencias-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=experiencias",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=experiencias",
+      "capturedAt": "2026-10-22T22:01:41.507Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-experiencias-768-viewport.jpg",
+      "fullFile": "categoria-experiencias-768-full.jpg",
+      "document": {
+        "height": 1399,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 3,
+        "pending": 0,
+        "total": 3
+      },
+      "readiness": [],
+      "measurementId": "categoria-experiencias-768",
+      "measurementCapturedAt": "2026-10-22T21:53:55.032Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1399
+        }
+      },
+      "contentWidth": 753
+    },
+    {
+      "id": "categoria-experiencias-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=experiencias",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=experiencias",
+      "capturedAt": "2026-10-22T22:01:45.280Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-experiencias-390-viewport.jpg",
+      "fullFile": "categoria-experiencias-390-full.jpg",
+      "document": {
+        "height": 1957,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 3,
+        "pending": 0,
+        "total": 3
+      },
+      "readiness": [],
+      "measurementId": "categoria-experiencias-390",
+      "measurementCapturedAt": "2026-10-22T21:53:57.989Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 1957
+        }
+      },
+      "contentWidth": 375
+    },
+    {
+      "id": "categoria-lugares-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=lugares-publicos",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=lugares-publicos",
+      "capturedAt": "2026-10-22T22:01:49.027Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-lugares-1440-viewport.jpg",
+      "fullFile": "categoria-lugares-1440-full.jpg",
+      "document": {
+        "height": 998,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [],
+      "measurementId": "categoria-lugares-1440",
+      "measurementCapturedAt": "2026-10-22T21:54:00.539Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 998
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "categoria-lugares-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=lugares-publicos",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=lugares-publicos",
+      "capturedAt": "2026-10-22T22:01:53.250Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-lugares-768-viewport.jpg",
+      "fullFile": "categoria-lugares-768-full.jpg",
+      "document": {
+        "height": 1051,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [],
+      "measurementId": "categoria-lugares-768",
+      "measurementCapturedAt": "2026-10-22T21:54:03.392Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1051
+        }
+      },
+      "contentWidth": 753
+    },
+    {
+      "id": "categoria-lugares-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=lugares-publicos",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/explorar?categoria=lugares-publicos",
+      "capturedAt": "2026-10-22T22:01:56.978Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "categoria-lugares-390-viewport.jpg",
+      "fullFile": "categoria-lugares-390-full.jpg",
+      "document": {
+        "height": 1611,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [],
+      "measurementId": "categoria-lugares-390",
+      "measurementCapturedAt": "2026-10-22T21:54:05.898Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 1611
+        }
+      },
+      "contentWidth": 375
+    },
+    {
+      "id": "ficha-premium-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/negocio/taqueria-el-fogon",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/negocio/taqueria-el-fogon",
+      "capturedAt": "2026-10-22T22:02:14.194Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "ficha-premium-1440-viewport.jpg",
+      "fullFile": "ficha-premium-1440-full.jpg",
+      "document": {
+        "height": 2924,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 6,
+        "pending": 0,
+        "total": 6
+      },
+      "readiness": [],
+      "measurementId": "ficha-premium-1440",
+      "measurementCapturedAt": "2026-10-22T21:54:14.735Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 2924
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "ficha-premium-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/negocio/taqueria-el-fogon",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/negocio/taqueria-el-fogon",
+      "capturedAt": "2026-10-22T22:02:18.412Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "ficha-premium-768-viewport.jpg",
+      "fullFile": "ficha-premium-768-full.jpg",
+      "document": {
+        "height": 3574,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 6,
+        "pending": 0,
+        "total": 6
+      },
+      "readiness": [],
+      "measurementId": "ficha-premium-768",
+      "measurementCapturedAt": "2026-10-22T21:54:17.738Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 3574
+        }
+      },
+      "contentWidth": 753
+    },
+    {
+      "id": "ficha-premium-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/negocio/taqueria-el-fogon",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/negocio/taqueria-el-fogon",
+      "capturedAt": "2026-10-22T22:02:22.342Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "ficha-premium-390-viewport.jpg",
+      "fullFile": "ficha-premium-390-full.jpg",
+      "document": {
+        "height": 4298,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 6,
+        "pending": 0,
+        "total": 6
+      },
+      "readiness": [],
+      "measurementId": "ficha-premium-390",
+      "measurementCapturedAt": "2026-10-22T21:54:20.579Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 4298
+        }
+      },
+      "contentWidth": 375
+    },
+    {
+      "id": "ficha-gratis-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/negocio/taller-ceramica-kaan",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/negocio/taller-ceramica-kaan",
+      "capturedAt": "2026-10-22T22:02:26.064Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "ficha-gratis-1440-viewport.jpg",
+      "fullFile": "ficha-gratis-1440-full.jpg",
+      "document": {
+        "height": 1469,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [
+        "networkidle no confirmado"
+      ],
+      "measurementId": "ficha-gratis-1440",
+      "measurementCapturedAt": "2026-10-22T21:54:25.265Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 1469
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "ficha-gratis-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/negocio/taller-ceramica-kaan",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/negocio/taller-ceramica-kaan",
+      "capturedAt": "2026-10-22T22:02:29.742Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "ficha-gratis-768-viewport.jpg",
+      "fullFile": "ficha-gratis-768-full.jpg",
+      "document": {
+        "height": 1679,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [],
+      "measurementId": "ficha-gratis-768",
+      "measurementCapturedAt": "2026-10-22T21:54:27.804Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1679
+        }
+      },
+      "contentWidth": 753
+    },
+    {
+      "id": "ficha-gratis-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/negocio/taller-ceramica-kaan",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/negocio/taller-ceramica-kaan",
+      "capturedAt": "2026-10-22T22:02:33.737Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "ficha-gratis-390-viewport.jpg",
+      "fullFile": "ficha-gratis-390-full.jpg",
+      "document": {
+        "height": 2451,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [],
+      "measurementId": "ficha-gratis-390",
+      "measurementCapturedAt": "2026-10-22T21:54:30.559Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 2451
+        }
+      },
+      "contentWidth": 375
+    },
+    {
+      "id": "ficha-lugar-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/negocio/parque-fundadores",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/negocio/parque-fundadores",
+      "capturedAt": "2026-10-22T22:02:37.377Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "ficha-lugar-1440-viewport.jpg",
+      "fullFile": "ficha-lugar-1440-full.jpg",
+      "document": {
+        "height": 1469,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [],
+      "measurementId": "ficha-lugar-1440",
+      "measurementCapturedAt": "2026-10-22T21:54:33.094Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 1469
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "ficha-lugar-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/negocio/parque-fundadores",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/negocio/parque-fundadores",
+      "capturedAt": "2026-10-22T22:17:20.607Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "ficha-lugar-768-viewport.jpg",
+      "fullFile": "ficha-lugar-768-full.jpg",
+      "document": {
+        "height": 1670,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [],
+      "measurementId": "ficha-lugar-768",
+      "measurementCapturedAt": "2026-10-22T21:54:35.632Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1670
+        }
+      },
+      "contentWidth": 768,
+      "contentReady": "h1 visible y red inactiva comprobados explícitamente"
+    },
+    {
+      "id": "ficha-lugar-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/negocio/parque-fundadores",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/negocio/parque-fundadores",
+      "capturedAt": "2026-10-22T22:02:42.125Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "ficha-lugar-390-viewport.jpg",
+      "fullFile": "ficha-lugar-390-full.jpg",
+      "document": {
+        "height": 2424,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 1,
+        "pending": 0,
+        "total": 1
+      },
+      "readiness": [],
+      "measurementId": "ficha-lugar-390",
+      "measurementCapturedAt": "2026-10-22T21:54:38.158Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 2424
+        }
+      },
+      "contentWidth": 375
+    },
+    {
+      "id": "premium-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/premium",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/premium",
+      "capturedAt": "2026-10-22T22:04:46.181Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "premium-1440-viewport.jpg",
+      "fullFile": "premium-1440-full.jpg",
+      "document": {
+        "height": 1746,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "premium-1440",
+      "measurementCapturedAt": "2026-10-22T21:54:53.983Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 1746
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "premium-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/premium",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/premium",
+      "capturedAt": "2026-10-22T22:04:49.454Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "premium-768-viewport.jpg",
+      "fullFile": "premium-768-full.jpg",
+      "document": {
+        "height": 1974,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "premium-768",
+      "measurementCapturedAt": "2026-10-22T21:54:56.136Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1974
+        }
+      },
+      "contentWidth": 753
+    },
+    {
+      "id": "premium-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/premium",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/premium",
+      "capturedAt": "2026-10-22T22:04:52.390Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "premium-390-viewport.jpg",
+      "fullFile": "premium-390-full.jpg",
+      "document": {
+        "height": 3295,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "premium-390",
+      "measurementCapturedAt": "2026-10-22T21:54:58.711Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 3295
+        }
+      },
+      "contentWidth": 375
+    },
+    {
+      "id": "404-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/pantalla-inexistente",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/pantalla-inexistente",
+      "capturedAt": "2026-10-22T22:04:54.106Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "404-1440-viewport.jpg",
+      "fullFile": "404-1440-full.jpg",
+      "document": {
+        "height": 900,
+        "readyState": "complete",
+        "width": 1440
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "404-1440",
+      "measurementCapturedAt": "2026-10-22T21:55:00.272Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "contentWidth": 1440
+    },
+    {
+      "id": "404-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/pantalla-inexistente",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/pantalla-inexistente",
+      "capturedAt": "2026-10-22T22:04:57.047Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "404-768-viewport.jpg",
+      "fullFile": "404-768-full.jpg",
+      "document": {
+        "height": 1024,
+        "readyState": "complete",
+        "width": 768
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "404-768",
+      "measurementCapturedAt": "2026-10-22T21:55:01.839Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1024
+        }
+      },
+      "contentWidth": 768
+    },
+    {
+      "id": "404-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/pantalla-inexistente",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/pantalla-inexistente",
+      "capturedAt": "2026-10-22T22:04:58.028Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "404-390-viewport.jpg",
+      "fullFile": "404-390-full.jpg",
+      "document": {
+        "height": 844,
+        "readyState": "complete",
+        "width": 390
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "404-390",
+      "measurementCapturedAt": "2026-10-22T21:55:03.014Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "contentWidth": 390
+    },
+    {
+      "id": "cuenta-acceso-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/login",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/login",
+      "capturedAt": "2026-10-22T22:04:59.661Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-acceso-1440-viewport.jpg",
+      "fullFile": "cuenta-acceso-1440-full.jpg",
+      "document": {
+        "height": 900,
+        "readyState": "complete",
+        "width": 1440
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-acceso-1440",
+      "measurementCapturedAt": "2026-10-22T21:55:05.169Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "contentWidth": 1440
+    },
+    {
+      "id": "cuenta-acceso-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/login",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/login",
+      "capturedAt": "2026-10-22T22:05:00.429Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-acceso-768-viewport.jpg",
+      "fullFile": "cuenta-acceso-768-full.jpg",
+      "document": {
+        "height": 1024,
+        "readyState": "complete",
+        "width": 768
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-acceso-768",
+      "measurementCapturedAt": "2026-10-22T21:55:06.521Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1024
+        }
+      },
+      "contentWidth": 768
+    },
+    {
+      "id": "cuenta-acceso-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/login",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/login",
+      "capturedAt": "2026-10-22T22:05:01.886Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-acceso-390-viewport.jpg",
+      "fullFile": "cuenta-acceso-390-full.jpg",
+      "document": {
+        "height": 844,
+        "readyState": "complete",
+        "width": 390
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-acceso-390",
+      "measurementCapturedAt": "2026-10-22T21:55:07.632Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "contentWidth": 390
+    },
+    {
+      "id": "cuenta-registro-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/register",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/register",
+      "capturedAt": "2026-10-22T22:05:03.499Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-registro-1440-viewport.jpg",
+      "fullFile": "cuenta-registro-1440-full.jpg",
+      "document": {
+        "height": 900,
+        "readyState": "complete",
+        "width": 1440
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-registro-1440",
+      "measurementCapturedAt": "2026-10-22T21:55:30.943Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "contentWidth": 1440
+    },
+    {
+      "id": "cuenta-registro-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/register",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/register",
+      "capturedAt": "2026-10-22T22:05:05.217Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-registro-768-viewport.jpg",
+      "fullFile": "cuenta-registro-768-full.jpg",
+      "document": {
+        "height": 1024,
+        "readyState": "complete",
+        "width": 768
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-registro-768",
+      "measurementCapturedAt": "2026-10-22T21:55:32.045Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1024
+        }
+      },
+      "contentWidth": 768
+    },
+    {
+      "id": "cuenta-registro-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/register",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/register",
+      "capturedAt": "2026-10-22T22:05:06.728Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-registro-390-viewport.jpg",
+      "fullFile": "cuenta-registro-390-full.jpg",
+      "document": {
+        "height": 844,
+        "readyState": "complete",
+        "width": 390
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-registro-390",
+      "measurementCapturedAt": "2026-10-22T21:55:33.371Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "contentWidth": 390
+    },
+    {
+      "id": "cuenta-recuperar-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/forgot-password",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/forgot-password",
+      "capturedAt": "2026-10-22T22:05:58.426Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-recuperar-1440-viewport.jpg",
+      "fullFile": "cuenta-recuperar-1440-full.jpg",
+      "document": {
+        "height": 900,
+        "readyState": "complete",
+        "width": 1440
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-recuperar-1440",
+      "measurementCapturedAt": "2026-10-22T21:55:34.747Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "contentWidth": 1440
+    },
+    {
+      "id": "cuenta-recuperar-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/forgot-password",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/forgot-password",
+      "capturedAt": "2026-10-22T22:05:59.736Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-recuperar-768-viewport.jpg",
+      "fullFile": "cuenta-recuperar-768-full.jpg",
+      "document": {
+        "height": 1024,
+        "readyState": "complete",
+        "width": 768
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-recuperar-768",
+      "measurementCapturedAt": "2026-10-22T21:55:36.194Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1024
+        }
+      },
+      "contentWidth": 768
+    },
+    {
+      "id": "cuenta-recuperar-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/forgot-password",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/forgot-password",
+      "capturedAt": "2026-10-22T22:06:01.151Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-recuperar-390-viewport.jpg",
+      "fullFile": "cuenta-recuperar-390-full.jpg",
+      "document": {
+        "height": 844,
+        "readyState": "complete",
+        "width": 390
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-recuperar-390",
+      "measurementCapturedAt": "2026-10-22T21:55:37.138Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "contentWidth": 390
+    },
+    {
+      "id": "cuenta-restablecer-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/reset-password",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/reset-password",
+      "capturedAt": "2026-10-22T22:06:36.201Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-restablecer-1440-viewport.jpg",
+      "fullFile": "cuenta-restablecer-1440-full.jpg",
+      "document": {
+        "height": 900,
+        "readyState": "complete",
+        "width": 1440
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-restablecer-1440",
+      "measurementCapturedAt": "2026-10-22T21:55:38.673Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "contentWidth": 1440
+    },
+    {
+      "id": "cuenta-restablecer-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/reset-password",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/reset-password",
+      "capturedAt": "2026-10-22T22:06:36.536Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-restablecer-768-viewport.jpg",
+      "fullFile": "cuenta-restablecer-768-full.jpg",
+      "document": {
+        "height": 1024,
+        "readyState": "complete",
+        "width": 768
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-restablecer-768",
+      "measurementCapturedAt": "2026-10-22T21:55:39.604Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 1024
+        }
+      },
+      "contentWidth": 768
+    },
+    {
+      "id": "cuenta-restablecer-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/reset-password",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/reset-password",
+      "capturedAt": "2026-10-22T22:06:36.838Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-restablecer-390-viewport.jpg",
+      "fullFile": "cuenta-restablecer-390-full.jpg",
+      "document": {
+        "height": 844,
+        "readyState": "complete",
+        "width": 390
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-restablecer-390",
+      "measurementCapturedAt": "2026-10-22T21:55:41.246Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "contentWidth": 390
+    },
+    {
+      "id": "cuenta-beneficios-1440",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/beneficios",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/beneficios",
+      "capturedAt": "2026-10-22T22:06:40.700Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 900,
+        "scrollY": 0,
+        "width": 1440
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-beneficios-1440-viewport.jpg",
+      "fullFile": "cuenta-beneficios-1440-full.jpg",
+      "document": {
+        "height": 1736,
+        "readyState": "complete",
+        "width": 1425
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-beneficios-1440",
+      "measurementCapturedAt": "2026-10-22T21:55:43.936Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "full": {
+          "width": 1440,
+          "height": 1736
+        }
+      },
+      "contentWidth": 1425
+    },
+    {
+      "id": "cuenta-beneficios-768",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/beneficios",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/beneficios",
+      "capturedAt": "2026-10-22T22:06:43.038Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 1024,
+        "scrollY": 0,
+        "width": 768
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-beneficios-768-viewport.jpg",
+      "fullFile": "cuenta-beneficios-768-full.jpg",
+      "document": {
+        "height": 2245,
+        "readyState": "complete",
+        "width": 753
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-beneficios-768",
+      "measurementCapturedAt": "2026-10-22T21:55:46.537Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "full": {
+          "width": 768,
+          "height": 2245
+        }
+      },
+      "contentWidth": 753
+    },
+    {
+      "id": "cuenta-beneficios-390",
+      "requestedUrl": "https://preview--turu-guia-local.base44.app/beneficios",
+      "finalUrl": "https://preview--turu-guia-local.base44.app/beneficios",
+      "capturedAt": "2026-10-22T22:06:45.352Z",
+      "viewport": {
+        "dpr": 1,
+        "height": 844,
+        "scrollY": 0,
+        "width": 390
+      },
+      "state": "default; sesión anónima",
+      "viewportFile": "cuenta-beneficios-390-viewport.jpg",
+      "fullFile": "cuenta-beneficios-390-full.jpg",
+      "document": {
+        "height": 3253,
+        "readyState": "complete",
+        "width": 375
+      },
+      "images": {
+        "broken": 0,
+        "complete": 0,
+        "pending": 0,
+        "total": 0
+      },
+      "readiness": [],
+      "measurementId": "cuenta-beneficios-390",
+      "measurementCapturedAt": "2026-10-22T21:55:49.291Z",
+      "captureMethod": "clip explícito con dimensiones CSS; sin reescalado posterior",
+      "rasterExpected": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "full": {
+          "width": 390,
+          "height": 3253
+        }
+      },
+      "contentWidth": 375
+    }
+  ],
+  "limitations": [
+    "document.fonts.status=loaded pero faces=[]; fuente efectiva por glifo no certificada",
+    "CSS externo de Google Fonts no accesible desde CSSOM; sí se registraron enlaces y familias calculadas",
+    "hover/active declarados medidos en CSS; no ejecutados con puntero",
+    "/reset-password sin token solo muestra enlace inválido; /mi-panel redirige a beneficios",
+    "Primer lote de imágenes sustituido tras detectar dimensiones raster menores; archivos finales capturados con clip explícito, sin reescalar",
+    "Una espera de navegación a /reset-password venció; URL y pantalla comprobadas después y captura completada",
+    "Captura ficha-lugar-768 repetida al detectar carga transitoria en revisión visual; se esperó h1 y se volvió a comprobar red e imagen"
+  ],
+  "states": [
+    {
+      "id": "filtro-teclado",
+      "file": "estado-filtro-recientes-390.jpg",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "state": "Comer y beber con clic; Recientes con Enter",
+      "source": "https://preview--turu-guia-local.base44.app/",
+      "checkFile": "../interaction-checks.json"
+    },
+    {
+      "id": "cuenta-foco",
+      "file": "estado-cuenta-foco-390.jpg",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "state": "Tab desde Email sin introducir credenciales ni enviar formulario",
+      "source": "https://preview--turu-guia-local.base44.app/",
+      "checkFile": "../interaction-checks.json"
+    },
+    {
+      "id": "categoria-desde-inicio",
+      "file": "estado-categoria-teclado-390.jpg",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "state": "Enter en acceso Qué hacer",
+      "source": "https://preview--turu-guia-local.base44.app/",
+      "checkFile": "../interaction-checks.json"
+    }
+  ],
+  "browser": {
+    "name": "ChatGPT in-app browser (Codex)",
+    "id": "2",
+    "version": "no verificada; navigator no disponible en el puente DOM",
+    "engine": "no certificado desde la API"
+  },
+  "environmentEvidence": {
+    "fontObservation": {
+      "count": 0,
+      "status": "loaded"
+    },
+    "headerBackdrop": "blur(8px)",
+    "icons": [
+      {
+        "class": "h-9 w-9",
+        "height": 36,
+        "strokeWidth": null,
+        "width": 36
+      },
+      {
+        "class": "lucide lucide-user h-4 w-4",
+        "height": 16,
+        "strokeWidth": "2.5",
+        "width": 16
+      },
+      {
+        "class": "h-[380px] w-[340px]",
+        "height": 0,
+        "strokeWidth": null,
+        "width": 0
+      },
+      {
+        "class": "lucide lucide-sparkles h-3.5 w-3.5",
+        "height": 14,
+        "strokeWidth": "2",
+        "width": 14
+      },
+      {
+        "class": "lucide lucide-utensils h-4 w-4",
+        "height": 16,
+        "strokeWidth": "1.75",
+        "width": 16
+      },
+      {
+        "class": "lucide lucide-sun h-4 w-4",
+        "height": 16,
+        "strokeWidth": "1.75",
+        "width": 16
+      },
+      {
+        "class": "lucide lucide-wrench h-4 w-4",
+        "height": 16,
+        "strokeWidth": "1.75",
+        "width": 16
+      },
+      {
+        "class": "lucide lucide-sparkles h-4 w-4",
+        "height": 16,
+        "strokeWidth": "1.75",
+        "width": 16
+      },
+      {
+        "class": "lucide lucide-trees h-4 w-4",
+        "height": 16,
+        "strokeWidth": "1.75",
+        "width": 16
+      },
+      {
+        "class": "lucide lucide-flame h-3.5 w-3.5",
+        "height": 14,
+        "strokeWidth": "2",
+        "width": 14
+      },
+      {
+        "class": "lucide lucide-trophy h-4 w-4",
+        "height": 16,
+        "strokeWidth": "2",
+        "width": 16
+      },
+      {
+        "class": "lucide lucide-arrow-up-right h-4 w-4",
+        "height": 16,
+        "strokeWidth": "2",
+        "width": 16
+      }
+    ],
+    "rootFontSize": "16px",
+    "shellBoxSizing": "border-box"
+  },
+  "fileVerification": {
+    "method": "Pillow: formato, decodificación, dimensiones; SHA-256 sobre original final",
+    "files": [
+      {
+        "file": "inicio-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "a9850a52958312bf34e4cc2c5036c9872d04acc6ae350bab79237519e8c304ab"
+      },
+      {
+        "file": "inicio-1440-full.jpg",
+        "width": 1440,
+        "height": 4005,
+        "sha256": "6835204d3b96a5ede4af5628892746e7f1b75a1301ba14e9846cde7b6cfdf564"
+      },
+      {
+        "file": "inicio-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "1d875faa9765ca44f295d9b358c47bf124bff6b34c3bb343c18ffb5f176a6c77"
+      },
+      {
+        "file": "inicio-768-full.jpg",
+        "width": 768,
+        "height": 4646,
+        "sha256": "95f7e2f0c760b7ec699e6a63c76d48d9a7965be3d8a631d18b79e1202067cc5c"
+      },
+      {
+        "file": "inicio-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "f623c336de3329a70811416eccb8ecea8ebe37ad0d65570376a19207788cf03f"
+      },
+      {
+        "file": "inicio-390-full.jpg",
+        "width": 390,
+        "height": 5972,
+        "sha256": "5d480c119fe9e8c3488fde6f53b61fae5009330a2acc6613e1c8c4f220333920"
+      },
+      {
+        "file": "negocios-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "bafa4debc158c982f4ac4f87b1e59448854d516e21593ed2ac1698a296c29836"
+      },
+      {
+        "file": "negocios-1440-full.jpg",
+        "width": 1440,
+        "height": 2556,
+        "sha256": "91fd32526d9484c19c2b3e4e0f6d488bb6a093f0ceec39e733fe9d94efb7d1cf"
+      },
+      {
+        "file": "negocios-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "d15eb68d08532bb687ec2e68c8c8204fdfe129f101c17f8fed30eceec5109ef0"
+      },
+      {
+        "file": "negocios-768-full.jpg",
+        "width": 768,
+        "height": 2690,
+        "sha256": "9e125d10f921a7c95bdfa1d7beb84e4ec0922c590861fd3da30b5cec4742bf33"
+      },
+      {
+        "file": "negocios-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "94405a60916480d2735641489ead42b498d6f401ba96eda4d2183cff804b93c4"
+      },
+      {
+        "file": "negocios-390-full.jpg",
+        "width": 390,
+        "height": 3141,
+        "sha256": "a6191607d8dac66ec1995440329ba989007d189b47903a8b5a99930fc842e825"
+      },
+      {
+        "file": "categoria-comer-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "3fc87e21b9d501ca1e22a615ebe62e060bf92299303f6f1212277519eceedcfc"
+      },
+      {
+        "file": "categoria-comer-1440-full.jpg",
+        "width": 1440,
+        "height": 1364,
+        "sha256": "b6f8484c0ff863eed2711450e670a666d241785f7fcb9918c41b80570ebdce59"
+      },
+      {
+        "file": "categoria-comer-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "ad599418a7ebd8a64a0e676f01400fc9e3dda3c7f0a77b35f312324c80d3dbee"
+      },
+      {
+        "file": "categoria-comer-768-full.jpg",
+        "width": 768,
+        "height": 1462,
+        "sha256": "fd63e5b3795d930345baf11480dda2a01df3624360fccfaf3e74a70bff707064"
+      },
+      {
+        "file": "categoria-comer-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "47844a8564809b8d1579ccd437ac8b151a6b8668135a0106de4fb733a4ce2b8d"
+      },
+      {
+        "file": "categoria-comer-390-full.jpg",
+        "width": 390,
+        "height": 1992,
+        "sha256": "4e1cecfe86e8e91069f1db828f669c66a9ae807db94afbd326aba26a0c2e70b2"
+      },
+      {
+        "file": "categoria-que-hacer-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "a33e8a0d0ea3faae0645e8ef03ea9ef7c05d639c7377f202b2c9c11ea8c27a7f"
+      },
+      {
+        "file": "categoria-que-hacer-1440-full.jpg",
+        "width": 1440,
+        "height": 1025,
+        "sha256": "f4c93a953624492bb8046555ece3f13c2e531f21a34c4f54a28858c7f2c00cf6"
+      },
+      {
+        "file": "categoria-que-hacer-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "e6ab13a7cdef54fc8a373a00028414525d48982e7f7e9d4ffddd755d98c47367"
+      },
+      {
+        "file": "categoria-que-hacer-768-full.jpg",
+        "width": 768,
+        "height": 1064,
+        "sha256": "5200c415c94208e1e8743019582ff6c5d62752c09c2ca23ea0e827e9aac163d8"
+      },
+      {
+        "file": "categoria-que-hacer-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "d2ab6b033f2c11d157ca6b5e79585ab069bcfd62c14deaa0f90d8a9086cfeb06"
+      },
+      {
+        "file": "categoria-que-hacer-390-full.jpg",
+        "width": 390,
+        "height": 1633,
+        "sha256": "0e3042c28bce3454642847a451adeafb8a949ffd7fb329159739338268085d9f"
+      },
+      {
+        "file": "categoria-servicios-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "d69cbd6866ea7254f161c8a686db93dcea2b884909940bea78710c9c61e06099"
+      },
+      {
+        "file": "categoria-servicios-1440-full.jpg",
+        "width": 1440,
+        "height": 1181,
+        "sha256": "90f2bff11b3d37b9589efef5397bbadf7bf3d8d9b7924c6369af9518e99f8021"
+      },
+      {
+        "file": "categoria-servicios-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "fb0db1267dfa5b1e1eaf4aa1a30b4367c8657eea0c224e8fba93877b48b223f7"
+      },
+      {
+        "file": "categoria-servicios-768-full.jpg",
+        "width": 768,
+        "height": 1220,
+        "sha256": "1bd8ddb39993e70fc951ce33d5e6579d4d3e5fc9cf65a4967a4eed510fc344c6"
+      },
+      {
+        "file": "categoria-servicios-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "259966049a8d3da8cb823eecb3aef1066d99043668f11d47d3d70ea1473d7038"
+      },
+      {
+        "file": "categoria-servicios-390-full.jpg",
+        "width": 390,
+        "height": 1785,
+        "sha256": "e159ef4c827b4bde1eb31bfe6934c04fa521c9b55f856f619c90f9571fb60f56"
+      },
+      {
+        "file": "categoria-experiencias-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "79b0941791eb358a01dcedd034898d984fe5a3b4b771ddf0370f27012369ac41"
+      },
+      {
+        "file": "categoria-experiencias-1440-full.jpg",
+        "width": 1440,
+        "height": 1337,
+        "sha256": "b3171b01a47b9ff482e031858112f9faeef8f72cfd84c6f8221c38db09a41b59"
+      },
+      {
+        "file": "categoria-experiencias-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "72ae8f6c9092ab8bcb9fa5b32dada8f84e6e4b7f7d59978918c1116a55c3e0c1"
+      },
+      {
+        "file": "categoria-experiencias-768-full.jpg",
+        "width": 768,
+        "height": 1399,
+        "sha256": "d254d10231087b8b93b09b94cbf073297582306d8f401c2790b124e2f3376272"
+      },
+      {
+        "file": "categoria-experiencias-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "0fd19f5eaf7ff4a2450238fe683bb7a6222942e580d7308912a83434bc41085d"
+      },
+      {
+        "file": "categoria-experiencias-390-full.jpg",
+        "width": 390,
+        "height": 1957,
+        "sha256": "2646be953b9da8b1592f5e1fb4021cdcb1837c6693df1ede430b6012618f847f"
+      },
+      {
+        "file": "categoria-lugares-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "2737e7182224c3958b57ad140eb747748ca956dfab5332b495e0a7e91b50524d"
+      },
+      {
+        "file": "categoria-lugares-1440-full.jpg",
+        "width": 1440,
+        "height": 998,
+        "sha256": "cfc90228d35fe5404f7313da78812c3cdd11d63009d2daa06b020d791614bde2"
+      },
+      {
+        "file": "categoria-lugares-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "58707dfed3e7da907dcea7ecec00376d7a8e3354ef1bd6f6c798335dd45d80db"
+      },
+      {
+        "file": "categoria-lugares-768-full.jpg",
+        "width": 768,
+        "height": 1051,
+        "sha256": "26145f6d5669364bdd81f051cc34ca209d75ac51d88dd2655ebd216134d2e5fe"
+      },
+      {
+        "file": "categoria-lugares-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "1228b5c92dd87bf590bccb8e4a9d1c5a62e74140dc299717b9b28832856bc682"
+      },
+      {
+        "file": "categoria-lugares-390-full.jpg",
+        "width": 390,
+        "height": 1611,
+        "sha256": "922ad60a4c83945f1ec14d279840bc2d8aa366fb365bdaf1b000f02a307932b9"
+      },
+      {
+        "file": "ficha-premium-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "b5cf97ee26ab133bfa878d08f3b22e8fc3125df4af7f9b5eb357ecaa3789dd77"
+      },
+      {
+        "file": "ficha-premium-1440-full.jpg",
+        "width": 1440,
+        "height": 2924,
+        "sha256": "d84b31e7f9319dd37e0a55d9551fb9ae7ce3607b1329176e0aaa29fa24059c99"
+      },
+      {
+        "file": "ficha-premium-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "e310f67db3355263f1c6bac0323069de116cc75772fea4c9ff482372ad7ff767"
+      },
+      {
+        "file": "ficha-premium-768-full.jpg",
+        "width": 768,
+        "height": 3574,
+        "sha256": "2a76f6b4c7189c2dd1a49f6b8607d1f8d2567f0f774da399e43ca8f7ebbbbf88"
+      },
+      {
+        "file": "ficha-premium-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "4e034bdba1fd9fe4db167f058056ae3fdb7dfaea4c05666743dab6115d868a33"
+      },
+      {
+        "file": "ficha-premium-390-full.jpg",
+        "width": 390,
+        "height": 4298,
+        "sha256": "27c226085c1daebc8b00542f401c520264fe5cba741746fe8cd9def388fd20da"
+      },
+      {
+        "file": "ficha-gratis-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "4727142e93c38d6d3efe1932b282e62f5886e01a64ba3a1e015e675bb277eeab"
+      },
+      {
+        "file": "ficha-gratis-1440-full.jpg",
+        "width": 1440,
+        "height": 1469,
+        "sha256": "94fcb59a7e561a0ea94b3fb3f31617bdff87372bd53a72779a779a2ab24e1353"
+      },
+      {
+        "file": "ficha-gratis-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "743b945d39e1a61120732c3ba59d85bcedd1533068a02fd3965e6f6150735a98"
+      },
+      {
+        "file": "ficha-gratis-768-full.jpg",
+        "width": 768,
+        "height": 1679,
+        "sha256": "cf03132707609ee769ca58de618f66ba93c2ec3b98d0ec8f876d39a6add56f44"
+      },
+      {
+        "file": "ficha-gratis-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "7d510837fc057648a1ef4146c0d71d4c7414b94ecbf5f2c4dbc605f1500a5c54"
+      },
+      {
+        "file": "ficha-gratis-390-full.jpg",
+        "width": 390,
+        "height": 2451,
+        "sha256": "4eb80882ef3f10fc21e1b2345303166efae8355abc8f7d8b09b9c7ac5d68adab"
+      },
+      {
+        "file": "ficha-lugar-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "6f3544846870dba3b938ad3c3694c2ece2eec41535a9f809341e0e5bbd2948f6"
+      },
+      {
+        "file": "ficha-lugar-1440-full.jpg",
+        "width": 1440,
+        "height": 1469,
+        "sha256": "e61426af94057d709667057c0418e6aabcb5fb0a3c6ed65da9d3ee067059e7e4"
+      },
+      {
+        "file": "ficha-lugar-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "c5386ee427c8398a6a553c41f2ee9587f936b4da3a6fafbc05ec3ababe986aa9"
+      },
+      {
+        "file": "ficha-lugar-768-full.jpg",
+        "width": 768,
+        "height": 1670,
+        "sha256": "5b601c0fca9cd24eca484b37a4b72687927a7b5db56061dc1283d7c1ddb9a14e"
+      },
+      {
+        "file": "ficha-lugar-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "03ce6ec665f7fc7ce65128f59e3f7ea644a6bf40c5f67d82c727d0f9f781f314"
+      },
+      {
+        "file": "ficha-lugar-390-full.jpg",
+        "width": 390,
+        "height": 2424,
+        "sha256": "4be692d328cfc20e8848d4479379de3658f5ebaebb33c12d86333481f10f78c7"
+      },
+      {
+        "file": "premium-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "df9a820a456d1f7060ad3dd358f8160c00614f907121c4eefea7b669d9782202"
+      },
+      {
+        "file": "premium-1440-full.jpg",
+        "width": 1440,
+        "height": 1746,
+        "sha256": "334870b4d858851b0d708e5c262dc5f9ecc1fc46520c85d401ccae771fcf0444"
+      },
+      {
+        "file": "premium-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "1deffda120386314aed49293e54027c75ad8dc8afb0210929b7a9183fa8a54bf"
+      },
+      {
+        "file": "premium-768-full.jpg",
+        "width": 768,
+        "height": 1974,
+        "sha256": "fbd7925da286b2264923d2f2c99456929821a8dae31de2857ec22300fe397823"
+      },
+      {
+        "file": "premium-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "c7ea7041038075de3ab040443ec782206776fde197e0bb7481942b283d3a6e86"
+      },
+      {
+        "file": "premium-390-full.jpg",
+        "width": 390,
+        "height": 3295,
+        "sha256": "f3c25dcf7b8930c44c6a6d905cb27c435d095bacf51a8a76a8b7d8c65c23e863"
+      },
+      {
+        "file": "404-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "c94f31934dc21ef4e6a51f24700ee26f4f3e3f0e52f1ad5a5cbf954a014f844a"
+      },
+      {
+        "file": "404-1440-full.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "c94f31934dc21ef4e6a51f24700ee26f4f3e3f0e52f1ad5a5cbf954a014f844a"
+      },
+      {
+        "file": "404-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "87174fb08b94a61f27f566ba5672e6e21e868af3de2e270408bb809194a7ceb4"
+      },
+      {
+        "file": "404-768-full.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "87174fb08b94a61f27f566ba5672e6e21e868af3de2e270408bb809194a7ceb4"
+      },
+      {
+        "file": "404-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "cca2a250a85de958d4366865b7bd61c5dfab22dea0b22f22f76166b38f10d9c6"
+      },
+      {
+        "file": "404-390-full.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "cca2a250a85de958d4366865b7bd61c5dfab22dea0b22f22f76166b38f10d9c6"
+      },
+      {
+        "file": "cuenta-acceso-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "0ebe63b9826561da4ad3a068e634337dbcf3f2e98d28bc97203cc1c95e15c459"
+      },
+      {
+        "file": "cuenta-acceso-1440-full.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "c37f27c12e3e3c52fe3f794f10790231aaefa59d9f2ea08c767e54dbdd4cd8e1"
+      },
+      {
+        "file": "cuenta-acceso-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "3c00a366b1093f6d05d40752deca218e5dca50012cf0167e8ccaa5aeefde504f"
+      },
+      {
+        "file": "cuenta-acceso-768-full.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "3c00a366b1093f6d05d40752deca218e5dca50012cf0167e8ccaa5aeefde504f"
+      },
+      {
+        "file": "cuenta-acceso-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "10a771f8ec3f98e5ca9afd710cbf6932be6b8edc7162342d0368b3241681808e"
+      },
+      {
+        "file": "cuenta-acceso-390-full.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "10a771f8ec3f98e5ca9afd710cbf6932be6b8edc7162342d0368b3241681808e"
+      },
+      {
+        "file": "cuenta-registro-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "7c343074dc7be88fef04da2575647dba3b545cbecf4732d83f4601ea77621d62"
+      },
+      {
+        "file": "cuenta-registro-1440-full.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "7c343074dc7be88fef04da2575647dba3b545cbecf4732d83f4601ea77621d62"
+      },
+      {
+        "file": "cuenta-registro-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "e01cf75c3bd643f4921ac098b1a80ff7bff5d88dda2e28d2ee1e8353c811554f"
+      },
+      {
+        "file": "cuenta-registro-768-full.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "18f55b5439e101532ccdc26ac935112726d5cedf1f9b05c5ea7579f47af5b2b6"
+      },
+      {
+        "file": "cuenta-registro-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "417fde5a53d4cc9555ae46ed830e5c964fdc6a89db8fdecfdabd35022ddd35c3"
+      },
+      {
+        "file": "cuenta-registro-390-full.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "417fde5a53d4cc9555ae46ed830e5c964fdc6a89db8fdecfdabd35022ddd35c3"
+      },
+      {
+        "file": "cuenta-recuperar-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "09719a7ac6c3dd6e1b38b8bd3e5bc9768f1567766f48e516c2eedad7d3548162"
+      },
+      {
+        "file": "cuenta-recuperar-1440-full.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "09719a7ac6c3dd6e1b38b8bd3e5bc9768f1567766f48e516c2eedad7d3548162"
+      },
+      {
+        "file": "cuenta-recuperar-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "7dc67e0c2e86babc56f01ca55be146ef3dfba464049b242a3a13450e73fab998"
+      },
+      {
+        "file": "cuenta-recuperar-768-full.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "7dc67e0c2e86babc56f01ca55be146ef3dfba464049b242a3a13450e73fab998"
+      },
+      {
+        "file": "cuenta-recuperar-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "a830dbba259a99529e354f53f728076141cf81214c2bfcb3f8c2937adcda6e8a"
+      },
+      {
+        "file": "cuenta-recuperar-390-full.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "cfd9b996294afd1e9eea09cd7a984731910fe591c53634ff9f1ef5ce85ce3d3f"
+      },
+      {
+        "file": "cuenta-restablecer-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "b97a7090a9ad92247b946925425ee81106c5de6f380ef802a12977c57c386462"
+      },
+      {
+        "file": "cuenta-restablecer-1440-full.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "b97a7090a9ad92247b946925425ee81106c5de6f380ef802a12977c57c386462"
+      },
+      {
+        "file": "cuenta-restablecer-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "1d25ea2d801a7dd874d6faa73525be158896e4b8245ca1dfb49bfc0a5f4f3141"
+      },
+      {
+        "file": "cuenta-restablecer-768-full.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "1d25ea2d801a7dd874d6faa73525be158896e4b8245ca1dfb49bfc0a5f4f3141"
+      },
+      {
+        "file": "cuenta-restablecer-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "cf9195c4b783fae567f3102b6dad2a7298716b2f44408b641133be11cf76a049"
+      },
+      {
+        "file": "cuenta-restablecer-390-full.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "cf9195c4b783fae567f3102b6dad2a7298716b2f44408b641133be11cf76a049"
+      },
+      {
+        "file": "cuenta-beneficios-1440-viewport.jpg",
+        "width": 1440,
+        "height": 900,
+        "sha256": "72928605580da899584aa58d0f04b215fec28c9c17c05768708c23b2e014aedc"
+      },
+      {
+        "file": "cuenta-beneficios-1440-full.jpg",
+        "width": 1440,
+        "height": 1736,
+        "sha256": "1c1e92f47850fc3948c03bf5fa9513efe7a1ebf3634613f5367893f998474b87"
+      },
+      {
+        "file": "cuenta-beneficios-768-viewport.jpg",
+        "width": 768,
+        "height": 1024,
+        "sha256": "49a64ba849b4716377ff95df5ebe4177cfd70c3a776e7839adeceb335de52312"
+      },
+      {
+        "file": "cuenta-beneficios-768-full.jpg",
+        "width": 768,
+        "height": 2245,
+        "sha256": "0f32d062850b3b7e574504df765887ca411778cda2376cbd30f67d2f5b211631"
+      },
+      {
+        "file": "cuenta-beneficios-390-viewport.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "8a290effe0c0338f7d37cf6049743fe5bf4a2047b7413e5a4359451bc5e1cc79"
+      },
+      {
+        "file": "cuenta-beneficios-390-full.jpg",
+        "width": 390,
+        "height": 3253,
+        "sha256": "14ee99c0ee227ccf100719a2545b0832d35dbb18372849693e4832ad20b7c216"
+      },
+      {
+        "file": "estado-filtro-recientes-390.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "18195f46fb6929f400911904605b8f1198c0a6e34d998afca471bf90f34bc414"
+      },
+      {
+        "file": "estado-cuenta-foco-390.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "b6254b008a24c1f3775e13ccab138502adf0f1ab9ce993991a52aff5e3001725"
+      },
+      {
+        "file": "estado-categoria-teclado-390.jpg",
+        "width": 390,
+        "height": 844,
+        "sha256": "f5519a99d8ccbfca444a5b3fa14705ce20fa71a7fd59acf113d44f44699f31b0"
+      }
+    ]
+  }
+}

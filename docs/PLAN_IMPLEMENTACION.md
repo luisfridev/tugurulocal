@@ -14,6 +14,14 @@ Ejecutar VS00–VS17 según las dependencias del tablero. Cada entrega funcional
 
 Cada intervención en una tarea `VSXX` comienza en una rama Git nueva antes de modificar archivos: `codex/vsXX-descripcion` para la primera y `codex/vsXX-descripcion-cont-AAAAMMDD-N` para cada continuación. Comprobar el estado de Git y partir de una base que ya contenga las dependencias cerradas y el trabajo previo de esa tarea, integrado o en su rama anterior. No mezclar tareas ni implementar directamente en `master`. Anotar todas las ramas utilizadas en el registro de la tarea y en la evidencia resumida del tablero.
 
+### Puerta de diseño previa a VS04
+
+Por decisión del propietario del 22-10-2026, antes de continuar con VS04 se integran dos entregas transversales separadas: el [manual visual](design.md) con tokens, componentes y capturas de Base44, y la posterior alineación de Inicio, listados/categorías/zonas, fichas y 404. El [tablero](MEMORY.md#puerta-transversal-de-diseno-antes-de-vs04) registra sus estados y PR. No renumeran ni reabren VS00–VS03; la documentación no acredita aplicación del diseño.
+
+design.md es la autoridad visual pública; la maestra conserva la funcional y el stack la técnica. GUIA_VISUAL remite al manual. Filament mantiene sus patrones. El panel de usuario se reserva al futuro, sin incorporar cuentas al lanzamiento. Las capturas históricas solo sirven de apoyo; la fuente principal es el sitio Base44 identificado en el manual.
+
+En cada trabajo con UI pública, leer el manual y los tokens, registrar revisión/base y componentes afectados, y aplicar el [procedimiento de comparación](design-ref/implementation-guide.md#5-comparacion-y-correccion). Capturar móvil/tableta/escritorio en condiciones equivalentes, explicar adaptaciones, revisar foco/contraste/estados y conservar pendientes reales. Una regla visual nueva actualiza manual, tokens y evidencia en la misma PR. VS15 revisa el conjunto con la referencia local aprobada tras la alineación.
+
 ### Intervención VS03 (22-10-2026)
 
 La rama `codex/vs03-descubrir-negocios` parte de la base integrada `b59d920`. La continuación `codex/vs03-descubrir-negocios-cont-20261022-1` amplía el DEMO persistente a 30 negocios públicos y conserva los dos privados, los registros y medios anteriores. La continuación `-2` registra la confirmación del propietario sobre filtros sin JavaScript y la `-3` entrega la implementación mediante [PR #4](https://github.com/luisfridev/tugurulocal/pull/4), fusionada hacia `master` el 22-10-2026 a las 16:17:35 (America/Cancun), merge `78e67bd3cee9e7b5389161ddb106ba354b306fef`. La continuación `-4`, desde esa base integrada, registra la comprobación en GitHub y la sincronización local mediante `git merge --ff-only origin/master`. VS03 está completada; [su registro](dev_changelog/VS03.md) y el tablero conservan la evidencia local y de integración, sin acreditar producción.
@@ -30,7 +38,7 @@ Antes de planificar o editar una tarea, aplica la [regla Antislop por tarea](../
 
 La documentación usa `antislop-copywriting`. Una pantalla responsive combina `antislop-ui`, `antislop-human` y `antislop-layoutmobile`, y añade copywriting si se trabajan textos. El backend conserva las skills técnicas y solo incorpora complementos por los textos, comentarios o interfaces afectados; `antislop-code` se limita a comentarios. La selección se hace por intervención, porque una misma VSXX puede incluir trabajos distintos.
 
-Para UI, parte de la [guía visual](GUIA_VISUAL.md), declara la interpretación y los valores ENERGY/RHYTHM/MOTION, y explica las decisiones visuales relevantes. La maestra y las decisiones del propietario conservan su autoridad: Antislop no añade funciones ni sustituye las skills técnicas o el sistema visual aprobado.
+Para UI pública, parte de [design.md](design.md), declara la interpretación y los valores ENERGY/RHYTHM/MOTION, y explica las decisiones visuales relevantes. Filament conserva sus patrones administrativos. La maestra y las decisiones del propietario conservan su autoridad: Antislop no añade funciones ni sustituye las skills técnicas o el sistema visual aprobado.
 
 Antes de entregar, ejecuta la revisión final de Antislop y las listas de los complementos usados. Registra cada criterio aplicable como `PASS` con evidencia o `FAIL` con el defecto; usa `no aplica` con motivo para lo ajeno al alcance y deja pendientes las comprobaciones no ejecutadas. Corrige los fallos antes de declarar la revisión superada. En UI conserva las comprobaciones de Herd, móvil, tableta, escritorio, teclado, foco, contraste, estados e interacciones y las pruebas técnicas correspondientes. Un cambio exclusivamente documental requiere revisión de redacción, coherencia, enlaces y `git diff --check`; no requiere repetir PHPUnit, Pint ni build. Un cambio de backend sin UI no exige revisión visual.
 
@@ -67,7 +75,7 @@ Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una ag
 | **T10 · Colecciones** | VS11, VS13 | R04/AC04: lista con selección/orden editorial en VS11 y bloque contratado separado en VS13. | Orden, retiro de fichas, permisos e independencia comercial. |
 | **T11 · Colecciones** | VS12, VS13 | R04/AC04: Lugar con hijos comprobados en VS12 y bloque contextual separado en VS13. | Vínculo único, ciudad/tipos, evidencia, estados y publicidad separada. |
 | **T12 · Colecciones** | VS14 | R05/AC05: Guías locales, editor, revisiones, programación, índice/post y SEO. | Ciudad/slug/estado, sanitización, firma, permisos y enlaces. |
-| **T13 · Transversal e Integración** | VS02–VS03, VS05–VS15 | R01–R09: sistema visual incorporado en cada pantalla; integración final en VS15 según [guía visual](GUIA_VISUAL.md). | Responsive, teclado, zoom, contraste, lector de pantalla y movimiento reducido. |
+| **T13 · Transversal e Integración** | VS02–VS03, VS05–VS15 | R01–R09: sistema visual público incorporado en cada pantalla; alineación previa a VS04 e integración final en VS15 según [design.md](design.md). | Responsive, teclado, zoom, contraste, lector de pantalla y movimiento reducido. |
 | **T14 · Contenido** | VS16 | R10/AC10: investigación desde el inicio; cierre del inventario 40/3/5/5/3 con fuentes, permisos y aprobación. | Checklist de [operación](CONTENIDO_Y_OPERACION.md), enlaces y medios reales. |
 | **T15 · Integración y Salida** | VS15, VS17 | AC01–AC10: integración en VS15; respaldo/restauración, alojamiento, identidad, revalidación editorial y despliegue único en VS17. | Suite MySQL, Pint, build, HTTP, visual, restauración y verificación real de producción. |
 

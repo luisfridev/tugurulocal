@@ -6,7 +6,7 @@
 
 La [especificación maestra](ESPECIFICACION_MAESTRA.md) manda en producto; el [diseño técnico](DISENO_TECNICO.md) define los contratos y el [plan de implementación](PLAN_IMPLEMENTACION.md) conserva fases, puertas y trazabilidad T01–T15. Este archivo registra el orden operativo VS00–VS17, sus dependencias y evidencia. Si cambia un contrato, actualizar los documentos afectados antes de implementarlo.
 
-Una entrega funcional conecta esquema y relaciones, acciones/consultas de dominio, administración Filament, experiencia pública, autorización y pruebas observables. SEO, medición aplicable, privacidad, medios autorizados y [sistema visual](GUIA_VISUAL.md) se incorporan al crear cada superficie; VS04 y VS15 completan y verifican el conjunto. VS00–VS01 son habilitadores técnicos mínimos, no fases para construir todas las capas por separado.
+Una entrega funcional conecta esquema y relaciones, acciones/consultas de dominio, administración Filament, experiencia pública, autorización y pruebas observables. SEO, medición aplicable, privacidad, medios autorizados y [sistema visual público](design.md) se incorporan al crear cada superficie; VS04 y VS15 completan y verifican el conjunto. VS00–VS01 son habilitadores técnicos mínimos, no fases para construir todas las capas por separado. Filament conserva sus patrones administrativos.
 
 Estados permitidos: `pendiente`, `en curso`, `bloqueada`, `completada`. Marcar `en curso` solo al empezar la ejecución con dependencias cerradas; una tarea `bloqueada` identifica causa, responsable de resolución y condición para continuar. En los próximos cierres, marcar `completada` solo con checklist y aceptación satisfechos, evidencia real y fusión de su PR hacia `master` comprobada en GitHub. Mientras la PR no esté fusionada, conservar `en curso` e indicar «implementación verificada; integración pendiente en PR». Los campos de evidencia permanecen vacíos de resultados hasta ejecutar verificaciones; no sustituirlos por expectativas. No guardar secretos, datos personales ni evidencia privada en este archivo.
 
@@ -40,6 +40,27 @@ Al trabajar cualquier `VSXX`, abrir o crear `docs/dev_changelog/VSXX.md` con ese
 En cada tarea ejecutar pruebas enfocadas de comportamiento; en tareas con UI revisar en Herd las pantallas afectadas en móvil, tableta, escritorio y teclado, y enlazar sus URLs locales en `docs/dev_changelog/VSXX.md` para abrirlas en el navegador. Mantener `npm run dev` activo durante la edición visual. Registrar comandos, entorno, resultado, fecha y revisión visual; anotar «no aplica» con motivo cuando corresponda. Al cerrar cada fase ejecutar suite completa en MySQL, Pint, build, inspección de rutas y revisión visual; añadir `git diff --check` cuando exista repositorio. SQLite no acredita integración MySQL. Las comprobaciones locales no acreditan producción.
 
 No hay lanzamientos parciales. No copiar del proyecto anterior ni añadir cuentas públicas, favoritos, votos, ranking, reseñas propias, búsqueda por texto, panel de propietarios o cobros en línea. Las capturas solo orientan el diseño. Investigar contenido e identificar insumos externos desde el inicio sin inventar datos; mantener evidencias sensibles fuera de Git. Aprobar el inventario al cerrar VS16 y la salida en VS17.
+
+<a id="puerta-transversal-de-diseno-antes-de-vs04"></a>
+
+## Puerta transversal de diseño antes de VS04
+
+Decisión del propietario del 22-10-2026: integrar el sistema extraído de [Base44](https://preview--turu-guia-local.base44.app/) y, después, alinear las pantallas públicas existentes antes de iniciar VS04. Esta puerta no renumera ni reabre VS00–VS03 y no habilita cuentas públicas. design.md gobierna la web pública y el futuro panel de usuario; Filament conserva su sistema administrativo.
+
+| Hito | Estado | Evidencia y condición de cierre |
+| --- | --- | --- |
+| Manual y referencias | en curso | Documentación verificada; integración pendiente en PR, desde `codex/sistema-diseno-referencia`. |
+| Alineación de superficies existentes | pendiente | Intervención posterior con rama y PR propias para Inicio, Negocios/categorías/zonas, fichas y 404; revisar y comprobar fusión antes de VS04. |
+
+Rama documental: `codex/sistema-diseno-referencia`, desde master sincronizado en `9647d0d2d47a4d7fbf6163f4c80ad89eebeb42dd`. Se comprobó en GitHub la fusión de PR #5 hacia master y se ejecutó fetch y avance rápido local antes de crearla, con árbol limpio. [PR #6: Diseño, documentar referencia Base44 y puerta de adopción](https://github.com/luisfridev/tugurulocal/pull/6), abierta hacia master, desde esa rama. Commit documental publicado: `025b9b1e000c42c95bcfb75073f7393275aca215`, con 123 archivos. La conexión GitHub confirmó igualdad de blobs y del árbol `85874440b8ed7f8125c3fc8c46fd0989808032ce` respecto al commit local `466b2b2`. Este registro se incorpora a la misma PR, que queda adjunta al chat y abierta para revisión del propietario; no hay integración ni despliegue.
+
+Entregables: [manual](design.md), [tokens](design-ref/design-tokens.json), [inventario](design-ref/component-inventory.md), [manifiesto de capturas](design-ref/screenshots/manifest.json) y [guía de adopción](design-ref/implementation-guide.md). Evidencia: 17 páginas, 51 combinaciones de viewport/DPR 1, 102 capturas base y tres de interacción; muestras DOM/CSS, fronteras responsive, contraste calculado y siete comprobaciones de navegación/foco. La [revisión de entrega](design-ref/delivery-review.md) conserva criterios y límites. El código y los datos actuales no cambian; la alineación sigue pendiente.
+
+Comprobación documental local: [reporte](design-ref/validation-report.json) correcto, con 108 tokens, 25 alias resueltos sin ciclos, referencias de medidas y enlaces/anclas válidos, 105 JPEG de dimensiones exactas y SHA-256 registrados. El procedimiento de comparación se ejecutó con autocopia, cambio sintético y rechazo de dimensiones distintas. `git diff --check` correcto; bloque generado de Boost, código, lockfiles y registros históricos VSXX intactos. PHPUnit, Pint, build y una nueva revisión de UI en Herd no aplican a esta entrega sin cambios de aplicación.
+
+Antislop `during`, regla del proyecto; skills base, UI, human, layoutmobile y copywriting para extracción/documentación visual, más Tailwind para su adaptación al stack. Las comprobaciones no ejecutadas quedan identificadas: hover con puntero, zoom nativo 200 %, lector de pantalla, dispositivo/teclado virtual y auditoría completa de estados. La extracción no se presenta como certificación de la interfaz ni de producción.
+
+Antes de cada intervención con UI pública, registrar revisión/base de design.md, componentes y diferencias intencionales; comparar capturas con el procedimiento de la guía y guardar la revisión en el registro VSXX correspondiente. VS15 revisa el conjunto. Los archivos de capturas permanecen en design-ref; dev_changelog conserva únicamente Markdown por tarea.
 
 ## Secuencia y dependencias
 
@@ -193,6 +214,8 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 ### VS04 — Mantener URLs e indexación
 
 **Estado:** pendiente. **Dependencias:** VS03 completada e integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T06.
+
+**Puerta adicional previa al inicio:** ambos hitos de la puerta transversal de diseño deben estar verificados e integrados. La dependencia VS03 está satisfecha; esta condición visual sigue pendiente.
 
 **Objetivo:** que URL pública, metadatos, enlaces y sitemap reflejen el mismo estado editorial.
 
@@ -400,7 +423,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Objetivo:** comprobar el sistema completo con recorridos públicos y administrativos consistentes antes de aprobar contenido real.
 
-- [ ] Revisar todas las superficies contra la guía visual y completar navegación, estados de carga/vacío/error, fotos ausentes, PDF, ofertas vencidas y `/premium` inactiva; eliminar controles de funciones excluidas.
+- [ ] Revisar las superficies públicas contra design.md y la referencia local aprobada tras la alineación, registrando componentes y diferencias intencionales; revisar la administración con sus patrones Filament. Completar navegación, estados de carga/vacío/error, fotos ausentes, PDF, ofertas vencidas y `/premium` inactiva; eliminar controles de funciones excluidas.
 - [ ] Ejecutar regresiones cruzadas de publicación, cambios de slug, relaciones, Gratis → Premium → Super Premium → Gratis, cupos concurrentes y vigencias sin cron.
 - [ ] Completar métricas de fichas/listas/blog, contactos, catálogo, recomendaciones/moderación y publicidad; revisar payloads sin PII y reportes que distinguen intención de ventas/visitas confirmadas.
 - [ ] Auditar canonical/sitemap/noindex/datos estructurados, privacidad, validación de medios y autorización directa/masiva; comprobar rendimiento y accesibilidad del conjunto.

@@ -1,0 +1,212 @@
+{
+  "inaccessibleStylesheets": [
+    "https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+  ],
+  "mediaQueries": [
+    "(width >= 640px)",
+    "(width >= 768px)",
+    "(width >= 1024px)",
+    "(width >= 1280px)",
+    "(width >= 1536px)",
+    "print",
+    "((-webkit-backdrop-filter:var(--tw)) or (backdrop-filter:var(--tw)))"
+  ],
+  "rules": [
+    {
+      "context": [],
+      "declarations": {
+        "margin-left": "auto",
+        "margin-right": "auto",
+        "max-width": "72rem",
+        "padding-left": "1.25rem",
+        "padding-right": "1.25rem",
+        "width": "100%"
+      },
+      "selector": ".guru-shell"
+    },
+    {
+      "context": [
+        "(width >= 640px)"
+      ],
+      "declarations": {
+        "padding-left": "2rem",
+        "padding-right": "2rem"
+      },
+      "selector": ".guru-shell"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "background-color": "rgb(255, 255, 255)",
+        "border-bottom-color": "rgba(228, 223, 240, 0.9)",
+        "border-bottom-left-radius": "1.5rem",
+        "border-bottom-right-radius": "1.5rem",
+        "border-bottom-style": "solid",
+        "border-bottom-width": "1px",
+        "border-image-outset": "0",
+        "border-image-repeat": "stretch",
+        "border-image-slice": "100%",
+        "border-image-source": "none",
+        "border-image-width": "1",
+        "border-left-color": "rgba(228, 223, 240, 0.9)",
+        "border-left-style": "solid",
+        "border-left-width": "1px",
+        "border-right-color": "rgba(228, 223, 240, 0.9)",
+        "border-right-style": "solid",
+        "border-right-width": "1px",
+        "border-top-color": "rgba(228, 223, 240, 0.9)",
+        "border-top-left-radius": "1.5rem",
+        "border-top-right-radius": "1.5rem",
+        "border-top-style": "solid",
+        "border-top-width": "1px",
+        "box-shadow": "rgba(45, 38, 82, 0.04) 0px 1px 2px, rgba(45, 38, 82, 0.18) 0px 12px 32px -16px"
+      },
+      "selector": ".guru-card"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "transition-behavior": "normal, normal",
+        "transition-delay": "0s, 0s",
+        "transition-duration": "0.3s, 0.3s",
+        "transition-property": "transform, box-shadow",
+        "transition-timing-function": "cubic-bezier(0.22, 1, 0.36, 1), ease"
+      },
+      "selector": ".guru-lift"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "box-shadow": "rgba(45, 38, 82, 0.06) 0px 2px 4px, rgba(45, 38, 82, 0.28) 0px 24px 48px -20px",
+        "transform": "translateY(-3px)"
+      },
+      "selector": ".guru-lift:hover"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "animation-delay": "0s",
+        "animation-direction": "normal",
+        "animation-duration": "0.45s",
+        "animation-fill-mode": "both",
+        "animation-iteration-count": "1",
+        "animation-name": "guru-settle",
+        "animation-play-state": "running",
+        "animation-range-end": "normal",
+        "animation-range-start": "normal",
+        "animation-timeline": "auto",
+        "animation-timing-function": "cubic-bezier(0.2, 0.75, 0.25, 1)"
+      },
+      "selector": ".guru-settle"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "outline-color": "rgb(85, 224, 206)",
+        "outline-offset": "4px",
+        "outline-style": "solid",
+        "outline-width": "3px"
+      },
+      "selector": ".guru-focus-ring:focus-visible"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "transition-behavior": "normal, normal, normal",
+        "transition-delay": "0s, 0s, 0s",
+        "transition-duration": "0.18s, 0.18s, 0.18s",
+        "transition-property": "background-color, box-shadow, transform",
+        "transition-timing-function": "ease, ease, ease"
+      },
+      "selector": ".guru-vote-btn"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "background-color": "rgb(53, 71, 117)",
+        "box-shadow": "rgba(0, 0, 0, 0.2) 0px 5px 15px"
+      },
+      "selector": ".guru-vote-btn:hover"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "transform": "scale(0.96)"
+      },
+      "selector": ".guru-vote-btn:active"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "outline-color": "rgba(0, 0, 0, 0)",
+        "outline-offset": "2px",
+        "outline-style": "solid",
+        "outline-width": "2px"
+      },
+      "selector": ".focus-visible\\:outline-none:focus-visible"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "--tw-ring-offset-shadow": "var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)",
+        "--tw-ring-shadow": "var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color)",
+        "box-shadow": "var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow,0 0 #0000)"
+      },
+      "selector": ".focus-visible\\:ring-0:focus-visible"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "--tw-ring-offset-shadow": "var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)",
+        "--tw-ring-shadow": "var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color)",
+        "box-shadow": "var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow,0 0 #0000)"
+      },
+      "selector": ".focus-visible\\:ring-1:focus-visible"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "--tw-ring-offset-shadow": "var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)",
+        "--tw-ring-shadow": "var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)",
+        "box-shadow": "var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow,0 0 #0000)"
+      },
+      "selector": ".focus-visible\\:ring-2:focus-visible"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "--tw-ring-color": "hsl(var(--ring))"
+      },
+      "selector": ".focus-visible\\:ring-ring:focus-visible"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "--tw-ring-color": "hsl(var(--sidebar-ring))"
+      },
+      "selector": ".focus-visible\\:ring-sidebar-ring:focus-visible"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "--tw-ring-offset-width": "1px"
+      },
+      "selector": ".focus-visible\\:ring-offset-1:focus-visible"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "--tw-ring-offset-width": "2px"
+      },
+      "selector": ".focus-visible\\:ring-offset-2:focus-visible"
+    },
+    {
+      "context": [],
+      "declarations": {
+        "--tw-ring-offset-color": "hsl(var(--background))"
+      },
+      "selector": ".focus-visible\\:ring-offset-background:focus-visible"
+    }
+  ],
+  "url": "https://preview--turu-guia-local.base44.app/"
+}
