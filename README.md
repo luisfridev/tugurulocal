@@ -1,6 +1,6 @@
 # Tu Gurú Local — proyecto nuevo
 
-Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00–VS02 completadas localmente; VS03 en curso con Inicio, Negocios, categorías y zonas implementados en la rama de trabajo. El sitio no está publicado.** La raíz redirige temporalmente al Inicio de Playa del Carmen. Las superficies vacías, filtradas o con solo DEMO llevan `noindex`.
+Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00–VS03 completadas localmente; Inicio, Negocios, categorías y zonas están integrados en `master`. El sitio no está publicado.** La raíz redirige temporalmente al Inicio de Playa del Carmen. Las superficies vacías, filtradas o con solo DEMO llevan `noindex`.
 
 ## Contratos y secuencia
 
@@ -77,11 +77,11 @@ Preparar DEMO explícitamente con `php artisan db:seed --class=DemoListingSeeder
 
 Publicar requiere logo propio autorizado, con alt y fecha manual de verificación independientes de otros medios. La autorización confirma el permiso de uso; no se solicita fuente ni licencia escrita. Despublicar antes de retirarlo o reemplazarlo. Ciudades, categorías y zonas administran emojis, color HEX, tagline, descripción enriquecida, OG e icono independientes; VS03 utiliza esa identidad en sus páginas públicas.
 
-### Descubrir negocios: VS03 en curso
+### Descubrir negocios: VS03 completada
 
-La implementación local comenzó en `codex/vs03-descubrir-negocios`, creada desde la base integrada `b59d920`; la ampliación DEMO continuó en `codex/vs03-descubrir-negocios-cont-20261022-1` y la confirmación sin JavaScript en la continuación `-2`. La entrega para revisión usa `codex/vs03-descubrir-negocios-cont-20261022-3`, conservando todo el trabajo previo. [El registro VS03](docs/dev_changelog/VS03.md) concentra las comprobaciones y pendientes: implementación verificada; integración pendiente en PR.
+La implementación local comenzó en `codex/vs03-descubrir-negocios`, creada desde la base integrada `b59d920`; la ampliación DEMO continuó en `codex/vs03-descubrir-negocios-cont-20261022-1` y la confirmación sin JavaScript en la continuación `-2`. La entrega se realizó desde `codex/vs03-descubrir-negocios-cont-20261022-3`. [El registro VS03](docs/dev_changelog/VS03.md) conserva las comprobaciones y la integración verificada.
 
-[PR #4 — VS03: Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4) permanece abierta hacia `master` para revisión y fusión del propietario.
+[PR #4 — VS03: Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4) fusionada hacia `master` el 22-10-2026 a las 16:17:35 (America/Cancun), commit `78e67bd3cee9e7b5389161ddb106ba354b306fef`. La continuación `codex/vs03-descubrir-negocios-cont-20261022-4` registra la integración comprobada. La siguiente tarea es VS04, URLs e indexación.
 
 - [Inicio de Playa del Carmen](http://tugurulocal-nuevo.test/playa-del-carmen) ofrece accesos a categorías y zonas con resultados, hasta seis seleccionados manualmente y hasta seis recientes sin repetir los seleccionados.
 - [Negocios](http://tugurulocal-nuevo.test/playa-del-carmen/negocios) admite `categoria`, `zona` y `page`. Las páginas de categoría y zona permiten filtrar el contexto restante. El botón «Aplicar» envía un formulario GET y vuelve a la primera página; «Limpiar filtros» conserva la página de origen.
@@ -106,4 +106,4 @@ El comando actualiza el bloque delimitado de Boost en `AGENTS.md` y los archivos
 
 ## Pendientes para el lanzamiento
 
-Completar e integrar VS03, implementar VS04–VS17 y aprobar contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
+Implementar VS04–VS17 y aprobar contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.

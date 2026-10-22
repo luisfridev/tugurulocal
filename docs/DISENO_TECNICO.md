@@ -1,6 +1,6 @@
 # Tu Gurú Local — Diseño técnico del proyecto nuevo
 
-**Estado:** contrato técnico para implementar la [especificación maestra](ESPECIFICACION_MAESTRA.md). VS00–VS02 crearon la base, administración segura y fichas Gratis. VS03 está en curso con descubrimiento local implementado en `codex/vs03-descubrir-negocios`, desde la base integrada `b59d920`; su integración sigue pendiente. Usar [stack](TECH-STACK.md) y las fases del [plan](PLAN_IMPLEMENTACION.md). Los identificadores R01–R10 y AC01–AC10 se definen en la maestra; las comprobaciones de esta intervención se registran en [VS03](dev_changelog/VS03.md).
+**Estado:** contrato técnico para implementar la [especificación maestra](ESPECIFICACION_MAESTRA.md). VS00–VS02 crearon la base, administración segura y fichas Gratis. VS03 está completada e integrada en `master` mediante [PR #4](https://github.com/luisfridev/tugurulocal/pull/4), merge `78e67bd3cee9e7b5389161ddb106ba354b306fef`, comprobado el 22-10-2026. Usar [stack](TECH-STACK.md) y las fases del [plan](PLAN_IMPLEMENTACION.md). Los identificadores R01–R10 y AC01–AC10 se definen en la maestra; las comprobaciones y la integración se registran en [VS03](dev_changelog/VS03.md).
 
 ## 1. Arquitectura y límites
 
