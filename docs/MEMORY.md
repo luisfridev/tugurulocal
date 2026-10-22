@@ -1,6 +1,6 @@
 # Tu Gurú Local — Tablero de entregas verticales
 
-**Fecha:** 22 de octubre de 2026. **Estado:** VS00 y VS01 completadas localmente; fase Base cerrada; VS02–VS17 pendientes. No hay lanzamiento ni verificación de producción.
+**Fecha:** 22 de octubre de 2026. **Estado:** VS00–VS02 completadas localmente; fase Base cerrada y Editorial en curso; VS03–VS17 pendientes. No hay lanzamiento ni verificación de producción.
 
 ## Uso, autoridad y cierre
 
@@ -24,7 +24,7 @@ No hay lanzamientos parciales. No copiar del proyecto anterior ni añadir cuenta
 | --- | --- | --- | --- | --- |
 | VS00 | Base ejecutable | completada | Ninguna | Base |
 | VS01 | Administración segura | completada | VS00 | Base |
-| VS02 | Publicar y consultar una ficha Gratis | pendiente | VS01 | Editorial |
+| VS02 | Publicar y consultar una ficha Gratis | completada | VS01 | Editorial |
 | VS03 | Descubrir negocios | pendiente | VS02 | Editorial |
 | VS04 | Mantener URLs e indexación | pendiente | VS03 | Editorial |
 | VS05 | Recomendar y moderar | pendiente | VS04 | Editorial |
@@ -102,26 +102,38 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Confirmación de VS01 en Git (22-10-2026):** rama `codex/vs01-administracion-segura-cont-20261022-5`, creada desde la anterior con VS00 integrada y todos los cambios pendientes conservados, por instrucción del propietario. El commit que contiene esta actualización reúne los 39 archivos de implementación, pruebas, configuración de ejemplo y documentación. Se revisaron los archivos incluidos, la exclusión de `.env`, los patrones de claves privadas y tokens y `git diff --check`. Se conserva la evidencia local de pruebas y revisión visual; esta intervención solo corrige el registro y confirma el trabajo existente. [Detalle](dev_changelog/VS01.md#continuación--commit-del-conjunto-vs01-22-de-octubre-de-2026).
 
-**Siguiente acción:** integrar VS01 en la base de trabajo antes de iniciar VS02, publicar y consultar una ficha Gratis. La puerta Base queda cerrada localmente y los cambios de VS01 están recogidos en el commit que contiene esta actualización; la integración en `master` y el envío al remoto siguen pendientes. Producción, HTTPS del despliegue y respaldos siguen pendientes de VS17.
+**Siguiente acción:** VS02. VS01 está integrada en `master` mediante PR #1, merge `678d790`, comprobado el 22-10-2026. La puerta Base está cerrada localmente. Producción, HTTPS del despliegue y respaldos siguen pendientes de VS17.
 
 ### VS02 — Publicar y consultar una ficha Gratis
 
-**Estado:** pendiente. **Dependencias:** VS01. **Trazabilidad:** R01–R02, R08–R09 / AC01–AC02, AC08–AC09; T03, T04, T06, T13.
+**Estado:** completada localmente el 22 de octubre de 2026, incluida la simplificación multimedia con fechas manuales. **Dependencias:** VS01 completada e integrada.
+
+**Registro:** [VS02.md](dev_changelog/VS02.md). **Ramas:** `codex/vs02-ficha-gratis`, `codex/vs02-ficha-gratis-cont-20261022-1`, `codex/vs02-ficha-gratis-cont-20261022-2` y `codex/vs02-ficha-gratis-cont-20261022-3`, continuaciones con todo el trabajo previo conservado; desde `master` en `678d790`. La tercera continuación corresponde al cierre en Git. **Trazabilidad:** R01–R02, R08–R09 / AC01–AC02, AC08–AC09; T03, T04, T06, T13.
+
+**Simplificación verificada (22-10-2026):** rama `codex/vs02-ficha-gratis-cont-20261022-2`, desde la continuación anterior con sus cambios sin confirmar conservados. VS01 completada e integrada. Simplificación completada: se retiran fuente y permiso/licencia del flujo multimedia, conservando columnas y valores históricos privados sin sobrescribir. Fechas manuales obligatorias al autorizar y no futuras en America/Cancun, también en lectura pública; fuente/fecha editorial y Google conservadas. Factories y DEMO nuevos no rellenan campos retirados. Pruebas enfocadas: 42 pruebas y 673 aserciones; suite completa MySQL: **91 pruebas y 1.026 aserciones**. Pint, build, 18 rutas, diff y revisión Herd a 390×844, 768×1024 y 1280×800/teclado correctos. Persisten seis fichas DEMO y 32 medios, sin migración, reinicio ni cambios de cuenta. Al terminar esa continuación aún no había commit, integración ni despliegue. [Registro de esta continuación](dev_changelog/VS02.md#continuación--simplificar-multimedia-y-conservar-fechas-manuales-22-10-2026).
+
+**Verificación para el cierre en Git (22-10-2026):** rama `codex/vs02-ficha-gratis-cont-20261022-3`, desde la continuación anterior con los 89 archivos pendientes conservados y VS01 integrada. PHP 8.4.27; mismas versiones de Laravel y paquetes. Pruebas enfocadas: **48 pruebas y 728 aserciones**; suite completa sobre MySQL `tugurulocal_2026_test`: **91 pruebas y 1.026 aserciones**, correctas. Pint, build, 18 rutas y `git diff --check` correctos. Se revisaron los archivos del conjunto, la exclusión de entornos/medios privados y patrones de claves/tokens, sin coincidencias. Esta intervención conserva la revisión visual previa y no cambia funcionalidad ni UI. Confirmación e integración local pendientes de ejecutar; sin despliegue. [Registro del cierre](dev_changelog/VS02.md#continuación-cierre-en-git-22-10-2026).
+
+**Ampliación verificada (22-10-2026):** logo obligatorio e independiente, protegido en publicación/edición y consulta directa; OG portada → logo. Identidad opcional de ciudades/categorías/zonas con emojis, HEX/contraste, RichEditor sanitizado y OG/icono privados. Migración incremental sin reinicio. Seeder local/testing conserva cuatro negocios públicos, borrador, pausado y 32 medios; segunda ejecución local mantiene cantidad, IDs y fecha de modificación de medios. Suite MySQL: **87 pruebas y 798 aserciones**; Pint, build, rutas y diff correctos. Formularios y fichas revisados a 390×844, 768×1024 y 1280×800 y teclado. Única cuenta super admin existente, sin cuentas DEMO. Datos/archivos persistentes excluidos de producción y del inventario real. Sin commit, integración ni despliegue. [Detalle y enlaces DEMO](dev_changelog/VS02.md#continuación--logo-identidad-y-demo-persistente-22-10-2026).
+
+- [x] Logo autorizado obligatorio para publicación y lectura pública, con protección ante retirada/reemplazo.
+- [x] Identidad opcional administrable y conversión segura de descripciones previas.
+- [x] Demostración persistente y repetible, con protección por entorno y sin modificar cuentas.
 
 **Objetivo:** que el super admin publique un negocio Gratis y un visitante consulte su ficha completa en `/@{listing}`.
 
-- [ ] Gestionar ciudad, zonas, cinco categorías y modelo business/place; sembrar solo Playa del Carmen y taxonomía estructural. Slug global único, categoría principal asociada y secundarias válidas; reservar palabras de rutas.
-- [ ] Implementar acciones de publicación/despublicación, programación privada, archivo, recuperación, previsualización autorizada e historial; separar estado editorial del operativo.
-- [ ] Gestionar datos prácticos, fuentes/fecha de revisión, contactos verificados, FAQs, imágenes y PDF autorizados. Validar medios y proteger evidencia privada; Maps ausente permanece vacío.
-- [ ] Entregar ficha Gratis adaptable con compartir URL, reporte de datos incorrectos, canonical/metadatos y eventos de consulta/contacto sin PII. Incorporar tokens visuales, foco y alternativas de medios desde esta pantalla.
+- [x] Gestionar ciudades, zonas y categorías desde el panel, además del modelo business/place; sembrar solo Playa del Carmen y taxonomía estructural. Slug global único, categoría principal asociada y secundarias válidas; reservar palabras de rutas.
+- [x] Implementar acciones de publicación/despublicación manual inmediata (sin programación), archivo, recuperación, previsualización autorizada e historial; separar estado editorial del operativo.
+- [x] Gestionar datos prácticos, fuentes/fecha de revisión, contactos verificados, FAQs, imágenes y PDF autorizados con el plugin Filament/Spatie y etiqueta PDF editable. Validar medios y proteger evidencia privada; Maps ausente permanece vacío.
+- [x] Entregar ficha Gratis adaptable con compartir URL, reporte de datos incorrectos, canonical/metadatos y eventos de consulta/contacto sin PII. Incorporar tokens visuales, foco y alternativas de medios desde esta pantalla.
 
-**Aceptación y fallos:** solo ficha publicada con fecha alcanzada es pública; borrador, programada, pausada o archivada no se filtra por acceso directo ni previsualización. Gratis conserva información práctica y PDF; cierre permanente permite detalle informativo sin elegibilidad para vitrinas/campañas.
+**Aceptación y fallos:** solo ficha publicada con fecha alcanzada es pública; borrador, pausada o archivada no se filtra por acceso directo ni previsualización. Gratis conserva información práctica y PDF; cierre permanente permite detalle informativo sin elegibilidad para vitrinas/campañas.
 
 **Pruebas y revisión:** publicación, estados/fechas, recuperación, unicidad global/categorías y permisos; contactos/Maps vacíos sin ceros, archivos inválidos rechazados y datos privados ausentes del HTML/metadatos. Revisar ficha larga, sin foto y con PDF en responsive/teclado.
 
-**Evidencia:** sin ejecución registrada.
+**Evidencia de la primera intervención (22-10-2026, anterior a la ampliación):** rama `codex/vs02-ficha-gratis` desde `master` en `678d790`. Se completaron datos, acciones/policies, gestión administrativa de taxonomía/fichas, publicación manual sin programación, historial y recuperación, medios privados con plugin Filament/Spatie, etiqueta PDF editable, ficha pública y reportes moderados. Migración y seeder estructural aplicados sin reiniciar la base local. Suite completa MySQL: 74 pruebas y 534 aserciones correctas; Pint, build, rutas y `git diff --check` correctos. Herd: rutas administrativas y ficha/formulario en móvil, tableta y escritorio; teclado, recursos, etiqueta PDF guardada y reporte enviado/resuelto comprobados. Fixture temporal y limpieza expresamente autorizados por el propietario; datos previos conservados por comparación de hashes. Consulta final: una ciudad, cinco categorías, cero fichas/reportes y una cuenta super admin. [Detalle, límites y URLs](dev_changelog/VS02.md).
 
-**Bloqueos:** datos y medios reales aún no aprobados; usar factories solo en pruebas. Logotipo oficial pendiente para la salida.
+**Pendientes:** contenido y medios reales, privacidad aprobada para recepción pública de reportes, Lugares con hijos en VS12 y producción. No bloquean el cierre local documentado. Los cambios de VS02 están sin commit ni integrar. **Siguiente acción:** integrar VS02 e iniciar VS03 en una rama nueva que contenga este trabajo.
 
 ### VS03 — Descubrir negocios
 
@@ -373,7 +385,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 - [ ] Verificar 40 negocios y al menos cinco con categoría principal en cada una de las cuatro categorías de negocio; tres Lugares con hijos ubicados dentro y comprobados.
 - [ ] Aprobar lista de baile con mínimo cinco fichas verificadas, cinco guías duraderas y tres campañas Super Premium reales o de cortesía con material, cupo y vigencia válidos.
-- [ ] Registrar fuentes específicas, permisos, responsable y fecha de revisión de datos/medios en administración o inventario autorizado; dejar vacíos datos no confirmados. No copiar demostraciones de capturas ni datos heredados.
+- [ ] Registrar fuentes, responsable y fecha de los datos editoriales; para medios, autorización del super admin y fecha manual de verificación; dejar vacíos datos no confirmados. No copiar demostraciones de capturas ni datos heredados.
 - [ ] Revisar enlaces, medios, condiciones comerciales, atribución, textos legales y versión móvil; establecer mantenimiento mensual de datos cambiantes y revisión completa trimestral según operación.
 
 **Aceptación y fallos:** inventario 40/3/5/5/3 comprobado; registro sin verificación no cuenta y permanece borrador. Cortesías consumen cupo pero no ingreso; materiales sin permiso no se publican.

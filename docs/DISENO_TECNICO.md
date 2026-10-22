@@ -1,6 +1,6 @@
 # Tu Gurú Local — Diseño técnico del proyecto nuevo
 
-**Estado:** contrato técnico para implementar la [especificación maestra](ESPECIFICACION_MAESTRA.md). VS00 ya creó la base Laravel; los módulos de dominio siguen pendientes. Usar [stack](TECH-STACK.md) y las fases del [plan](PLAN_IMPLEMENTACION.md). Los identificadores R01–R10 y AC01–AC10 se definen en la maestra.
+**Estado:** contrato técnico para implementar la [especificación maestra](ESPECIFICACION_MAESTRA.md). VS00–VS02 crearon la base, administración segura y fichas Gratis; los módulos siguientes siguen su secuencia. Usar [stack](TECH-STACK.md) y las fases del [plan](PLAN_IMPLEMENTACION.md). Los identificadores R01–R10 y AC01–AC10 se definen en la maestra.
 
 ## 1. Arquitectura y límites
 
@@ -8,7 +8,7 @@ Aplicación Laravel monolítica con vistas Blade/Livewire para público y Filame
 
 Separar cuatro conceptos:
 
-1. **Editorial:** borrador, programado, publicado, pausado o archivado.
+1. **Editorial:** fichas en borrador, publicadas, pausadas o archivadas, con publicación manual inmediata; el blog conserva programación.
 2. **Operativo:** abierto, temporalmente cerrado o permanentemente cerrado.
 3. **Comercial:** plan Gratis/Premium/Super Premium y motivo pagada/prueba/cortesía, con período.
 4. **Publicidad:** campaña y espacio contratado, sujeto a su propio período y aprobación.
@@ -44,7 +44,17 @@ Todas las claves foráneas relevantes tienen índices y política explícita de 
 
 Las restricciones de unicidad de slugs, pivots y posiciones se respaldan en MySQL. Las reglas que dependen de períodos superpuestos, ciudad, estado o relaciones de varios registros se validan en una transacción de dominio y se prueban con concurrencia representativa. Crear factories útiles para escenarios publicados, borradores, vencidos, cortesía y vínculos verificados; los seeders estructurales crean ciudad y categorías, nunca negocios ficticios para producción.
 
+VS02 añade `listing_reports` (ficha, campo afectado, explicación, estado pendiente/resuelto/descartado, responsable y fecha) y el texto configurable del botón PDF en `listings`. No solicita datos de contacto. Las fichas no admiten programación: `published_at` registra su publicación manual. Ciudades, zonas y categorías tienen recursos administrativos; los seeders crean solo estructura. Los medios usan el plugin Filament/Spatie instalado y almacenamiento privado con entrega autorizada por estado de ficha.
+
 ## 3. Acciones y consultas de dominio
+
+### Ampliación incremental VS02 (22-10-2026)
+
+Nueva migración sobre VS02 ya ejecutada: identidad opcional en ciudades/categorías/zonas (primary_color, tagline, description y autorización/alt independientes para og_image e icon). Categorías reutilizan description; texto plano anterior se convierte a párrafos escapados. Nombre utf8mb4 conserva emojis compuestos; slug ASCII mantiene validación. HTML con lista permitida, sin style, scripts, imágenes ni adjuntos; HEX de seis dígitos y texto negro/blanco calculado por luminancia WCAG, respaldo de marca.
+
+Ficha usa logo_approved, logo_alt, logo_reviewed_at y colección privada logo. Las columnas logo_source y logo_permission, como las equivalentes de otros medios, se conservan únicamente como histórico privado. Publicación y edición publicada exigen logo existente/autorizado; observador protege eliminación/reemplazo mientras esté publicada. Consulta pública y entrega privada comprueban autorización por colección; OG prioriza portada y luego logo. Taxonomías sirven archivos únicamente al super admin con 2FA en VS02.
+
+DemoListingSeeder separado del estructural, bloqueado fuera de local/testing. Slugs y marcas DEMO permiten inserción única sin sobrescribir cambios ni recrear archivos. Identidad estructural vacía se completa una sola vez mediante marca persistente. is_demo identifica fichas/zonas; lecturas públicas excluyen DEMO fuera de local/testing. No crea ni modifica cuentas.
 
 - **`PublishListing` / `PublicListingQuery`:** comprobar datos mínimos, aprobación, fecha y estado; devolver solo fichas elegibles. El orden orgánico es `published_at DESC, id DESC`. El listado de Lugar añade negocio hijo publicado y operativo activo. La ficha permanentemente cerrada puede seguir accesible, pero no ser patrocinada.
 - **`LinkBusinessToPlace`:** validar tipos, misma ciudad, ausencia de otro Lugar, fuente/comprobación, fecha y responsable. Rechazar vínculos inferidos por texto.
@@ -80,7 +90,7 @@ Usar rutas nombradas. Declarar `/premium`, `/recomendar`, `/@{listing}` y las ru
 
 ### Visibilidad
 
-- **Ficha:** borrador/programada/pausada/archivada → privada; publicada y fecha alcanzada → ficha pública. Estado operativo cerrado permanente permite detalle informativo, pero la excluye de vitrinas y campañas.
+- **Ficha:** borrador/pausada/archivada → privada; publicada y fecha alcanzada → ficha pública. Estado operativo cerrado permanente permite detalle informativo, pero la excluye de vitrinas y campañas.
 - **Producto/oferta:** requiere aprobación propia, negocio publicado y plan vigente. Oferta añade `starts_at <= ahora < ends_at`. El contenido histórico queda visible al admin.
 - **Lista:** requiere publicación y al menos una ficha pública válida para indexarse; entradas ocultas no cambian el orden relativo restante.
 - **Lugar:** requiere publicación propia y al menos un negocio hijo público, activo y verificado; de lo contrario no se indexa ni aparece en navegación.
@@ -101,7 +111,7 @@ El acceso a `/dashboard/login` descarta los destinos de retorno guardados en ses
 
 Metadatos generados desde contenido real, editables por el super admin. Fichas usan `/@{slug}`; posts usan slug por ciudad. Sitemap y canonical comparten el mismo resolvedor de URL. Filtros `tipo`/`categoria`, paginación vacía, borradores y /premium inactiva no se indexan. Explorar base se indexa solo si tiene contenido real; filtros llevan `noindex` y canonical al catálogo base. Los cambios de slug de contenido ya publicado crean redirección interna y actualizan enlaces nuevos.
 
-Media Library organiza imagen principal, galería, PDF de menú/flyer, material de campaña e imágenes del blog en colecciones con permiso y crédito. Guardar alt, pie, fuente/licencia y fecha de verificación cuando aplique. Generar tamaños optimizados; una ausencia se resuelve con sustituto visual, nunca con foto de otro negocio. Para videos, aceptar URL validada de YouTube/Vimeo, sin descargar archivo ni insertar HTML arbitrario.
+Media Library organiza imagen principal, galería, PDF de menú/flyer, material de campaña e imágenes del blog en colecciones con permiso y crédito. Guardar alt, pie, autorización y fecha manual de verificación cuando aplique. Fuente/licencia multimedia anteriores se conservan como histórico privado, fuera del formulario. Generar tamaños optimizados; una ausencia se resuelve con sustituto visual, nunca con foto de otro negocio. Para videos, aceptar URL validada de YouTube/Vimeo, sin descargar archivo ni insertar HTML arbitrario.
 
 Las recomendaciones conservan contacto/evidencia en acceso restringido. Los límites usan caché por IP sin exponerla públicamente. Política de privacidad, retención y eliminación se aprueban antes del lanzamiento; no inventar un plazo legal. Copias de seguridad y restauración se prueban antes del despliegue. El reloj de la app y los tests cubre el cambio de día y los límites de vigencia de America/Cancun.
 
@@ -122,3 +132,7 @@ Las recomendaciones conservan contacto/evidencia en acceso restringido. Los lím
 
 Probar primero la ruta o servicio más estrecho, luego la suite en MySQL, Pint y build. La guía de pruebas completa y puertas de fase están en [PLAN_IMPLEMENTACION.md](PLAN_IMPLEMENTACION.md).
 
+
+### Simplificación multimedia VS02 (22-10-2026)
+
+Fuente y permiso/licencia multimedia se retiran de formularios, validación de entrada, campos asignables y nuevas revisiones/factories/DEMO. No se borran columnas ni valores anteriores y se ocultan de serialización. Se conserva la fecha manual, requerida para autorizar y nunca futura en America/Cancun. Publicación y lectura pública exigen logo autorizado, alt, fecha y archivo existente; no exigen fuente ni licencia escrita. Otros medios requieren autorización y fecha válida para mostrarse. Fuentes/fechas editoriales, Google y vínculos de Lugares permanecen. No cambia el esquema ni se reinicia la base.

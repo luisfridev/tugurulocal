@@ -20,7 +20,7 @@ Para cada ficha, Lugar, oferta, producto, guía o campaña guardar en administra
 
 - Identificador interno; tipo y ciudad; nombre/título; responsable de carga y de aprobación; fecha de última revisión.
 - Fuente específica de cada afirmación importante: web oficial, visita/comprobación directa, documento autorizado o contacto con el negocio. Anotar URL o referencia y fecha de consulta; no usar una captura de diseño como fuente.
-- Permiso de uso del material: propietario/licencia, alcance, fecha y crédito requerido. Guardar evidencia fuera del contenido público. Si no existe permiso, no publicar ese medio.
+- Medios: el super admin confirma el permiso mediante el control de autorización y registra manualmente la fecha de verificación. El formulario no solicita fuente ni permiso/licencia escrito; los valores antiguos se conservan como histórico privado. Mantener alt y crédito cuando corresponda.
 - Estado de dirección, horario, teléfono, WhatsApp, web, precios, condiciones, menú/flyer, datos de Google Maps y vínculos con Lugares. Dejar vacíos los campos no confirmados.
 - Motivo editorial de la inclusión y categoría principal. En lugares, nombre de cada negocio hijo, fuente o comprobación directa, fecha y responsable de la relación.
 - Estado editorial, fecha prevista, URL canónica, título/descripcion SEO, imagen social y resultado de la revisión en móvil.
@@ -33,7 +33,7 @@ Esta plantilla es un control de procedencia; no autoriza publicar datos personal
 
 1. **Captura:** crear borrador con fuente, medios autorizados y campos verificados. La recomendación pública inicia pendiente y exige moderación.
 2. **Revisión:** comprobar taxonomía, veracidad, ortografía, enlaces, condición comercial, permisos y que no haya duplicado. Las cifras de Google se introducen manualmente con fecha o se dejan vacías.
-3. **Aprobación:** super admin registra responsable y fecha. Previsualizar antes de publicar; el contenido programado espera su hora.
+3. **Aprobación:** super admin registra responsable y fecha. Previsualizar antes de publicar. Las fichas se publican manualmente de inmediato; el blog conserva programación.
 4. **Publicación:** confirmar URL, canonical, sitemap, acciones de contacto, estado móvil y ausencia de datos privados. Un cambio posterior conserva revisión e historial.
 5. **Mantenimiento:** revisar mensualmente datos cambiantes (horarios, teléfonos, precios, ofertas y Maps) y cada ficha completa al menos trimestralmente. Revalidar antes cualquier reporte de cierre o dato erróneo. Retirar inmediatamente ofertas vencidas por regla de visibilidad, incluso si no se ejecuta una tarea programada.
 
@@ -65,6 +65,10 @@ La lista de baile explica por qué cada opción entra; no es un filtro de catego
 Mientras no se completen precios, IVA, WhatsApp y responsable, /premium responde como página no disponible, no está en navegación ni sitemap y los CTA comerciales se ocultan. El plazo de respuesta solo se muestra si se aprueba uno. La implementación puede completarse y probarse localmente con estados de configuración ausente sin exponer valores de ejemplo al público.
 
 ## 6. Comprobación de salida
+
+Publicar un negocio exige logo autorizado con alt y fecha manual de verificación propios, independientes de portada/galería/PDF. Despublicar antes de quitarlo o sustituirlo. No confundirlo con el logotipo oficial pendiente.
+
+El propietario autoriza conservar cuatro negocios públicos DEMO, un borrador, uno pausado, zonas y medios sintéticos en local/testing. Ejecutar explícitamente `php artisan db:seed --class=DemoListingSeeder`, separado del seeder estructural; nunca en producción ni reiniciando la base. Repetirlo conserva cambios manuales y archivos. Registros is_demo y medios DEMO no cuentan para 40/3/5/5/3 y quedan excluidos de lecturas de producción. No crean cuentas ni contactos o cifras reales. Taxonomías admiten identidad opcional y texto enriquecido sanitizado.
 
 Antes de publicar, el super admin y quien implementa revisan el inventario y dejan constancia de fecha y resultado: fuentes y permisos; 40/3/5/5/3; vínculos de Lugares; oferta vigente/expirada; configuración comercial; etiquetas Patrocinado; rutas y SEO; privacidad y copias de seguridad; móvil, tableta, escritorio y teclado. El [plan de implementación](PLAN_IMPLEMENTACION.md) exige esta revisión como puerta del único lanzamiento. Si falta un bloque obligatorio, no se sustituye por contenido de las capturas.
 

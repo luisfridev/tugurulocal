@@ -4,6 +4,10 @@ namespace App\Enums;
 
 enum AuditAction: string
 {
+    case ContentChanged = 'content.changed';
+    case TaxonomyChanged = 'taxonomy.changed';
+    case ReportResolved = 'report.resolved';
+
     case AdminBootstrapped = 'admin.bootstrapped';
     case Login = 'auth.login';
     case LoginFailed = 'auth.login_failed';
@@ -19,6 +23,9 @@ enum AuditAction: string
     public function label(): string
     {
         return match ($this) {
+            self::ContentChanged => 'Ficha modificada',
+            self::TaxonomyChanged => 'Ciudad, zona o categoría modificada',
+            self::ReportResolved => 'Reporte revisado',
             self::AdminBootstrapped => 'Primera cuenta administrativa creada',
             self::Login => 'Inicio de sesión',
             self::LoginFailed => 'Acceso rechazado',

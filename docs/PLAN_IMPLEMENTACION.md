@@ -1,6 +1,6 @@
 # Tu Gurú Local — Plan de implementación del proyecto nuevo
 
-**Estado:** plan en ejecución; VS00 y VS01 completaron la fase Base local, incluida la revisión visual y de teclado de la administración el 22 de octubre de 2026; VS02–VS17 siguen pendientes. La [especificación maestra](ESPECIFICACION_MAESTRA.md) define R01–R10 y AC01–AC10; el [diseño técnico](DISENO_TECNICO.md) define el contrato de datos y servicios. El [tablero MEMORY.md](MEMORY.md) detalla la secuencia de entregas verticales VS00–VS17, sus estados y evidencia. Ninguna fase interna es un lanzamiento parcial.
+**Estado:** plan en ejecución; VS00 y VS01 completaron la fase Base local, incluida la revisión visual y de teclado de la administración el 22 de octubre de 2026; VS02 completó localmente ficha Gratis, logo obligatorio, identidad de taxonomías, DEMO persistente y simplificación multimedia con fechas manuales; VS03–VS17 siguen pendientes. La [especificación maestra](ESPECIFICACION_MAESTRA.md) define R01–R10 y AC01–AC10; el [diseño técnico](DISENO_TECNICO.md) define el contrato de datos y servicios. El [tablero MEMORY.md](MEMORY.md) detalla la secuencia de entregas verticales VS00–VS17, sus estados y evidencia. Ninguna fase interna es un lanzamiento parcial.
 
 ## 0. Preparación y reglas de ejecución
 
@@ -22,7 +22,7 @@ Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una ag
 | --- | --- | --- | --- |
 | **T01 · Base** | VS00 | R09: Laravel limpio, manifiestos, MySQL, entorno, PHPUnit y build; secretos fuera de Git y fechas consistentes. | Versiones, migración MySQL, suite inicial y build. |
 | **T02 · Base** | VS01 | R08/AC08: panel exclusivo, primera cuenta segura, 2FA, policies y auditoría; sin autorregistro público. | Acceso, permisos directos/masivos y 2FA. |
-| **T03 · Editorial** | VS02, VS12 | R01–R02: ciudad, zonas, cinco categorías, business/place, slugs y medios; Lugar público se completa con hijos verificados en VS12. | Migraciones, restricciones, taxonomía, medios y vínculos en MySQL. |
+| **T03 · Editorial** | VS02, VS12 | R01–R02: gestión desde panel de ciudad, zonas y cinco categorías, business/place, slugs y medios con plugin Filament/Spatie y etiqueta PDF editable; Lugar público se completa con hijos verificados en VS12. | Migraciones, restricciones, taxonomía, medios y vínculos en MySQL. |
 | **T04 · Editorial** | VS02, VS03 | R01–R02/AC01–AC02: publicar ficha Gratis y descubrirla en ciudad/Negocios/categoría/zona con filtros y orden estable. | HTTP, estados privados, rutas, colisiones, filtros, cierre y permisos. |
 | **T05 · Editorial** | VS05 | R06/AC06: recomendar, limitar y moderar a borrador; atribución consentida y datos privados protegidos. | Validación, bots, límites, duplicados y publicación separada. |
 | **T06 · Transversal** | VS02–VS05, VS15 | R09/AC09: SEO y eventos desde cada superficie; consolidar URLs/sitemap en VS04, aviso de privacidad en VS05 y comprobar el conjunto en VS15. | Canonical, noindex, sitemap, 301 internos, metadatos y eventos sin PII. |

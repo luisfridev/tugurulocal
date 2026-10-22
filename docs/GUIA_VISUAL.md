@@ -71,6 +71,8 @@ En las combinaciones ancla, texto oscuro sobre menta y blanco sobre índigo tien
 
 ## 4. Responsive y estados
 
+La ampliación VS02 muestra logo de negocio junto al nombre, separado de portada. Taxonomías admiten emojis, tagline, descripción enriquecida, icono, imagen OG y color HEX opcionales. Sus componentes usan color propio con texto negro/blanco calculado (mínimo 4.5:1), conservando la marca global; sin color, marca profunda. Sin contenido se omite el bloque. PNG/WebP admiten transparencia. Las páginas completas quedan para VS03. Los medios sintéticos llevan identificación DEMO.
+
 Las capturas muestran sobre todo móvil y algunas fichas de escritorio; diseñar tableta y escritorio mediante una retícula coherente, sin estirar tarjetas móviles indiscriminadamente. En móvil, navegación inferior y teclado virtual no pueden tapar contenido, botones ni formulario. En escritorio, limitar ancho de lectura y dar espacio a filtros sin romper el orden visual. Revisar estados de carga, vacíos, error, contenido largo, PDF, fotos ausentes, oferta vencida y /premium inactiva.
 
 Comprobar navegación completa con teclado, orden de foco, lectura de etiquetas, zoom 200 %, objetivos táctiles, contraste y pausa del carrusel. El texto «Patrocinado» debe ser visible también en lectores de pantalla y no depender de una foto, color o borde.

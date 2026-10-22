@@ -17,3 +17,9 @@
     --color-brand-muted: #5f5a6e;
     --color-brand-border: #ecebf3;
 }
+
+@layer base {
+    a, button, input, select, textarea, summary { outline-offset: 4px; }
+    :focus-visible { outline: 3px solid #8d4c94; box-shadow: 0 0 0 4px #fff; }
+    a:hover { text-decoration-thickness: 2px; }
+}

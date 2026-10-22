@@ -10,7 +10,7 @@
 | Interfaz dinámica | Livewire 4 | Interacciones que necesitan estado servidor; no crear una SPA adicional. |
 | Administración | Filament 5 | Panel exclusivo del super admin; las políticas y reglas viven en la aplicación. |
 | UI | Tailwind CSS 4 y DaisyUI 5 | Tokens y componentes según [guía visual](GUIA_VISUAL.md). |
-| Medios | Spatie Laravel Media Library y su integración compatible con Filament 5 | Imágenes, PDFs y derivados autorizados; verificar compatibilidad antes de instalar. |
+| Medios | Spatie Laravel Media Library y su integración compatible con Filament 5 | Imágenes, PDFs y derivados autorizados; VS02 integra el plugin instalado con disco privado y entrega autorizada. |
 | Correo | Resend | Pendiente de instalar hasta que un flujo real requiera correo; claves solo en entorno. |
 | Desarrollo | Laravel Boost y Laravel Debugbar | Ayuda local; Debugbar nunca habilitada en producción. |
 | Vídeo | URL validada de YouTube o Vimeo | Guardar enlace, no descargar ni alojar vídeos de terceros. |
@@ -21,6 +21,8 @@
 PHP 8.4.25; Laravel 13.38.0; Livewire 4.4.8; Filament 5.10.3; Media Library 11.23.10 y plugin Filament 5.10.3; PHPUnit 12.5.40; Tailwind 4.3.3; DaisyUI 5.7.50; Vite 8.3.5. Laravel Boost 2.10.3 y Debugbar 4.4.4 son dependencias de desarrollo. Las tipografías locales vienen de Fontsource. Los manifiestos fijan familias mayores y los lockfiles resuelven las versiones exactas.
 
 ## Configuración y siguientes integraciones
+
+VS02 ampliada usa RichEditor y ColorPicker nativos de Filament 5, el plugin Spatie instalado para logo e identidad de taxonomías y el sanitizador Symfony ya instalado con lista restringida. No añade dependencias.
 
 VS00 creó Laravel limpio, manifiestos y entorno MySQL local. En su continuación del 21 de octubre de 2026 se configuró Boost para Codex: `boost.json`, guías en `AGENTS.md`, skills locales y servidor MCP del proyecto. Boost permanece como dependencia de desarrollo; Laravel Cloud no se seleccionó porque el alojamiento sigue pendiente. Confirmar las APIs efectivas de paquetes antes de escribir cada integración. Añadir solo dependencias con uso definido en la maestra o diseño técnico. Guardar instantes en UTC y convertir a **America/Cancun** para mostrar vigencias de Playa del Carmen; probar los límites de inicio/fin al implementar contenido temporal.
 

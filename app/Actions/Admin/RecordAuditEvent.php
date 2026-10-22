@@ -5,6 +5,7 @@ namespace App\Actions\Admin;
 use App\Enums\AuditAction;
 use App\Enums\AuditResult;
 use App\Models\AuditEvent;
+use App\Models\Listing;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,6 +23,7 @@ class RecordAuditEvent
             'changed_fields' => array_values(array_intersect($changedFields, [
                 'name', 'email', 'password', 'is_super_admin',
                 'app_authentication_secret', 'app_authentication_recovery_codes',
+                ...Listing::FIELDS, 'category_ids', 'status', 'published_at', 'timezone', 'is_public', 'is_active', 'listing_type', 'sort_order',
             ])),
             'source' => request()->route() ? 'web' : 'console',
             'occurred_at' => now(),

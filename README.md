@@ -1,6 +1,6 @@
 # Tu Gurú Local — proyecto nuevo
 
-Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00 y VS01 completaron la fase Base local, incluida la revisión visual de la administración. VS02 es la siguiente entrega. La guía pública todavía no está implementada ni publicada.** La pantalla raíz es temporal y lleva `noindex`.
+Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00–VS02 completadas localmente, incluida la simplificación multimedia con fechas manuales; Inicio y descubrimiento público siguen pendientes. El sitio no está publicado.** La pantalla raíz es temporal y lleva `noindex`.
 
 ## Contratos y secuencia
 
@@ -55,6 +55,26 @@ Abre [el acceso local](http://tugurulocal-nuevo.test/dashboard/login), configura
 
 Las sesiones usan cookies de sesión HttpOnly y SameSite=Lax, datos de sesión cifrados y 30 minutos de inactividad por defecto. La opción Recordarme no está disponible. En `APP_ENV=production` la cookie exige HTTPS por defecto; el despliegue y su comprobación siguen pendientes. El propietario ya creó su cuenta administrativa y el 22 de octubre de 2026 se verificó localmente que tiene 2FA habilitado. La cuenta temporal autorizada para revisar el alta y el desafío se eliminó al terminar. No se guardan credenciales de acceso en Git.
 
+### Fichas Gratis y taxonomía — VS02
+
+El panel administra ciudades, zonas, categorías, fichas y reportes. `php artisan db:seed` crea solo Playa del Carmen y las cinco categorías iniciales; no crea cuentas ni negocios de ejemplo. Solo Playa del Carmen puede ser pública inicialmente.
+
+Las fichas se publican manualmente, sin programación. Se pueden previsualizar, despublicar, archivar y recuperar; el historial conserva el contenido y exige nueva aprobación al recuperar una versión. El slug de una ficha ya publicada queda protegido hasta VS04. Los Lugares permanecen privados hasta implementar sus negocios hijos verificados en VS12.
+
+Imágenes y PDF se gestionan con `filament/spatie-laravel-media-library-plugin` y permanecen en almacenamiento privado. El botón PDF tiene texto editable por ficha. `/@{listing}` muestra solo contenido publicado y aprobado; los medios pierden acceso público al despublicar. Los reportes se revisan desde el panel y no corrigen datos automáticamente. Su recepción está disponible para comprobaciones locales; en producción queda cerrada hasta aprobar la privacidad y conectar su ruta en VS05.
+
+[El registro VS02](docs/dev_changelog/VS02.md) explica las comprobaciones, las URLs locales y los pendientes. La primera ficha temporal ya se eliminó. La continuación conserva seis fichas DEMO sintéticas y sus archivos, separadas del contenido real de salida.
+
+Preparar DEMO explícitamente con php artisan db:seed --class=DemoListingSeeder --no-interaction. Solo local/testing; sin reiniciar la base. Es repetible, conserva archivos y cambios manuales y no modifica cuentas. DEMO se excluye de producción y del inventario real.
+
+- [Café Menta DEMO](http://tugurulocal-nuevo.test/@demo-cafe-menta): portada, galería, FAQs y menú.
+- [Taller Creativo DEMO](http://tugurulocal-nuevo.test/@demo-taller-creativo): sin portada; OG usa logo, con guía PDF.
+- [Estudio Local DEMO](http://tugurulocal-nuevo.test/@demo-estudio-local): portada, FAQs y folleto PDF.
+- [Experiencia Coral DEMO](http://tugurulocal-nuevo.test/@demo-experiencia-coral): sin portada ni PDF, con galería.
+- [Borrador privado](http://tugurulocal-nuevo.test/dashboard/fichas/7/edit) y [pausado privado](http://tugurulocal-nuevo.test/dashboard/fichas/8/edit): sus URLs públicas devuelven 404.
+
+Publicar requiere logo propio autorizado, con alt y fecha manual de verificación independientes de otros medios. La autorización confirma el permiso de uso; no se solicita fuente ni licencia escrita. Despublicar antes de retirarlo o reemplazarlo. Ciudades, categorías y zonas administran emojis, color HEX, tagline, descripción enriquecida, OG e icono independientes; sus páginas completas quedan para VS03.
+
 ### Laravel Boost para Codex
 
 Boost 2.10.3 ya está en `require-dev`. VS00 configuró Codex con guías en `AGENTS.md`, skills en `.agents/skills/` y servidor MCP en `.codex/config.toml`; `boost.json` guarda las opciones para regenerarlos. No se seleccionó Laravel Cloud porque el alojamiento sigue pendiente. Después de `composer install`, una sesión nueva de Codex puede cargar el servidor MCP del proyecto. Para regenerar la configuración con la versión instalada:
@@ -67,4 +87,4 @@ El comando actualiza el bloque delimitado de Boost en `AGENTS.md` y los archivos
 
 ## Pendientes para el lanzamiento
 
-VS02–VS17 y contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
+VS03–VS17 y contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
