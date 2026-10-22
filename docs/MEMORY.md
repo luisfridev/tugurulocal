@@ -1,6 +1,6 @@
 # Tu Gurú Local — Tablero de entregas verticales
 
-**Fecha:** 22 de octubre de 2026. **Estado:** VS00–VS02 completadas localmente; fase Base cerrada y Editorial en curso; VS03 implementada localmente en revisión, VS04–VS17 pendientes. No hay lanzamiento ni verificación de producción.
+**Fecha:** 22 de octubre de 2026. **Estado:** VS00–VS03 completadas localmente; VS03 integrada en `master` mediante PR #4; fase Base cerrada y Editorial en curso; VS04–VS17 pendientes. No hay lanzamiento ni verificación de producción.
 
 ## Uso, autoridad y cierre
 
@@ -48,7 +48,7 @@ No hay lanzamientos parciales. No copiar del proyecto anterior ni añadir cuenta
 | VS00 | Base ejecutable | completada | Ninguna | Base |
 | VS01 | Administración segura | completada | VS00 | Base |
 | VS02 | Publicar y consultar una ficha Gratis | completada | VS01 | Editorial |
-| VS03 | Descubrir negocios | en curso | VS02 | Editorial |
+| VS03 | Descubrir negocios | completada | VS02 | Editorial |
 | VS04 | Mantener URLs e indexación | pendiente | VS03 | Editorial |
 | VS05 | Recomendar y moderar | pendiente | VS04 | Editorial |
 | VS06 | Activar y terminar planes | pendiente | VS05 | Comercio |
@@ -160,9 +160,9 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 ### VS03 — Descubrir negocios
 
-**Estado:** en curso: implementación verificada; integración pendiente en PR. **Dependencias:** VS02 integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T04, T06, T13.
+**Estado:** completada el 22 de octubre de 2026, con integración comprobada en GitHub. **Dependencias:** VS02 integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T04, T06, T13.
 
-**Registro:** [VS03.md](dev_changelog/VS03.md). **Rama inicial:** `codex/vs03-descubrir-negocios`, desde `master` sincronizado en `b59d920`. Implementación local del 22-10-2026. Selección manual, filtros GET con Aplicar y Antislop `after` elegidos por el propietario. **Rama de cierre:** `codex/vs03-descubrir-negocios-cont-20261022-3`, creada desde la continuación documental anterior con todos los cambios pendientes conservados. `origin/master` permanece en `b59d920`; se comprobó mediante fetch antes de preparar el cierre solicitado.
+**Registro:** [VS03.md](dev_changelog/VS03.md). **Rama inicial:** `codex/vs03-descubrir-negocios`, desde `master` sincronizado en `b59d920`. Implementación local del 22-10-2026. Selección manual, filtros GET con Aplicar y Antislop `after` elegidos por el propietario. **Rama de cierre:** `codex/vs03-descubrir-negocios-cont-20261022-3`, creada desde la continuación documental anterior con todos los cambios pendientes conservados; al preparar aquella entrega, `origin/master` estaba en `b59d920`. **Rama del registro de integración:** `codex/vs03-descubrir-negocios-cont-20261022-4`, creada desde `master` comprobado en el merge `78e67bd`.
 
 **Continuación DEMO (22-10-2026):** rama `codex/vs03-descubrir-negocios-cont-20261022-1`, creada desde la anterior con todos los cambios pendientes conservados y VS02 integrada. Por petición del propietario, `DemoListingSeeder` mantiene **30 negocios públicos DEMO y dos privados** (borrador/pausado) para futuras etapas. Se añadieron 26 públicos con categorías secundarias y ambas zonas; quedan 32 fichas, 97 medios y la misma cuenta administrativa. Las seis fichas originales, los 32 medios anteriores y sus 59 archivos físicos conservan sus huellas. La repetición del seeder mantiene IDs, estados, fechas y nombres de archivo sin duplicar ni sobrescribir. Pruebas enfocadas: **3 pruebas y 687 aserciones**; suite completa MySQL: **155 pruebas y 2.078 aserciones**, correctas. Pint, build, 23 rutas y diff correctos. Paginación ejercitada en Herd: **12/12/6, 30 fichas únicas**, Anterior/Siguiente, historial y filtro Experiencias conservado al avanzar; Aplicar reinicia página. Los datos y archivos permanecen locales y excluidos de producción. [Registro de la ampliación](dev_changelog/VS03.md#continuación-demo-persistente-con-30-negocios-públicos-22-10-2026).
 
@@ -182,13 +182,15 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Verificaciones locales completas (22-10-2026):** la paginación visual pendiente en la primera intervención quedó comprobada en la continuación de 30 DEMO. El propietario confirmó después que comprobó los filtros con JavaScript desactivado y funcionan. Esta comprobación manual del propietario complementa la cobertura PHPUnit HTTP/HTML; no se atribuye al navegador automatizado. Confirmación registrada en `codex/vs03-descubrir-negocios-cont-20261022-2`, creada desde la continuación anterior con todos sus cambios conservados. No se modificaron código, datos ni medios y no se repitieron pruebas técnicas por este registro documental.
 
-**Entrega por PR (22-10-2026):** [PR #4 — VS03: Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4), abierta hacia `master` desde `codex/vs03-descubrir-negocios-cont-20261022-3`. Commit de implementación publicado: `7ab7166e517b7e2b60003946ef9a801074fd602f`, con 42 archivos. Rama publicada mediante la conexión GitHub; igualdad de contenido comprobada antes de alinear la rama local. Este registro se incorpora a la misma PR y la PR está adjunta al chat. Se conserva la evidencia de 155 pruebas y 2.078 aserciones y las revisiones locales previas; esta intervención solo documenta y entrega el trabajo verificado. Se deja abierta para revisión y fusión del propietario.
+**Entrega por PR (22-10-2026):** [PR #4 — VS03: Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4), entregada hacia `master` desde `codex/vs03-descubrir-negocios-cont-20261022-3` y posteriormente fusionada por el propietario. Commits publicados: implementación `7ab7166e517b7e2b60003946ef9a801074fd602f` y registro de PR `cbb17bd2a84b6431e037d963369f06330a5099d0`, con 42 archivos en conjunto. Rama publicada mediante la conexión GitHub; igualdad de contenido comprobada antes de alinear la rama local. La PR está adjunta al chat. Se conserva la evidencia de 155 pruebas y 2.078 aserciones y las revisiones locales previas.
 
-**Pendientes:** revisión y fusión de la PR por el propietario y comprobación posterior de integración; contenido de salida en VS16 y despliegue en VS17. No quedan comprobaciones locales pendientes identificadas para VS03. VS03 sigue `en curso`; no se ha integrado ni desplegado.
+**Integración comprobada (22-10-2026):** GitHub confirmó `merged=true`, destino `master` y merge `78e67bd3cee9e7b5389161ddb106ba354b306fef`, del 22-10-2026 a las 16:17:35 (America/Cancun; 21:17:35 UTC). Después de `git fetch origin` y `git merge --ff-only origin/master`, `master` local y `origin/master` coincidían en ese commit; el checkout ya estaba actualizado y no fue necesario avanzar. El commit de entrega `cbb17bd` es ancestro de `master` y la comparación de árboles no presenta diferencias. La continuación `-4` registra este cierre mediante una nueva PR documental, sin cambios de implementación ni repetición de pruebas técnicas.
+
+**Pendientes:** revisión de la PR del registro documental; contenido de salida en VS16 y despliegue en VS17. VS03 está completada e integrada, sin comprobaciones locales pendientes identificadas. **Siguiente acción:** VS04, mantener URLs e indexación. No se ha desplegado.
 
 ### VS04 — Mantener URLs e indexación
 
-**Estado:** pendiente. **Dependencias:** VS03. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T06.
+**Estado:** pendiente. **Dependencias:** VS03 completada e integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T06.
 
 **Objetivo:** que URL pública, metadatos, enlaces y sitemap reflejen el mismo estado editorial.
 
