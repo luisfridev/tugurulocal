@@ -1,6 +1,6 @@
 # Tu Gurú Local — Diseño técnico del proyecto nuevo
 
-**Estado:** contrato técnico para implementar la [especificación maestra](ESPECIFICACION_MAESTRA.md). VS00–VS02 crearon la base, administración segura y fichas Gratis; los módulos siguientes siguen su secuencia. Usar [stack](TECH-STACK.md) y las fases del [plan](PLAN_IMPLEMENTACION.md). Los identificadores R01–R10 y AC01–AC10 se definen en la maestra.
+**Estado:** contrato técnico para implementar la [especificación maestra](ESPECIFICACION_MAESTRA.md). VS00–VS02 crearon la base, administración segura y fichas Gratis. VS03 está en curso con descubrimiento local implementado en `codex/vs03-descubrir-negocios`, desde la base integrada `b59d920`; su integración sigue pendiente. Usar [stack](TECH-STACK.md) y las fases del [plan](PLAN_IMPLEMENTACION.md). Los identificadores R01–R10 y AC01–AC10 se definen en la maestra; las comprobaciones de esta intervención se registran en [VS03](dev_changelog/VS03.md).
 
 ## 1. Arquitectura y límites
 
@@ -13,7 +13,7 @@ Separar cuatro conceptos:
 3. **Comercial:** plan Gratis/Premium/Super Premium y motivo pagada/prueba/cortesía, con período.
 4. **Publicidad:** campaña y espacio contratado, sujeto a su propio período y aprobación.
 
-La selección editorial de una lista no se deriva del plan. Un registro puede permanecer en administración aunque se oculte al público.
+La selección editorial de Inicio y la de una lista no se derivan del plan. Inicio usa su propia relación ordenada; no adelanta el módulo de listas de VS11. Un registro puede permanecer en administración aunque se oculte al público.
 
 ## 2. Modelo de datos y restricciones
 
@@ -26,6 +26,7 @@ Todas las claves foráneas relevantes tienen índices y política explícita de 
 | `categories` | slug único, nombre, descripción, tipo permitido y orden. Cinco registros iniciales. | R01 |
 | `listings` | ciudad, tipo `business/place`, slug global único, categoría principal, zona opcional, estado editorial y operativo, `published_at`, textos, contactos, datos Maps manuales y fecha de revisión. Índices para ciudad/estado/fecha y categoría/estado/fecha. | R02 |
 | `listing_categories` | ficha de negocio y categoría, par único; la principal también debe estar asociada. Lugar solo usa Lugares públicos. | R01–R02 |
+| `home_selections` | ciudad, negocio, posición y timestamps; pares ciudad/negocio y ciudad/posición únicos. Hasta seis por ciudad, ordenados manualmente y separados de listas y planes. | R01 |
 | `place_business_links` | Lugar, negocio, fuente o comprobación, fecha y super admin verificador; `business_listing_id` único. Validar misma ciudad, tipos correctos y vínculo real. | R04 |
 | `slug_redirects` | ruta anterior **creada en este proyecto**, destino y fecha; origen único y reservado para no reasignarlo. | R01–R02 |
 | `submissions` | datos enviados, contacto y evidencia privados, consentimiento de atribución, estado, moderador/fecha/motivo, ficha vinculada opcional. | R06 |
@@ -39,7 +40,7 @@ Todas las claves foráneas relevantes tienen índices y política explícita de 
 | `commercial_receipts` | asignación o bloque contratado, importe recibido en centavos MXN, referencia, fecha de confirmación y responsable. Solo confirmados se suman como ingreso. Prueba/cortesía no generan recibo. | R07 |
 | `sponsor_campaigns` | negocio anunciado, tipo Super Premium o contextual, ciudad, categoría/lista/Lugar cuando aplica, posición, período, material aprobado, contrato y estado. | R07 |
 | `commercial_settings` | precios mensuales en centavos MXN, indicación de IVA, WhatsApp, responsable, mensaje/plazo si se promete y aprobación. Una fila vigente administrada con historial de cambios. | R08 |
-| `interaction_events` | tipo de evento, recurso/espacio, instante y agregados sin PII; no guardar número, correo, texto de formulario ni URL con parámetros privados. | R09 |
+| `interaction_events` | tipo e instante; `listing_id` opcional desde VS03, referencias opcionales de ciudad/categoría/zona y número de página. Conserva eventos de ficha/contacto y añade vistas de descubrimiento. No guarda IP, número, correo, texto de formulario ni URL completa. | R09 |
 | `users` / `audit_events` | cuentas solo administrativas; `is_super_admin` falso por defecto, 2FA, acciones sensibles con actor/fecha/resultado. Registro público deshabilitado. | R08 |
 
 Las restricciones de unicidad de slugs, pivots y posiciones se respaldan en MySQL. Las reglas que dependen de períodos superpuestos, ciudad, estado o relaciones de varios registros se validan en una transacción de dominio y se prueban con concurrencia representativa. Crear factories útiles para escenarios publicados, borradores, vencidos, cortesía y vínculos verificados; los seeders estructurales crean ciudad y categorías, nunca negocios ficticios para producción.
@@ -54,7 +55,19 @@ Nueva migración sobre VS02 ya ejecutada: identidad opcional en ciudades/categor
 
 Ficha usa logo_approved, logo_alt, logo_reviewed_at y colección privada logo. Las columnas logo_source y logo_permission, como las equivalentes de otros medios, se conservan únicamente como histórico privado. Publicación y edición publicada exigen logo existente/autorizado; observador protege eliminación/reemplazo mientras esté publicada. Consulta pública y entrega privada comprueban autorización por colección; OG prioriza portada y luego logo. Taxonomías sirven archivos únicamente al super admin con 2FA en VS02.
 
-DemoListingSeeder separado del estructural, bloqueado fuera de local/testing. Slugs y marcas DEMO permiten inserción única sin sobrescribir cambios ni recrear archivos. Identidad estructural vacía se completa una sola vez mediante marca persistente. is_demo identifica fichas/zonas; lecturas públicas excluyen DEMO fuera de local/testing. No crea ni modifica cuentas.
+DemoListingSeeder separado del estructural, bloqueado fuera de local/testing. Prepara 30 negocios públicos y dos privados (borrador/pausado), conservando los seis iniciales y sus medios. Los 26 públicos adicionales usan slugs estables, categoría principal/secundaria y ambas zonas DEMO; los registros y archivos permanecen para fases posteriores. Slugs y marcas DEMO permiten inserción única sin sobrescribir cambios ni recrear archivos. Identidad estructural vacía se completa una sola vez mediante marca persistente. is_demo identifica fichas/zonas; lecturas públicas excluyen DEMO fuera de local/testing. No crea ni modifica cuentas.
+
+### Implementación incremental VS03 (22-10-2026)
+
+Dos migraciones nuevas crean `home_selections` y amplían `interaction_events`, sin modificar las migraciones históricas ni reiniciar la base. La segunda vuelve nullable `listing_id`, añade las referencias de descubrimiento con claves foráneas restrictivas y un índice ciudad/tipo/fecha. Conserva los eventos anteriores. Su `down()` rechaza la reversión cuando existen eventos sin ficha, para evitar perderlos; una corrección posterior debe preservar esos datos.
+
+- **`PublicListingQuery`:** `availableIds(City)` obtiene candidatos en lotes de 100 con logos precargados, comprueba autorización y archivo físico y reutiliza los identificadores durante la petición. `inCity()` limita el conjunto antes de contar o paginar. Detalle, tarjetas, conteos y selección comparten condiciones de publicación, tipo, ciudad, categoría principal y logo. Las tarjetas precargan relaciones; si falta el derivado, utilizan el original autorizado disponible.
+- **`SaveHomeSelection`:** exige la política de edición de ciudad y super admin con 2FA. Valida hasta seis identificadores únicos, misma ciudad y negocios elegibles que no estén cerrados permanentemente. Una transacción bloquea ciudad y negocios, guarda posiciones contiguas y registra `home_selection.changed` con el campo `home_selections`, sin copiar valores privados. Permite conservar, reordenar o retirar seleccionados que hayan perdido elegibilidad; el panel los identifica como no visibles.
+- **`DiscoveryController`:** compone Inicio y los tres listados. Inicio publica hasta seis seleccionados y seis recientes, sin repetir fichas y sin cerrados permanentemente en ambos bloques. Promociona solo categorías y zonas con resultados. Los listados mantienen negocios cerrados con su estado, combinan filtros por intersección y usan `whereHas` para no duplicar negocios con varias categorías.
+- **`PublicTaxonomy` / `DiscoveryPageData`:** resuelven únicamente la ciudad pública inicial, categorías activas de negocio y zonas activas de esa ciudad. Preparan identidad sanitizada, respaldos de color, icono y OG autorizados. Fuera de local/testing excluyen zonas y medios marcados DEMO.
+- **`RecordDiscoveryInteraction`:** registra `city.view`, `businesses.view`, `category.view` y `area.view` solo para GET válidos. Deduplica por sesión, superficie, ciudad, categoría, zona y página durante 60 segundos. Guarda referencias normalizadas; ignora parámetros arbitrarios y no modifica `RecordInteraction`, que conserva vistas de ficha y contactos.
+
+### Contratos de dominio por secuencia
 
 - **`PublishListing` / `PublicListingQuery`:** comprobar datos mínimos, aprobación, fecha y estado; devolver solo fichas elegibles. El orden orgánico es `published_at DESC, id DESC`. El listado de Lugar añade negocio hijo publicado y operativo activo. La ficha permanentemente cerrada puede seguir accesible, pero no ser patrocinada.
 - **`LinkBusinessToPlace`:** validar tipos, misma ciudad, ausencia de otro Lugar, fuente/comprobación, fecha y responsable. Rechazar vínculos inferidos por texto.
@@ -78,13 +91,18 @@ Los nombres concretos de clases pueden seguir las convenciones del Laravel nuevo
 | Explorar | GET `/{city}/explorar` | Catálogo elegible; filtros `tipo`/`categoria`; no página /ofertas. |
 | Categoría y zona | GET `/{city}/{category}`, `/{city}/zonas/{area}` | Solo slugs vigentes y recursos publicados. |
 | Ficha | GET `/@{listing}` | Slug global, solo ficha pública; canonical absoluto. |
+| Medio de taxonomía | GET `/identidad/{type}/{record}/medios/{media}` | Solo ciudad/categoría/zona visible y archivo autorizado de `icon` u `og_image`; se conserva la ruta administrativa separada. |
 | Lista / blog | GET `/{city}/listas/{slug}`, `/{city}/blog[/{slug}]` | Ciudad y estado publicados. |
 | Recomendar | GET/POST `/recomendar` | CSRF, honeypot, validación, 3/h y 10/d por IP; confirmación neutra. |
 | Planes | GET `/premium` | 404 y sin enlaces/SEO hasta aprobar configuración. |
 | Privacidad | GET `/aviso-de-privacidad` | Texto aprobado y enlazado desde formulario y pie. |
 | Utilidad | GET `/sitemap.xml`, 404 | Sitemap solo indexables; error en español con vuelta útil. |
 
-Usar rutas nombradas. Declarar `/premium`, `/recomendar`, `/@{listing}` y las rutas específicas de ciudad antes de comodines. Las categorías reservadas no pueden colisionar con palabras de rutas. Ninguna URL de la aplicación antigua tiene tratamiento especial. Solo cambios de slug ocurridos en esta aplicación crean 301.
+VS03 implementa raíz, ciudad, Negocios, categoría, zona y medios de taxonomías; conserva las rutas de ficha de VS02. Las demás superficies de la tabla siguen las fases previstas. Lugares públicos devuelve 404 hasta VS12. `ofertas` se añade a los slugs reservados y no crea una página pública.
+
+Negocios acepta `categoria`, `zona` y `page`; categoría acepta zona y página; zona acepta categoría y página. Formularios GET con «Aplicar», 12 resultados por página, orden `published_at DESC, id DESC`. Aplicar elimina la página anterior y limpiar conserva el contexto de ruta. Los parámetros desconocidos no pasan a los enlaces de paginación. Filtros inválidos, zonas ajenas y páginas fuera de rango devuelven 404 en español; filtros válidos sin coincidencias producen un estado vacío útil.
+
+Usar rutas nombradas y declarar los destinos específicos antes de comodines cuando se implemente su fase. Las categorías reservadas no pueden colisionar con palabras de rutas. Ninguna URL de la aplicación antigua tiene tratamiento especial. VS04 implementará las redirecciones 301 solo para cambios de slug ocurridos dentro de este proyecto.
 
 ## 5. Estados, transacciones y autorización
 
@@ -109,9 +127,13 @@ El acceso a `/dashboard/login` descarta los destinos de retorno guardados en ses
 
 ## 6. SEO, medios, privacidad y operación
 
-Metadatos generados desde contenido real, editables por el super admin. Fichas usan `/@{slug}`; posts usan slug por ciudad. Sitemap y canonical comparten el mismo resolvedor de URL. Filtros `tipo`/`categoria`, paginación vacía, borradores y /premium inactiva no se indexan. Explorar base se indexa solo si tiene contenido real; filtros llevan `noindex` y canonical al catálogo base. Los cambios de slug de contenido ya publicado crean redirección interna y actualizan enlaces nuevos.
+Metadatos generados desde contenido real, editables por el super admin. Fichas usan `/@{slug}`; posts usarán slug por ciudad. VS03 incorpora título, descripción, canonical, metadatos sociales y breadcrumbs a las superficies de descubrimiento. Filtros, resultados vacíos y páginas con solo DEMO llevan `noindex`; los filtros apuntan al canonical base del contexto. La paginación sin filtros tiene canonical propio. No se incluyen valores privados en los metadatos.
+
+Sitemap y redirecciones de slugs quedan para VS04 y compartirán el resolvedor de URL con canonical. Explorar se desarrollará en su fase: su base se indexará solo con contenido real, y filtros `tipo`/`categoria` llevarán `noindex` con canonical al catálogo base. Borradores y /premium inactiva permanecen fuera del acceso público y de la indexación.
 
 Media Library organiza imagen principal, galería, PDF de menú/flyer, material de campaña e imágenes del blog en colecciones con permiso y crédito. Guardar alt, pie, autorización y fecha manual de verificación cuando aplique. Fuente/licencia multimedia anteriores se conservan como histórico privado, fuera del formulario. Generar tamaños optimizados; una ausencia se resuelve con sustituto visual, nunca con foto de otro negocio. Para videos, aceptar URL validada de YouTube/Vimeo, sin descargar archivo ni insertar HTML arbitrario.
+
+La ruta pública de taxonomías comprueba visibilidad, pertenencia del archivo, colección `icon`/`og_image`, autorización, alt, fecha manual no futura y existencia en disco privado. Solo acepta el original o el derivado `card` permitido y existente. Retirar autorización o desactivar la taxonomía cierra también la URL directa. Las respuestas usan `private, no-store`, `nosniff` y `noindex`; la ruta administrativa mantiene su autorización con 2FA.
 
 Las recomendaciones conservan contacto/evidencia en acceso restringido. Los límites usan caché por IP sin exponerla públicamente. Política de privacidad, retención y eliminación se aprueban antes del lanzamiento; no inventar un plazo legal. Copias de seguridad y restauración se prueban antes del despliegue. El reloj de la app y los tests cubre el cambio de día y los límites de vigencia de America/Cancun.
 

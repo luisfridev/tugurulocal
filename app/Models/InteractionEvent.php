@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['listing_id', 'type', 'occurred_at'])]
+#[Fillable(['listing_id', 'city_id', 'category_id', 'area_id', 'page', 'type', 'occurred_at'])]
 class InteractionEvent extends Model
 {
     use HasFactory;

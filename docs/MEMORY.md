@@ -1,6 +1,6 @@
 # Tu Gurú Local — Tablero de entregas verticales
 
-**Fecha:** 22 de octubre de 2026. **Estado:** VS00–VS02 completadas localmente; fase Base cerrada y Editorial en curso; VS03–VS17 pendientes. No hay lanzamiento ni verificación de producción.
+**Fecha:** 22 de octubre de 2026. **Estado:** VS00–VS02 completadas localmente; fase Base cerrada y Editorial en curso; VS03 implementada localmente en revisión, VS04–VS17 pendientes. No hay lanzamiento ni verificación de producción.
 
 ## Uso, autoridad y cierre
 
@@ -18,7 +18,7 @@ Antes de cada intervención en `VSXX`, comprobar el estado de Git y crear una ra
 
 Antes de cada intervención, seleccionar las skills según la [regla Antislop por tarea](../AGENTS.md#antislop-por-tarea) y el [procedimiento del plan](PLAN_IMPLEMENTACION.md#antislop-en-la-ejecución). Usar `during` como valor del proyecto salvo elección explícita del usuario para la sesión. Registrar modo, skills y motivo, resultados por criterio aplicable y pendientes en el registro de la VSXX, con evidencia resumida aquí. La base y los complementos pertinentes se suman a las skills técnicas; las revisiones visuales corresponden al trabajo con UI.
 
-**Actualización Antislop del flujo (22-10-2026):** rama `codex/flujo-antislop-por-tarea`, creada desde `master` sincronizado en `878b5faeac0eff4aa5e9e9b911cefce764ce168f`. Incorpora selección de skills, modo `during` del proyecto y revisión final por alcance en AGENTS, README y plan. Skills aplicadas: `antislop` como base y `antislop-copywriting` para las instrucciones en español. Conserva la configuración global, las skills instaladas y el bloque generado por Boost. Cambio documental general, sin iniciar una VSXX ni modificar sus cierres históricos. [PR #3](https://github.com/luisfridev/tugurulocal/pull/3) abierta hacia `master` y adjunta al chat; implementación verificada; integración pendiente en PR. El propietario revisa y decide su fusión.
+**Actualización Antislop del flujo (22-10-2026):** rama `codex/flujo-antislop-por-tarea`, creada desde `master` sincronizado en `878b5faeac0eff4aa5e9e9b911cefce764ce168f`. Incorpora selección de skills, modo `during` del proyecto y revisión final por alcance en AGENTS, README y plan. Skills aplicadas: `antislop` como base y `antislop-copywriting` para las instrucciones en español. Conserva la configuración global, las skills instaladas y el bloque generado por Boost. Cambio documental general, sin iniciar una VSXX ni modificar sus cierres históricos. [PR #3](https://github.com/luisfridev/tugurulocal/pull/3) fusionada hacia `master` el 22 de octubre de 2026 a las 14:58:35 (America/Cancun), commit `b59d92010b13fcb46e34c3cbb20c92c6afd836a0`. Integración comprobada en GitHub al iniciar VS03; `master` local sincronizado por avance rápido desde `origin/master` antes de crear su rama.
 
 Revisión local de esta actualización, 22 de octubre de 2026:
 
@@ -48,7 +48,7 @@ No hay lanzamientos parciales. No copiar del proyecto anterior ni añadir cuenta
 | VS00 | Base ejecutable | completada | Ninguna | Base |
 | VS01 | Administración segura | completada | VS00 | Base |
 | VS02 | Publicar y consultar una ficha Gratis | completada | VS01 | Editorial |
-| VS03 | Descubrir negocios | pendiente | VS02 | Editorial |
+| VS03 | Descubrir negocios | en curso | VS02 | Editorial |
 | VS04 | Mantener URLs e indexación | pendiente | VS03 | Editorial |
 | VS05 | Recomendar y moderar | pendiente | VS04 | Editorial |
 | VS06 | Activar y terminar planes | pendiente | VS05 | Comercio |
@@ -156,26 +156,35 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Evidencia de la primera intervención (22-10-2026, anterior a la ampliación):** rama `codex/vs02-ficha-gratis` desde `master` en `678d790`. Se completaron datos, acciones/policies, gestión administrativa de taxonomía/fichas, publicación manual sin programación, historial y recuperación, medios privados con plugin Filament/Spatie, etiqueta PDF editable, ficha pública y reportes moderados. Migración y seeder estructural aplicados sin reiniciar la base local. Suite completa MySQL: 74 pruebas y 534 aserciones correctas; Pint, build, rutas y `git diff --check` correctos. Herd: rutas administrativas y ficha/formulario en móvil, tableta y escritorio; teclado, recursos, etiqueta PDF guardada y reporte enviado/resuelto comprobados. Fixture temporal y limpieza expresamente autorizados por el propietario; datos previos conservados por comparación de hashes. Consulta final: una ciudad, cinco categorías, cero fichas/reportes y una cuenta super admin. [Detalle, límites y URLs](dev_changelog/VS02.md).
 
-**Pendientes:** contenido y medios reales, privacidad aprobada para recepción pública de reportes, Lugares con hijos en VS12 y producción. No bloquean el cierre local documentado. VS02 está confirmada e integrada localmente; los commits locales aún no se enviaron a `origin`. **Siguiente acción:** iniciar VS03 en una rama nueva desde `master` local, que ya contiene VS02.
+**Pendientes:** contenido y medios reales, privacidad aprobada para recepción pública de reportes, Lugares con hijos en VS12 y producción. No bloquean el cierre local documentado. VS02 está confirmada e integrada; al iniciar VS03 el 22-10-2026 se comprobó que `origin/master` contiene su trabajo y las PR documentales #2 y #3. VS03 continúa en su rama propia.
 
 ### VS03 — Descubrir negocios
 
-**Estado:** pendiente. **Dependencias:** VS02. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T04, T06, T13.
+**Estado:** en curso: implementación verificada; integración pendiente en PR. **Dependencias:** VS02 integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T04, T06, T13.
+
+**Registro:** [VS03.md](dev_changelog/VS03.md). **Rama inicial:** `codex/vs03-descubrir-negocios`, desde `master` sincronizado en `b59d920`. Implementación local del 22-10-2026. Selección manual, filtros GET con Aplicar y Antislop `after` elegidos por el propietario. **Rama de cierre:** `codex/vs03-descubrir-negocios-cont-20261022-3`, creada desde la continuación documental anterior con todos los cambios pendientes conservados. `origin/master` permanece en `b59d920`; se comprobó mediante fetch antes de preparar el cierre solicitado.
+
+**Continuación DEMO (22-10-2026):** rama `codex/vs03-descubrir-negocios-cont-20261022-1`, creada desde la anterior con todos los cambios pendientes conservados y VS02 integrada. Por petición del propietario, `DemoListingSeeder` mantiene **30 negocios públicos DEMO y dos privados** (borrador/pausado) para futuras etapas. Se añadieron 26 públicos con categorías secundarias y ambas zonas; quedan 32 fichas, 97 medios y la misma cuenta administrativa. Las seis fichas originales, los 32 medios anteriores y sus 59 archivos físicos conservan sus huellas. La repetición del seeder mantiene IDs, estados, fechas y nombres de archivo sin duplicar ni sobrescribir. Pruebas enfocadas: **3 pruebas y 687 aserciones**; suite completa MySQL: **155 pruebas y 2.078 aserciones**, correctas. Pint, build, 23 rutas y diff correctos. Paginación ejercitada en Herd: **12/12/6, 30 fichas únicas**, Anterior/Siguiente, historial y filtro Experiencias conservado al avanzar; Aplicar reinicia página. Los datos y archivos permanecen locales y excluidos de producción. [Registro de la ampliación](dev_changelog/VS03.md#continuación-demo-persistente-con-30-negocios-públicos-22-10-2026).
 
 **Objetivo:** recorrer Inicio, Negocios, categorías y zonas hasta una ficha elegible mediante filtros compartibles.
 
-- [ ] Implementar `/` → 302 `/playa-del-carmen`, ciudad pública, rutas específicas antes del comodín de categoría, Negocios, categorías y zonas con paginación y filtros categoría/zona.
-- [ ] Mantener orden orgánico `published_at DESC, id DESC`, incluyendo Gratis. Preparar selección editorial y recientes de Inicio con contenido aprobado, sin tarjetas vacías ni enlaces a módulos pendientes.
-- [ ] Aplicar navegación adaptable, tarjetas, estados vacíos, carga y 404 en español; no mostrar insignias de plan ni adelantos del catálogo en tarjetas orgánicas.
-- [ ] Extender SEO y medición de las superficies creadas; no presentar Lugares vacíos antes de implementar sus vínculos en VS12.
+- [x] Implementar `/` → 302 `/playa-del-carmen`, ciudad pública, rutas específicas antes del comodín de categoría, Negocios, categorías y zonas con paginación y filtros categoría/zona.
+- [x] Mantener orden orgánico `published_at DESC, id DESC`, incluyendo Gratis. Preparar selección editorial y recientes de Inicio con contenido aprobado, sin tarjetas vacías ni enlaces a módulos pendientes.
+- [x] Aplicar navegación adaptable, tarjetas, estados vacíos, carga y 404 en español; no mostrar insignias de plan ni adelantos del catálogo en tarjetas orgánicas.
+- [x] Extender SEO y medición de las superficies creadas; no presentar Lugares vacíos antes de implementar sus vínculos en VS12.
+- [x] Gestionar hasta seis seleccionados desde Ciudades con autorización, orden, transacción y auditoría; proteger medios públicos de taxonomías y conservar los datos DEMO.
 
 **Aceptación y fallos:** filtros conservan una URL compartible y resultados estables; una ciudad no pública, una zona de otra ciudad o un slug no válido no expone contenido ajeno. No existen búsqueda por texto, ranking ni página separada de ofertas.
 
 **Pruebas y revisión:** HTTP de rutas/reservas/404, filtros, paginación, empate de fechas, inclusión Gratis y exclusión de fichas privadas. Revisar navegación móvil, filtros con teclado y contenido vacío/largo sin obstrucciones.
 
-**Evidencia:** sin ejecución registrada.
+**Evidencia local (22-10-2026):** suite completa MySQL: **154 pruebas y 1.564 aserciones**, correctas. Tras el ajuste final de reflujo y contraste, regresión de descubrimiento/fichas: **42 pruebas y 423 aserciones**, correcta. Pint, build, 23 rutas propias y `git diff --check` correctos. Dos migraciones incrementales aplicadas, sin reinicio ni seeder; seis fichas y 32 medios conservan sus huellas previas. Herd: móvil, tableta, escritorio, filtros y limpieza por contexto, historial, fichas, categoría/zona, estado vacío, 404 y selección administrativa con teclado, guardado, reordenación y retirada. El propietario confirmó lectura y uso al 200 %; la revisión posterior con vista ampliada no mostró desbordamiento. Antislop final: dos hallazgos de reflujo/contraste corregidos, con evidencia por criterio en el registro.
 
-**Bloqueos:** ninguno adicional confirmado; el contenido de salida se aprueba en VS16.
+**Verificaciones locales completas (22-10-2026):** la paginación visual pendiente en la primera intervención quedó comprobada en la continuación de 30 DEMO. El propietario confirmó después que comprobó los filtros con JavaScript desactivado y funcionan. Esta comprobación manual del propietario complementa la cobertura PHPUnit HTTP/HTML; no se atribuye al navegador automatizado. Confirmación registrada en `codex/vs03-descubrir-negocios-cont-20261022-2`, creada desde la continuación anterior con todos sus cambios conservados. No se modificaron código, datos ni medios y no se repitieron pruebas técnicas por este registro documental.
+
+**Cierre solicitado (22-10-2026):** se prepara el conjunto de implementación, pruebas y documentación para confirmarlo en Git, subir únicamente la rama de cierre y abrir **VS03: Descubrir negocios** hacia `master`. El número y enlace se registran tras crear la PR. Se conserva la evidencia de 155 pruebas y 2.078 aserciones y las revisiones locales previas; esta intervención solo documenta y entrega el trabajo verificado.
+
+**Pendientes:** revisión y fusión de la PR por el propietario y comprobación posterior de integración; contenido de salida en VS16 y despliegue en VS17. No quedan comprobaciones locales pendientes identificadas para VS03. VS03 sigue `en curso`; no se ha integrado ni desplegado.
 
 ### VS04 — Mantener URLs e indexación
 

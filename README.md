@@ -1,6 +1,6 @@
 # Tu Gurú Local — proyecto nuevo
 
-Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00–VS02 completadas localmente, incluida la simplificación multimedia con fechas manuales; Inicio y descubrimiento público siguen pendientes. El sitio no está publicado.** La pantalla raíz es temporal y lleva `noindex`.
+Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00–VS02 completadas localmente; VS03 en curso con Inicio, Negocios, categorías y zonas implementados en la rama de trabajo. El sitio no está publicado.** La raíz redirige temporalmente al Inicio de Playa del Carmen. Las superficies vacías, filtradas o con solo DEMO llevan `noindex`.
 
 ## Contratos y secuencia
 
@@ -41,7 +41,7 @@ npm run dev
 
 En cada VSXX con cambios visuales, revisa la URL afectada en Herd y enlázala en el registro de la tarea para poder abrirla en el navegador. Herd sirve la aplicación; la conexión MySQL se configura por separado. La instancia temporal usada al comprobar VS00 no es una base permanente para tareas posteriores.
 
-La raíz muestra únicamente un aviso temporal en español. Filament está en `/dashboard`: un usuario nuevo no tiene privilegios y no puede entrar al panel. VS01 exige segundo factor TOTP, comprueba permisos en peticiones directas y Livewire y ofrece auditoría de solo lectura. Debugbar queda apagada por defecto y se puede habilitar solo para desarrollo local mediante `DEBUGBAR_ENABLED=true`.
+La raíz devuelve 302 a `/playa-del-carmen`. Filament está en `/dashboard`: un usuario nuevo no tiene privilegios y no puede entrar al panel. VS01 exige segundo factor TOTP, comprueba permisos en peticiones directas y Livewire y ofrece auditoría de solo lectura. Debugbar queda apagada por defecto y se puede habilitar solo para desarrollo local mediante `DEBUGBAR_ENABLED=true`.
 
 ### Primera cuenta administrativa
 
@@ -65,9 +65,9 @@ Las fichas se publican manualmente, sin programación. Se pueden previsualizar, 
 
 Imágenes y PDF se gestionan con `filament/spatie-laravel-media-library-plugin` y permanecen en almacenamiento privado. El botón PDF tiene texto editable por ficha. `/@{listing}` muestra solo contenido publicado y aprobado; los medios pierden acceso público al despublicar. Los reportes se revisan desde el panel y no corrigen datos automáticamente. Su recepción está disponible para comprobaciones locales; en producción queda cerrada hasta aprobar la privacidad y conectar su ruta en VS05.
 
-[El registro VS02](docs/dev_changelog/VS02.md) explica las comprobaciones, las URLs locales y los pendientes. La primera ficha temporal ya se eliminó. La continuación conserva seis fichas DEMO sintéticas y sus archivos, separadas del contenido real de salida.
+[El registro VS02](docs/dev_changelog/VS02.md) explica las comprobaciones, las URLs locales y los pendientes. La primera ficha temporal ya se eliminó. La ampliación de VS03 conserva las seis fichas DEMO originales y añade 26 públicas: quedan **30 negocios DEMO públicos, un borrador y un pausado**, con sus medios persistentes para etapas futuras, separados del contenido real de salida.
 
-Preparar DEMO explícitamente con php artisan db:seed --class=DemoListingSeeder --no-interaction. Solo local/testing; sin reiniciar la base. Es repetible, conserva archivos y cambios manuales y no modifica cuentas. DEMO se excluye de producción y del inventario real.
+Preparar DEMO explícitamente con `php artisan db:seed --class=DemoListingSeeder --no-interaction`. Solo local/testing; sin reiniciar la base. Es repetible, conserva archivos y cambios manuales y no modifica cuentas. No se retiran al terminar las pruebas. Los nuevos negocios incluyen categorías secundarias y se distribuyen entre ambas zonas para revisar filtros y paginación. DEMO se excluye de producción y del inventario real.
 
 - [Café Menta DEMO](http://tugurulocal-nuevo.test/@demo-cafe-menta): portada, galería, FAQs y menú.
 - [Taller Creativo DEMO](http://tugurulocal-nuevo.test/@demo-taller-creativo): sin portada; OG usa logo, con guía PDF.
@@ -75,7 +75,22 @@ Preparar DEMO explícitamente con php artisan db:seed --class=DemoListingSeeder 
 - [Experiencia Coral DEMO](http://tugurulocal-nuevo.test/@demo-experiencia-coral): sin portada ni PDF, con galería.
 - [Borrador privado](http://tugurulocal-nuevo.test/dashboard/fichas/7/edit) y [pausado privado](http://tugurulocal-nuevo.test/dashboard/fichas/8/edit): sus URLs públicas devuelven 404.
 
-Publicar requiere logo propio autorizado, con alt y fecha manual de verificación independientes de otros medios. La autorización confirma el permiso de uso; no se solicita fuente ni licencia escrita. Despublicar antes de retirarlo o reemplazarlo. Ciudades, categorías y zonas administran emojis, color HEX, tagline, descripción enriquecida, OG e icono independientes; sus páginas completas quedan para VS03.
+Publicar requiere logo propio autorizado, con alt y fecha manual de verificación independientes de otros medios. La autorización confirma el permiso de uso; no se solicita fuente ni licencia escrita. Despublicar antes de retirarlo o reemplazarlo. Ciudades, categorías y zonas administran emojis, color HEX, tagline, descripción enriquecida, OG e icono independientes; VS03 utiliza esa identidad en sus páginas públicas.
+
+### Descubrir negocios: VS03 en curso
+
+La implementación local comenzó en `codex/vs03-descubrir-negocios`, creada desde la base integrada `b59d920`; la ampliación DEMO continuó en `codex/vs03-descubrir-negocios-cont-20261022-1` y la confirmación sin JavaScript en la continuación `-2`. La entrega para revisión usa `codex/vs03-descubrir-negocios-cont-20261022-3`, conservando todo el trabajo previo. [El registro VS03](docs/dev_changelog/VS03.md) concentra las comprobaciones y pendientes: implementación verificada; integración pendiente en PR.
+
+- [Inicio de Playa del Carmen](http://tugurulocal-nuevo.test/playa-del-carmen) ofrece accesos a categorías y zonas con resultados, hasta seis seleccionados manualmente y hasta seis recientes sin repetir los seleccionados.
+- [Negocios](http://tugurulocal-nuevo.test/playa-del-carmen/negocios) admite `categoria`, `zona` y `page`. Las páginas de categoría y zona permiten filtrar el contexto restante. El botón «Aplicar» envía un formulario GET y vuelve a la primera página; «Limpiar filtros» conserva la página de origen.
+- Los listados muestran 12 resultados por página, ordenados por publicación e identificador descendentes. Los filtros o páginas inválidos devuelven 404; una combinación válida sin resultados ofrece caminos para continuar. Los negocios cerrados conservan su estado visible; los cerrados permanentemente quedan fuera de los destacados de Inicio.
+- En [Ciudades](http://tugurulocal-nuevo.test/dashboard/ciudades), «Selección de Inicio» permite elegir, subir, bajar y retirar negocios. La selección es independiente de los planes y de las listas futuras. Si un negocio pierde elegibilidad, se conserva identificado en el panel y se oculta de Inicio.
+
+La comprobación física del logo se realiza antes de contar y paginar. Los iconos e imágenes OG autorizados de taxonomías tienen una ruta pública protegida por visibilidad, permiso, alt, fecha y existencia del archivo. Las vistas de descubrimiento registran referencias normalizadas de ciudad, categoría, zona y página, con deduplicación por sesión durante 60 segundos y sin IP ni URL completa.
+
+VS03 incorpora dos migraciones incrementales: crea `home_selections` y amplía `interaction_events`, haciendo opcional `listing_id` para conservar los eventos de ficha y admitir los de descubrimiento. Se aplican con `php artisan migrate --no-interaction`; no requieren reiniciar la base ni recrear datos o medios DEMO. La reversión de la ampliación de eventos se rechaza si ya existen eventos de descubrimiento sin ficha; en ese caso corresponde una migración correctiva.
+
+Lugares públicos, sitemap, redirecciones de slugs, catálogo, recomendaciones, listas y comercio siguen sus fases previstas. La navegación solo enlaza superficies disponibles y `/premium` permanece oculta.
 
 ### Laravel Boost para Codex
 
@@ -89,4 +104,4 @@ El comando actualiza el bloque delimitado de Boost en `AGENTS.md` y los archivos
 
 ## Pendientes para el lanzamiento
 
-VS03–VS17 y contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
+Completar e integrar VS03, implementar VS04–VS17 y aprobar contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.

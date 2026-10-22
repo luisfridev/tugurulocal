@@ -1,6 +1,6 @@
 # Tu Gurú Local — Plan de implementación del proyecto nuevo
 
-**Estado:** plan en ejecución; VS00 y VS01 completaron la fase Base local, incluida la revisión visual y de teclado de la administración el 22 de octubre de 2026; VS02 completó localmente ficha Gratis, logo obligatorio, identidad de taxonomías, DEMO persistente y simplificación multimedia con fechas manuales; VS03–VS17 siguen pendientes. La [especificación maestra](ESPECIFICACION_MAESTRA.md) define R01–R10 y AC01–AC10; el [diseño técnico](DISENO_TECNICO.md) define el contrato de datos y servicios. El [tablero MEMORY.md](MEMORY.md) detalla la secuencia de entregas verticales VS00–VS17, sus estados y evidencia. Ninguna fase interna es un lanzamiento parcial.
+**Estado:** plan en ejecución; VS00 y VS01 completaron la fase Base local, incluida la revisión visual y de teclado de la administración el 22 de octubre de 2026; VS02 completó localmente ficha Gratis, logo obligatorio, identidad de taxonomías, DEMO persistente y simplificación multimedia con fechas manuales. VS03 está en curso con descubrimiento local implementado en su rama; VS04–VS17 siguen pendientes. La [especificación maestra](ESPECIFICACION_MAESTRA.md) define R01–R10 y AC01–AC10; el [diseño técnico](DISENO_TECNICO.md) define el contrato de datos y servicios. El [tablero MEMORY.md](MEMORY.md) detalla la secuencia de entregas verticales VS00–VS17, sus estados y evidencia. Ninguna fase interna es un lanzamiento parcial.
 
 ## 0. Preparación y reglas de ejecución
 
@@ -13,6 +13,16 @@ Para la revisión local de UI, abrir la aplicación servida por Herd en `http://
 Ejecutar VS00–VS17 según las dependencias del tablero. Cada entrega funcional incluye sus datos, reglas de dominio, administración, UI pública, autorización, SEO, medición aplicable y pruebas. El sistema visual empieza en la primera pantalla; SEO y accesibilidad no se posponen a una fase final. VS00–VS01 son los habilitadores mínimos. Investigar contenido e identificar insumos externos desde el inicio; su aprobación de salida ocurre en VS16–VS17. Este documento conserva T01–T15 como agrupaciones de trazabilidad, no como una segunda secuencia de ejecución ni un registro de tareas completadas.
 
 Cada intervención en una tarea `VSXX` comienza en una rama Git nueva antes de modificar archivos: `codex/vsXX-descripcion` para la primera y `codex/vsXX-descripcion-cont-AAAAMMDD-N` para cada continuación. Comprobar el estado de Git y partir de una base que ya contenga las dependencias cerradas y el trabajo previo de esa tarea, integrado o en su rama anterior. No mezclar tareas ni implementar directamente en `master`. Anotar todas las ramas utilizadas en el registro de la tarea y en la evidencia resumida del tablero.
+
+### Intervención VS03 (22-10-2026)
+
+La rama `codex/vs03-descubrir-negocios` parte de la base integrada `b59d920`. La continuación `codex/vs03-descubrir-negocios-cont-20261022-1` amplía el DEMO persistente a 30 negocios públicos y conserva los dos privados, los registros y medios anteriores. La continuación `-2` registra la confirmación del propietario sobre filtros sin JavaScript y la `-3` prepara el cierre solicitado mediante PR hacia `master`. VS03 permanece en curso: implementación verificada; integración pendiente en PR. [Su registro](dev_changelog/VS03.md) y el tablero contienen las comprobaciones y los pendientes; el desarrollo local no acredita integración ni producción.
+
+La implementación incorpora Inicio, Negocios y páginas de categoría/zona, filtros GET con «Aplicar», 12 resultados por página y orden orgánico estable. Comparte la elegibilidad del logo antes de contar o paginar. Añade selección manual de hasta seis negocios desde Ciudades, separada de listas y comercio, identidad pública autorizada, metadatos y eventos de descubrimiento sin datos personales.
+
+Las migraciones crean la relación ordenada de Inicio y amplían los eventos existentes. Se ejecutan incrementalmente, conservando cuentas, datos y medios DEMO. No requieren `migrate:fresh` ni volver a sembrar el contenido. El cierre debe comprobar la regresión VS02, medios revocados, selección y permisos, filtros/paginación/SEO, deduplicación de eventos y recorridos de Herd con teclado, móvil, tableta, escritorio y zoom. Registrar solo resultados ejecutados, incluida la revisión final Antislop, antes de declarar la implementación verificada.
+
+VS04 conserva sitemap y redirecciones internas; Lugares públicos espera VS12. Los módulos de comercio, catálogo, recomendaciones y listas no se adelantan. El propietario solicitó el cierre el 22-10-2026: aplicar el flujo de PR abierta descrito abajo y esperar su fusión antes de marcar VS03 completada.
 
 ### Antislop en la ejecución
 

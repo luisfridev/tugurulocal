@@ -30,4 +30,9 @@ class City extends Model implements HasMedia
     {
         return $this->hasMany(Listing::class);
     }
+
+    public function homeSelections(): HasMany
+    {
+        return $this->hasMany(HomeSelection::class)->orderBy('position');
+    }
 }

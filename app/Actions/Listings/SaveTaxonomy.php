@@ -19,7 +19,7 @@ use Illuminate\Validation\ValidationException;
 
 class SaveTaxonomy
 {
-    public const RESERVED = ['negocios', 'explorar', 'zonas', 'listas', 'blog', 'premium', 'recomendar', 'dashboard', 'admin', 'aviso-de-privacidad', 'sitemap', 'compras'];
+    public const RESERVED = ['negocios', 'explorar', 'ofertas', 'zonas', 'listas', 'blog', 'premium', 'recomendar', 'dashboard', 'admin', 'aviso-de-privacidad', 'sitemap', 'compras'];
 
     public function __construct(private RecordAuditEvent $audit) {}
 

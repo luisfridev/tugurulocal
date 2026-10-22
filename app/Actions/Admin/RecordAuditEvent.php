@@ -23,7 +23,7 @@ class RecordAuditEvent
             'changed_fields' => array_values(array_intersect($changedFields, [
                 'name', 'email', 'password', 'is_super_admin',
                 'app_authentication_secret', 'app_authentication_recovery_codes',
-                ...Listing::FIELDS, 'category_ids', 'status', 'published_at', 'timezone', 'is_public', 'is_active', 'listing_type', 'sort_order',
+                ...Listing::FIELDS, 'category_ids', 'status', 'published_at', 'timezone', 'is_public', 'is_active', 'listing_type', 'sort_order', 'home_selections',
             ])),
             'source' => request()->route() ? 'web' : 'console',
             'occurred_at' => now(),
