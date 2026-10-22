@@ -14,6 +14,16 @@ Ejecutar VS00–VS17 según las dependencias del tablero. Cada entrega funcional
 
 Cada intervención en una tarea `VSXX` comienza en una rama Git nueva antes de modificar archivos: `codex/vsXX-descripcion` para la primera y `codex/vsXX-descripcion-cont-AAAAMMDD-N` para cada continuación. Comprobar el estado de Git y partir de una base que ya contenga las dependencias cerradas y el trabajo previo de esa tarea, integrado o en su rama anterior. No mezclar tareas ni implementar directamente en `master`. Anotar todas las ramas utilizadas en el registro de la tarea y en la evidencia resumida del tablero.
 
+### Antislop en la ejecución
+
+Antes de planificar o editar una tarea, aplica la [regla Antislop por tarea](../AGENTS.md#antislop-por-tarea): carga la base y selecciona los complementos por el trabajo real, combinándolos cuando corresponda. Usa `during` como valor del proyecto salvo elección explícita del usuario para la sesión, anuncia las skills y su motivo y conserva la configuración global. Resuelve sus archivos desde el catálogo de la sesión, sin copiar skills ni guardar rutas personales en Git. Si falta una skill necesaria, informa la revisión pendiente y continúa las partes independientes.
+
+La documentación usa `antislop-copywriting`. Una pantalla responsive combina `antislop-ui`, `antislop-human` y `antislop-layoutmobile`, y añade copywriting si se trabajan textos. El backend conserva las skills técnicas y solo incorpora complementos por los textos, comentarios o interfaces afectados; `antislop-code` se limita a comentarios. La selección se hace por intervención, porque una misma VSXX puede incluir trabajos distintos.
+
+Para UI, parte de la [guía visual](GUIA_VISUAL.md), declara la interpretación y los valores ENERGY/RHYTHM/MOTION, y explica las decisiones visuales relevantes. La maestra y las decisiones del propietario conservan su autoridad: Antislop no añade funciones ni sustituye las skills técnicas o el sistema visual aprobado.
+
+Antes de entregar, ejecuta la revisión final de Antislop y las listas de los complementos usados. Registra cada criterio aplicable como `PASS` con evidencia o `FAIL` con el defecto; usa `no aplica` con motivo para lo ajeno al alcance y deja pendientes las comprobaciones no ejecutadas. Corrige los fallos antes de declarar la revisión superada. En UI conserva las comprobaciones de Herd, móvil, tableta, escritorio, teclado, foco, contraste, estados e interacciones y las pruebas técnicas correspondientes. Un cambio exclusivamente documental requiere revisión de redacción, coherencia, enlaces y `git diff --check`; no requiere repetir PHPUnit, Pint ni build. Un cambio de backend sin UI no exige revisión visual.
+
 ### Cierre mediante pull requests
 
 Desde el 22 de octubre de 2026, pedir el cierre de una `VSXX` significa preparar y dejar abierta una PR hacia `master` para revisión del propietario. El flujo es:
@@ -76,6 +86,8 @@ Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una ag
 ## 4. Entrega de cada fase
 
 Al comenzar cada tarea `VSXX`, crear o abrir `docs/dev_changelog/VSXX.md`; actualizar el mismo archivo al terminar cada intervención, con fecha, explicación comprensible de cambios y motivos, verificación real y pendientes. Enlazarlo desde su sección en [MEMORY.md](MEMORY.md), donde se actualizan estado, checklist y evidencia resumida. Anotar cambios, migraciones/configuración, comandos y pruebas ejecutadas con fecha y entorno, resultados de la revisión visual y riesgos pendientes. `docs/dev_changelog/` contiene únicamente registros Markdown: no guardar imágenes ni capturas. Documentar la revisión visual en texto con URLs locales, tamaños de pantalla, interacciones comprobadas y resultados observables. Una tarea completada exige evidencia real; conservar datos privados y secretos fuera de Git. No afirmar que producción funciona por un test local. Si una puerta falla, resolver el defecto antes de continuar al lanzamiento.
+
+En cada intervención, registrar también modo Antislop, skills aplicadas y motivo, resultados por criterio y pendientes de la [revisión final](#antislop-en-la-ejecución) en el mismo registro VSXX, con evidencia resumida en el tablero. Para una actualización general del flujo, usar el tablero y la PR correspondiente, sin abrir una VSXX ni crear registros vacíos.
 
 Entregar el cierre mediante la [PR abierta para revisión del propietario](#cierre-mediante-pull-requests), con número, URL y rama registrados en ambos documentos y el enlace en el chat. Distinguir la implementación verificada de la integración comprobada: una PR sin fusionar conserva la tarea `en curso`.
 

@@ -207,3 +207,29 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Run `vendor/bin/phpunit` to call the test runner directly. It accepts the same file path and `--filter=testName` arguments.
 
 </laravel-boost-guidelines>
+
+<!-- antislop:start -->
+## Antislop por tarea
+
+Usa `antislop` como base al planificar y trabajar. El propietario eligió `during` como modo predeterminado de este proyecto: aplica las reglas durante el trabajo y comprueba el resultado antes de entregarlo. Una elección explícita del usuario para la sesión prevalece sobre este valor. Esta regla de proyecto prevalece sobre la preferencia global de Antislop; no consultes ni modifiques esa configuración para resolver el modo aquí, ni vuelvas a preguntarlo si ya está definido.
+
+Selecciona los complementos por el contenido que se va a crear, modificar o revisar, no solo por el ID de la VSXX. Combina las filas que correspondan:
+
+| Trabajo | Skills adicionales a `antislop` |
+| --- | --- |
+| Documentación, textos, mensajes y CTA | `antislop-copywriting`. |
+| Interfaces públicas o administrativas: diseño, componentes, estilos e interacción | `antislop-ui` y `antislop-human`. |
+| Distribución responsive, navegación y adaptación entre móvil, tableta y escritorio | `antislop-layoutmobile`, además de `antislop-ui` y `antislop-human`. |
+| Redacción o limpieza de comentarios de código | `antislop-code`, limitada a comentarios; no autoriza cambios de lógica ni formato del código. |
+| Backend, consultas, migraciones y pruebas | Skills técnicas correspondientes; añade complementos Antislop solo si también se trabajan textos, comentarios o interfaces. |
+
+Antes de empezar:
+
+1. Resuelve las ubicaciones de las skills instaladas mediante el catálogo de la sesión y lee sus `SKILL.md`: primero la base y después los complementos elegidos. Reutiliza las lecturas vigentes de la misma sesión. No copies las skills al repositorio, no fijes rutas personales en Git ni descargues instrucciones para suplir una ausencia. Si falta una skill necesaria, informa qué revisión queda pendiente y continúa el trabajo independiente; no declares cubierta esa revisión.
+2. Indica una vez las skills aplicadas y su motivo. Anuncia el modo con su origen: `Antislop activo: during (regla del proyecto)`, o el modo elegido con `instrucción explícita de la sesión`. No repitas el aviso si la elección ya se confirmó en esta sesión. Si el usuario pide `after`, sigue el procedimiento de auditoría de la skill para ese alcance.
+3. Para UI, lee la [guía visual](docs/GUIA_VISUAL.md) como dirección de diseño y declara la interpretación y los valores ENERGY/RHYTHM/MOTION derivados de ella. Conserva la autoridad de la [especificación maestra](docs/ESPECIFICACION_MAESTRA.md), las decisiones del propietario y los componentes existentes. Antislop complementa las skills de Laravel, Livewire, Tailwind y pruebas; no amplía el producto, cambia su identidad ni añade temas, animaciones o recursos sin una necesidad autorizada. No hace falta crear un `DESIGN.md` paralelo.
+
+Antes de entregar, ejecuta la revisión final (`Delivery Gate`) de la base y las listas de los complementos usados sobre el alcance trabajado. Registra un resultado por criterio: `PASS` con evidencia concreta, `FAIL` con el defecto, o `no aplica` con motivo. Corrige los fallos antes de declarar la revisión superada; una comprobación sin ejecutar queda pendiente, nunca como `PASS`. Justifica las decisiones visuales relevantes y registra las interacciones comprobadas. Para UI conserva la revisión en Herd de móvil, tableta, escritorio, teclado, foco, contraste, estados e interacciones, con las pruebas técnicas que correspondan. En backend sin UI no exijas una revisión visual; para cambios exclusivamente documentales comprueba redacción, coherencia, enlaces y `git diff --check`, sin repetir PHPUnit, Pint ni build.
+
+En cada intervención VSXX anota modo, skills y motivo de selección, resultados por criterio aplicable y pendientes en su `docs/dev_changelog/VSXX.md` existente, con evidencia resumida en [MEMORY.md](docs/MEMORY.md). Las actualizaciones generales del flujo se registran en el tablero y su PR; no abren una VSXX ni crean registros vacíos. Conserva la distinción entre comprobaciones locales e integración o producción. El [plan de implementación](docs/PLAN_IMPLEMENTACION.md#antislop-en-la-ejecución) incorpora estos pasos al inicio y al cierre.
+<!-- antislop:end -->
