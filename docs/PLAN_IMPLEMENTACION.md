@@ -14,6 +14,21 @@ Ejecutar VS00–VS17 según las dependencias del tablero. Cada entrega funcional
 
 Cada intervención en una tarea `VSXX` comienza en una rama Git nueva antes de modificar archivos: `codex/vsXX-descripcion` para la primera y `codex/vsXX-descripcion-cont-AAAAMMDD-N` para cada continuación. Comprobar el estado de Git y partir de una base que ya contenga las dependencias cerradas y el trabajo previo de esa tarea, integrado o en su rama anterior. No mezclar tareas ni implementar directamente en `master`. Anotar todas las ramas utilizadas en el registro de la tarea y en la evidencia resumida del tablero.
 
+### Cierre mediante pull requests
+
+Desde el 22 de octubre de 2026, pedir el cierre de una `VSXX` significa preparar y dejar abierta una PR hacia `master` para revisión del propietario. El flujo es:
+
+1. Completar implementación, comprobaciones aplicables y documentación en la rama de trabajo, conservando la evidencia real y los pendientes.
+2. Crear los commits, subir únicamente esa rama y abrir una PR con título `VSXX: descripción`. Su descripción explica los cambios, las pruebas ejecutadas con sus resultados y lo pendiente.
+3. Registrar número, URL y rama de la PR en `docs/MEMORY.md` y `docs/dev_changelog/VSXX.md`; confirmar y subir ese registro a la misma rama para incluirlo en la PR. Adjuntar la PR al chat y entregar su enlace.
+4. Dejar la PR abierta. El propietario decide cuándo fusionarla. El agente no fusiona la PR, no integra la rama directamente en `master` ni hace push a `master`.
+
+Mientras la PR no esté fusionada, mantener la tarea `en curso`, con «implementación verificada; integración pendiente en PR», aunque las comprobaciones locales hayan pasado. No declarar integración ni cierre completo por crear el commit, subir la rama o abrir la PR.
+
+Al retomar el trabajo después de la fusión del propietario, comprobar en GitHub que la PR esté fusionada hacia `master`, obtener la fecha y el commit reales de integración y sincronizar `master` local por avance rápido desde `origin/master`. Solo entonces registrar la tarea `completada` con esa evidencia. La actualización documental posterior también se prepara en una rama y se entrega por PR; nunca se escribe ni se publica directamente en `master`.
+
+Esta regla se aplica a los próximos cierres y a la entrega de esta actualización documental mediante su propia PR abierta. Los cierres anteriores conservan su evidencia histórica: no rehacer la integración de VS02 ni crear una PR retrospectiva. Las dependencias de las siguientes VSXX requieren la integración comprobada de sus predecesoras.
+
 ## 1. Trazabilidad de tareas y evidencia
 
 Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una agrupación T se satisface cuando se verifican todas sus partes en las entregas indicadas; no exige completar otra agrupación T entera como prerrequisito. Así, las listas y Lugares se implementan antes de sus bloques contextuales, sin dependencia circular. VS00 está completada localmente; las siguientes entregas conservan sus puertas de aceptación.
@@ -61,4 +76,6 @@ Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una ag
 ## 4. Entrega de cada fase
 
 Al comenzar cada tarea `VSXX`, crear o abrir `docs/dev_changelog/VSXX.md`; actualizar el mismo archivo al terminar cada intervención, con fecha, explicación comprensible de cambios y motivos, verificación real y pendientes. Enlazarlo desde su sección en [MEMORY.md](MEMORY.md), donde se actualizan estado, checklist y evidencia resumida. Anotar cambios, migraciones/configuración, comandos y pruebas ejecutadas con fecha y entorno, resultados de la revisión visual y riesgos pendientes. `docs/dev_changelog/` contiene únicamente registros Markdown: no guardar imágenes ni capturas. Documentar la revisión visual en texto con URLs locales, tamaños de pantalla, interacciones comprobadas y resultados observables. Una tarea completada exige evidencia real; conservar datos privados y secretos fuera de Git. No afirmar que producción funciona por un test local. Si una puerta falla, resolver el defecto antes de continuar al lanzamiento.
+
+Entregar el cierre mediante la [PR abierta para revisión del propietario](#cierre-mediante-pull-requests), con número, URL y rama registrados en ambos documentos y el enlace en el chat. Distinguir la implementación verificada de la integración comprobada: una PR sin fusionar conserva la tarea `en curso`.
 

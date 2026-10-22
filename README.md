@@ -11,7 +11,7 @@ Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ci
 
 Los cambios ya realizados se explican por tarea en [docs/dev_changelog](docs/dev_changelog/VS00.md); el primer registro corresponde a VS00. Esa carpeta contiene únicamente registros Markdown, sin imágenes ni capturas; la revisión visual se documenta con URLs, tamaños de pantalla, interacciones y resultados.
 
-Cada intervención en una tarea `VSXX` se desarrolla en una rama Git nueva: `codex/vsXX-descripcion` al comenzar y una rama con sufijo de continuación al retomarla. El [plan](docs/PLAN_IMPLEMENTACION.md) y [AGENTS.md](AGENTS.md) detallan cómo conservar el trabajo previo.
+Cada intervención en una tarea `VSXX` se desarrolla en una rama Git nueva: `codex/vsXX-descripcion` al comenzar y una rama con sufijo de continuación al retomarla. El cierre se entrega mediante una PR abierta hacia `master`, con cambios, pruebas y pendientes, para que el propietario la revise y fusione. El agente sube solo la rama de trabajo: no fusiona la PR, no integra directamente ni hace push a `master`. Mientras la PR no esté fusionada, la tarea sigue `en curso`, con «implementación verificada; integración pendiente en PR» y su número, URL y rama registrados en el tablero y el registro de la tarea. El [flujo de cierre](docs/PLAN_IMPLEMENTACION.md#cierre-mediante-pull-requests) y [AGENTS.md](AGENTS.md) detallan las reglas y la comprobación posterior de la integración. Los cierres anteriores, incluido VS02, conservan su evidencia histórica.
 
 Las [capturas](docs/referencias/capturas/26-mapa-de-pantallas.jpg) orientan la composición. No aportan datos verificables ni autorizan funciones pospuestas. No se importó código, base de datos, contenido, slugs ni redirecciones del proyecto anterior.
 
