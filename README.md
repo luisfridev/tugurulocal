@@ -81,6 +81,8 @@ Publicar requiere logo propio autorizado, con alt y fecha manual de verificació
 
 La implementación local comenzó en `codex/vs03-descubrir-negocios`, creada desde la base integrada `b59d920`; la ampliación DEMO continuó en `codex/vs03-descubrir-negocios-cont-20261022-1` y la confirmación sin JavaScript en la continuación `-2`. La entrega para revisión usa `codex/vs03-descubrir-negocios-cont-20261022-3`, conservando todo el trabajo previo. [El registro VS03](docs/dev_changelog/VS03.md) concentra las comprobaciones y pendientes: implementación verificada; integración pendiente en PR.
 
+[PR #4 — VS03: Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4) permanece abierta hacia `master` para revisión y fusión del propietario.
+
 - [Inicio de Playa del Carmen](http://tugurulocal-nuevo.test/playa-del-carmen) ofrece accesos a categorías y zonas con resultados, hasta seis seleccionados manualmente y hasta seis recientes sin repetir los seleccionados.
 - [Negocios](http://tugurulocal-nuevo.test/playa-del-carmen/negocios) admite `categoria`, `zona` y `page`. Las páginas de categoría y zona permiten filtrar el contexto restante. El botón «Aplicar» envía un formulario GET y vuelve a la primera página; «Limpiar filtros» conserva la página de origen.
 - Los listados muestran 12 resultados por página, ordenados por publicación e identificador descendentes. Los filtros o páginas inválidos devuelven 404; una combinación válida sin resultados ofrece caminos para continuar. Los negocios cerrados conservan su estado visible; los cerrados permanentemente quedan fuera de los destacados de Inicio.
