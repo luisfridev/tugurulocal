@@ -20,13 +20,11 @@ class BootstrapTest extends TestCase
         $this->assertSame(0, User::query()->count());
     }
 
-    public function test_bootstrap_page_is_in_spanish_and_not_indexable(): void
+    public function test_root_redirects_temporarily_to_the_initial_city(): void
     {
         $this->get('/')
-            ->assertOk()
-            ->assertSee('lang="es"', false)
-            ->assertSee('noindex,nofollow')
-            ->assertSee('Tu Gurú Local');
+            ->assertStatus(302)
+            ->assertRedirect('/playa-del-carmen');
     }
 
     public function test_public_registration_and_commercial_page_are_not_available(): void

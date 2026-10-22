@@ -7,6 +7,7 @@ use App\Models\Area;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Listing;
+use App\Support\DemoTaxonomyIdentity;
 use App\Support\IdentityColor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
@@ -24,7 +25,7 @@ class DemoListingSeeder extends Seeder
         DB::transaction(function (): void {
             $this->call(DatabaseSeeder::class);
             $city = City::query()->where('slug', 'playa-del-carmen')->firstOrFail();
-            $this->identity($city, '#2C254E', 'DEMO · Identidad de ciudad para revisión local');
+            $this->identity($city, '#2C254E', DemoTaxonomyIdentity::CITY_TAGLINE);
             $areas = [];
             foreach (['demo-zona-centro' => 'DEMO · Centro 🌴', 'demo-zona-creativa' => 'DEMO · Zona creativa 👩🏽‍🎨'] as $slug => $name) {
                 $area = Area::query()->firstOrCreate(['city_id' => $city->id, 'slug' => $slug], ['name' => $name, 'is_active' => true]);
@@ -34,23 +35,59 @@ class DemoListingSeeder extends Seeder
                 if (! $area->is_demo) {
                     throw new LogicException('El slug DEMO de zona ya está ocupado por un registro ajeno.');
                 }
-                $this->identity($area, count($areas) ? '#74DDCF' : '#8D4C94', 'DEMO · Zona sintética sin ubicación real');
+                $this->identity($area, count($areas) ? '#74DDCF' : '#8D4C94', DemoTaxonomyIdentity::AREA_TAGLINE);
                 $areas[] = $area;
             }
             $categories = Category::query()->orderBy('sort_order')->get();
             foreach ($categories as $index => $category) {
-                $this->identity($category, ['#F4C95D', '#287F83', '#7652A2', '#C74B67', '#2C254E'][$index % 5], 'DEMO · Contenido de categoría');
+                $this->identity($category, ['#F4C95D', '#287F83', '#7652A2', '#C74B67', '#2C254E'][$index % 5], DemoTaxonomyIdentity::CATEGORY_TAGLINE);
             }
             $slugs = ['donde-comer-y-beber', 'que-hacer', 'servicios', 'experiencias'];
-            $names = ['DEMO · Café Menta ☕', 'DEMO · Taller Creativo 👩🏽‍🎨', 'DEMO · Estudio Local 🛠️', 'DEMO · Experiencia Coral 🌊', 'DEMO · Borrador privado', 'DEMO · Negocio pausado'];
-            foreach ($names as $index => $name) {
+            $definitions = [
+                ['demo-cafe-menta', 'DEMO · Café Menta ☕'],
+                ['demo-taller-creativo', 'DEMO · Taller Creativo 👩🏽‍🎨'],
+                ['demo-estudio-local', 'DEMO · Estudio Local 🛠️'],
+                ['demo-experiencia-coral', 'DEMO · Experiencia Coral 🌊'],
+                ['demo-borrador-privado', 'DEMO · Borrador privado'],
+                ['demo-negocio-pausado', 'DEMO · Negocio pausado'],
+                ['demo-estudio-papel', 'DEMO · Estudio Papel ✂️'],
+                ['demo-recorrido-brisa', 'DEMO · Recorrido Brisa 🚶'],
+                ['demo-cocina-nube', 'DEMO · Cocina Nube 🥘'],
+                ['demo-taller-color', 'DEMO · Taller Color 🎨'],
+                ['demo-bicicletas-rueda', 'DEMO · Bicicletas Rueda 🚲'],
+                ['demo-paseo-luna', 'DEMO · Paseo Luna 🌙'],
+                ['demo-panaderia-miga', 'DEMO · Panadería Miga 🥖'],
+                ['demo-espacio-movimiento', 'DEMO · Espacio Movimiento 🧘'],
+                ['demo-diseno-trazo', 'DEMO · Diseño Trazo 🖍️'],
+                ['demo-ruta-semilla', 'DEMO · Ruta Semilla 🌱'],
+                ['demo-heladeria-copo', 'DEMO · Heladería Copo 🍧'],
+                ['demo-taller-barro', 'DEMO · Taller Barro 🏺'],
+                ['demo-fotografia-enfoque', 'DEMO · Fotografía Enfoque 📷'],
+                ['demo-recorrido-amanecer', 'DEMO · Recorrido Amanecer 🌅'],
+                ['demo-mesa-canela', 'DEMO · Mesa Canela 🍽️'],
+                ['demo-espacio-lectura', 'DEMO · Espacio Lectura 📚'],
+                ['demo-reparaciones-punto', 'DEMO · Reparaciones Punto 🔧'],
+                ['demo-paseo-horizonte', 'DEMO · Paseo Horizonte 🧭'],
+                ['demo-cafe-grano', 'DEMO · Café Grano ☕'],
+                ['demo-taller-ritmo', 'DEMO · Taller Ritmo 🥁'],
+                ['demo-estudio-hilo', 'DEMO · Estudio Hilo 🧵'],
+                ['demo-ruta-jardin', 'DEMO · Ruta Jardín 🌿'],
+                ['demo-cocina-oliva', 'DEMO · Cocina Oliva 🫒'],
+                ['demo-espacio-juego', 'DEMO · Espacio Juego 🧩'],
+                ['demo-estudio-plano', 'DEMO · Estudio Plano 📐'],
+                ['demo-paseo-marea', 'DEMO · Paseo Marea 🌊'],
+            ];
+            foreach ($definitions as $index => [$slug, $name]) {
                 $category = $categories->firstWhere('slug', $slugs[$index % 4]);
-                $slug = ['demo-cafe-menta', 'demo-taller-creativo', 'demo-estudio-local', 'demo-experiencia-coral', 'demo-borrador-privado', 'demo-negocio-pausado'][$index];
                 if (Listing::query()->where('slug', $slug)->exists()) {
                     continue;
                 }
+                $categoryIds = [$category->id];
+                if ($index >= 6) {
+                    $categoryIds[] = $categories->firstWhere('slug', $slugs[($index + 1) % 4])->id;
+                }
                 $listing = Listing::query()->create([
-                    'name' => $name, 'slug' => $slug, 'city_id' => $city->id, 'area_id' => $areas[$index % 2]->id,
+                    'name' => $name, 'slug' => $slug, 'city_id' => $city->id, 'area_id' => $areas[$index < 6 ? $index % 2 : intdiv($index - 6, 4) % 2]->id,
                     'primary_category_id' => $category->id, 'type' => 'business', 'operating_status' => 'open',
                     'summary' => 'DEMO · Contenido sintético para revisar la ficha local. No representa un negocio real.',
                     'description' => 'Este negocio DEMO permite revisar identidad, medios y privacidad. No ofrece servicios reales y no forma parte del inventario de lanzamiento.',
@@ -60,7 +97,7 @@ class DemoListingSeeder extends Seeder
                     'faqs' => $index % 2 === 0 ? [['question' => '¿Es un negocio real?', 'answer' => 'No. Es una demostración sintética para revisar el sitio local.']] : null,
                 ]);
                 $listing->forceFill(['is_demo' => true])->save();
-                $listing->categories()->sync([$category->id]);
+                $listing->categories()->sync($categoryIds);
                 $this->image($listing, 'logo', 'DEMO LOGO '.($index + 1), '#74DDCF', true);
                 $listing->forceFill(['logo_approved' => true, 'logo_alt' => 'Logo sintético DEMO '.($index + 1), 'logo_reviewed_at' => today('America/Cancun')])->save();
                 if ($index % 2 === 0) {
@@ -73,10 +110,10 @@ class DemoListingSeeder extends Seeder
                     $listing->addMediaFromString($this->pdf())->usingName('DEMO · Documento sintético')->usingFileName($slug.'-demo.pdf')->withCustomProperties(['is_demo' => true])->toMediaCollection('document');
                 }
                 $listing->forceFill(['media_approved' => true, 'media_reviewed_at' => today('America/Cancun'), 'image_alt' => 'Ilustración geométrica DEMO'])->save();
-                if ($index < 4) {
-                    TransitionListing::validatePublication($listing->fresh(), [$category->id]);
+                if (! in_array($slug, ['demo-borrador-privado', 'demo-negocio-pausado'], true)) {
+                    TransitionListing::validatePublication($listing->fresh(), $categoryIds);
                     $listing->forceFill(['status' => 'published', 'published_at' => now(), 'was_published' => true])->save();
-                } elseif ($index === 5) {
+                } elseif ($slug === 'demo-negocio-pausado') {
                     $listing->forceFill(['status' => 'paused'])->save();
                 }
             }
@@ -88,7 +125,7 @@ class DemoListingSeeder extends Seeder
         if ($record->demo_identity_seeded) {
             return;
         }
-        foreach (['primary_color' => $color, 'tagline' => $tagline, 'description' => '<h2>Identidad DEMO</h2><p>Contenido <strong>sintético</strong> para revisión local. Conserva emojis 👨‍👩‍👧‍👦 y enlaces de ejemplo.</p><ul><li>Primera idea DEMO</li><li>Segunda idea</li></ul><blockquote>Sin datos de negocios reales.</blockquote><p><a href="https://example.org">Referencia DEMO</a></p>'] as $field => $value) {
+        foreach (['primary_color' => $color, 'tagline' => $tagline, 'description' => DemoTaxonomyIdentity::DESCRIPTION] as $field => $value) {
             if (blank($record->{$field})) {
                 $record->{$field} = $value;
             }

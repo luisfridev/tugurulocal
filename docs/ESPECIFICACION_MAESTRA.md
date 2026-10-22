@@ -49,6 +49,12 @@ Inicio muestra propuesta de valor, accesos a categorías y zonas, selección edi
 
 Las tarjetas orgánicas Premium y Super Premium usan **borde** diferenciado, sin insignia de plan ni adelanto de productos. Identificar el plan dentro de la ficha está permitido. Una categoría puede mostrar una vitrina Premium separada **después de los primeros negocios**, sin presentarla como resultado orgánico. Los estados vacíos ofrecen un camino útil a otras categorías o Negocios. Los filtros no prometen búsqueda por texto.
 
+### Decisiones aprobadas para VS03 (22-10-2026)
+
+Negocios pagina de doce en doce y combina categoría y zona mediante formularios GET con botón Aplicar. La categoría incluye asociaciones principales y secundarias sin duplicar fichas; su página filtra por zona y la página de zona filtra por categoría. Aplicar reinicia la página y limpiar mantiene el contexto de la ruta. Recursos, filtros inválidos y páginas fuera de rango responden 404; una combinación válida vacía responde 200 con camino útil y noindex. Los parámetros desconocidos no se propagan. Se reserva también el slug `ofertas`.
+
+El super admin elige y ordena hasta seis negocios para Inicio, mediante una selección propia de la ciudad, separada de las listas de VS11 y de los planes. Se muestran hasta seis recientes adicionales, sin repetir seleccionados visibles. Los cierres permanentes no aparecen en ambos bloques, pero conservan presencia orgánica informativa con su estado. Una selección que pierde elegibilidad se oculta sin borrar la relación administrativa. Inicio enlaza categorías y zonas con resultados; las páginas activas vacías conservan su estado útil. Lugares públicos no se enlaza ni se sirve hasta VS12. Las superficies con solo DEMO no se indexan.
+
 ## 3. Fichas de negocios y Lugares (R02)
 
 Solo hay dos tipos de ficha: `business` y `place`. Cada ficha pertenece a una ciudad, tiene slug global único, categoría principal, categoría(s) secundaria(s) cuando sea negocio, zona opcional, estado editorial y estado operativo separados. Un negocio puede estar abierto, temporalmente cerrado o permanentemente cerrado. Una ficha permanentemente cerrada puede seguir accesible por valor informativo, pero no aparece en vitrinas ni campañas.
@@ -65,7 +71,7 @@ Los borradores pueden guardarse sin logo. Publicar un negocio exige logo existen
 
 Ciudades, categorías y zonas administran nombre con emojis compuestos, color HEX primario, imagen OG, icono independiente, tagline y descripción larga enriquecida. Son opcionales: respaldo de color de marca y omisión de bloques vacíos. Los slugs conservan sus restricciones sin emojis. RichEditor admite párrafos, encabezados, negritas, cursivas, listas, citas y enlaces, con HTML sanitizado, sin HTML arbitrario ni imágenes adjuntas. Conservar el texto existente de categorías. Medios JPEG/PNG/WebP con transparencia, alt, fecha manual y autorización. El texto sobre colores personalizados alcanza contraste 4.5:1. Las páginas públicas completas pertenecen a VS03.
 
-Un seeder DEMO separado y explícito funciona solo en local/testing. Crea cuatro negocios públicos (uno por categoría), un borrador y uno pausado con medios sintéticos identificados. Es repetible, conserva archivos y cambios manuales, no reinicia datos ni modifica cuentas. Completa solo identidad estructural vacía. DEMO permanece para revisión y queda excluido de producción y del inventario real. No inventa contactos, ubicaciones, calificaciones ni reseñas reales.
+Un seeder DEMO separado y explícito funciona solo en local/testing. Por ampliación solicitada el 22-10-2026, prepara 30 negocios públicos distribuidos entre las cuatro categorías de negocio y las dos zonas DEMO, además de un borrador y uno pausado, con medios sintéticos identificados. Conserva las seis fichas originales y añade 26 públicas. Los datos y medios permanecen disponibles para futuras etapas. Es repetible, conserva archivos y cambios manuales, no reinicia datos ni modifica cuentas. Completa solo identidad estructural vacía. DEMO queda excluido de producción y del inventario real. No inventa contactos, ubicaciones, calificaciones ni reseñas reales.
 
 ### Simplificación multimedia aprobada (22-10-2026)
 

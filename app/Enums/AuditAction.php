@@ -6,6 +6,7 @@ enum AuditAction: string
 {
     case ContentChanged = 'content.changed';
     case TaxonomyChanged = 'taxonomy.changed';
+    case HomeSelectionChanged = 'home_selection.changed';
     case ReportResolved = 'report.resolved';
 
     case AdminBootstrapped = 'admin.bootstrapped';
@@ -25,6 +26,7 @@ enum AuditAction: string
         return match ($this) {
             self::ContentChanged => 'Ficha modificada',
             self::TaxonomyChanged => 'Ciudad, zona o categoría modificada',
+            self::HomeSelectionChanged => 'Selección de Inicio modificada',
             self::ReportResolved => 'Reporte revisado',
             self::AdminBootstrapped => 'Primera cuenta administrativa creada',
             self::Login => 'Inicio de sesión',

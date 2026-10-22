@@ -8,15 +8,31 @@
 @endif
 
     @if($listing->is_demo)<p role="note" class="mb-5 rounded-2xl border border-brand-border bg-white p-4 font-semibold">DEMO · Negocio sintético para revisión local. No representa un negocio real.</p>@endif
-    <nav aria-label="Ubicación" class="mb-5 flex flex-wrap gap-2 text-sm text-brand-muted"><a href="{{ route('bootstrap') }}">Tu Gurú Local</a><span aria-hidden="true">/</span><span>{{ $listing->city->name }}</span><span aria-hidden="true">/</span><span aria-current="page">{{ $listing->name }}</span></nav>
+    @php($publicCityNavigation = $listing->city->is_public && $listing->city->slug === 'playa-del-carmen')
+    <x-breadcrumbs :items="[
+        ['label' => 'Inicio', 'url' => route('bootstrap')],
+        ['label' => $listing->city->name, 'url' => $publicCityNavigation ? route('cities.show', ['city' => $listing->city->slug]) : null],
+        ['label' => $listing->name, 'url' => null],
+    ]" />
     <section aria-labelledby="titulo-ficha" class="overflow-hidden rounded-[32px] bg-brand-deep text-white shadow-lg">
         @if($cover)<img src="{{ $cover->getUrl($cover->hasGeneratedConversion('card') ? 'card' : '') }}" alt="{{ $listing->image_alt ?: $listing->name }}" class="max-h-96 w-full object-cover" fetchpriority="high">
 @endif
 
         <div class="p-6 sm:p-9">
-            <p class="mb-4 flex flex-wrap gap-2 text-sm font-semibold"><span class="rounded-lg px-3 py-2" style="background-color: {{ $listing->primaryCategory->identityBackground() }}; color: {{ $listing->primaryCategory->identityForeground() }}">{{ $listing->primaryCategory->name }}</span>@if($listing->area?->is_active)<span class="rounded-lg px-3 py-2" style="background-color: {{ $listing->area->identityBackground() }}; color: {{ $listing->area->identityForeground() }}">{{ $listing->area->name }}</span>
-@endif
-</p>
+            <div class="mb-4 flex flex-wrap gap-2 text-sm font-semibold">
+                @if($publicCityNavigation && $listing->primaryCategory->is_active && $listing->primaryCategory->listing_type === 'business')
+                    <a href="{{ route('categories.show', ['city' => $listing->city->slug, 'category' => $listing->primaryCategory->slug]) }}" class="inline-flex min-h-11 min-w-0 max-w-full items-center rounded-lg px-3 py-2 wrap-anywhere underline underline-offset-4" style="background-color: {{ $listing->primaryCategory->identityBackground() }}; color: {{ $listing->primaryCategory->identityForeground() }}">{{ $listing->primaryCategory->name }}</a>
+                @else
+                    <span class="inline-flex min-h-11 min-w-0 max-w-full items-center rounded-lg px-3 py-2 wrap-anywhere" style="background-color: {{ $listing->primaryCategory->identityBackground() }}; color: {{ $listing->primaryCategory->identityForeground() }}">{{ $listing->primaryCategory->name }}</span>
+                @endif
+                @if($listing->area?->is_active && (! $listing->area->is_demo || app()->environment(['local', 'testing'])))
+                    @if($publicCityNavigation)
+                        <a href="{{ route('areas.show', ['city' => $listing->city->slug, 'area' => $listing->area->slug]) }}" class="inline-flex min-h-11 min-w-0 max-w-full items-center rounded-lg px-3 py-2 wrap-anywhere underline underline-offset-4" style="background-color: {{ $listing->area->identityBackground() }}; color: {{ $listing->area->identityForeground() }}">{{ $listing->area->name }}</a>
+                    @else
+                        <span class="inline-flex min-h-11 min-w-0 max-w-full items-center rounded-lg px-3 py-2 wrap-anywhere" style="background-color: {{ $listing->area->identityBackground() }}; color: {{ $listing->area->identityForeground() }}">{{ $listing->area->name }}</span>
+                    @endif
+                @endif
+            </div>
             <div class="flex items-center gap-4 sm:gap-5">
                 @if($logo)<img src="{{ $logo->getUrl() }}" alt="{{ $listing->logo_alt ?: $listing->name }}" width="96" height="96" class="h-16 w-16 shrink-0 rounded-2xl bg-white object-contain p-2 sm:h-24 sm:w-24">
                 @endif

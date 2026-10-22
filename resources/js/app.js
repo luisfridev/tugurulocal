@@ -13,3 +13,20 @@ document.querySelectorAll('[data-share-url]').forEach((button) => {
         }
     });
 });
+
+document.querySelectorAll('[data-discovery-filters]').forEach((form) => {
+    const button = form.querySelector('[data-filter-submit]');
+    const status = form.querySelector('[data-filter-status]');
+
+    form.addEventListener('submit', () => {
+        form.setAttribute('aria-busy', 'true');
+        button.textContent = 'Aplicando…';
+        status.textContent = 'Cargando negocios con los filtros seleccionados.';
+    });
+
+    window.addEventListener('pageshow', () => {
+        form.removeAttribute('aria-busy');
+        button.textContent = 'Aplicar';
+        status.textContent = '';
+    });
+});
