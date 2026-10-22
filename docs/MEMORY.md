@@ -186,7 +186,9 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Integración comprobada (22-10-2026):** GitHub confirmó `merged=true`, destino `master` y merge `78e67bd3cee9e7b5389161ddb106ba354b306fef`, del 22-10-2026 a las 16:17:35 (America/Cancun; 21:17:35 UTC). Después de `git fetch origin` y `git merge --ff-only origin/master`, `master` local y `origin/master` coincidían en ese commit; el checkout ya estaba actualizado y no fue necesario avanzar. El commit de entrega `cbb17bd` es ancestro de `master` y la comparación de árboles no presenta diferencias. La continuación `-4` registra este cierre mediante una nueva PR documental, sin cambios de implementación ni repetición de pruebas técnicas.
 
-**Pendientes:** revisión de la PR del registro documental; contenido de salida en VS16 y despliegue en VS17. VS03 está completada e integrada, sin comprobaciones locales pendientes identificadas. **Siguiente acción:** VS04, mantener URLs e indexación. No se ha desplegado.
+**Registro documental de integración:** [PR #5 — VS03: registrar integración y cierre](https://github.com/luisfridev/tugurulocal/pull/5), abierta hacia `master` desde `codex/vs03-descubrir-negocios-cont-20261022-4`, commit documental `54e0b8f3bac360fe0f5be600afd383285a8545c3`. La PR está adjunta al chat y este enlace se incorpora en la misma rama mediante un commit de registro posterior. Su revisión pendiente corresponde a documentación; la implementación de VS03 ya está integrada mediante PR #4.
+
+**Pendientes:** revisión de la PR #5 del registro documental; contenido de salida en VS16 y despliegue en VS17. VS03 está completada e integrada, sin comprobaciones locales pendientes identificadas. **Siguiente acción:** VS04, mantener URLs e indexación. No se ha desplegado.
 
 ### VS04 — Mantener URLs e indexación
 
