@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -40,6 +41,18 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    public function superAdmin(): static
+    {
+        return $this->state(fn (): array => ['is_super_admin' => true]);
+    }
+
+    public function withAppAuthentication(): static
+    {
+        return $this->state(fn (): array => [
+            'app_authentication_secret' => app(AppAuthentication::class)->generateSecret(),
         ]);
     }
 }

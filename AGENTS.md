@@ -36,6 +36,8 @@ Actualiza documentación, enlaces, implementación y pruebas cuando cambie un co
 
 Cada vez que trabajes una tarea `VSXX` de [docs/MEMORY.md](docs/MEMORY.md), crea al comenzar `docs/dev_changelog/VSXX.md` si no existe y actualízalo al terminar cada intervención. Usa exactamente el ID de la tarea como nombre, por ejemplo `VS01.md`; si retomas la misma tarea, continúa en su archivo y fecha las nuevas entradas. Explica en español claro el objetivo, los cambios realizados y su motivo, los resultados observables, las comprobaciones con entorno y resultado, y lo pendiente. Distingue lo planeado de lo terminado y las pruebas locales de producción. No incluyas secretos, datos personales ni evidencia privada. Enlaza ese archivo desde la tarea correspondiente en `docs/MEMORY.md` y mantén su estado y evidencia sincronizados. No crees registros vacíos para tareas aún no trabajadas.
 
+`docs/dev_changelog/` contiene únicamente registros Markdown por tarea. No guardes imágenes ni capturas en esa carpeta. Documenta la revisión visual en texto, con las URLs locales, tamaños de pantalla, interacciones comprobadas y resultados observables.
+
 El bloque siguiente lo genera Laravel Boost. Si una regla generada discrepa de las instrucciones anteriores o de la especificación maestra, prevalecen las reglas propias del proyecto. `boost:install` conserva este texto fuera de su bloque.
 
 ===

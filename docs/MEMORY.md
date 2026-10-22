@@ -1,6 +1,6 @@
 # Tu Gurú Local — Tablero de entregas verticales
 
-**Fecha:** 21 de octubre de 2026. **Estado:** ejecución iniciada; VS00 completada localmente, VS01–VS17 pendientes. No hay lanzamiento ni verificación de producción.
+**Fecha:** 22 de octubre de 2026. **Estado:** VS00 y VS01 completadas localmente; fase Base cerrada; VS02–VS17 pendientes. No hay lanzamiento ni verificación de producción.
 
 ## Uso, autoridad y cierre
 
@@ -12,7 +12,7 @@ Estados permitidos: `pendiente`, `en curso`, `bloqueada`, `completada`. Marcar `
 
 Antes de cada intervención en `VSXX`, comprobar el estado de Git y crear una rama nueva exclusiva antes de editar: `codex/vsXX-descripcion` para la primera y `codex/vsXX-descripcion-cont-AAAAMMDD-N` para las continuaciones. Partir de una base que incluya dependencias cerradas y trabajo previo de la misma tarea: la base integrada cuando ya contiene ese trabajo, o la rama anterior de `VSXX` si aún no se integró. No trabajar tareas VSXX en `master` ni mezclar tareas distintas en una rama. Conservar los cambios sin confirmar al cambiar de rama y anotar cada rama usada en el registro y la evidencia de la tarea.
 
-Al trabajar cualquier `VSXX`, abrir o crear `docs/dev_changelog/VSXX.md` con ese ID exacto y actualizarlo al terminar cada intervención. Escribir en lenguaje claro qué se hizo y por qué, qué se verificó realmente y qué falta; fechar las continuaciones en el mismo archivo. Enlazar el registro desde la tarea correspondiente y mantenerlo coherente con su estado y evidencia resumida aquí. No generar registros vacíos para tareas pendientes ni atribuir a producción resultados locales.
+Al trabajar cualquier `VSXX`, abrir o crear `docs/dev_changelog/VSXX.md` con ese ID exacto y actualizarlo al terminar cada intervención. Escribir en lenguaje claro qué se hizo y por qué, qué se verificó realmente y qué falta; fechar las continuaciones en el mismo archivo. Enlazar el registro desde la tarea correspondiente y mantenerlo coherente con su estado y evidencia resumida aquí. `docs/dev_changelog/` contiene únicamente registros Markdown, sin imágenes ni capturas; documentar la revisión visual en texto con URLs locales, tamaños de pantalla, interacciones y resultados observables. No generar registros vacíos para tareas pendientes ni atribuir a producción resultados locales.
 
 En cada tarea ejecutar pruebas enfocadas de comportamiento; en tareas con UI revisar en Herd las pantallas afectadas en móvil, tableta, escritorio y teclado, y enlazar sus URLs locales en `docs/dev_changelog/VSXX.md` para abrirlas en el navegador. Mantener `npm run dev` activo durante la edición visual. Registrar comandos, entorno, resultado, fecha y revisión visual; anotar «no aplica» con motivo cuando corresponda. Al cerrar cada fase ejecutar suite completa en MySQL, Pint, build, inspección de rutas y revisión visual; añadir `git diff --check` cuando exista repositorio. SQLite no acredita integración MySQL. Las comprobaciones locales no acreditan producción.
 
@@ -23,7 +23,7 @@ No hay lanzamientos parciales. No copiar del proyecto anterior ni añadir cuenta
 | ID | Entrega | Estado | Depende de | Fase |
 | --- | --- | --- | --- | --- |
 | VS00 | Base ejecutable | completada | Ninguna | Base |
-| VS01 | Administración segura | pendiente | VS00 | Base |
+| VS01 | Administración segura | completada | VS00 | Base |
 | VS02 | Publicar y consultar una ficha Gratis | pendiente | VS01 | Editorial |
 | VS03 | Descubrir negocios | pendiente | VS02 | Editorial |
 | VS04 | Mantener URLs e indexación | pendiente | VS03 | Editorial |
@@ -71,21 +71,38 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 ### VS01 — Administración segura
 
-**Estado:** pendiente. **Dependencias:** VS00. **Trazabilidad:** R08–R09 / AC08–AC09; T02.
+**Estado:** completada localmente el 22 de octubre de 2026. **Dependencias:** VS00 completada. **Trazabilidad:** R08–R09 / AC08–AC09; T02.
+
+**Registro de cambios:** [VS01.md](dev_changelog/VS01.md). **Ramas:** `codex/vs01-administracion-segura`, creada desde `master` con VS00 integrada; continuaciones `codex/vs01-administracion-segura-cont-20261021-1`, `codex/vs01-administracion-segura-cont-20261021-2`, `codex/vs01-administracion-segura-cont-20261021-3`, `codex/vs01-administracion-segura-cont-20261022-1`, `codex/vs01-administracion-segura-cont-20261022-2`, `codex/vs01-administracion-segura-cont-20261022-3`, `codex/vs01-administracion-segura-cont-20261022-4` y `codex/vs01-administracion-segura-cont-20261022-5`, conservando el trabajo previo. La segunda cambia el prefijo administrativo a `/dashboard`; la tercera corrige el retorno a `/admin` guardado en sesiones anteriores; la primera del día 22 completa la revisión visual y el cierre local; la segunda actualiza el flujo para mantener solo registros Markdown y retira la captura; la tercera restaura el respaldo MySQL original y documenta la configuración mediante `.env`; la cuarta prepara el registro del commit sin llegar a crearlo; la quinta confirma en Git el conjunto de VS01 y corrige aquella evidencia anticipada. El propietario eligió `tugurulocal_2026` y autorizó reiniciar sus datos; el nombre local se toma de `DB_DATABASE` en `.env`, con `'laravel'` únicamente como respaldo en la configuración MySQL. PHPUnit usa la base separada `tugurulocal_2026_test`.
 
 **Objetivo:** permitir operación administrativa exclusivamente al super admin, con autenticación reforzada y cambios auditables.
 
-- [ ] Crear el panel y bootstrap seguro de primera cuenta; `is_super_admin` falso por defecto y promoción explícita. Deshabilitar autorregistro público.
-- [ ] Aplicar 2FA, límites de intentos, sesiones seguras y policies para acciones directas, recursos y operaciones masivas; reutilizar esta protección en las tareas siguientes.
-- [ ] Registrar actor, fecha y resultado de cambios sensibles sin almacenar secretos; presentar errores y estados administrativos comprensibles.
+- [x] Crear el panel y bootstrap seguro de primera cuenta; `is_super_admin` falso por defecto y promoción explícita. Deshabilitar autorregistro público.
+- [x] Aplicar 2FA, límites de intentos, sesiones seguras y policies para acciones directas, recursos y operaciones masivas; reutilizar esta protección en las tareas siguientes.
+- [x] Registrar actor, fecha y resultado de cambios sensibles sin almacenar secretos; presentar errores y estados administrativos comprensibles.
+- [x] Completar la revisión visual en móvil, tableta y escritorio y la navegación por teclado en Herd para cerrar Base.
 
 **Aceptación y fallos:** visitante y usuario sin privilegios no acceden ni ejecutan acciones por URL directa; el super admin cumple 2FA antes de operar. Ocultar un botón no sustituye autorización del servidor.
 
 **Pruebas y revisión:** accesos de visitante/no super admin/super admin, límites de login, exigencia de 2FA y operaciones directas/masivas disponibles. Revisar login/panel con teclado y ausencia de registro público. Cerrar puerta Base.
 
-**Evidencia:** sin ejecución registrada.
+**Evidencia local (21-10-2026):** ramas indicadas arriba. Base `tugurulocal_2026` reiniciada con autorización del propietario y seis migraciones correctas; `tugurulocal_2026_test` preparada por separado y forzada en PHPUnit. Suite completa: 38 pruebas y 273 aserciones sobre MySQL. Cobertura de creación inicial, validación, asignación de privilegios, alta TOTP, desafío, recuperación de un solo uso, rechazo de TOTP reutilizado, límites, permisos, auditoría, cambio de contraseña, cierre de sesión y peticiones HTTP Livewire tras revocar acceso/2FA. Pint, Composer, build, rutas y `git diff --check` correctos. Herd: login y recursos CSS/JS/fuentes con HTTP 200; rutas privadas redirigen al login y registro público/Premium devuelven 404. Vite activo. [Detalle y URLs locales](dev_changelog/VS01.md).
 
-**Bloqueos:** ninguno confirmado; no registrar credenciales ni códigos de recuperación aquí.
+**Continuación de ruta (21-10-2026):** rama `codex/vs01-administracion-segura-cont-20261021-2`. Panel, login, perfil, 2FA, auditoría y logout usan `/dashboard`; las rutas anteriores `/admin` devuelven 404. Se actualizaron contratos, README y pruebas. Pruebas enfocadas: 28 pruebas y 234 aserciones; suite completa MySQL: 39 pruebas y 279 aserciones. Pint, build, rutas y `git diff --check` correctos. Login revisado en Herd a 390×844, 768×1024 y 1280×800, con recorrido Tab y sin errores de consola capturados. [Detalle y URLs vigentes](dev_changelog/VS01.md#continuación--ruta-administrativa-dashboard-21-de-octubre-de-2026).
+
+**Corrección de retorno de sesión (21-10-2026):** rama `codex/vs01-administracion-segura-cont-20261021-3`. Se reprodujo que Filament priorizaba `/admin` o sus subrutas al estar guardadas como destino de retorno. El login las descarta al montar el formulario y al autenticar, conservando los destinos vigentes y la exigencia de 2FA. Pruebas enfocadas: 19 pruebas y 194 aserciones; suite MySQL completa: 43 pruebas y 298 aserciones. Pint y `git diff --check` correctos. Login recargado en Herd sin errores de consola; la autenticación con destinos guardados se comprobó con usuarios de prueba. [Detalle](dev_changelog/VS01.md#continuación--destino-de-acceso-guardado-en-sesión-21-de-octubre-de-2026).
+
+**Cierre visual local (22-10-2026):** rama `codex/vs01-administracion-segura-cont-20261022-1`, responsable: agente Codex. Se confirmó la cuenta del propietario con 2FA habilitado. Panel, perfil, auditoría, alta y desafío 2FA se revisaron en Herd a 390×844, 768×1024 y 1280×800, con teclado, foco y recursos cargados. Una cuenta temporal expresamente autorizada permitió completar el alta, acceder mediante TOTP y usar recuperación sin cambiar la cuenta real. Al terminar se eliminaron esa cuenta, sus nueve eventos sintéticos y los archivos temporales de credenciales; la consulta final devuelve una cuenta administrativa con 2FA y cero cuentas temporales. Se comprobó que las cuentas y la auditoría anteriores conservaron sus valores. Se corrigió el mensaje de auditoría sin coincidencias y se documentó su comprobación visual en texto. Pruebas enfocadas: 27 pruebas y 239 aserciones; suite MySQL: 43 pruebas y 298 aserciones. Pint, build, rutas y `git diff --check` correctos; consola del navegador sin errores ni advertencias capturados. [Detalle y URLs locales](dev_changelog/VS01.md#continuación--cierre-visual-y-cuenta-administrativa-22-de-octubre-de-2026).
+
+**Ajuste del flujo documental (22-10-2026):** rama `codex/vs01-administracion-segura-cont-20261022-2`. Por instrucción del propietario, se eliminó la imagen de auditoría y sus enlaces; AGENTS, README, plan y este tablero establecen que `docs/dev_changelog/` contiene solo registros Markdown. La revisión visual conserva sus URLs y resultados escritos. Se comprobaron los enlaces locales, la ausencia de imágenes y `git diff --check`; VS01 conserva su cierre local. No cambió código ni se repitieron pruebas de aplicación.
+
+**Base de datos mediante `.env` (22-10-2026):** rama `codex/vs01-administracion-segura-cont-20261022-3`, creada desde la anterior con los cambios pendientes conservados y VS00 completada. Se restauró `env('DB_DATABASE', 'laravel')` como configuración MySQL original; README, diseño técnico y stack aclaran que la base local se toma de `DB_DATABASE` en `.env`. Artisan confirmó `tugurulocal_2026` como valor efectivo. Sintaxis PHP, Pint, coincidencia de `config/database.php` con Git y `git diff --check` correctos; se verificó que los demás cambios previos permanecen intactos. No se editaron `.env`, `.env.example` ni PHPUnit; se conserva `tugurulocal_2026_test`. No aplica revisión visual ni repetir suite/build para este ajuste sin cambio de base efectiva o interfaz. VS01 conserva su cierre local; [detalle](dev_changelog/VS01.md#continuación--base-de-datos-mediante-env-22-de-octubre-de-2026).
+
+**Preparación del commit (22-10-2026):** rama `codex/vs01-administracion-segura-cont-20261022-4`, desde la continuación anterior. Se preparó el registro de los 39 archivos de VS01, pero no se creó el commit: al revisar Git, HEAD seguía en `c2b146a` y los cambios continuaban sin confirmar. Se corrige la afirmación anterior que daba por terminada esa operación. [Detalle](dev_changelog/VS01.md#continuación--confirmación-de-cambios-en-git-22-de-octubre-de-2026).
+
+**Confirmación de VS01 en Git (22-10-2026):** rama `codex/vs01-administracion-segura-cont-20261022-5`, creada desde la anterior con VS00 integrada y todos los cambios pendientes conservados, por instrucción del propietario. El commit que contiene esta actualización reúne los 39 archivos de implementación, pruebas, configuración de ejemplo y documentación. Se revisaron los archivos incluidos, la exclusión de `.env`, los patrones de claves privadas y tokens y `git diff --check`. Se conserva la evidencia local de pruebas y revisión visual; esta intervención solo corrige el registro y confirma el trabajo existente. [Detalle](dev_changelog/VS01.md#continuación--commit-del-conjunto-vs01-22-de-octubre-de-2026).
+
+**Siguiente acción:** integrar VS01 en la base de trabajo antes de iniciar VS02, publicar y consultar una ficha Gratis. La puerta Base queda cerrada localmente y los cambios de VS01 están recogidos en el commit que contiene esta actualización; la integración en `master` y el envío al remoto siguen pendientes. Producción, HTTPS del despliegue y respaldos siguen pendientes de VS17.
 
 ### VS02 — Publicar y consultar una ficha Gratis
 

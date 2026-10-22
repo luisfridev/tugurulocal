@@ -1,6 +1,6 @@
 # Tu Gurú Local — proyecto nuevo
 
-Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00 deja una base local ejecutable; la guía pública todavía no está implementada ni publicada.** La pantalla raíz es temporal y lleva `noindex`.
+Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00 y VS01 completaron la fase Base local, incluida la revisión visual de la administración. VS02 es la siguiente entrega. La guía pública todavía no está implementada ni publicada.** La pantalla raíz es temporal y lleva `noindex`.
 
 ## Contratos y secuencia
 
@@ -9,7 +9,7 @@ Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ci
 3. [Plan](docs/PLAN_IMPLEMENTACION.md) y [tablero VS00–VS17](docs/MEMORY.md): dependencias, puertas de fase y evidencia.
 4. [Guía visual](docs/GUIA_VISUAL.md) y [contenido y operación](docs/CONTENIDO_Y_OPERACION.md): presentación y verificación editorial/comercial.
 
-Los cambios ya realizados se explican por tarea en [docs/dev_changelog](docs/dev_changelog/VS00.md); el primer registro corresponde a VS00.
+Los cambios ya realizados se explican por tarea en [docs/dev_changelog](docs/dev_changelog/VS00.md); el primer registro corresponde a VS00. Esa carpeta contiene únicamente registros Markdown, sin imágenes ni capturas; la revisión visual se documenta con URLs, tamaños de pantalla, interacciones y resultados.
 
 Cada intervención en una tarea `VSXX` se desarrolla en una rama Git nueva: `codex/vsXX-descripcion` al comenzar y una rama con sufijo de continuación al retomarla. El [plan](docs/PLAN_IMPLEMENTACION.md) y [AGENTS.md](AGENTS.md) detallan cómo conservar el trabajo previo.
 
@@ -17,7 +17,7 @@ Las [capturas](docs/referencias/capturas/26-mapa-de-pantallas.jpg) orientan la c
 
 ## Desarrollo local
 
-Requisitos verificados para VS00: PHP 8.4, Composer 2, Node 22, npm 10 y MySQL 8.4. Usa dos bases **nuevas y separadas**, por ejemplo `tugurulocal_nuevo_dev` y `tugurulocal_nuevo_test`; las pruebas pueden vaciar la segunda. Crea un usuario MySQL local con acceso a ambas. Configura host, puerto, usuario y contraseña en `.env` (o `DB_SOCKET` para un servidor por socket); nunca los confirmes en Git.
+Requisitos verificados para VS00: PHP 8.4, Composer 2, Node 22, npm 10 y MySQL 8.4. La base principal local se configura con `DB_DATABASE` en `.env`; actualmente es `tugurulocal_2026`, según la decisión del propietario. `config/database.php` conserva `'laravel'` como respaldo original de MySQL, usado solo si no existe esa variable de entorno. PHPUnit usa `tugurulocal_2026_test`, separada porque las pruebas pueden vaciar sus tablas. Crea un usuario MySQL local con acceso a ambas. Configura nombre de base, host, puerto, usuario y contraseña en `.env` (o `DB_SOCKET` para un servidor por socket); nunca confirmes el archivo local ni sus credenciales en Git.
 
 Herd ya sirve esta carpeta en [http://tugurulocal-nuevo.test/](http://tugurulocal-nuevo.test/). Configura `APP_URL=http://tugurulocal-nuevo.test` en tu `.env` local. Abre esa dirección en el navegador para revisar los cambios; Herd sirve PHP sin ejecutar `php artisan serve`. Durante trabajos de interfaz, deja `npm run dev` activo en una terminal para que Vite actualice estilos y recargue las vistas al guardar.
 
@@ -35,11 +35,25 @@ npm run build
 npm run dev
 ```
 
-`phpunit.xml` fuerza MySQL y usa `tugurulocal_nuevo_test`; toma la conexión local de `.env` o `.env.testing`. No apuntes esa base de pruebas a datos reales. La aplicación guarda instantes en UTC y `config/business.php` fija `America/Cancun` para su presentación. Las fuentes web están incluidas como paquetes npm, así que `npm run build` no necesita descargar fuentes en tiempo de compilación.
+`phpunit.xml` fuerza MySQL y la base `tugurulocal_2026_test`, incluso si el proceso recibe otro `DB_DATABASE`; toma los demás datos de conexión local de `.env` o `.env.testing`. No apuntes esa base de pruebas a datos reales. La aplicación guarda instantes en UTC y `config/business.php` fija `America/Cancun` para su presentación. Las fuentes web están incluidas como paquetes npm, así que `npm run build` no necesita descargar fuentes en tiempo de compilación.
 
 En cada VSXX con cambios visuales, revisa la URL afectada en Herd y enlázala en el registro de la tarea para poder abrirla en el navegador. Herd sirve la aplicación; la conexión MySQL se configura por separado. La instancia temporal usada al comprobar VS00 no es una base permanente para tareas posteriores.
 
-La raíz muestra únicamente un aviso temporal en español. Filament está instalado en `/admin`, pero un usuario nuevo no tiene privilegios y no puede entrar al panel; la creación segura del primer super admin, 2FA, policies y auditoría corresponden a VS01. Debugbar queda apagada por defecto y se puede habilitar solo para desarrollo local mediante `DEBUGBAR_ENABLED=true`.
+La raíz muestra únicamente un aviso temporal en español. Filament está en `/dashboard`: un usuario nuevo no tiene privilegios y no puede entrar al panel. VS01 exige segundo factor TOTP, comprueba permisos en peticiones directas y Livewire y ofrece auditoría de solo lectura. Debugbar queda apagada por defecto y se puede habilitar solo para desarrollo local mediante `DEBUGBAR_ENABLED=true`.
+
+### Primera cuenta administrativa
+
+Tras migrar, ejecuta en una terminal interactiva:
+
+```sh
+php artisan app:bootstrap-super-admin
+```
+
+El comando pide nombre, correo y una contraseña oculta, con confirmación, de al menos 12 caracteres con mayúsculas, minúsculas y números. No acepta contraseña como argumento ni funciona en modo no interactivo. Rechaza un correo ya registrado y la creación si ya existe un super admin. La operación usa un bloqueo compartido en MySQL y una transacción; no promueve cuentas existentes de forma implícita.
+
+Abre [el acceso local](http://tugurulocal-nuevo.test/dashboard/login), configura una aplicación autenticadora y guarda fuera del sitio los ocho códigos de recuperación. Antes de completar ese paso no se permite operar el panel. Cada código de recuperación se consume una sola vez; la misma clave TOTP no puede reutilizarse en otro inicio de sesión. El perfil exige la contraseña actual para cambiar correo o contraseña; la auditoría registra identificadores, acciones y campos modificados, sin copiar sus valores privados.
+
+Las sesiones usan cookies de sesión HttpOnly y SameSite=Lax, datos de sesión cifrados y 30 minutos de inactividad por defecto. La opción Recordarme no está disponible. En `APP_ENV=production` la cookie exige HTTPS por defecto; el despliegue y su comprobación siguen pendientes. El propietario ya creó su cuenta administrativa y el 22 de octubre de 2026 se verificó localmente que tiene 2FA habilitado. La cuenta temporal autorizada para revisar el alta y el desafío se eliminó al terminar. No se guardan credenciales de acceso en Git.
 
 ### Laravel Boost para Codex
 
@@ -53,4 +67,4 @@ El comando actualiza el bloque delimitado de Boost en `AGENTS.md` y los archivos
 
 ## Pendientes para el lanzamiento
 
-VS01–VS17 y contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
+VS02–VS17 y contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
