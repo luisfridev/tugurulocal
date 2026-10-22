@@ -15,6 +15,8 @@ Cada intervención en una tarea `VSXX` se desarrolla en una rama Git nueva: `cod
 
 Las [capturas](docs/referencias/capturas/26-mapa-de-pantallas.jpg) orientan la composición. No aportan datos verificables ni autorizan funciones pospuestas. No se importó código, base de datos, contenido, slugs ni redirecciones del proyecto anterior.
 
+Cada tarea aplica [Antislop según el trabajo](AGENTS.md#antislop-por-tarea), en modo `during` por defecto para este proyecto: base más los complementos de texto, UI, accesibilidad, responsive o comentarios que correspondan, junto con las skills técnicas. El [procedimiento de inicio y revisión final](docs/PLAN_IMPLEMENTACION.md#antislop-en-la-ejecución) exige evidencia de los criterios aplicables y conserva la guía visual como dirección de diseño.
+
 ## Desarrollo local
 
 Requisitos verificados para VS00: PHP 8.4, Composer 2, Node 22, npm 10 y MySQL 8.4. La base principal local se configura con `DB_DATABASE` en `.env`; actualmente es `tugurulocal_2026`, según la decisión del propietario. `config/database.php` conserva `'laravel'` como respaldo original de MySQL, usado solo si no existe esa variable de entorno. PHPUnit usa `tugurulocal_2026_test`, separada porque las pruebas pueden vaciar sus tablas. Crea un usuario MySQL local con acceso a ambas. Configura nombre de base, host, puerto, usuario y contraseña en `.env` (o `DB_SOCKET` para un servidor por socket); nunca confirmes el archivo local ni sus credenciales en Git.
