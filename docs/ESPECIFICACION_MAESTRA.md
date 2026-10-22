@@ -97,7 +97,7 @@ Hay **máximo tres campañas Super Premium simultáneas por ciudad**. El carruse
 
 ## 9. Página comercial y administración (R08)
 
-Solo el super admin autenticado administra ciudad, zonas, categorías, fichas, medios, relaciones, recomendaciones, listas, blog, productos, ofertas, planes, campañas, precios y contacto comercial. La autorización se aplica en servidor a cada acción, incluido acceso directo y acciones masivas. Hay segundo factor administrativo, límite de intentos, sesiones seguras, registro de cambios y copias de seguridad.
+El panel administrativo se sirve en `/dashboard`, con acceso en `/dashboard/login`. Solo el super admin autenticado administra ciudad, zonas, categorías, fichas, medios, relaciones, recomendaciones, listas, blog, productos, ofertas, planes, campañas, precios y contacto comercial. La autorización se aplica en servidor a cada acción, incluido acceso directo y acciones masivas. Hay segundo factor administrativo, límite de intentos, sesiones seguras, registro de cambios y copias de seguridad.
 
 El panel permite editar **precio mensual público en MXN** de Premium y Super Premium y el texto que indica si incluye IVA. También configura número de WhatsApp Business, responsable y plazo de respuesta real. `/premium` y todos sus CTA comerciales permanecen ocultos y fuera del sitemap hasta que ambos precios, tratamiento de IVA, WhatsApp y responsable estén completos y aprobados; el plazo de respuesta solo se muestra si se aprueba uno. Cuando se habiliten, la página compara Gratis, Premium y Super Premium sin prometer votos, ranking ni activación automática. Una solicitud por WhatsApp inicia venta asistida; el plan pagado se activa tras acuerdo, pago confirmado y contenido aprobado.
 

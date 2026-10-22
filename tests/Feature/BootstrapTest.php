@@ -42,7 +42,7 @@ class BootstrapTest extends TestCase
         $this->assertFalse($user->is_super_admin);
         $this->assertFalse($user->canAccessPanel(Filament::getPanel('admin')));
 
-        $this->actingAs($user)->get('/admin')->assertForbidden();
+        $this->actingAs($user)->get('/dashboard')->assertForbidden();
     }
 
     public function test_business_time_is_displayed_in_cancun_while_application_uses_utc(): void

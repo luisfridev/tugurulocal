@@ -26,3 +26,5 @@ VS00 creó Laravel limpio, manifiestos y entorno MySQL local. En su continuació
 
 Las claves de Resend, MySQL y cualquier servicio se proporcionan por variables de entorno y nunca se copian al repositorio. La instalación y pruebas locales están en [README](../README.md).
 
+VS01 usa la autenticación TOTP nativa de Filament 5.10.3 sin añadir paquetes. El nombre de la base principal local se configura con `DB_DATABASE` en `.env`, actualmente `tugurulocal_2026`; PHPUnit usa `tugurulocal_2026_test`, según la decisión del propietario del 21 de octubre de 2026. La configuración MySQL conserva `'laravel'` como respaldo original, usado solo si falta `DB_DATABASE`. El comando de primera cuenta, las sesiones y la auditoría están implementados y probados localmente. La revisión visual y de teclado se completó el 22 de octubre de 2026 y cerró la fase Base local; no acredita producción.
+
