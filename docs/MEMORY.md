@@ -40,7 +40,7 @@ Antislop `during` (regla del proyecto), base y copywriting para instrucciones, c
 | Diseño, activos, UI, técnicas visuales y diales | No aplica: solo cambian instrucciones y documentación; no se crean recursos ni se modifica una interfaz. |
 | Ejecución de aplicación e interacciones (R-35; C-2, C-4) | No aplica: no cambia código; PHPUnit, Pint, build y Herd no se repiten para este alcance documental. |
 
-Pendiente: revisión y fusión del propietario de la PR de esta actualización. El cambio no acredita producción.
+Entrega: [PR #13: Docs, una PR por entrega y cierre sin PR de registro](https://github.com/luisfridev/tugurulocal/pull/13), hacia `master` desde `codex/simplificar-flujo-pr`. Commit inicial `9dc18e385a3cad19448b883bf3067433895a7a02`, publicado mediante la conexión GitHub con árbol idéntico al contenido local verificado. Este enlace se incorpora a la misma rama y PR. Pendiente: revisión y fusión del propietario; no se creará otra PR para registrar su merge. El cambio no acredita producción.
 
 **Actualización documental del flujo (22-10-2026):** rama `codex/flujo-cierre-vsxx-pr`; [PR #2](https://github.com/luisfridev/tugurulocal/pull/2) entregada abierta para revisión y fusionada hacia `master` el 22 de octubre de 2026 a las 14:40:49 (America/Cancun), commit `878b5faeac0eff4aa5e9e9b911cefce764ce168f`. Integración comprobada en GitHub y `master` local sincronizado por avance rápido desde `origin/master` el mismo día. Cambio exclusivo de las reglas generales; no modifica los cierres históricos de las VSXX.
 
