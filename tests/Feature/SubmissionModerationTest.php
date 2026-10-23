@@ -206,18 +206,20 @@ class SubmissionModerationTest extends TestCase
         $actor = User::factory()->superAdmin()->withAppAuthentication()->create();
         $city = City::factory()->create();
         $category = Category::factory()->create();
-        $first = app(SubmitSubmission::class)->handle(['city_id' => $city->id, 'category_id' => $category->id, 'type' => 'business', 'name' => 'Café de Prueba', 'address' => 'Calle 10, Centro', 'maps_url' => 'https://www.example.org/maps/?b=2&a=1&utm_source=uno', 'reason' => 'Motivo privado original']);
+        $first = app(SubmitSubmission::class)->handle(['city_id' => $city->id, 'category_id' => $category->id, 'type' => 'business', 'name' => 'Café de Prueba', 'address' => 'Calle 10, Centro', 'maps_url' => 'https://www.example.org/maps/?b=2&a=1&utm_source=uno', 'evidence_url' => 'https://example.org/evidencia', 'reason' => 'Motivo privado original']);
         $second = app(SubmitSubmission::class)->handle(['city_id' => $city->id, 'category_id' => $category->id, 'type' => 'business', 'name' => 'CAFE DE PRUEBA', 'address' => 'otra referencia', 'reason' => 'Motivo privado segundo']);
         $byUrl = app(SubmitSubmission::class)->handle(['city_id' => $city->id, 'category_id' => $category->id, 'type' => 'business', 'name' => 'Otro nombre por enlace', 'address' => 'otra dirección', 'maps_url' => 'http://example.org/maps?a=1&b=2', 'reason' => 'Motivo privado por enlace']);
+        $byEvidence = app(SubmitSubmission::class)->handle(['city_id' => $city->id, 'category_id' => $category->id, 'type' => 'business', 'name' => 'Propuesta por evidencia', 'address' => 'referencia independiente', 'evidence_url' => 'http://www.example.org/evidencia/?utm_source=dos', 'reason' => 'Motivo privado por evidencia']);
         $listing = Listing::factory()->recycle($city)->create(['name' => 'Nombre distinto', 'address' => 'CALLE 10 CENTRO']);
         $urlListing = Listing::factory()->recycle($city)->create(['maps_url' => 'http://example.org/maps?a=1&b=2']);
+        $evidenceListing = Listing::factory()->recycle($city)->create(['source_url' => 'https://example.org/evidencia/']);
         $matches = app(SubmissionMatches::class)->handle($actor, $first);
-        $this->assertSame([$listing->id, $urlListing->id], array_column($matches['listings'], 'id'));
-        $this->assertSame([$byUrl->id, $second->id], array_column($matches['submissions'], 'id'));
+        $this->assertSame([$listing->id, $urlListing->id, $evidenceListing->id], array_column($matches['listings'], 'id'));
+        $this->assertSame([$byUrl->id, $second->id, $byEvidence->id], array_column($matches['submissions'], 'id'));
         $this->assertSame($first->maps_key, $byUrl->maps_key);
         $this->assertSame('pending', $first->status);
         $this->assertSame('pending', $second->status);
-        $this->assertDatabaseCount('submissions', 3);
+        $this->assertDatabaseCount('submissions', 4);
     }
 
     public function test_panel_can_link_a_draft_without_requiring_the_hidden_creation_fields(): void

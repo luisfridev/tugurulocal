@@ -14,12 +14,13 @@ use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
@@ -44,8 +45,9 @@ class SubmissionResource extends Resource
     {
         $actions = [
             Action::make('details')->label('Detalle privado')->authorize('view')->modalSubmitAction(false)->modalCancelActionLabel('Cerrar')
-                ->modalContent(fn (Submission $record): View => view('submissions.admin-detail', ['submission' => $record, 'matches' => app(SubmissionMatches::class)->handle(auth()->user(), $record)])),
+                ->schema(self::detailSchema()),
             Action::make('approve')->label('Aprobar hacia borrador')->authorize('update')->visible(fn (Submission $record): bool => $record->status === 'pending')
+                ->modalSubmitActionLabel('Aprobar hacia borrador')
                 ->fillForm(fn (Submission $record): array => ['mode' => 'create', 'name' => $record->name, 'slug' => Str::slug($record->name), 'primary_category_id' => $record->category_id, 'address' => $record->address, 'maps_url' => $record->maps_url, 'select_credit' => false])
                 ->schema([
                     Select::make('mode')->label('Destino')->options(['create' => 'Crear un borrador con los datos elegidos', 'link' => 'Vincular un borrador existente sin modificarlo'])->required()->live(),
@@ -65,11 +67,11 @@ class SubmissionResource extends Resource
             if ($status === 'duplicate') {
                 $fields[] = Select::make('listing_id')->label('Ficha compatible de referencia (opcional)')->options(fn (Submission $record): array => self::listingOptions($record, ['draft', 'published']))->searchable()->helperText('Puede ser publicada. No se modificará ni se añadirá crédito.');
             }
-            $actions[] = Action::make($status)->label($label)->authorize('update')->visible(fn (Submission $record): bool => $record->status === 'pending')->schema($fields)
+            $actions[] = Action::make($status)->label($label)->modalSubmitActionLabel($label)->authorize('update')->visible(fn (Submission $record): bool => $record->status === 'pending')->schema($fields)
                 ->action(fn (Submission $record, array $data) => app(ModerateSubmission::class)->handle(auth()->user(), $record, $data + ['status' => $status]));
         }
         foreach ([true => 'Seleccionar crédito', false => 'Retirar su crédito'] as $selected => $label) {
-            $actions[] = Action::make($selected ? 'select_credit' : 'remove_credit')->label($label)->authorize('update')->requiresConfirmation()
+            $actions[] = Action::make($selected ? 'select_credit' : 'remove_credit')->label($label)->modalSubmitActionLabel($label)->authorize('update')->requiresConfirmation()
                 ->visible(fn (Submission $record): bool => $record->status === 'approved' && $record->listing !== null && ($selected ? $record->credit_consent && filled($record->instagram) : $record->listing->credit_submission_id === $record->id))
                 ->action(fn (Submission $record) => app(SelectSubmissionCredit::class)->handle(auth()->user(), $record, (bool) $selected));
         }
@@ -84,13 +86,42 @@ class SubmissionResource extends Resource
         ])->filters([
             SelectFilter::make('status')->label('Estado')->options(Submission::STATUSES),
             SelectFilter::make('type')->label('Tipo')->options(['business' => 'Negocio', 'place' => 'Lugar']),
-        ])->recordActions($actions)->toolbarActions([])->recordUrl(null)->emptyStateHeading('Sin recomendaciones para mostrar')->emptyStateDescription('Las propuestas públicas aparecerán aquí pendientes de revisión.');
+        ])->recordActions($actions)->toolbarActions([])->recordUrl(null)->emptyStateHeading('Sin recomendaciones para mostrar')->emptyStateDescription('Las nuevas propuestas llegan desde Recomendar. Quita los filtros si quieres revisar todas las recibidas.');
     }
 
     /** @param list<string> $statuses @return array<int, string> */
     private static function listingOptions(Submission $record, array $statuses): array
     {
         return Listing::query()->where('city_id', $record->city_id)->where('type', $record->type)->whereIn('status', $statuses)->orderBy('name')->get(['id', 'name', 'status'])->mapWithKeys(fn (Listing $listing): array => [$listing->id => $listing->name.' (#'.$listing->id.', '.$listing->status.')'])->all();
+    }
+
+    /** @return array<Section|TextEntry> */
+    private static function detailSchema(): array
+    {
+        $entries = [];
+        foreach (['name' => 'Nombre', 'address' => 'Ubicación', 'reason' => 'Motivo privado', 'maps_url' => 'Maps', 'evidence_url' => 'Evidencia privada', 'email' => 'Correo privado', 'whatsapp' => 'WhatsApp privado', 'instagram' => 'Instagram'] as $field => $label) {
+            $entries[] = TextEntry::make($field)->label($label)->state(fn (Submission $record): ?string => $record->{$field})->placeholder('Sin dato')->columnSpanFull();
+        }
+
+        return [
+            Section::make('Propuesta original')->description('Revisión privada. Los enlaces se muestran como texto, sin descargarlos ni incrustarlos.')->schema($entries),
+            Section::make('Moderación y crédito')->schema([
+                TextEntry::make('moderation_reason')->label('Motivo privado de moderación')->state(fn (Submission $record): ?string => $record->moderation_reason)->placeholder('Pendiente'),
+                TextEntry::make('moderation')->label('Responsable y fecha')->state(fn (Submission $record): string => ($record->moderator?->name ?? 'Pendiente').' '.($record->moderated_at?->timezone('America/Cancun')->format('d/m/Y H:i') ?? '')),
+                TextEntry::make('consent')->label('Consentimiento de crédito')->state(fn (Submission $record): string => $record->credit_consent ? 'Sí' : 'No'),
+                TextEntry::make('selected_credit')->label('Crédito seleccionado para su ficha')->state(fn (Submission $record): string => $record->listing?->credit_submission_id === $record->id ? 'Sí' : 'No'),
+            ]),
+            Section::make('Posibles coincidencias')->description('Hasta 20 fichas y 20 propuestas por nombre, ubicación o enlaces normalizados. Son señales para revisar, sin bloqueo automático.')->schema([
+                TextEntry::make('matches')->label('Coincidencias encontradas')->hiddenLabel()->listWithLineBreaks()->placeholder('Sin coincidencias.')->state(function (Submission $record): array {
+                    $matches = app(SubmissionMatches::class)->handle(auth()->user(), $record);
+
+                    return [
+                        ...array_map(fn (array $match): string => 'Ficha #'.$match['id'].': '.$match['name'].' ('.$match['status'].')', $matches['listings']),
+                        ...array_map(fn (array $match): string => 'Recomendación #'.$match['id'].': '.$match['name'].' ('.Submission::STATUSES[$match['status']].')', $matches['submissions']),
+                    ];
+                }),
+            ]),
+        ];
     }
 
     public static function getPages(): array
