@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 18382)
+Total output lines: 523
+
 # Tu Gurú Local — Tablero de entregas verticales
 
 **Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS03 completadas localmente; VS03 integrada en `master` mediante PR #4; fase Base cerrada y Editorial en curso; VS04–VS17 pendientes. No hay lanzamiento ni verificación de producción.
@@ -78,6 +81,8 @@ Entrega documental mediante [PR #9](https://github.com/luisfridev/tugurulocal/pu
 
 La comprobación posterior se registra en una rama documental desde ese merge; su PR llevará el registro de esta integración.
 
+Actualización documental mediante [PR #10](https://github.com/luisfridev/tugurulocal/pull/10), abierta hacia `master` desde `codex/registrar-integracion-pr9`, commit inicial `a223d375a49b56b1ea2e8429cdcc4a9db31e286e`. Permanece abierta para revisión y fusión del propietario.
+
 ## Secuencia y dependencias
 
 | ID | Entrega | Estado | Depende de | Fase |
@@ -125,135 +130,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Vista previa Herd (21-10-2026):** [página temporal local](http://tugurulocal-nuevo.test/) abierta en el navegador; Vite sirvió CSS y JavaScript con respuestas 200. `APP_URL` se ajustó solo en `.env`. Las instrucciones de cada VSXX con UI ahora requieren revisar y enlazar sus URLs locales; [detalle en VS00.md](dev_changelog/VS00.md#continuación--vista-previa-con-herd-21-de-octubre-de-2026).
 
-**Continuación Boost (21-10-2026):** rama `codex/vs00-base-ejecutable-cont-20261021-1`. Boost 2.10.3, ya presente en `require-dev`, quedó configurado para Codex con guías, cinco skills y MCP; `boost.json` y la configuración del proyecto registran la integración. El servidor respondió a una inicialización MCP local. PHPUnit MySQL pasó con 5 pruebas y 14 aserciones; Composer, Pint, build y `git diff --check` pasaron. No hubo cambios de UI ni verificación de producción; [detalle en VS00.md](dev_changelog/VS00.md#continuación--configuración-de-laravel-boost-21-de-octubre-de-2026).
-
-**Bloqueos:** ninguno para VS00. La instancia MySQL usada en esta comprobación está en `/private/tmp` y es temporal; cada entorno de desarrollo debe configurar sus propias bases y credenciales fuera de Git. **Siguiente acción:** VS01, administración segura y puerta Base.
-
-### VS01 — Administración segura
-
-**Estado:** completada localmente el 22 de octubre de 2026. **Dependencias:** VS00 completada. **Trazabilidad:** R08–R09 / AC08–AC09; T02.
-
-**Registro de cambios:** [VS01.md](dev_changelog/VS01.md). **Ramas:** `codex/vs01-administracion-segura`, creada desde `master` con VS00 integrada; continuaciones `codex/vs01-administracion-segura-cont-20261021-1`, `codex/vs01-administracion-segura-cont-20261021-2`, `codex/vs01-administracion-segura-cont-20261021-3`, `codex/vs01-administracion-segura-cont-20261022-1`, `codex/vs01-administracion-segura-cont-20261022-2`, `codex/vs01-administracion-segura-cont-20261022-3`, `codex/vs01-administracion-segura-cont-20261022-4` y `codex/vs01-administracion-segura-cont-20261022-5`, conservando el trabajo previo. La segunda cambia el prefijo administrativo a `/dashboard`; la tercera corrige el retorno a `/admin` guardado en sesiones anteriores; la primera del día 22 completa la revisión visual y el cierre local; la segunda actualiza el flujo para mantener solo registros Markdown y retira la captura; la tercera restaura el respaldo MySQL original y documenta la configuración mediante `.env`; la cuarta prepara el registro del commit sin llegar a crearlo; la quinta confirma en Git el conjunto de VS01 y corrige aquella evidencia anticipada. El propietario eligió `tugurulocal_2026` y autorizó reiniciar sus datos; el nombre local se toma de `DB_DATABASE` en `.env`, con `'laravel'` únicamente como respaldo en la configuración MySQL. PHPUnit usa la base separada `tugurulocal_2026_test`.
-
-**Objetivo:** permitir operación administrativa exclusivamente al super admin, con autenticación reforzada y cambios auditables.
-
-- [x] Crear el panel y bootstrap seguro de primera cuenta; `is_super_admin` falso por defecto y promoción explícita. Deshabilitar autorregistro público.
-- [x] Aplicar 2FA, límites de intentos, sesiones seguras y policies para acciones directas, recursos y operaciones masivas; reutilizar esta protección en las tareas siguientes.
-- [x] Registrar actor, fecha y resultado de cambios sensibles sin almacenar secretos; presentar errores y estados administrativos comprensibles.
-- [x] Completar la revisión visual en móvil, tableta y escritorio y la navegación por teclado en Herd para cerrar Base.
-
-**Aceptación y fallos:** visitante y usuario sin privilegios no acceden ni ejecutan acciones por URL directa; el super admin cumple 2FA antes de operar. Ocultar un botón no sustituye autorización del servidor.
-
-**Pruebas y revisión:** accesos de visitante/no super admin/super admin, límites de login, exigencia de 2FA y operaciones directas/masivas disponibles. Revisar login/panel con teclado y ausencia de registro público. Cerrar puerta Base.
-
-**Evidencia local (21-10-2026):** ramas indicadas arriba. Base `tugurulocal_2026` reiniciada con autorización del propietario y seis migraciones correctas; `tugurulocal_2026_test` preparada por separado y forzada en PHPUnit. Suite completa: 38 pruebas y 273 aserciones sobre MySQL. Cobertura de creación inicial, validación, asignación de privilegios, alta TOTP, desafío, recuperación de un solo uso, rechazo de TOTP reutilizado, límites, permisos, auditoría, cambio de contraseña, cierre de sesión y peticiones HTTP Livewire tras revocar acceso/2FA. Pint, Composer, build, rutas y `git diff --check` correctos. Herd: login y recursos CSS/JS/fuentes con HTTP 200; rutas privadas redirigen al login y registro público/Premium devuelven 404. Vite activo. [Detalle y URLs locales](dev_changelog/VS01.md).
-
-**Continuación de ruta (21-10-2026):** rama `codex/vs01-administracion-segura-cont-20261021-2`. Panel, login, perfil, 2FA, auditoría y logout usan `/dashboard`; las rutas anteriores `/admin` devuelven 404. Se actualizaron contratos, README y pruebas. Pruebas enfocadas: 28 pruebas y 234 aserciones; suite completa MySQL: 39 pruebas y 279 aserciones. Pint, build, rutas y `git diff --check` correctos. Login revisado en Herd a 390×844, 768×1024 y 1280×800, con recorrido Tab y sin errores de consola capturados. [Detalle y URLs vigentes](dev_changelog/VS01.md#continuación--ruta-administrativa-dashboard-21-de-octubre-de-2026).
-
-**Corrección de retorno de sesión (21-10-2026):** rama `codex/vs01-administracion-segura-cont-20261021-3`. Se reprodujo que Filament priorizaba `/admin` o sus subrutas al estar guardadas como destino de retorno. El login las descarta al montar el formulario y al autenticar, conservando los destinos vigentes y la exigencia de 2FA. Pruebas enfocadas: 19 pruebas y 194 aserciones; suite MySQL completa: 43 pruebas y 298 aserciones. Pint y `git diff --check` correctos. Login recargado en Herd sin errores de consola; la autenticación con destinos guardados se comprobó con usuarios de prueba. [Detalle](dev_changelog/VS01.md#continuación--destino-de-acceso-guardado-en-sesión-21-de-octubre-de-2026).
-
-**Cierre visual local (22-10-2026):** rama `codex/vs01-administracion-segura-cont-20261022-1`, responsable: agente Codex. Se confirmó la cuenta del propietario con 2FA habilitado. Panel, perfil, auditoría, alta y desafío 2FA se revisaron en Herd a 390×844, 768×1024 y 1280×800, con teclado, foco y recursos cargados. Una cuenta temporal expresamente autorizada permitió completar el alta, acceder mediante TOTP y usar recuperación sin cambiar la cuenta real. Al terminar se eliminaron esa cuenta, sus nueve eventos sintéticos y los archivos temporales de credenciales; la consulta final devuelve una cuenta administrativa con 2FA y cero cuentas temporales. Se comprobó que las cuentas y la auditoría anteriores conservaron sus valores. Se corrigió el mensaje de auditoría sin coincidencias y se documentó su comprobación visual en texto. Pruebas enfocadas: 27 pruebas y 239 aserciones; suite MySQL: 43 pruebas y 298 aserciones. Pint, build, rutas y `git diff --check` correctos; consola del navegador sin errores ni advertencias capturados. [Detalle y URLs locales](dev_changelog/VS01.md#continuación--cierre-visual-y-cuenta-administrativa-22-de-octubre-de-2026).
-
-**Ajuste del flujo documental (22-10-2026):** rama `codex/vs01-administracion-segura-cont-20261022-2`. Por instrucción del propietario, se eliminó la imagen de auditoría y sus enlaces; AGENTS, README, plan y este tablero establecen que `docs/dev_changelog/` contiene solo registros Markdown. La revisión visual conserva sus URLs y resultados escritos. Se comprobaron los enlaces locales, la ausencia de imágenes y `git diff --check`; VS01 conserva su cierre local. No cambió código ni se repitieron pruebas de aplicación.
-
-**Base de datos mediante `.env` (22-10-2026):** rama `codex/vs01-administracion-segura-cont-20261022-3`, creada desde la anterior con los cambios pendientes conservados y VS00 completada. Se restauró `env('DB_DATABASE', 'laravel')` como configuración MySQL original; README, diseño técnico y stack aclaran que la base local se toma de `DB_DATABASE` en `.env`. Artisan confirmó `tugurulocal_2026` como valor efectivo. Sintaxis PHP, Pint, coincidencia de `config/database.php` con Git y `git diff --check` correctos; se verificó que los demás cambios previos permanecen intactos. No se editaron `.env`, `.env.example` ni PHPUnit; se conserva `tugurulocal_2026_test`. No aplica revisión visual ni repetir suite/build para este ajuste sin cambio de base efectiva o interfaz. VS01 conserva su cierre local; [detalle](dev_changelog/VS01.md#continuación--base-de-datos-mediante-env-22-de-octubre-de-2026).
-
-**Preparación del commit (22-10-2026):** rama `codex/vs01-administracion-segura-cont-20261022-4`, desde la continuación anterior. Se preparó el registro de los 39 archivos de VS01, pero no se creó el commit: al revisar Git, HEAD seguía en `c2b146a` y los cambios continuaban sin confirmar. Se corrige la afirmación anterior que daba por terminada esa operación. [Detalle](dev_changelog/VS01.md#continuación--confirmación-de-cambios-en-git-22-de-octubre-de-2026).
-
-**Confirmación de VS01 en Git (22-10-2026):** rama `codex/vs01-administracion-segura-cont-20261022-5`, creada desde la anterior con VS00 integrada y todos los cambios pendientes conservados, por instrucción del propietario. El commit que contiene esta actualización reúne los 39 archivos de implementación, pruebas, configuración de ejemplo y documentación. Se revisaron los archivos incluidos, la exclusión de `.env`, los patrones de claves privadas y tokens y `git diff --check`. Se conserva la evidencia local de pruebas y revisión visual; esta intervención solo corrige el registro y confirma el trabajo existente. [Detalle](dev_changelog/VS01.md#continuación--commit-del-conjunto-vs01-22-de-octubre-de-2026).
-
-**Siguiente acción:** VS02. VS01 está integrada en `master` mediante PR #1, merge `678d790`, comprobado el 22-10-2026. La puerta Base está cerrada localmente. Producción, HTTPS del despliegue y respaldos siguen pendientes de VS17.
-
-### VS02 — Publicar y consultar una ficha Gratis
-
-**Estado:** completada e integrada en `master` local el 22 de octubre de 2026, incluida la simplificación multimedia con fechas manuales. **Dependencias:** VS01 completada e integrada.
-
-**Registro:** [VS02.md](dev_changelog/VS02.md). **Ramas:** `codex/vs02-ficha-gratis`, `codex/vs02-ficha-gratis-cont-20261022-1`, `codex/vs02-ficha-gratis-cont-20261022-2` y `codex/vs02-ficha-gratis-cont-20261022-3`, continuaciones con todo el trabajo previo conservado; desde `master` en `678d790`. La tercera continuación corresponde al cierre en Git. **Trazabilidad:** R01–R02, R08–R09 / AC01–AC02, AC08–AC09; T03, T04, T06, T13.
-
-**Simplificación verificada (22-10-2026):** rama `codex/vs02-ficha-gratis-cont-20261022-2`, desde la continuación anterior con sus cambios sin confirmar conservados. VS01 completada e integrada. Simplificación completada: se retiran fuente y permiso/licencia del flujo multimedia, conservando columnas y valores históricos privados sin sobrescribir. Fechas manuales obligatorias al autorizar y no futuras en America/Cancun, también en lectura pública; fuente/fecha editorial y Google conservadas. Factories y DEMO nuevos no rellenan campos retirados. Pruebas enfocadas: 42 pruebas y 673 aserciones; suite completa MySQL: **91 pruebas y 1.026 aserciones**. Pint, build, 18 rutas, diff y revisión Herd a 390×844, 768×1024 y 1280×800/teclado correctos. Persisten seis fichas DEMO y 32 medios, sin migración, reinicio ni cambios de cuenta. Al terminar esa continuación aún no había commit, integración ni despliegue. [Registro de esta continuación](dev_changelog/VS02.md#continuación--simplificar-multimedia-y-conservar-fechas-manuales-22-10-2026).
-
-**Cierre en Git (22-10-2026):** rama `codex/vs02-ficha-gratis-cont-20261022-3`, desde la continuación anterior con los 89 archivos pendientes conservados y VS01 integrada. PHP 8.4.27; mismas versiones de Laravel y paquetes. Pruebas enfocadas: **48 pruebas y 728 aserciones**; suite completa sobre MySQL `tugurulocal_2026_test`: **91 pruebas y 1.026 aserciones**, correctas. Pint, build, 18 rutas y comprobaciones de diff, incluido el índice completo, correctos. Se revisaron los archivos del conjunto, la exclusión de entornos/medios privados y patrones de claves/tokens, sin coincidencias. Commit de implementación `8a9da67`, integrado localmente en `master` mediante `git merge --ff-only`; se comprobó la igualdad de referencias y el árbol limpio. Esta intervención conserva la revisión visual previa y no cambia funcionalidad ni UI. Sin push ni despliegue. [Registro del cierre](dev_changelog/VS02.md#continuación-cierre-en-git-22-10-2026).
-
-**Ampliación verificada (22-10-2026):** logo obligatorio e independiente, protegido en publicación/edición y consulta directa; OG portada → logo. Identidad opcional de ciudades/categorías/zonas con emojis, HEX/contraste, RichEditor sanitizado y OG/icono privados. Migración incremental sin reinicio. Seeder local/testing conserva cuatro negocios públicos, borrador, pausado y 32 medios; segunda ejecución local mantiene cantidad, IDs y fecha de modificación de medios. Suite MySQL: **87 pruebas y 798 aserciones**; Pint, build, rutas y diff correctos. Formularios y fichas revisados a 390×844, 768×1024 y 1280×800 y teclado. Única cuenta super admin existente, sin cuentas DEMO. Datos/archivos persistentes excluidos de producción y del inventario real. Sin commit, integración ni despliegue. [Detalle y enlaces DEMO](dev_changelog/VS02.md#continuación--logo-identidad-y-demo-persistente-22-10-2026).
-
-- [x] Logo autorizado obligatorio para publicación y lectura pública, con protección ante retirada/reemplazo.
-- [x] Identidad opcional administrable y conversión segura de descripciones previas.
-- [x] Demostración persistente y repetible, con protección por entorno y sin modificar cuentas.
-
-**Objetivo:** que el super admin publique un negocio Gratis y un visitante consulte su ficha completa en `/@{listing}`.
-
-- [x] Gestionar ciudades, zonas y categorías desde el panel, además del modelo business/place; sembrar solo Playa del Carmen y taxonomía estructural. Slug global único, categoría principal asociada y secundarias válidas; reservar palabras de rutas.
-- [x] Implementar acciones de publicación/despublicación manual inmediata (sin programación), archivo, recuperación, previsualización autorizada e historial; separar estado editorial del operativo.
-- [x] Gestionar datos prácticos, fuentes/fecha de revisión, contactos verificados, FAQs, imágenes y PDF autorizados con el plugin Filament/Spatie y etiqueta PDF editable. Validar medios y proteger evidencia privada; Maps ausente permanece vacío.
-- [x] Entregar ficha Gratis adaptable con compartir URL, reporte de datos incorrectos, canonical/metadatos y eventos de consulta/contacto sin PII. Incorporar tokens visuales, foco y alternativas de medios desde esta pantalla.
-
-**Aceptación y fallos:** solo ficha publicada con fecha alcanzada es pública; borrador, pausada o archivada no se filtra por acceso directo ni previsualización. Gratis conserva información práctica y PDF; cierre permanente permite detalle informativo sin elegibilidad para vitrinas/campañas.
-
-**Pruebas y revisión:** publicación, estados/fechas, recuperación, unicidad global/categorías y permisos; contactos/Maps vacíos sin ceros, archivos inválidos rechazados y datos privados ausentes del HTML/metadatos. Revisar ficha larga, sin foto y con PDF en responsive/teclado.
-
-**Evidencia de la primera intervención (22-10-2026, anterior a la ampliación):** rama `codex/vs02-ficha-gratis` desde `master` en `678d790`. Se completaron datos, acciones/policies, gestión administrativa de taxonomía/fichas, publicación manual sin programación, historial y recuperación, medios privados con plugin Filament/Spatie, etiqueta PDF editable, ficha pública y reportes moderados. Migración y seeder estructural aplicados sin reiniciar la base local. Suite completa MySQL: 74 pruebas y 534 aserciones correctas; Pint, build, rutas y `git diff --check` correctos. Herd: rutas administrativas y ficha/formulario en móvil, tableta y escritorio; teclado, recursos, etiqueta PDF guardada y reporte enviado/resuelto comprobados. Fixture temporal y limpieza expresamente autorizados por el propietario; datos previos conservados por comparación de hashes. Consulta final: una ciudad, cinco categorías, cero fichas/reportes y una cuenta super admin. [Detalle, límites y URLs](dev_changelog/VS02.md).
-
-**Pendientes:** contenido y medios reales, privacidad aprobada para recepción pública de reportes, Lugares con hijos en VS12 y producción. No bloquean el cierre local documentado. VS02 está confirmada e integrada; al iniciar VS03 el 22-10-2026 se comprobó que `origin/master` contiene su trabajo y las PR documentales #2 y #3. VS03 continúa en su rama propia.
-
-### VS03 — Descubrir negocios
-
-**Estado:** completada el 22 de octubre de 2026, con integración comprobada en GitHub. **Dependencias:** VS02 integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T04, T06, T13.
-
-**Registro:** [VS03.md](dev_changelog/VS03.md). **Rama inicial:** `codex/vs03-descubrir-negocios`, desde `master` sincronizado en `b59d920`. Implementación local del 22-10-2026. Selección manual, filtros GET con Aplicar y Antislop `after` elegidos por el propietario. **Rama de cierre:** `codex/vs03-descubrir-negocios-cont-20261022-3`, creada desde la continuación documental anterior con todos los cambios pendientes conservados; al preparar aquella entrega, `origin/master` estaba en `b59d920`. **Rama del registro de integración:** `codex/vs03-descubrir-negocios-cont-20261022-4`, creada desde `master` comprobado en el merge `78e67bd`.
-
-**Continuación DEMO (22-10-2026):** rama `codex/vs03-descubrir-negocios-cont-20261022-1`, creada desde la anterior con todos los cambios pendientes conservados y VS02 integrada. Por petición del propietario, `DemoListingSeeder` mantiene **30 negocios públicos DEMO y dos privados** (borrador/pausado) para futuras etapas. Se añadieron 26 públicos con categorías secundarias y ambas zonas; quedan 32 fichas, 97 medios y la misma cuenta administrativa. Las seis fichas originales, los 32 medios anteriores y sus 59 archivos físicos conservan sus huellas. La repetición del seeder mantiene IDs, estados, fechas y nombres de archivo sin duplicar ni sobrescribir. Pruebas enfocadas: **3 pruebas y 687 aserciones**; suite completa MySQL: **155 pruebas y 2.078 aserciones**, correctas. Pint, build, 23 rutas y diff correctos. Paginación ejercitada en Herd: **12/12/6, 30 fichas únicas**, Anterior/Siguiente, historial y filtro Experiencias conservado al avanzar; Aplicar reinicia página. Los datos y archivos permanecen locales y excluidos de producción. [Registro de la ampliación](dev_changelog/VS03.md#continuación-demo-persistente-con-30-negocios-públicos-22-10-2026).
-
-**Objetivo:** recorrer Inicio, Negocios, categorías y zonas hasta una ficha elegible mediante filtros compartibles.
-
-- [x] Implementar `/` → 302 `/playa-del-carmen`, ciudad pública, rutas específicas antes del comodín de categoría, Negocios, categorías y zonas con paginación y filtros categoría/zona.
-- [x] Mantener orden orgánico `published_at DESC, id DESC`, incluyendo Gratis. Preparar selección editorial y recientes de Inicio con contenido aprobado, sin tarjetas vacías ni enlaces a módulos pendientes.
-- [x] Aplicar navegación adaptable, tarjetas, estados vacíos, carga y 404 en español; no mostrar insignias de plan ni adelantos del catálogo en tarjetas orgánicas.
-- [x] Extender SEO y medición de las superficies creadas; no presentar Lugares vacíos antes de implementar sus vínculos en VS12.
-- [x] Gestionar hasta seis seleccionados desde Ciudades con autorización, orden, transacción y auditoría; proteger medios públicos de taxonomías y conservar los datos DEMO.
-
-**Aceptación y fallos:** filtros conservan una URL compartible y resultados estables; una ciudad no pública, una zona de otra ciudad o un slug no válido no expone contenido ajeno. No existen búsqueda por texto, ranking ni página separada de ofertas.
-
-**Pruebas y revisión:** HTTP de rutas/reservas/404, filtros, paginación, empate de fechas, inclusión Gratis y exclusión de fichas privadas. Revisar navegación móvil, filtros con teclado y contenido vacío/largo sin obstrucciones.
-
-**Evidencia local (22-10-2026):** suite completa MySQL: **154 pruebas y 1.564 aserciones**, correctas. Tras el ajuste final de reflujo y contraste, regresión de descubrimiento/fichas: **42 pruebas y 423 aserciones**, correcta. Pint, build, 23 rutas propias y `git diff --check` correctos. Dos migraciones incrementales aplicadas, sin reinicio ni seeder; seis fichas y 32 medios conservan sus huellas previas. Herd: móvil, tableta, escritorio, filtros y limpieza por contexto, historial, fichas, categoría/zona, estado vacío, 404 y selección administrativa con teclado, guardado, reordenación y retirada. El propietario confirmó lectura y uso al 200 %; la revisión posterior con vista ampliada no mostró desbordamiento. Antislop final: dos hallazgos de reflujo/contraste corregidos, con evidencia por criterio en el registro.
-
-**Verificaciones locales completas (22-10-2026):** la paginación visual pendiente en la primera intervención quedó comprobada en la continuación de 30 DEMO. El propietario confirmó después que comprobó los filtros con JavaScript desactivado y funcionan. Esta comprobación manual del propietario complementa la cobertura PHPUnit HTTP/HTML; no se atribuye al navegador automatizado. Confirmación registrada en `codex/vs03-descubrir-negocios-cont-20261022-2`, creada desde la continuación anterior con todos sus cambios conservados. No se modificaron código, datos ni medios y no se repitieron pruebas técnicas por este registro documental.
-
-**Entrega por PR (22-10-2026):** [PR #4 — VS03: Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4), entregada hacia `master` desde `codex/vs03-descubrir-negocios-cont-20261022-3` y posteriormente fusionada por el propietario. Commits publicados: implementación `7ab7166e517b7e2b60003946ef9a801074fd602f` y registro de PR `cbb17bd2a84b6431e037d963369f06330a5099d0`, con 42 archivos en conjunto. Rama publicada mediante la conexión GitHub; igualdad de contenido comprobada antes de alinear la rama local. La PR está adjunta al chat. Se conserva la evidencia de 155 pruebas y 2.078 aserciones y las revisiones locales previas.
-
-**Integración comprobada (22-10-2026):** GitHub confirmó `merged=true`, destino `master` y merge `78e67bd3cee9e7b5389161ddb106ba354b306fef`, del 22-10-2026 a las 16:17:35 (America/Cancun; 21:17:35 UTC). Después de `git fetch origin` y `git merge --ff-only origin/master`, `master` local y `origin/master` coincidían en ese commit; el checkout ya estaba actualizado y no fue necesario avanzar. El commit de entrega `cbb17bd` es ancestro de `master` y la comparación de árboles no presenta diferencias. La continuación `-4` registra este cierre mediante una nueva PR documental, sin cambios de implementación ni repetición de pruebas técnicas.
-
-**Registro documental de integración:** [PR #5 — VS03: registrar integración y cierre](https://github.com/luisfridev/tugurulocal/pull/5), entregada inicialmente abierta hacia `master` desde `codex/vs03-descubrir-negocios-cont-20261022-4`, commit documental `54e0b8f3bac360fe0f5be600afd383285a8545c3`. El propietario la fusionó después el 22-10-2026 a las 16:24:39 (America/Cancun), commit `9647d0d2d47a4d7fbf6163f4c80ad89eebeb42dd`. La implementación de VS03 se integró mediante PR #4.
-
-**Pendientes:** revisión de la PR #5 del registro documental; contenido de salida en VS16 y despliegue en VS17. VS03 está completada e integrada, sin comprobaciones locales pendientes identificadas. **Siguiente acción:** VS04, mantener URLs e indexación. No se ha desplegado.
-
-### VS04 — Mantener URLs e indexación
-
-**Estado:** pendiente. **Dependencias:** VS03 completada e integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T06.
-
-**Puerta adicional previa al inicio:** ambos hitos de la puerta transversal de diseño están verificados e integrados. La dependencia VS03 está satisfecha. VS04 puede comenzar en una rama nueva; no se ha iniciado con esta actualización documental.
-
-**Objetivo:** que URL pública, metadatos, enlaces y sitemap reflejen el mismo estado editorial.
-
-- [ ] Unificar resolución de URL, canonical absoluto, metadatos sociales, breadcrumbs y datos estructurados fieles al contenido visible.
-- [ ] Generar sitemap solo con URLs públicas útiles; excluir filtros, páginas vacías, privadas y módulos no disponibles. Aplicar `noindex` y canonical a la base pertinente en variantes filtradas.
-- [ ] Registrar cambios de slug de contenido publicado de este proyecto, reservar su origen y emitir 301 al destino público actual sin revelar borradores; actualizar enlaces generados.
-- [ ] Revisar políticas de indexación, redirección y eventos sin PII ya presentes; extender este contrato a cada módulo posterior.
-
-**Aceptación y fallos:** despublicar retira la URL del sitemap; redirecciones no recuperan contenido privado ni reasignan orígenes reservados. Ninguna URL heredada obtiene tratamiento especial.
-
-**Pruebas y revisión:** sitemap, canonical/noindex, metadatos/JSON-LD, cambio de slug, colisiones y despublicación del destino. Revisar breadcrumbs y enlaces visibles de las pantallas existentes.
-
-**Evidencia:** sin ejecución registrada.
-
-**Bloqueos:** ninguno adicional confirmado.
-
-### VS05 — Recomendar y moderar
-
-**Estado:** pendiente. **Dependencias:** VS04. **Trazabilidad:** R06, R08–R09 / AC06, AC08–AC09; T05, T06, T13.
-
-**Objetivo:** recibir una recomendación pendiente y permitir moderarla hacia un borrador sin publicación automática ni exposición de información privada.
-
+**Continuación Boost (21-10-2026):** rama `codex/vs00-base-ejecutable-cont-20261021-1`. Boost 2.10.3, ya presente en `require-dev`, quedó configurado para Codex con guías, cinco skills y MCP; `boost.json` y la configuración del proyecto registran la integración. El servidor respondió a una inicialización MCP local. PHPUnit MySQL pasó con 5 pruebas y…6382 tokens truncated…
 - [ ] Crear formulario GET/POST `/recomendar`, confirmación neutra y aviso de privacidad; impedir recepción pública de datos sin texto aprobado.
 - [ ] Aplicar CSRF, honeypot, controles adicionales antibot, validación de URLs/archivos, detección de duplicados y límites 3 por hora/10 por día por IP.
 - [ ] Implementar moderación aprobada/rechazada/duplicada/spam con responsable y motivo; aprobar crea o vincula borrador y exige publicación posterior separada.
