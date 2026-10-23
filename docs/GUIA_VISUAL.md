@@ -8,4 +8,4 @@ La especificación maestra conserva la autoridad funcional. Filament mantiene su
 
 Los valores y las capturas de la guía anterior se conservan en el historial Git y en [referencias/capturas](referencias/capturas/26-mapa-de-pantallas.jpg). Son antecedentes visuales, no evidencia de contenido ni requisitos funcionales. Las diferencias frente a Base44 están registradas en el manual.
 
-Antes de VS04, completar e integrar la [puerta transversal de diseño](MEMORY.md#puerta-transversal-de-diseno-antes-de-vs04): documentación y, después, alineación de las superficies existentes. La aplicación actual aún no se declara conforme con el nuevo manual.
+La [puerta transversal de diseño](MEMORY.md#puerta-transversal-de-diseno-antes-de-vs04) está integrada: el manual y la alineación de las superficies públicas se fusionaron en PR #6 y PR #8. VS04 puede comenzar en su propia rama. Cuatro comprobaciones asistidas de accesibilidad siguen aplazadas a VS15 y no se registran como aprobadas; la integración no acredita producción.

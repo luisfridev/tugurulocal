@@ -16,7 +16,7 @@ Cada intervención en una tarea `VSXX` comienza en una rama Git nueva antes de m
 
 ### Puerta de diseño previa a VS04
 
-Por decisión del propietario del 22-10-2026, antes de continuar con VS04 se integran dos entregas transversales separadas: el [manual visual](design.md) con tokens, componentes y capturas de Base44, y la posterior alineación de Inicio, listados/categorías/zonas, fichas y 404. El [tablero](MEMORY.md#puerta-transversal-de-diseno-antes-de-vs04) registra sus estados y PR. No renumeran ni reabren VS00–VS03; la documentación no acredita aplicación del diseño.
+Por decisión del propietario del 22-10-2026, antes de VS04 se integraron dos entregas transversales separadas: el [manual visual](design.md) con tokens, componentes y capturas de Base44 (PR #6) y la alineación de Inicio, listados/categorías/zonas, fichas y 404 (PR #8). El [tablero](MEMORY.md#puerta-transversal-de-diseno-antes-de-vs04) registra su integración y evidencia. No renumeran ni reabren VS00–VS03. Cuatro comprobaciones asistidas de accesibilidad quedaron para VS15 y siguen pendientes; la integración no acredita producción.
 
 design.md es la autoridad visual pública; la maestra conserva la funcional y el stack la técnica. GUIA_VISUAL remite al manual. Filament mantiene sus patrones. El panel de usuario se reserva al futuro, sin incorporar cuentas al lanzamiento. Las capturas históricas solo sirven de apoyo; la fuente principal es el sitio Base44 identificado en el manual.
 

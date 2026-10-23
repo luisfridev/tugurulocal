@@ -1,6 +1,6 @@
 # Revisión de la entrega del sistema de diseño
 
-Fecha de la entrega original: 22-10-2026. Rama: `codex/sistema-diseno-referencia`. Base: `9647d0d`. Estado actualizado el 23-10-2026: documentación verificada e integrada; alineación pendiente. No acredita producción.
+Fecha de la entrega documental original: 22-10-2026. Rama: `codex/sistema-diseno-referencia`. Base: `9647d0d`. Estado actualizado el 23-10-2026: manual y alineación de superficies públicas integrados mediante PR #6 y PR #8. Las cuatro comprobaciones asistidas aplazadas siguen pendientes para VS15. No acredita producción.
 
 Entrega en [PR #6](https://github.com/luisfridev/tugurulocal/pull/6), entregada abierta y fusionada por el propietario hacia `master` el 22-10-2026 a las 17:49:51 (America/Cancun), commit `e543736ed6074e72d5e927eda5131b800b69d30d`. GitHub confirmó la integración el 23-10-2026. Los 123 blobs y el árbol inicial publicado `85874440b8ed7f8125c3fc8c46fd0989808032ce` coinciden con el commit local. El registro documental quedó en `3493db6647631851fcfbb9856e714572f8461ead`, dentro de esa misma PR.
 
@@ -39,7 +39,7 @@ Los resultados siguientes valoran esta entrega documental y su extracción. No c
 | R-26, interacciones | No aplica crear interacciones en esta entrega. Se registró la muestra ejecutada y se identificó lo no comprobado. |
 | R-27, estados | PASS para especificación: carga/vacío/error/disabled y límites de observación separados. No se inventan estados remotos como si se hubieran probado. |
 | R-28, FAQ | No aplica: no se inventan preguntas; las FAQs del proyecto conservan sus datos y contrato. |
-| R-32, teclado | PASS para evidencia: filtro, foco, enlaces y 404 ejercitados con Enter/Tab. Auditoría completa y lector real pendientes para alineación. |
+| R-32, teclado | PASS para la evidencia histórica: filtro, foco, enlaces y 404 se ejercitaron con Enter/Tab. La revisión posterior de alineación consta en su registro; cuatro comprobaciones asistidas se trasladaron a VS15. |
 | R-33, cambios de UI | No aplica: no hay cambios de lógica, CSS ni UI mediante scripts. Helpers temporales solo procesan documentación, medidas y comparación. |
 | R-34, temas | No aplica: no se incorpora un selector de tema ni un modo nuevo. |
 | R-35, ejecución | PASS para artefactos: referencia recorrida, capturas inspeccionadas y comparación ejecutada. Build de aplicación no aplica; no se afirma click-through exhaustivo. |
@@ -141,9 +141,9 @@ Los resultados siguientes valoran esta entrega documental y su extracción. No c
 
 ## 4. Pendientes y entrega
 
-Pendientes reales: alinear la UI existente con PR propia, ejecutar sus pruebas técnicas y revisión en Herd, y validar los puntos de accesibilidad no ejecutados. La entrega documental no instaló fuentes, no rediseñó Filament ni habilitó el panel de usuario.
+Pendientes reales después de la integración de la PR #8: ejecutar en VS15 zoom nativo 200 %, lectura con lector de pantalla, teclado virtual real y movimiento reducido activado; conservar sus resultados como pendientes hasta observarlos. La entrega documental original no instaló fuentes, no rediseñó Filament ni habilitó el panel de usuario.
 
-El tablero registra número, URL, rama, fecha y commit de integración de la PR #6. Su fusión cierra el hito de manual y referencias; la alineación pendiente impide iniciar VS04. No hay despliegue registrado.
+El tablero registra número, URL, rama, fecha y commit de integración de la PR #6. La integración posterior de la PR #8 cierra el segundo hito de diseño previo a VS04. No hay despliegue registrado.
 
 <a id="5-correccion-documental-de-integracion-23-10-2026"></a>
 
@@ -156,14 +156,22 @@ Antislop `during`, regla del proyecto. Se reutilizan las lecturas vigentes de la
 | Criterio | Resultado y evidencia de esta intervención |
 | --- | --- |
 | Hechos y cifras (R-17, R-18, R-36, R-38; C-5) | PASS: estado, destino, fecha y commit contrastados con GitHub y Git local; sin nuevas cifras de producto, testimonios ni afirmaciones comerciales. |
-| Precisión (R-16) | PASS: el manual figura integrado; la alineación y VS04 conservan su estado pendiente en los tres documentos. |
+| Precisión (R-16) | PASS para la corrección documental de aquella fecha: el manual figuraba integrado y la alineación y VS04 seguían pendientes entonces. La actualización posterior de estado queda registrada al final de este archivo. |
 | Puntuación (R-02) | PASS: texto añadido sin rayas largas; títulos y evidencia histórica conservados. |
 | Comillas y énfasis (copywriting) | PASS: código en línea para estados técnicos, fechas y commits; sin frases promocionales en mayúsculas ni comillas de énfasis. |
 | Actor y voz (copywriting) | PASS: propietario identificado como responsable de la fusión; comprobaciones del agente separadas de los resultados históricos; español operativo. |
 | Composición y ritmo (C-1, C-3; copywriting) | PASS: actualización de los estados donde se consultan y tabla de evidencia; sin ampliar funciones ni crear registros VSXX ajenos al alcance. |
-| Lectura, coherencia y enlaces (copywriting) | PASS: 41 enlaces locales/anclas válidos en los tres documentos; referencias a PR #6 coherentes con la fusión comprobada y entrega de la corrección identificada como PR #7 abierta. |
+| Lectura, coherencia y enlaces (copywriting) | PASS en la corrección documental de aquella fecha: 41 enlaces locales/anclas válidos en los tres documentos; las referencias identifican la PR #7 como abierta en ese momento. |
 | Integridad del cambio | PASS: `git diff --check` correcto y cambios limitados a los tres documentos; sin cambios de aplicación, tokens, dependencias ni datos. |
 | CTA (R-15) | No aplica: no se crean ni modifican CTA públicos. |
 | UI, activos, dirección visual e interacciones | No aplica: corrección documental sin cambios de interfaz. No se repiten PHPUnit, Pint, build ni revisión en Herd; no acredita alineación ni producción. |
 
-La corrección se entrega en [PR #7: Docs, registrar integración del sistema de diseño](https://github.com/luisfridev/tugurulocal/pull/7), abierta hacia `master` desde `codex/registrar-integracion-diseno`, commit inicial `db26e258b05bdf26c660cf58b6892191d8de89af`. Se publicó mediante la conexión GitHub; el árbol `e8954075ef8df211e91b7c31a1383acde3d2ffe4` coincide exactamente con el del commit local preparado `29e512c`, y la rama local se alineó con el publicado después de comprobar árbol limpio y ausencia de diferencias. El registro de la PR se añade a esa misma rama. La PR queda adjunta al chat y abierta para revisión y fusión del propietario. El siguiente trabajo funcional sigue siendo la alineación visual, con su propia rama y PR, antes de VS04.
+La corrección se entregó en [PR #7: Docs, registrar integración del sistema de diseño](https://github.com/luisfridev/tugurulocal/pull/7), desde `codex/registrar-integracion-diseno`, commit inicial `db26e258b05bdf26c660cf58b6892191d8de89af`. Se publicó mediante la conexión GitHub; el árbol `e8954075ef8df211e91b7c31a1383acde3d2ffe4` coincide exactamente con el del commit local preparado `29e512c`, y la rama local se alineó con el publicado después de comprobar árbol limpio y ausencia de diferencias. El propietario fusionó la PR #7 hacia `master` el 23-10-2026 a las 00:40:54 (America/Cancun), commit `0b986e22e4b37d3cb52aa9ba1ad87e56d82fcf2d`. En ese momento el siguiente trabajo funcional era la alineación visual.
+
+<a id="6-integracion-de-la-alineacion-publica-23-10-2026"></a>
+
+## 6. Integración de la alineación pública (23-10-2026)
+
+GitHub confirmó que la [PR #8](https://github.com/luisfridev/tugurulocal/pull/8), dirigida a `master`, se fusionó el 23-10-2026 a las 01:29:09 (America/Cancun), commit `3fbacd06087ef6166574efe239792cadeb394a9d`. Este commit es la base de la corrección documental. La integración cierra los dos hitos de diseño requeridos antes de VS04; las cuatro comprobaciones asistidas de accesibilidad siguen asignadas a VS15 y no se consideran aprobadas. La aplicación no está publicada.
+
+Esta intervención documental registra el estado vigente en MEMORY, README, plan, manual, guía de adopción y registros de revisión/alineación. Antislop `during` (regla del proyecto), con base y copywriting por coherencia factual y redacción. No se modifican fuentes de aplicación ni dependencias; PHPUnit, Pint, build y Herd no aplican. `git diff --check` y los enlaces/anclas se comprobarán antes de la entrega de esta corrección.
