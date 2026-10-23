@@ -1,6 +1,6 @@
 # Alineación visual de pantallas públicas
 
-**Fecha:** 23 de octubre de 2026. **Estado:** implementación verificada; comprobaciones asistidas e integración pendientes. **Rama:** `codex/alineacion-visual-superficies-publicas`. **Base:** `master` y `origin/master` en `0b986e22e4b37d3cb52aa9ba1ad87e56d82fcf2d`, con árbol limpio antes de crear la rama.
+**Fecha:** 23 de octubre de 2026. **Estado:** implementación verificada; integración pendiente en PR. Cuatro comprobaciones asistidas aplazadas a VS15 por decisión del propietario. **Rama:** `codex/alineacion-visual-superficies-publicas`. **Base:** `master` y `origin/master` en `0b986e22e4b37d3cb52aa9ba1ad87e56d82fcf2d`, con árbol limpio antes de crear la rama.
 
 ## Objetivo y dirección
 
@@ -30,7 +30,7 @@ Antislop activo: `during`, regla del proyecto. Skills aplicadas: `antislop` como
 | Responsive | PASS en revisión de navegador con viewports 390×844, 768×1024 y 1280×800; distribución y navegación cambian según el ancho. Sin desplazamiento horizontal visible en las capturas revisadas. |
 | Teclado y foco | PASS: enlace para saltar al contenido visible al enfocar; Enter lo activa. Selector de categoría operado con flechas/Enter; Tab hasta Aplicar y Enter conservaron el filtro en la URL y mostraron Limpiar filtros. |
 | Contraste medido con `contrast-check.py` | PASS: texto/lavanda 15,89:1; secundario/blanco 5,92:1; blanco/índigo 13,90:1; menta/índigo 8,47:1; acento de ficha/fondo oscuro 9,34:1; foco violeta/lavanda 5,36:1. Colores de identidad mantienen el contraste calculado por sus métodos existentes. |
-| Zoom nativo 200 %, lector de pantalla, teclado virtual y preferencia de movimiento reducido | Pendiente de comprobación asistida. La continuación de abajo añade mediciones de reflujo, semántica, foco y reglas CSS cargadas; no las presenta como ejecución de estas cuatro pruebas. |
+| Zoom nativo 200 %, lector de pantalla, teclado virtual y preferencia de movimiento reducido | Aplazadas a VS15 por decisión del propietario del 23-10-2026. Conservan estado pendiente de ejecución. La continuación de abajo añade mediciones de reflujo, semántica, foco y reglas CSS cargadas; no las presenta como ejecución de estas cuatro pruebas. |
 
 ### Delivery Gate de Antislop
 
@@ -95,3 +95,9 @@ El navegador integrado ofrece controles de viewport y observación DOM/AX. No of
 | Registro y alcance documental | PASS: `git diff --check` correcto; se preserva la evidencia anterior, se distingue cada método de su límite y se corrige el SHA base transcrito. PHPUnit, Pint y build no se repiten porque no cambian fuentes de aplicación. |
 
 Para cerrar los cuatro pendientes se necesita comprobar, en un navegador/dispositivo con esos controles: zoom nativo al 200 % sin recortes; lectura de títulos y filtros y operación de la FAQ con lector de pantalla; hover sin desplazamiento con «Reducir movimiento» activado; y campo del reporte visible con el teclado del teléfono abierto. Estos resultados siguen pendientes de observación. La PR #8 continúa abierta y esta revisión no acredita producción.
+
+## Decisión: aplazar las cuatro comprobaciones a la validación final (23-10-2026)
+
+El propietario decidió omitir por ahora las pruebas de zoom nativo al 200 %, lector de pantalla, teclado virtual real y movimiento reducido activado. Se trasladan a [VS15: Validar recorridos integrados](../MEMORY.md#vs15--validar-recorridos-integrados), antes del lanzamiento. Siguen pendientes de ejecución y no se registran como PASS. Esta decisión permite revisar e integrar la alineación actual sin esperar esas cuatro pruebas; la puerta previa a VS04 sigue pendiente de la fusión y el registro de integración de la PR #8.
+
+Antislop `during`, regla del proyecto; base y copywriting para documentar la decisión sin cambiar la evidencia anterior. Revisión documental: PASS en alcance, coherencia con el tablero y conservación de resultados y límites. `git diff --check`: PASS. No se modificó código ni se repitieron PHPUnit, Pint, build o revisión visual por este cambio documental. VS15 conserva su estado pendiente y no se crea un registro de ejecución anticipado.

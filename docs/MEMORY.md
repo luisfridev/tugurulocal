@@ -70,6 +70,8 @@ Entrega de esta corrección: [PR #7: Docs, registrar integración del sistema de
 
 **Comprobaciones complementarias de alineación (23-10-2026):** misma rama y [PR #8](https://github.com/luisfridev/tugurulocal/pull/8), confirmada abierta y sin conflictos. Antislop `during`; base, human, layoutmobile y UI para la revisión, y copywriting para su registro. Las siete pantallas se midieron a 640×400 y 320×600 píxeles CSS reales, sin desbordamiento horizontal; conservan `lang="es"`, un `main`, un `h1`, alternativas de imagen y etiquetas de campos. Enter expande la FAQ y actualiza el árbol AX. En el reporte DEMO, el campo enfocado queda visible a 390×400, por encima de la navegación inferior. El navegador cargó las reglas que eliminan transición y desplazamiento bajo movimiento reducido. Son comprobaciones complementarias: zoom nativo 200 %, lector de pantalla, teclado virtual real y activación de movimiento reducido siguen pendientes porque los controles no están disponibles en esta sesión. No se declara completada la puerta ni se inicia VS04. [Métodos, medidas y límites](dev_changelog/ALINEACION_VISUAL.md#continuación-comprobaciones-de-accesibilidad-23-10-2026).
 
+**Aplazamiento autorizado (23-10-2026):** el propietario decidió omitir por ahora zoom nativo 200 %, lector de pantalla, teclado virtual real y movimiento reducido activado. Se trasladan a la validación final de recorridos en VS15, antes del lanzamiento, como pendientes de ejecución. No se consideran pruebas aprobadas ni bloquean la revisión e integración de la alineación actual. La puerta previa a VS04 conserva la integración y su registro como condición de cierre; la [PR #8](https://github.com/luisfridev/tugurulocal/pull/8) sigue abierta. Antislop `during`, base y copywriting; revisión de coherencia y `git diff --check` correctos. [Decisión y alcance](dev_changelog/ALINEACION_VISUAL.md#decisión-aplazar-las-cuatro-comprobaciones-a-la-validación-final-23-10-2026).
+
 ## Secuencia y dependencias
 
 | ID | Entrega | Estado | Depende de | Fase |
@@ -435,6 +437,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 - [ ] Ejecutar regresiones cruzadas de publicación, cambios de slug, relaciones, Gratis → Premium → Super Premium → Gratis, cupos concurrentes y vigencias sin cron.
 - [ ] Completar métricas de fichas/listas/blog, contactos, catálogo, recomendaciones/moderación y publicidad; revisar payloads sin PII y reportes que distinguen intención de ventas/visitas confirmadas.
 - [ ] Auditar canonical/sitemap/noindex/datos estructurados, privacidad, validación de medios y autorización directa/masiva; comprobar rendimiento y accesibilidad del conjunto.
+- [ ] Ejecutar las cuatro comprobaciones aplazadas por el propietario durante la alineación visual: zoom nativo 200 %, lector de pantalla, teclado virtual real y movimiento reducido activado. Registrar navegador/dispositivo, escenarios, resultados y defectos corregidos; conservar como referencia el [registro de alineación](dev_changelog/ALINEACION_VISUAL.md#decisión-aplazar-las-cuatro-comprobaciones-a-la-validación-final-23-10-2026).
 
 **Aceptación y fallos:** retirar ficha, plan, oferta, hijo o campaña actualiza todas sus superficies en el momento correcto sin borrar historial. No quedan enlaces a módulos incompletos ni CTAs comerciales sin aprobación.
 
