@@ -1,14 +1,17 @@
 <x-public-layout :title="$seo['title']" :description="$seo['description']" :canonical="$seo['canonical']" :noindex="$seo['noindex']" :social-image="$seo['socialImage']" :robots-follow="true">
-    <x-breadcrumbs :items="$breadcrumbs" />
+    <div class="mx-auto max-w-6xl px-5 pt-8 sm:px-8 sm:pt-12">
+        <x-breadcrumbs :items="$breadcrumbs" />
+    </div>
     <x-discovery-identity :identity="$identity" :city="$city" />
 
-    <form method="GET" action="{{ $baseUrl }}" data-discovery-filters class="mt-6 min-w-0 rounded-3xl border border-brand-border bg-white p-5 sm:p-6" aria-labelledby="titulo-filtros">
-        <h2 id="titulo-filtros" class="font-display text-xl font-extrabold">Filtrar negocios</h2>
+    <div class="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-12">
+    <form method="GET" action="{{ $baseUrl }}" data-discovery-filters class="mt-8 min-w-0 rounded-3xl border border-brand-border bg-white p-5 sm:p-6" aria-labelledby="titulo-filtros">
+        <h2 id="titulo-filtros" class="font-display text-lg font-extrabold sm:text-xl">Filtrar negocios</h2>
         <div class="mt-4 grid min-w-0 gap-4 sm:grid-cols-2 lg:flex lg:flex-wrap lg:items-end">
             @unless($category)
                 <div class="min-w-0 lg:flex-1">
                     <label for="categoria" class="mb-2 block text-sm font-semibold">Categoría</label>
-                    <select id="categoria" name="categoria" class="min-h-12 w-full min-w-0 max-w-full rounded-xl border border-brand-muted bg-white px-3 py-3 text-base">
+                    <select id="categoria" name="categoria" class="min-h-12 w-full min-w-0 max-w-full rounded-xl border border-brand-muted bg-white px-3 py-3 text-base focus-visible:outline-offset-2">
                         <option value="">Todas las categorías</option>
                         @foreach($categories as $option)
                             <option value="{{ $option->slug }}" @selected($filterCategory?->id === $option->id)>{{ $option->name }}</option>
@@ -19,7 +22,7 @@
             @unless($area)
                 <div class="min-w-0 lg:flex-1">
                     <label for="zona" class="mb-2 block text-sm font-semibold">Zona</label>
-                    <select id="zona" name="zona" class="min-h-12 w-full min-w-0 max-w-full rounded-xl border border-brand-muted bg-white px-3 py-3 text-base">
+                    <select id="zona" name="zona" class="min-h-12 w-full min-w-0 max-w-full rounded-xl border border-brand-muted bg-white px-3 py-3 text-base focus-visible:outline-offset-2">
                         <option value="">Todas las zonas</option>
                         @foreach($areas as $option)
                             <option value="{{ $option->slug }}" @selected($filterArea?->id === $option->id)>{{ $option->name }}</option>
@@ -37,11 +40,11 @@
 
     <section aria-labelledby="titulo-resultados" class="mt-8 sm:mt-10">
         <div class="mb-5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-            <h2 id="titulo-resultados" class="font-display text-2xl font-extrabold">{{ $listings->total() }} {{ $listings->total() === 1 ? 'negocio' : 'negocios' }}</h2>
+            <h2 id="titulo-resultados" class="font-display text-xl font-extrabold sm:text-2xl">{{ $listings->total() }} {{ $listings->total() === 1 ? 'negocio' : 'negocios' }}</h2>
             @if($listings->isNotEmpty())<p class="text-sm text-brand-muted">Más recientes primero</p>@endif
         </div>
         @if($listings->isNotEmpty())
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div class="grid gap-3">
                 @foreach($listings as $listing)<x-listing-card :listing="$listing" />@endforeach
             </div>
             {{ $listings->onEachSide(1)->links('components.discovery-pagination') }}
@@ -56,4 +59,5 @@
             </div>
         @endif
     </section>
+    </div>
 </x-public-layout>

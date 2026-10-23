@@ -9,13 +9,17 @@
 @theme {
     --font-sans: 'Instrument Sans Variable', ui-sans-serif, system-ui, sans-serif;
     --font-display: 'Nunito Sans Variable', 'Instrument Sans Variable', ui-sans-serif, system-ui, sans-serif;
-    --color-brand-deep: #2c254e;
-    --color-brand-header: #4a4468;
-    --color-brand-action: #74ddcf;
-    --color-brand-page: #f6f3fa;
-    --color-brand-text: #2b283d;
-    --color-brand-muted: #5f5a6e;
-    --color-brand-border: #ecebf3;
+    --color-brand-deep: #2d2652;
+    --color-brand-header: #2d2652;
+    --color-brand-action: #40e0d0;
+    --color-brand-page: #f6f4fb;
+    --color-brand-text: #1b1730;
+    --color-brand-muted: #666080;
+    --color-brand-border: #e4dff0;
+    --color-brand-premium: #a958a9;
+    --color-brand-detail: #202b50;
+    --color-brand-detail-border: #39466c;
+    --color-brand-detail-accent: #80e6d8;
 }
 
 @layer base {
@@ -33,4 +37,12 @@
     .taxonomy-content h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; }
     .taxonomy-content h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; }
     .taxonomy-content blockquote { padding-left: 1rem; font-style: italic; }
+    .public-nav-link[aria-current="page"] { background-color: #2d2652; color: #fff; }
+    .public-nav-link[aria-current="page"]::after { content: ''; position: absolute; inset-inline: 1rem; bottom: .35rem; height: 3px; border-radius: 9999px; background-color: #40e0d0; }
+    .listing-row { box-shadow: 0 1px 2px rgba(45, 38, 82, .04), 0 12px 32px -16px rgba(45, 38, 82, .18); transition: box-shadow 300ms ease, transform 300ms ease; }
+    .listing-row:hover { box-shadow: 0 2px 4px rgba(45, 38, 82, .06), 0 24px 48px -20px rgba(45, 38, 82, .28); transform: translateY(-3px); }
+    @media (prefers-reduced-motion: reduce) {
+        .listing-row { transition: none; }
+        .listing-row:hover { transform: none; }
+    }
 }

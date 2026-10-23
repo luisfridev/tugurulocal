@@ -1,4 +1,5 @@
 <x-public-layout title="Reportar datos incorrectos · Tu Gurú Local" :noindex="true">
+    <div class="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-12">
     <div class="mx-auto max-w-2xl"><a class="inline-flex min-h-12 items-center rounded-lg font-semibold underline underline-offset-4" href="{{ route('listings.show',['listing'=>$listing->slug]) }}">Volver a {{ $listing->name }}</a>
         <section class="mt-5 rounded-3xl border border-brand-border bg-white p-6 sm:p-9"><h1 class="font-display text-3xl font-extrabold">Reportar datos incorrectos</h1><p class="mt-4 leading-relaxed text-brand-muted">Indica qué debemos revisar en la ficha de {{ $listing->name }}. Revisaremos tu reporte antes de modificar la información. No incluyas datos personales.</p>
         @if(session('report_sent'))<p role="status" class="mt-6 rounded-xl bg-teal-50 p-4 text-teal-950">Recibimos tu reporte. Gracias por ayudarnos a revisar la información.</p>
@@ -26,5 +27,6 @@
 
 @endif
 </section>
+    </div>
     </div>
 </x-public-layout>
