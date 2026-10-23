@@ -9,7 +9,7 @@ class ListingPageData
 {
     public function make(Listing $listing, bool $preview): array
     {
-        $canonical = route('listings.show', ['listing' => $listing->slug]);
+        $canonical = PublicUrl::listing($listing);
         $title = $listing->seo_title ?: $listing->name.' · Tu Gurú Local';
         $description = $listing->seo_description ?: ($listing->summary ?: $listing->name.' en '.$listing->city->name);
         $approved = $preview || $listing->hasAuthorizedMedia();
@@ -23,7 +23,7 @@ class ListingPageData
                 $contacts[] = ['label' => $label, 'url' => $preview ? $url : route('listings.contact', ['listing' => $listing->slug, 'kind' => $kind])];
             }
         }
-        $structured = ['@context' => 'https://schema.org', '@type' => 'LocalBusiness', 'name' => $listing->name, 'description' => $description, 'url' => $canonical];
+        $structured = ['@context' => 'https://schema.org', '@type' => 'LocalBusiness', 'name' => $listing->name, 'description' => $listing->summary ?: trim(strip_tags($listing->description ?? '')), 'url' => $canonical];
         if ($listing->address) {
             $structured['address'] = ['@type' => 'PostalAddress', 'streetAddress' => $listing->address, 'addressLocality' => $listing->city->name];
         }
@@ -41,6 +41,9 @@ class ListingPageData
             $jsonLd[] = ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array_map(fn (array $faq): array => ['@type' => 'Question', 'name' => $faq['question'], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['answer']]], $listing->faqs)];
         }
 
-        return compact('canonical', 'title', 'description', 'logo', 'cover', 'gallery', 'document', 'contacts', 'jsonLd') + ['reportsAvailable' => ! $preview && SubmitListingReport::available()];
+        $seo = PublicMetadata::make($title, $description, $canonical, PublicIndexability::listing($listing, $preview), ($cover ?? $logo)?->getUrl());
+        $breadcrumbs = [['label' => 'Inicio', 'url' => PublicUrl::city()], ['label' => 'Negocios', 'url' => PublicUrl::businesses()], ['label' => $listing->name, 'url' => null]];
+
+        return compact('canonical', 'title', 'description', 'logo', 'cover', 'gallery', 'document', 'contacts', 'jsonLd', 'seo', 'breadcrumbs') + ['reportsAvailable' => ! $preview && SubmitListingReport::available()];
     }
 }

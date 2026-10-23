@@ -1,6 +1,6 @@
 <x-public-layout :title="$seo['title']" :description="$seo['description']" :canonical="$seo['canonical']" :noindex="$seo['noindex']" :social-image="$seo['socialImage']" :robots-follow="true">
     <div class="mx-auto max-w-6xl px-5 pt-8 sm:px-8 sm:pt-12">
-        <x-breadcrumbs :items="$breadcrumbs" />
+        <x-breadcrumbs :items="$breadcrumbs" :current-url="$seo['canonical']" />
     </div>
     <x-discovery-identity :identity="$identity" :city="$city" />
 
@@ -54,7 +54,7 @@
                 <p class="mt-3 max-w-2xl leading-relaxed text-brand-muted">{{ count($filters) ? 'Prueba otra categoría o zona para ver más opciones.' : 'Las fichas aparecerán cuando el equipo termine de revisarlas. Puedes consultar los negocios de otras categorías o zonas.' }}</p>
                 <div class="mt-5 flex flex-wrap gap-3">
                     @if(count($filters))<a href="{{ $baseUrl }}" class="inline-flex min-h-12 max-w-full items-center justify-center rounded-xl border border-brand-text bg-brand-action px-5 py-3 text-center font-bold text-brand-text hover:underline">Limpiar filtros</a>@endif
-                    <a href="{{ route('businesses.index', ['city' => $city->slug]) }}" class="inline-flex min-h-12 items-center rounded-xl px-2 py-3 font-bold underline underline-offset-4">Ver todos los negocios</a>
+                    <a href="{{ \App\Support\PublicUrl::businesses($city) }}" class="inline-flex min-h-12 items-center rounded-xl px-2 py-3 font-bold underline underline-offset-4">Ver todos los negocios</a>
                 </div>
             </div>
         @endif

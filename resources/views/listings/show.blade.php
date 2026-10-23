@@ -1,4 +1,4 @@
-<x-public-layout :title="$title" :description="$description" :canonical="$canonical" :noindex="$preview" :social-image="($cover ?? $logo)?->getUrl()">
+<x-public-layout :title="$seo['title']" :description="$seo['description']" :canonical="$seo['canonical']" :noindex="$seo['noindex']" :social-image="$seo['socialImage']" :robots-follow="!$preview">
     <x-slot:head>
         @unless($preview)<script type="application/ld+json">{!! json_encode($jsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
 @endunless
@@ -10,11 +10,7 @@
 
     @if($listing->is_demo)<p role="note" class="mb-5 rounded-2xl border border-brand-border bg-white p-4 font-semibold">DEMO · Negocio sintético para revisión local. No representa un negocio real.</p>@endif
     @php($publicCityNavigation = $listing->city->is_public && $listing->city->slug === 'playa-del-carmen')
-    <x-breadcrumbs :items="[
-        ['label' => 'Inicio', 'url' => route('bootstrap')],
-        ['label' => $listing->city->name, 'url' => $publicCityNavigation ? route('cities.show', ['city' => $listing->city->slug]) : null],
-        ['label' => $listing->name, 'url' => null],
-    ]" />
+    <x-breadcrumbs :items="$breadcrumbs" :current-url="$canonical" :structured="!$preview" />
     <section aria-labelledby="titulo-ficha" class="overflow-hidden rounded-[22px] border border-brand-detail-border bg-brand-detail text-white shadow-sm">
         @if($cover)<img src="{{ $cover->getUrl($cover->hasGeneratedConversion('card') ? 'card' : '') }}" alt="{{ $listing->image_alt ?: $listing->name }}" class="max-h-[420px] w-full object-cover" fetchpriority="high">
 @endif
@@ -22,13 +18,13 @@
         <div class="p-6 sm:px-[34px] sm:pt-[30px] sm:pb-7">
             <div class="mb-4 flex flex-wrap gap-2 text-sm font-semibold">
                 @if($publicCityNavigation && $listing->primaryCategory->is_active && $listing->primaryCategory->listing_type === 'business')
-                    <a href="{{ route('categories.show', ['city' => $listing->city->slug, 'category' => $listing->primaryCategory->slug]) }}" class="inline-flex min-h-11 min-w-0 max-w-full items-center rounded-lg px-3 py-2 wrap-anywhere underline underline-offset-4" style="background-color: {{ $listing->primaryCategory->identityBackground() }}; color: {{ $listing->primaryCategory->identityForeground() }}">{{ $listing->primaryCategory->name }}</a>
+                    <a href="{{ \App\Support\PublicUrl::category($listing->city, $listing->primaryCategory) }}" class="inline-flex min-h-11 min-w-0 max-w-full items-center rounded-lg px-3 py-2 wrap-anywhere underline underline-offset-4" style="background-color: {{ $listing->primaryCategory->identityBackground() }}; color: {{ $listing->primaryCategory->identityForeground() }}">{{ $listing->primaryCategory->name }}</a>
                 @else
                     <span class="inline-flex min-h-11 min-w-0 max-w-full items-center rounded-lg px-3 py-2 wrap-anywhere" style="background-color: {{ $listing->primaryCategory->identityBackground() }}; color: {{ $listing->primaryCategory->identityForeground() }}">{{ $listing->primaryCategory->name }}</span>
                 @endif
                 @if($listing->area?->is_active && (! $listing->area->is_demo || app()->environment(['local', 'testing'])))
                     @if($publicCityNavigation)
-                        <a href="{{ route('areas.show', ['city' => $listing->city->slug, 'area' => $listing->area->slug]) }}" class="inline-flex min-h-11 min-w-0 max-w-full items-center rounded-lg px-3 py-2 wrap-anywhere underline underline-offset-4" style="background-color: {{ $listing->area->identityBackground() }}; color: {{ $listing->area->identityForeground() }}">{{ $listing->area->name }}</a>
+                        <a href="{{ \App\Support\PublicUrl::area($listing->city, $listing->area) }}" class="inline-flex min-h-11 min-w-0 max-w-full items-center rounded-lg px-3 py-2 wrap-anywhere underline underline-offset-4" style="background-color: {{ $listing->area->identityBackground() }}; color: {{ $listing->area->identityForeground() }}">{{ $listing->area->name }}</a>
                     @else
                         <span class="inline-flex min-h-11 min-w-0 max-w-full items-center rounded-lg px-3 py-2 wrap-anywhere" style="background-color: {{ $listing->area->identityBackground() }}; color: {{ $listing->area->identityForeground() }}">{{ $listing->area->name }}</span>
                     @endif

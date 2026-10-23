@@ -25,7 +25,7 @@ class DiscoveryPageData
         $description = TaxonomyContent::sanitize(DemoTaxonomyIdentity::publicText($record, $record->description));
         $description = $tagline ?: trim(html_entity_decode(strip_tags($description), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
 
-        return ['title' => $title.' · Tu Gurú Local', 'description' => $description ? Str::limit($description, 180) : $fallbackDescription,
-            'canonical' => $canonical, 'noindex' => $noindex, 'socialImage' => $this->public->mediaUrl($record, 'og_image')];
+        return PublicMetadata::make($title.' · Tu Gurú Local', $description ? Str::limit($description, 180) : $fallbackDescription,
+            $canonical, ! $noindex, $this->public->mediaUrl($record, 'og_image'));
     }
 }

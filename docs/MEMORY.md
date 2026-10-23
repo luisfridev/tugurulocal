@@ -1,6 +1,6 @@
 # Tu Gurú Local — Tablero de entregas verticales
 
-**Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS03 completadas localmente; VS03 integrada en `master` mediante PR #4; fase Base cerrada y Editorial en curso; VS04–VS17 pendientes. No hay lanzamiento ni verificación de producción.
+**Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS03 completadas localmente; VS03 integrada en `master` mediante PR #4; fase Base cerrada y Editorial en curso. VS04 en curso, implementación verificada localmente y entrega por PR en preparación; VS05–VS17 pendientes. No hay lanzamiento ni verificación de producción.
 
 ## Uso, autoridad y cierre
 
@@ -88,7 +88,7 @@ Actualización documental y del flujo mediante [PR #10](https://github.com/luisf
 | VS01 | Administración segura | completada | VS00 | Base |
 | VS02 | Publicar y consultar una ficha Gratis | completada | VS01 | Editorial |
 | VS03 | Descubrir negocios | completada | VS02 | Editorial |
-| VS04 | Mantener URLs e indexación | pendiente | VS03 | Editorial |
+| VS04 | Mantener URLs e indexación | en curso | VS03 | Editorial |
 | VS05 | Recomendar y moderar | pendiente | VS04 | Editorial |
 | VS06 | Activar y terminar planes | pendiente | VS05 | Comercio |
 | VS07 | Consultar planes comerciales | pendiente | VS06 | Comercio |
@@ -227,26 +227,30 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Registro documental de integración:** [PR #5 — VS03: registrar integración y cierre](https://github.com/luisfridev/tugurulocal/pull/5), entregada inicialmente abierta hacia `master` desde `codex/vs03-descubrir-negocios-cont-20261022-4`, commit documental `54e0b8f3bac360fe0f5be600afd383285a8545c3`. El propietario la fusionó después el 22-10-2026 a las 16:24:39 (America/Cancun), commit `9647d0d2d47a4d7fbf6163f4c80ad89eebeb42dd`. La implementación de VS03 se integró mediante PR #4.
 
-**Pendientes:** revisión de la PR #5 del registro documental; contenido de salida en VS16 y despliegue en VS17. VS03 está completada e integrada, sin comprobaciones locales pendientes identificadas. **Siguiente acción:** VS04, mantener URLs e indexación. No se ha desplegado.
+**Pendientes:** contenido de salida en VS16 y despliegue en VS17. Las PR #4 y #5 están integradas; VS03 está completada, sin comprobaciones locales pendientes identificadas. **Siguiente acción:** integrar VS04 tras la revisión de su PR. No se ha desplegado.
 
 ### VS04 — Mantener URLs e indexación
 
-**Estado:** pendiente. **Dependencias:** VS03 completada e integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T06.
+**Estado:** en curso. **Dependencias:** VS03 completada e integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T06.
 
-**Puerta adicional previa al inicio:** ambos hitos de la puerta transversal de diseño están verificados e integrados. La dependencia VS03 está satisfecha. VS04 puede comenzar en una rama nueva; no se ha iniciado con esta actualización documental.
+**Intervención 23-10-2026:** rama `codex/vs04-urls-indexacion`, desde `master` sincronizado en `28051c7`. El propietario aprobó cambios de slug solo en fichas; ciudad, categorías y zonas conservan sus restricciones. [Registro VS04](dev_changelog/VS04.md). Antislop `during`, revisión técnica y visual pendiente de ejecución; no acredita producción.
+
+**Continuación del sitemap (23-10-2026):** rama `codex/vs04-urls-indexacion-cont-20261023-1`, desde la anterior con los cambios sin confirmar conservados. El propietario aprobó `spatie/laravel-sitemap:^8.2`; versión instalada 8.2.0 y tres dependencias transitivas, sin actualizar las anteriores. `BuildPublicSitemap` conserva la elegibilidad y URLs propias y delega el XML a la API manual del paquete; GET/HEAD sin crawler, cron, archivo estático ni caché persistente. Pruebas enfocadas: 19/19 y 193 aserciones; suite completa MySQL: 175/175 y 2.286 aserciones. Pint, build, validación Composer, enlaces y `git diff --check` correctos. Herd sirve XML vacío válido con el inventario solo DEMO, cabeceras XML y `no-store, private`. Antislop `during`, base/copywriting y Laravel/testing; revisión de evidencia/redacción cubierta, criterios visuales no aplican a este alcance. Integración del sitemap verificada localmente; VS04 sigue en curso con la revisión y cierre del resto de cambios pendientes, sin PR ni despliegue. [Detalle y Delivery Gate](dev_changelog/VS04.md#continuación-integrar-spatie-laravel-sitemap-23-10-2026).
+
+**Dependencias verificadas:** ambos hitos de la puerta transversal de diseño están integrados mediante PR #6 y #8, y VS03 mediante PR #4. La implementación se inició en la rama indicada arriba. La continuación de cierre `codex/vs04-urls-indexacion-cont-20261023-2` conserva ambas intervenciones anteriores desde `28051c7`; `origin/master` sigue en esa base tras fetch. La integración de VS04 no se declara completada hasta la fusión de su PR por el propietario.
 
 **Objetivo:** que URL pública, metadatos, enlaces y sitemap reflejen el mismo estado editorial.
 
-- [ ] Unificar resolución de URL, canonical absoluto, metadatos sociales, breadcrumbs y datos estructurados fieles al contenido visible.
-- [ ] Generar sitemap solo con URLs públicas útiles; excluir filtros, páginas vacías, privadas y módulos no disponibles. Aplicar `noindex` y canonical a la base pertinente en variantes filtradas.
-- [ ] Registrar cambios de slug de contenido publicado de este proyecto, reservar su origen y emitir 301 al destino público actual sin revelar borradores; actualizar enlaces generados.
-- [ ] Revisar políticas de indexación, redirección y eventos sin PII ya presentes; extender este contrato a cada módulo posterior.
+- [x] Unificar resolución de URL, canonical absoluto, metadatos sociales, breadcrumbs y datos estructurados fieles al contenido visible.
+- [x] Generar sitemap solo con URLs públicas útiles; excluir filtros, páginas vacías, privadas y módulos no disponibles. Aplicar `noindex` y canonical a la base pertinente en variantes filtradas.
+- [x] Registrar cambios de slug de fichas publicadas de este proyecto, reservar su origen y emitir 301 al destino público actual sin revelar borradores; actualizar enlaces generados.
+- [x] Revisar políticas de indexación, redirección y eventos sin PII de las superficies actuales; los módulos posteriores deben incorporar el mismo contrato en su propia fase.
 
 **Aceptación y fallos:** despublicar retira la URL del sitemap; redirecciones no recuperan contenido privado ni reasignan orígenes reservados. Ninguna URL heredada obtiene tratamiento especial.
 
 **Pruebas y revisión:** sitemap, canonical/noindex, metadatos/JSON-LD, cambio de slug, colisiones y despublicación del destino. Revisar breadcrumbs y enlaces visibles de las pantallas existentes.
 
-**Evidencia:** sin ejecución registrada.
+**Evidencia de cierre local (23-10-2026):** pruebas enfocadas de SEO/slugs/concurrencia/dominio: 31 correctas y 253 aserciones; suite completa MySQL: 176 correctas y 2.291 aserciones, incluida la protección del rollback con reservas. Pint, build, Composer y diff correctos; 24 rutas propias. Ocho superficies en Herd a 390×844, 768×1024 y 1440×900 CSS, más reflujo a 320×600: sin desbordamiento horizontal, `lang=es`, un `main` y un `h1`; metadatos y breadcrumbs coherentes. Capturas locales comparables de dimensiones comprobadas, foco, filtros, paginación y retorno de Reportar operados con teclado; FAQ con Enter. Contraste de breadcrumbs 5,42:1 y foco 5,36:1 sobre lavanda. Vite activo. La migración incremental está aplicada localmente, sin reconstruir historial ni reiniciar datos. [Pruebas técnicas, Delivery Gate y límites del cierre](dev_changelog/VS04.md#continuación-cierre-local-y-entrega-por-pr-23-10-2026). La entrega por PR se registrará al crearla; no hay despliegue. Las cuatro comprobaciones asistidas ya aplazadas permanecen en VS15.
 
 **Bloqueos:** ninguno adicional confirmado.
 

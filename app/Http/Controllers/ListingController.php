@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Actions\Listings\RecordInteraction;
 use App\Models\Listing;
+use App\Models\SlugRedirect;
 use App\Queries\PublicListingQuery;
 use App\Support\ListingPageData;
+use App\Support\PublicUrl;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -13,8 +16,14 @@ class ListingController extends Controller
 {
     public function __construct(private PublicListingQuery $query, private RecordInteraction $interactions, private ListingPageData $page) {}
 
-    public function show(Request $request, string $listing): Response
+    public function show(Request $request, string $listing): Response|RedirectResponse
     {
+        $redirect = SlugRedirect::query()->where('source_path', '/@'.$listing)->with('listing')->first();
+        if ($redirect) {
+            abort_unless($redirect->listing && $this->query->contains($redirect->listing), 404);
+
+            return redirect()->to(PublicUrl::listing($redirect->listing), 301)->header('Cache-Control', 'no-store');
+        }
         $record = $this->query->find($listing);
         $this->interactions->handle($record, 'listing.view', $request);
 

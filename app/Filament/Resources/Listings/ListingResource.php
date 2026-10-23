@@ -43,7 +43,7 @@ class ListingResource extends Resource
         return $schema->components([
             Section::make('Identidad y clasificación')->schema([
                 TextInput::make('name')->label('Nombre')->required()->maxLength(255),
-                TextInput::make('slug')->label('Slug')->required()->maxLength(180)->helperText('Único en todas las fichas. Se conserva después de publicar.'),
+                TextInput::make('slug')->label('Slug')->required()->maxLength(180)->helperText('Único en todas las fichas. Después de publicar, cada URL anterior queda reservada y redirige mientras la ficha sea pública.'),
                 Select::make('type')->label('Tipo')->options(['business' => 'Negocio', 'place' => 'Lugar público'])->default('business')->required()->live(),
                 Select::make('city_id')->label('Ciudad')->options(fn (): array => City::query()->pluck('name', 'id')->all())->required()->live(),
                 Select::make('area_id')->label('Zona')->options(fn (Get $get): array => Area::query()->where('city_id', $get('city_id'))->where('is_active', true)->pluck('name', 'id')->all()),

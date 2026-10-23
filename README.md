@@ -1,6 +1,6 @@
 # Tu Gurú Local — proyecto nuevo
 
-Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00–VS03 completadas; la alineación visual previa a VS04 está integrada en `master`. El sitio no está publicado.** La raíz redirige temporalmente al Inicio de Playa del Carmen. Las superficies vacías, filtradas o con solo DEMO llevan `noindex`.
+Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00–VS03 completadas; VS04 verificada localmente y en preparación de su entrega por PR. El sitio no está publicado.** La alineación visual previa a VS04 está integrada en `master`. La raíz redirige temporalmente al Inicio de Playa del Carmen. Las superficies vacías, filtradas o con solo DEMO llevan `noindex`.
 
 ## Contratos y secuencia
 
@@ -63,7 +63,7 @@ Las sesiones usan cookies de sesión HttpOnly y SameSite=Lax, datos de sesión c
 
 El panel administra ciudades, zonas, categorías, fichas y reportes. `php artisan db:seed` crea solo Playa del Carmen y las cinco categorías iniciales; no crea cuentas ni negocios de ejemplo. Solo Playa del Carmen puede ser pública inicialmente.
 
-Las fichas se publican manualmente, sin programación. Se pueden previsualizar, despublicar, archivar y recuperar; el historial conserva el contenido y exige nueva aprobación al recuperar una versión. El slug de una ficha ya publicada queda protegido hasta VS04. Los Lugares permanecen privados hasta implementar sus negocios hijos verificados en VS12.
+Las fichas se publican manualmente, sin programación. Se pueden previsualizar, despublicar, archivar y recuperar; el historial conserva el contenido y exige nueva aprobación al recuperar una versión. VS04 permite cambiar el slug de una ficha publicada y reserva cada URL anterior: devuelve 301 directamente al slug vigente mientras la ficha sea pública, o 404 cuando pierde elegibilidad. Los Lugares permanecen privados hasta implementar sus negocios hijos verificados en VS12.
 
 Imágenes y PDF se gestionan con `filament/spatie-laravel-media-library-plugin` y permanecen en almacenamiento privado. El botón PDF tiene texto editable por ficha. `/@{listing}` muestra solo contenido publicado y aprobado; los medios pierden acceso público al despublicar. Los reportes se revisan desde el panel y no corrigen datos automáticamente. Su recepción está disponible para comprobaciones locales; en producción queda cerrada hasta aprobar la privacidad y conectar su ruta en VS05.
 
@@ -83,7 +83,7 @@ Publicar requiere logo propio autorizado, con alt y fecha manual de verificació
 
 La implementación local comenzó en `codex/vs03-descubrir-negocios`, creada desde la base integrada `b59d920`; la ampliación DEMO continuó en `codex/vs03-descubrir-negocios-cont-20261022-1` y la confirmación sin JavaScript en la continuación `-2`. La entrega se realizó desde `codex/vs03-descubrir-negocios-cont-20261022-3`. [El registro VS03](docs/dev_changelog/VS03.md) conserva las comprobaciones y la integración verificada.
 
-[PR #4 — VS03: Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4) fusionada hacia `master` el 22-10-2026 a las 16:17:35 (America/Cancun), commit `78e67bd3cee9e7b5389161ddb106ba354b306fef`. La continuación `codex/vs03-descubrir-negocios-cont-20261022-4` registra la integración comprobada. La puerta transversal de diseño también está integrada; VS04, URLs e indexación, sigue pendiente y puede iniciarse en su propia rama.
+[PR #4 — VS03: Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4) fusionada hacia `master` el 22-10-2026 a las 16:17:35 (America/Cancun), commit `78e67bd3cee9e7b5389161ddb106ba354b306fef`. La continuación `codex/vs03-descubrir-negocios-cont-20261022-4` registra la integración comprobada. La puerta transversal de diseño también está integrada; VS04, URLs e indexación, está implementada y verificada localmente, pendiente de integración mediante PR.
 
 - [Inicio de Playa del Carmen](http://tugurulocal-nuevo.test/playa-del-carmen) ofrece accesos a categorías y zonas con resultados, hasta seis seleccionados manualmente y hasta seis recientes sin repetir los seleccionados.
 - [Negocios](http://tugurulocal-nuevo.test/playa-del-carmen/negocios) admite `categoria`, `zona` y `page`. Las páginas de categoría y zona permiten filtrar el contexto restante. El botón «Aplicar» envía un formulario GET y vuelve a la primera página; «Limpiar filtros» conserva la página de origen.
@@ -94,7 +94,9 @@ La comprobación física del logo se realiza antes de contar y paginar. Los icon
 
 VS03 incorpora dos migraciones incrementales: crea `home_selections` y amplía `interaction_events`, haciendo opcional `listing_id` para conservar los eventos de ficha y admitir los de descubrimiento. Se aplican con `php artisan migrate --no-interaction`; no requieren reiniciar la base ni recrear datos o medios DEMO. La reversión de la ampliación de eventos se rechaza si ya existen eventos de descubrimiento sin ficha; en ese caso corresponde una migración correctiva.
 
-Lugares públicos, sitemap, redirecciones de slugs, catálogo, recomendaciones, listas y comercio siguen sus fases previstas. La navegación solo enlaza superficies disponibles y `/premium` permanece oculta.
+VS04 integra localmente Spatie Laravel Sitemap 8.2.0 en `/sitemap.xml`, generado desde las consultas públicas en cada petición y sin rastreo, archivo estático ni cron. Solo incorpora URLs reales elegibles; un inventario compuesto únicamente por DEMO devuelve un XML sin URLs. Canonical, `noindex` y redirecciones continúan bajo las reglas propias del proyecto. La fase sigue en curso; [registro y comprobaciones](docs/dev_changelog/VS04.md).
+
+Lugares públicos, catálogo, recomendaciones, listas y comercio siguen sus fases previstas. La navegación solo enlaza superficies disponibles y `/premium` permanece oculta.
 
 ### Laravel Boost para Codex
 
@@ -108,4 +110,4 @@ El comando actualiza el bloque delimitado de Boost en `AGENTS.md` y los archivos
 
 ## Pendientes para el lanzamiento
 
-Implementar VS04–VS17 y aprobar contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
+Integrar VS04 mediante su PR, implementar VS05–VS17 y aprobar contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
