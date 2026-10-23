@@ -44,14 +44,15 @@ Antes de entregar, ejecuta la revisión final de Antislop y las listas de los co
 
 ### Cierre mediante pull requests
 
-Pedir el cierre de una `VSXX` significa preparar y dejar abierta su PR hacia `master` para revisión del propietario. El flujo vigente, simplificado el 23 de octubre de 2026, es:
+Pedir el cierre de una `VSXX` significa preparar los cambios locales verificados para revisión del propietario. Por decisión del propietario del 23 de octubre de 2026, hacer commit, push y crear o actualizar una PR requiere su instrucción explícita para cada acción y alcance. Implementar, verificar, corregir o pedir el cierre no concede esa autorización. El flujo vigente es:
 
 1. Completar implementación, comprobaciones aplicables y documentación en la rama de trabajo, conservando la evidencia real y los pendientes.
-2. Crear los commits y subir únicamente esa rama. Actualizar la PR existente o abrir una si aún no existe, con título `VSXX: descripción`. Su descripción explica los cambios, las pruebas ejecutadas con sus resultados y lo pendiente. Las correcciones de revisión y sus comprobaciones se incorporan a esa misma rama y PR.
-3. Registrar número, URL y rama de la PR en `docs/MEMORY.md` y `docs/dev_changelog/VSXX.md`; confirmar y subir ese registro a la misma rama para incluirlo en la PR. Adjuntar la PR al chat y entregar su enlace.
-4. Dejar la PR abierta. El propietario decide cuándo fusionarla. El agente no fusiona la PR, no integra la rama directamente en `master` ni hace push a `master`.
+2. Entregar los cambios locales sin confirmar, explicar qué cambió, qué se comprobó y qué falta, y dejar que el propietario los revise. El propietario decide cuándo autorizar los commits, el push y la creación o actualización de la PR; puede indicar varias acciones juntas. Autorizar un commit no autoriza el push ni una PR. Las correcciones posteriores también quedan locales hasta una nueva instrucción que las incluya.
+3. Ejecutar solo las acciones autorizadas. Para publicar, subir únicamente la rama de trabajo y reutilizar la PR existente; si autoriza crearla, abrirla hacia `master` con título `VSXX: descripción`. La PR reúne cambios, pruebas, documentación y pendientes de esa entrega.
+4. Cuando exista PR, registrar número, URL y rama en `docs/MEMORY.md` y `docs/dev_changelog/VSXX.md`; confirmar y subir ese registro solo si el alcance autorizado lo incluye. Adjuntar la PR al chat y entregar su enlace. Una PR existente no autoriza actualizaciones automáticas.
+5. Dejar la PR abierta. El propietario decide cuándo fusionarla. El agente no fusiona la PR, no integra la rama directamente en `master` ni hace push a `master`.
 
-Mientras la PR no esté fusionada, mantener la tarea `en curso`, con «implementación verificada; integración pendiente en PR», aunque las comprobaciones locales hayan pasado. No declarar integración ni cierre completo por crear el commit, subir la rama o abrir la PR.
+Mantener la tarea `en curso` hasta comprobar su integración. Con las comprobaciones completas y los cambios aún locales, indicar «implementación verificada; revisión local del propietario pendiente». Si existe PR sin fusionar, indicar «implementación verificada; integración pendiente en PR» y distinguir cualquier cambio local sin publicar. No declarar integración ni cierre completo por revisar los cambios, crear el commit, subir la rama o abrir la PR.
 
 Después del merge, comprobar en GitHub que la PR esté fusionada hacia `master` y sincronizar `master` local solo por avance rápido desde `origin/master`. Con la aceptación satisfecha y la integración comprobada, la dependencia queda cerrada y se puede iniciar la siguiente tarea aunque el tablero todavía indique integración pendiente. Informar del resultado en el chat. Nunca escribir ni publicar directamente en `master`.
 
@@ -62,13 +63,15 @@ GitHub es la fuente de verdad para estado, fecha y commit de integración; MEMOR
 | Situación | Acción |
 | --- | --- |
 | Retomar la misma entrega antes de fusionarla | Reutilizar rama y PR, aunque cambie la sesión. |
-| Corregir una observación de revisión | Añadir commits y comprobaciones a la misma PR. |
+| Implementación verificada o petición de cierre | Entregar cambios locales sin confirmar para revisión; esperar la instrucción de commit, push o PR. |
+| Corregir una observación de revisión | Corregir y verificar localmente; incorporar a la misma PR solo cuando el propietario autorice las acciones correspondientes. |
+| Autorización solo para commit | Crear el commit del alcance indicado; conservarlo local sin push ni cambios en la PR. |
 | Dependencia con PR todavía abierta o aceptación pendiente | Mantener la dependencia sin cerrar; no iniciar la tarea dependiente. |
 | PR fusionada y aceptación satisfecha | Comprobar GitHub, sincronizar master por avance rápido y continuar la dependencia. |
 | Tablero pendiente de reflejar el merge | Actualizarlo en la siguiente entrega; no bloquear trabajo por ese desfase. |
 | Solo hay metadatos o un estado que actualizar | No crear PR; conservar la evidencia en GitHub hasta la siguiente entrega. |
 | Última entrega fusionada, sin otra entrega prevista | Confirmar en GitHub y en el chat; no crear PR para cerrar el registro. |
-| Corrección posterior a la fusión o entrega independiente | Crear otra rama y PR para ese cambio sustantivo. |
+| Corrección posterior a la fusión o entrega independiente | Usar otra rama para ese cambio sustantivo; crear su PR cuando el propietario lo autorice. |
 
 ## 1. Trazabilidad de tareas y evidencia
 
@@ -118,7 +121,7 @@ Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una ag
 
 Al comenzar cada tarea `VSXX`, crear o abrir `docs/dev_changelog/VSXX.md`; actualizar el mismo archivo al terminar cada intervención, con fecha, explicación comprensible de cambios y motivos, verificación real y pendientes. Enlazarlo desde su sección en [MEMORY.md](MEMORY.md), donde se actualizan estado, checklist y evidencia resumida. Anotar cambios, migraciones/configuración, comandos y pruebas ejecutadas con fecha y entorno, resultados de la revisión visual y riesgos pendientes. `docs/dev_changelog/` contiene únicamente registros Markdown: no guardar imágenes ni capturas. Documentar la revisión visual en texto con URLs locales, tamaños de pantalla, interacciones comprobadas y resultados observables. Una tarea completada exige evidencia real; conservar datos privados y secretos fuera de Git. No afirmar que producción funciona por un test local. Si una puerta falla, resolver el defecto antes de continuar al lanzamiento.
 
-En cada intervención, registrar también modo Antislop, skills aplicadas y motivo, resultados por criterio y pendientes de la [revisión final](#antislop-en-la-ejecución) en el mismo registro VSXX, con evidencia resumida en el tablero. Para una actualización general del flujo, usar el tablero y la PR correspondiente, sin abrir una VSXX ni crear registros vacíos.
+En cada intervención, registrar también modo Antislop, skills aplicadas y motivo, resultados por criterio y pendientes de la [revisión final](#antislop-en-la-ejecución) en el mismo registro VSXX, con evidencia resumida en el tablero. Para una actualización general del flujo, usar el tablero y, cuando el propietario autorice su publicación, la PR correspondiente, sin abrir una VSXX ni crear registros vacíos.
 
-Entregar el cierre mediante la [PR abierta para revisión del propietario](#cierre-mediante-pull-requests), con número, URL y rama registrados en ambos documentos y el enlace en el chat. Distinguir la implementación verificada de la integración comprobada: una PR sin fusionar conserva la tarea `en curso`.
+Entregar primero los cambios locales verificados para revisión del propietario según el [flujo de cierre](#cierre-mediante-pull-requests). Hacer commit, push y crear o actualizar la PR solo por su instrucción explícita. Cuando exista PR, registrar sus datos en ambos documentos y enlazarla en el chat. Distinguir la implementación verificada de la integración comprobada: la tarea sigue `en curso` hasta verificar su fusión.
 
