@@ -6,9 +6,9 @@ Fecha: 22-10-2026. Manual: [design.md](../design.md). Fuente: [Base44](https://p
 
 Base de esta intervención: `9647d0d2d47a4d7fbf6163f4c80ad89eebeb42dd`, con PR #5 de VS03 fusionada hacia master y fetch comprobado. Rama documental: `codex/sistema-diseno-referencia`. El árbol estaba limpio al comenzar. No se reabren VS02/VS03 ni se crean registros vacíos.
 
-Entrega: [PR #6](https://github.com/luisfridev/tugurulocal/pull/6), abierta hacia master y adjunta al chat. Commit inicial publicado `025b9b1e000c42c95bcfb75073f7393275aca215`; sus blobs y árbol coinciden con la entrega local. El registro de la PR se incorpora en un commit posterior de la misma rama. Integración por el propietario y alineación siguen pendientes.
+Entrega: [PR #6](https://github.com/luisfridev/tugurulocal/pull/6), entregada abierta y fusionada por el propietario hacia `master` el 22-10-2026 a las 17:49:51 (America/Cancun), commit `e543736ed6074e72d5e927eda5131b800b69d30d`. Integración comprobada en GitHub el 23-10-2026. Commit inicial publicado `025b9b1e000c42c95bcfb75073f7393275aca215`; sus blobs y árbol coinciden con la entrega local. El registro de la PR quedó en `3493db6647631851fcfbb9856e714572f8461ead`, en la misma rama. La alineación sigue pendiente.
 
-El [tablero](../MEMORY.md#puerta-transversal-de-diseno-antes-de-vs04) establece dos hitos: integrar este manual por PR y, después, alinear las superficies existentes mediante una rama/PR independiente antes de VS04. La documentación verificada pendiente de fusión no se marca integrada. La alineación aún no está implementada ni verificada.
+El [tablero](../MEMORY.md#puerta-transversal-de-diseno-antes-de-vs04) establece dos hitos: el manual ya está integrado y falta alinear las superficies existentes mediante una rama/PR independiente antes de VS04. La alineación aún no está implementada ni verificada. La [corrección documental del 23-10-2026](delivery-review.md#5-correccion-documental-de-integracion-23-10-2026) registra la comprobación y sus límites.
 
 Secuencia concreta de la futura alineación:
 

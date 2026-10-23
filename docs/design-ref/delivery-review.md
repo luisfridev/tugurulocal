@@ -1,8 +1,8 @@
 # Revisión de la entrega del sistema de diseño
 
-Fecha: 22-10-2026. Rama: `codex/sistema-diseno-referencia`. Base: `9647d0d`. Estado: documentación verificada; integración y alineación pendientes. No acredita producción.
+Fecha de la entrega original: 22-10-2026. Rama: `codex/sistema-diseno-referencia`. Base: `9647d0d`. Estado actualizado el 23-10-2026: documentación verificada e integrada; alineación pendiente. No acredita producción.
 
-Entrega en [PR #6](https://github.com/luisfridev/tugurulocal/pull/6), abierta hacia master y adjunta al chat. Los 123 blobs y el árbol inicial publicado `85874440b8ed7f8125c3fc8c46fd0989808032ce` coinciden con el commit local. El registro documental se incorpora a esa misma PR.
+Entrega en [PR #6](https://github.com/luisfridev/tugurulocal/pull/6), entregada abierta y fusionada por el propietario hacia `master` el 22-10-2026 a las 17:49:51 (America/Cancun), commit `e543736ed6074e72d5e927eda5131b800b69d30d`. GitHub confirmó la integración el 23-10-2026. Los 123 blobs y el árbol inicial publicado `85874440b8ed7f8125c3fc8c46fd0989808032ce` coinciden con el commit local. El registro documental quedó en `3493db6647631851fcfbb9856e714572f8461ead`, dentro de esa misma PR.
 
 Antislop activo: `during`, regla del proyecto. Se reutilizaron las lecturas vigentes de la sesión: base; UI para composición/componentes; human para accesibilidad; layoutmobile para adaptación; copywriting para documentación; Tailwind para el mapeo técnico. No se instaló una skill externa ni se modificó la configuración global. Dirección: guía editorial cercana de ciudad, ENERGY 2 / RHYTHM 2 / MOTION 1, derivada de la referencia y adaptada al producto.
 
@@ -141,6 +141,29 @@ Los resultados siguientes valoran esta entrega documental y su extracción. No c
 
 ## 4. Pendientes y entrega
 
-Pendientes reales: integrar la PR documental, alinear la UI existente con PR propia, ejecutar sus pruebas técnicas y revisión en Herd, y validar los puntos de accesibilidad no ejecutados. No se instalan fuentes, no se rediseña Filament y no se habilita el panel de usuario.
+Pendientes reales: alinear la UI existente con PR propia, ejecutar sus pruebas técnicas y revisión en Herd, y validar los puntos de accesibilidad no ejecutados. La entrega documental no instaló fuentes, no rediseñó Filament ni habilitó el panel de usuario.
 
-El tablero registra número, URL y rama de la PR #6. La PR se deja abierta para revisión del propietario. La extracción verificada no implica fusión, cierre de VS04 ni despliegue.
+El tablero registra número, URL, rama, fecha y commit de integración de la PR #6. Su fusión cierra el hito de manual y referencias; la alineación pendiente impide iniciar VS04. No hay despliegue registrado.
+
+<a id="5-correccion-documental-de-integracion-23-10-2026"></a>
+
+## 5. Corrección documental de integración (23-10-2026)
+
+Objetivo: corregir los documentos que aún presentaban la PR #6 como abierta después de su fusión. Rama `codex/registrar-integracion-diseno`, creada desde `master` sincronizado en `e543736ed6074e72d5e927eda5131b800b69d30d`, con árbol limpio. GitHub confirmó `merged=true`, destino `master`, fecha `2026-10-22T22:49:51Z` y ese commit de integración; se ejecutaron `git fetch origin` y `git merge --ff-only origin/master` antes de crear la rama.
+
+Antislop `during`, regla del proyecto. Se reutilizan las lecturas vigentes de la base y copywriting: esta intervención corrige estados, evidencia y redacción. Los resultados de extracción de los apartados anteriores se conservan como evidencia del 22-10-2026; no se repitieron ni se atribuyen a esta corrección.
+
+| Criterio | Resultado y evidencia de esta intervención |
+| --- | --- |
+| Hechos y cifras (R-17, R-18, R-36, R-38; C-5) | PASS: estado, destino, fecha y commit contrastados con GitHub y Git local; sin nuevas cifras de producto, testimonios ni afirmaciones comerciales. |
+| Precisión (R-16) | PASS: el manual figura integrado; la alineación y VS04 conservan su estado pendiente en los tres documentos. |
+| Puntuación (R-02) | PASS: texto añadido sin rayas largas; títulos y evidencia histórica conservados. |
+| Comillas y énfasis (copywriting) | PASS: código en línea para estados técnicos, fechas y commits; sin frases promocionales en mayúsculas ni comillas de énfasis. |
+| Actor y voz (copywriting) | PASS: propietario identificado como responsable de la fusión; comprobaciones del agente separadas de los resultados históricos; español operativo. |
+| Composición y ritmo (C-1, C-3; copywriting) | PASS: actualización de los estados donde se consultan y tabla de evidencia; sin ampliar funciones ni crear registros VSXX ajenos al alcance. |
+| Lectura, coherencia y enlaces (copywriting) | PASS: revisión de los tres documentos y de sus enlaces locales/anclas; referencias a PR #6 coherentes con la fusión comprobada. |
+| Integridad del cambio | PASS: `git diff --check` correcto y cambios limitados a los tres documentos; sin cambios de aplicación, tokens, dependencias ni datos. |
+| CTA (R-15) | No aplica: no se crean ni modifican CTA públicos. |
+| UI, activos, dirección visual e interacciones | No aplica: corrección documental sin cambios de interfaz. No se repiten PHPUnit, Pint, build ni revisión en Herd; no acredita alineación ni producción. |
+
+La corrección se entrega por una PR documental independiente para revisión del propietario. El siguiente trabajo funcional sigue siendo la alineación visual, con su propia rama y PR, antes de VS04.
