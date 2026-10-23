@@ -290,7 +290,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 ### VS05 — Recomendar y moderar
 
-**Estado:** en curso, implementación verificada; integración pendiente en PR. Revisión visual administrativa autenticada pendiente. **Dependencias:** VS04 completada e integrada mediante PR #11; dependencia cerrada. **Trazabilidad:** R06, R08–R09 / AC06, AC08–AC09; T05, T06, T13. [Registro VS05](dev_changelog/VS05.md).
+**Estado:** en curso, implementación verificada; integración pendiente en [PR #14](https://github.com/luisfridev/tugurulocal/pull/14), rama `codex/vs05-recomendar-moderar`, hacia `master`. Revisión visual administrativa autenticada pendiente. **Dependencias:** VS04 completada e integrada mediante PR #11; dependencia cerrada. **Trazabilidad:** R06, R08–R09 / AC06, AC08–AC09; T05, T06, T13. [Registro VS05](dev_changelog/VS05.md).
 
 **Objetivo:** recibir una recomendación pendiente y permitir moderarla hacia un borrador sin publicación automática ni exposición de información privada.
 
