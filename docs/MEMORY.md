@@ -1,6 +1,6 @@
 # Tu Gurú Local — Tablero de entregas verticales
 
-**Fecha:** 22 de octubre de 2026. **Estado:** VS00–VS03 completadas localmente; VS03 integrada en `master` mediante PR #4; fase Base cerrada y Editorial en curso; VS04–VS17 pendientes. No hay lanzamiento ni verificación de producción.
+**Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS03 completadas localmente; VS03 integrada en `master` mediante PR #4; fase Base cerrada y Editorial en curso; VS04–VS17 pendientes. No hay lanzamiento ni verificación de producción.
 
 ## Uso, autoridad y cierre
 
@@ -49,10 +49,10 @@ Decisión del propietario del 22-10-2026: integrar el sistema extraído de [Base
 
 | Hito | Estado | Evidencia y condición de cierre |
 | --- | --- | --- |
-| Manual y referencias | en curso | Documentación verificada; integración pendiente en PR, desde `codex/sistema-diseno-referencia`. |
+| Manual y referencias | completada | Documentación verificada e integrada mediante [PR #6](https://github.com/luisfridev/tugurulocal/pull/6), fusionada hacia `master` el 22-10-2026 a las 17:49:51 (America/Cancun), commit `e543736ed6074e72d5e927eda5131b800b69d30d`. Integración comprobada el 23-10-2026. |
 | Alineación de superficies existentes | pendiente | Intervención posterior con rama y PR propias para Inicio, Negocios/categorías/zonas, fichas y 404; revisar y comprobar fusión antes de VS04. |
 
-Rama documental: `codex/sistema-diseno-referencia`, desde master sincronizado en `9647d0d2d47a4d7fbf6163f4c80ad89eebeb42dd`. Se comprobó en GitHub la fusión de PR #5 hacia master y se ejecutó fetch y avance rápido local antes de crearla, con árbol limpio. [PR #6: Diseño, documentar referencia Base44 y puerta de adopción](https://github.com/luisfridev/tugurulocal/pull/6), abierta hacia master, desde esa rama. Commit documental publicado: `025b9b1e000c42c95bcfb75073f7393275aca215`, con 123 archivos. La conexión GitHub confirmó igualdad de blobs y del árbol `85874440b8ed7f8125c3fc8c46fd0989808032ce` respecto al commit local `466b2b2`. Este registro se incorpora a la misma PR, que queda adjunta al chat y abierta para revisión del propietario; no hay integración ni despliegue.
+Rama documental original: `codex/sistema-diseno-referencia`, desde master sincronizado en `9647d0d2d47a4d7fbf6163f4c80ad89eebeb42dd`. Se comprobó en GitHub la fusión de PR #5 hacia master y se ejecutó fetch y avance rápido local antes de crearla, con árbol limpio. La [PR #6: Diseño, documentar referencia Base44 y puerta de adopción](https://github.com/luisfridev/tugurulocal/pull/6) se entregó abierta y el propietario la fusionó hacia `master` en la fecha y el commit indicados arriba. Commit documental inicial publicado: `025b9b1e000c42c95bcfb75073f7393275aca215`, con 123 archivos; el registro de la PR quedó en `3493db6647631851fcfbb9856e714572f8461ead`. La conexión GitHub confirmó igualdad de blobs y del árbol inicial `85874440b8ed7f8125c3fc8c46fd0989808032ce` respecto al commit local `466b2b2`. La integración del manual no acredita alineación de la aplicación ni despliegue.
 
 Entregables: [manual](design.md), [tokens](design-ref/design-tokens.json), [inventario](design-ref/component-inventory.md), [manifiesto de capturas](design-ref/screenshots/manifest.json) y [guía de adopción](design-ref/implementation-guide.md). Evidencia: 17 páginas, 51 combinaciones de viewport/DPR 1, 102 capturas base y tres de interacción; muestras DOM/CSS, fronteras responsive, contraste calculado y siete comprobaciones de navegación/foco. La [revisión de entrega](design-ref/delivery-review.md) conserva criterios y límites. El código y los datos actuales no cambian; la alineación sigue pendiente.
 
@@ -61,6 +61,10 @@ Comprobación documental local: [reporte](design-ref/validation-report.json) cor
 Antislop `during`, regla del proyecto; skills base, UI, human, layoutmobile y copywriting para extracción/documentación visual, más Tailwind para su adaptación al stack. Las comprobaciones no ejecutadas quedan identificadas: hover con puntero, zoom nativo 200 %, lector de pantalla, dispositivo/teclado virtual y auditoría completa de estados. La extracción no se presenta como certificación de la interfaz ni de producción.
 
 Antes de cada intervención con UI pública, registrar revisión/base de design.md, componentes y diferencias intencionales; comparar capturas con el procedimiento de la guía y guardar la revisión en el registro VSXX correspondiente. VS15 revisa el conjunto. Los archivos de capturas permanecen en design-ref; dev_changelog conserva únicamente Markdown por tarea.
+
+**Corrección del registro de integración (23-10-2026):** rama `codex/registrar-integracion-diseno`, desde `master` en `e543736ed6074e72d5e927eda5131b800b69d30d`. Se volvió a comprobar en GitHub que la PR #6 está cerrada, fusionada y dirigida a `master`, con fecha real `2026-10-22T22:49:51Z` (17:49:51 de America/Cancun). Se ejecutaron `git fetch origin` y `git merge --ff-only origin/master`; `master` ya estaba actualizado y el árbol estaba limpio antes de crear la rama. Se corrigen el tablero, la guía de implementación y la revisión de entrega. Antislop `during`, regla del proyecto; base y copywriting para coherencia, evidencia y redacción documental. [Comprobaciones y revisión final](design-ref/delivery-review.md#5-correccion-documental-de-integracion-23-10-2026). La alineación sigue pendiente y VS04 no comienza con esta corrección.
+
+Entrega de esta corrección: [PR #7: Docs, registrar integración del sistema de diseño](https://github.com/luisfridev/tugurulocal/pull/7), abierta hacia `master` desde `codex/registrar-integracion-diseno`, commit inicial `db26e258b05bdf26c660cf58b6892191d8de89af`. El registro se incorpora a la misma PR, adjunta al chat y pendiente de revisión y fusión del propietario. Esa revisión pendiente corresponde a esta corrección; el manual de la PR #6 ya está integrado.
 
 ## Secuencia y dependencias
 
