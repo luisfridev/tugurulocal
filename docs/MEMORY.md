@@ -1,6 +1,6 @@
 # Tu Gurú Local — Tablero de entregas verticales
 
-**Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS03 completadas localmente; VS03 integrada en `master` mediante PR #4; fase Base cerrada y Editorial en curso. VS04 en curso: implementación verificada; integración pendiente en [PR #11](https://github.com/luisfridev/tugurulocal/pull/11). VS05–VS17 pendientes. No hay lanzamiento ni verificación de producción.
+**Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS04 completadas; VS04 integrada en `master` mediante [PR #11](https://github.com/luisfridev/tugurulocal/pull/11); fase Base cerrada y Editorial en curso. VS05–VS17 pendientes; VS05 tiene su dependencia cerrada. No hay lanzamiento ni verificación de producción.
 
 ## Uso, autoridad y cierre
 
@@ -227,17 +227,17 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Registro documental de integración:** [PR #5 — VS03: registrar integración y cierre](https://github.com/luisfridev/tugurulocal/pull/5), entregada inicialmente abierta hacia `master` desde `codex/vs03-descubrir-negocios-cont-20261022-4`, commit documental `54e0b8f3bac360fe0f5be600afd383285a8545c3`. El propietario la fusionó después el 22-10-2026 a las 16:24:39 (America/Cancun), commit `9647d0d2d47a4d7fbf6163f4c80ad89eebeb42dd`. La implementación de VS03 se integró mediante PR #4.
 
-**Pendientes:** contenido de salida en VS16 y despliegue en VS17. Las PR #4 y #5 están integradas; VS03 está completada, sin comprobaciones locales pendientes identificadas. **Siguiente acción:** integrar VS04 tras la revisión de su PR. No se ha desplegado.
+**Pendientes:** contenido de salida en VS16 y despliegue en VS17. Las PR #4 y #5 están integradas; VS03 está completada, sin comprobaciones locales pendientes identificadas. **Siguiente acción:** VS05, tras la integración comprobada de VS04 en PR #11. No se ha desplegado.
 
 ### VS04 — Mantener URLs e indexación
 
-**Estado:** en curso: implementación verificada; integración pendiente en [PR #11](https://github.com/luisfridev/tugurulocal/pull/11). **Rama de entrega:** `codex/vs04-urls-indexacion-cont-20261023-2`. **Dependencias:** VS03 completada e integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T06.
+**Estado:** completada; implementación verificada localmente e integración de [PR #11](https://github.com/luisfridev/tugurulocal/pull/11) hacia `master` comprobada en GitHub. **Rama de entrega:** `codex/vs04-urls-indexacion-cont-20261023-2`. **Rama del registro de integración:** `codex/vs04-urls-indexacion-cont-20261023-3`. **Dependencias:** VS03 completada e integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T06.
 
 **Intervención 23-10-2026:** rama `codex/vs04-urls-indexacion`, desde `master` sincronizado en `28051c7`. El propietario aprobó cambios de slug solo en fichas; ciudad, categorías y zonas conservan sus restricciones. [Registro VS04](dev_changelog/VS04.md). Antislop `during`, revisión técnica y visual pendiente de ejecución; no acredita producción.
 
 **Continuación del sitemap (23-10-2026):** rama `codex/vs04-urls-indexacion-cont-20261023-1`, desde la anterior con los cambios sin confirmar conservados. El propietario aprobó `spatie/laravel-sitemap:^8.2`; versión instalada 8.2.0 y tres dependencias transitivas, sin actualizar las anteriores. `BuildPublicSitemap` conserva la elegibilidad y URLs propias y delega el XML a la API manual del paquete; GET/HEAD sin crawler, cron, archivo estático ni caché persistente. Pruebas enfocadas: 19/19 y 193 aserciones; suite completa MySQL: 175/175 y 2.286 aserciones. Pint, build, validación Composer, enlaces y `git diff --check` correctos. Herd sirve XML vacío válido con el inventario solo DEMO, cabeceras XML y `no-store, private`. Antislop `during`, base/copywriting y Laravel/testing; revisión de evidencia/redacción cubierta, criterios visuales no aplican a este alcance. Integración del sitemap verificada localmente; VS04 sigue en curso con la revisión y cierre del resto de cambios pendientes, sin PR ni despliegue. [Detalle y Delivery Gate](dev_changelog/VS04.md#continuación-integrar-spatie-laravel-sitemap-23-10-2026).
 
-**Dependencias verificadas:** ambos hitos de la puerta transversal de diseño están integrados mediante PR #6 y #8, y VS03 mediante PR #4. La implementación se inició en la rama indicada arriba. La continuación de cierre `codex/vs04-urls-indexacion-cont-20261023-2` conserva ambas intervenciones anteriores desde `28051c7`; `origin/master` sigue en esa base tras fetch. La integración de VS04 no se declara completada hasta la fusión de su PR por el propietario.
+**Dependencias verificadas al preparar la entrega:** ambos hitos de la puerta transversal de diseño están integrados mediante PR #6 y #8, y VS03 mediante PR #4. La implementación se inició en la rama indicada arriba. La continuación de cierre `codex/vs04-urls-indexacion-cont-20261023-2` conserva ambas intervenciones anteriores desde `28051c7`; al preparar aquella entrega, `origin/master` seguía en esa base tras fetch. La integración posterior se registra a continuación.
 
 **Objetivo:** que URL pública, metadatos, enlaces y sitemap reflejen el mismo estado editorial.
 
@@ -252,13 +252,15 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Evidencia de cierre local (23-10-2026):** pruebas enfocadas de SEO/slugs/concurrencia/dominio: 31 correctas y 253 aserciones; suite completa MySQL: 176 correctas y 2.291 aserciones, incluida la protección del rollback con reservas. Pint, build, Composer y diff correctos; 24 rutas propias. Ocho superficies en Herd a 390×844, 768×1024 y 1440×900 CSS, más reflujo a 320×600: sin desbordamiento horizontal, `lang=es`, un `main` y un `h1`; metadatos y breadcrumbs coherentes. Capturas locales comparables de dimensiones comprobadas, foco, filtros, paginación y retorno de Reportar operados con teclado; FAQ con Enter. Contraste de breadcrumbs 5,42:1 y foco 5,36:1 sobre lavanda. Vite activo. La migración incremental está aplicada localmente, sin reconstruir historial ni reiniciar datos. [Pruebas técnicas, Delivery Gate y límites del cierre](dev_changelog/VS04.md#continuación-cierre-local-y-entrega-por-pr-23-10-2026). Las cuatro comprobaciones asistidas ya aplazadas permanecen en VS15.
 
-**Entrega:** [PR #11: VS04, mantener URLs e indexación](https://github.com/luisfridev/tugurulocal/pull/11), abierta hacia `master` desde `codex/vs04-urls-indexacion-cont-20261023-2`. Commit inicial publicado `3cccc9f70c01e341f04b0990b759eb656aed10ab`; publicación mediante conexión GitHub por falta de autenticación del push CLI, con árbol `c4979e8660d7107e78a8217baed4a8e02d7a7f8b` idéntico al commit local inicial `4bfb397`. El registro de esta PR se incorpora en la misma rama y PR. Está adjunta al chat; queda abierta para revisión y fusión del propietario. VS04 no se marca completada ni se habilita VS05 hasta comprobar su integración. No hay despliegue.
+**Entrega:** [PR #11: VS04, mantener URLs e indexación](https://github.com/luisfridev/tugurulocal/pull/11), entregada inicialmente abierta hacia `master` desde `codex/vs04-urls-indexacion-cont-20261023-2` y fusionada después por el propietario. Commit inicial publicado `3cccc9f70c01e341f04b0990b759eb656aed10ab`; publicación mediante conexión GitHub por falta de autenticación del push CLI, con árbol `c4979e8660d7107e78a8217baed4a8e02d7a7f8b` idéntico al commit local inicial `4bfb397`. El registro de la PR se incorporó en el commit `35ea6cd1ca8323607273a3df869c5930b5d7e85c` de la misma rama y PR. No hay despliegue.
+
+**Integración comprobada (23-10-2026):** GitHub confirmó `merged=true`, destino `master`, fecha `2026-10-23T08:28:56Z` (03:28:56 en America/Cancun) y merge `7524bbc20e7cda895eb7795919bd0f90806c92bc`. Tras `git fetch origin`, cambio a `master` y `git merge --ff-only origin/master`, ambas referencias coinciden con ese merge; ya estaban actualizadas. El commit final de la PR es ancestro de `master` y sus árboles son idénticos. La continuación `codex/vs04-urls-indexacion-cont-20261023-3` parte de esa base limpia y registra el cierre de VS04 y la dependencia satisfecha de VS05, sin iniciar su ejecución. Antislop `during` (regla del proyecto), base y copywriting para evidencia y redacción. [Revisión documental y Delivery Gate](dev_changelog/VS04.md#continuación-registrar-integración-y-cierre-23-10-2026). La PR de este registro es terminal: su fusión solo requiere comprobación y sincronización, sin otra PR para registrar su propio merge.
 
 **Bloqueos:** ninguno adicional confirmado.
 
 ### VS05 — Recomendar y moderar
 
-**Estado:** pendiente. **Dependencias:** VS04. **Trazabilidad:** R06, R08–R09 / AC06, AC08–AC09; T05, T06, T13.
+**Estado:** pendiente, sin ejecución iniciada. **Dependencias:** VS04 completada e integrada mediante PR #11; dependencia cerrada. **Trazabilidad:** R06, R08–R09 / AC06, AC08–AC09; T05, T06, T13.
 
 **Objetivo:** recibir una recomendación pendiente y permitir moderarla hacia un borrador sin publicación automática ni exposición de información privada.
 
