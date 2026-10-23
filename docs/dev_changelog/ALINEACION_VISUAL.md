@@ -102,6 +102,8 @@ El propietario decidió omitir por ahora las pruebas de zoom nativo al 200 %, le
 
 Antislop `during`, regla del proyecto; base y copywriting para documentar la decisión sin cambiar la evidencia anterior. Revisión documental: PASS en alcance, coherencia con el tablero y conservación de resultados y límites. `git diff --check`: PASS. No se modificó código ni se repitieron PHPUnit, Pint, build o revisión visual por este cambio documental. VS15 conserva su estado pendiente y no se crea un registro de ejecución anticipado.
 
+<a id="continuacion-registrar-integracion-en-master-23-de-octubre-de-2026"></a>
+
 ## Continuación: registrar integración en master (23 de octubre de 2026)
 
 GitHub confirmó que la [PR #8](https://github.com/luisfridev/tugurulocal/pull/8) está fusionada hacia `master`, con fecha `2026-10-23T06:29:09Z` (01:29:09 en America/Cancun) y merge `3fbacd06087ef6166574efe239792cadeb394a9d`. Ese merge es el `HEAD` de `master` y `origin/master` al iniciar esta corrección. VS03 y ambos hitos de la puerta de diseño están integrados; VS04 puede comenzar en su rama propia.
