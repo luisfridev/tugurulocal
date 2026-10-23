@@ -1,6 +1,6 @@
 # Tu Gurú Local — Plan de implementación del proyecto nuevo
 
-**Estado:** plan en ejecución; VS00 y VS01 completaron la fase Base local, incluida la revisión visual y de teclado de la administración el 22 de octubre de 2026; VS02 completó localmente ficha Gratis, logo obligatorio, identidad de taxonomías, DEMO persistente y simplificación multimedia con fechas manuales. VS03 está completada e integrada en `master` mediante PR #4, merge `78e67bd`, comprobado el 22-10-2026. VS04 está completada e integrada mediante [PR #11](https://github.com/luisfridev/tugurulocal/pull/11), merge `7524bbc`, comprobado el 23-10-2026. VS05–VS17 siguen pendientes; VS05 tiene su dependencia cerrada. La [especificación maestra](ESPECIFICACION_MAESTRA.md) define R01–R10 y AC01–AC10; el [diseño técnico](DISENO_TECNICO.md) define el contrato de datos y servicios. El [tablero MEMORY.md](MEMORY.md) detalla la secuencia de entregas verticales VS00–VS17, sus estados y evidencia. Ninguna fase interna es un lanzamiento parcial.
+Este plan define la secuencia y las comprobaciones de las entregas verticales VS00–VS17. La [especificación maestra](ESPECIFICACION_MAESTRA.md) define R01–R10 y AC01–AC10; el [diseño técnico](DISENO_TECNICO.md) define el contrato de datos y servicios. El [tablero MEMORY.md](MEMORY.md#secuencia-y-dependencias) resume los estados y dependencias, los registros por tarea conservan las comprobaciones y GitHub acredita las integraciones. Ninguna fase interna es un lanzamiento parcial.
 
 ## 0. Preparación y reglas de ejecución
 
@@ -12,7 +12,7 @@ Para la revisión local de UI, abrir la aplicación servida por Herd en `http://
 
 Ejecutar VS00–VS17 según las dependencias del tablero. Cada entrega funcional incluye sus datos, reglas de dominio, administración, UI pública, autorización, SEO, medición aplicable y pruebas. El sistema visual empieza en la primera pantalla; SEO y accesibilidad no se posponen a una fase final. VS00–VS01 son los habilitadores mínimos. Investigar contenido e identificar insumos externos desde el inicio; su aprobación de salida ocurre en VS16–VS17. Este documento conserva T01–T15 como agrupaciones de trazabilidad, no como una segunda secuencia de ejecución ni un registro de tareas completadas.
 
-Cada intervención en una tarea `VSXX` comienza en una rama Git nueva antes de modificar archivos: `codex/vsXX-descripcion` para la primera y `codex/vsXX-descripcion-cont-AAAAMMDD-N` para cada continuación. Comprobar el estado de Git y partir de una base que ya contenga las dependencias cerradas y el trabajo previo de esa tarea, integrado o en su rama anterior. No mezclar tareas ni implementar directamente en `master`. Anotar todas las ramas utilizadas en el registro de la tarea y en la evidencia resumida del tablero.
+Cada entrega, normalmente una `VSXX`, usa una rama y una PR hasta su fusión. Antes de editar, comprobar Git y las dependencias, y localizar la rama y PR existentes. Reutilizarlas entre sesiones para la implementación, documentación, pruebas y correcciones de revisión, conservando los cambios sin confirmar. Crear `codex/vsXX-descripcion` desde `master` sincronizado solo al comenzar una entrega nueva. Una continuación no exige nueva rama ni sufijo; conservar los nombres de las ramas activas existentes. Una entrega independiente o una corrección posterior a la fusión requiere otra rama y PR con nombre descriptivo. No mezclar implementaciones de tareas distintas ni trabajar directamente en `master`. Registrar la rama usada en el changelog y el tablero.
 
 ### Puerta de diseño previa a VS04
 
@@ -44,18 +44,31 @@ Antes de entregar, ejecuta la revisión final de Antislop y las listas de los co
 
 ### Cierre mediante pull requests
 
-Desde el 22 de octubre de 2026, pedir el cierre de una `VSXX` significa preparar y dejar abierta una PR hacia `master` para revisión del propietario. El flujo es:
+Pedir el cierre de una `VSXX` significa preparar y dejar abierta su PR hacia `master` para revisión del propietario. El flujo vigente, simplificado el 23 de octubre de 2026, es:
 
 1. Completar implementación, comprobaciones aplicables y documentación en la rama de trabajo, conservando la evidencia real y los pendientes.
-2. Crear los commits, subir únicamente esa rama y abrir una PR con título `VSXX: descripción`. Su descripción explica los cambios, las pruebas ejecutadas con sus resultados y lo pendiente.
+2. Crear los commits y subir únicamente esa rama. Actualizar la PR existente o abrir una si aún no existe, con título `VSXX: descripción`. Su descripción explica los cambios, las pruebas ejecutadas con sus resultados y lo pendiente. Las correcciones de revisión y sus comprobaciones se incorporan a esa misma rama y PR.
 3. Registrar número, URL y rama de la PR en `docs/MEMORY.md` y `docs/dev_changelog/VSXX.md`; confirmar y subir ese registro a la misma rama para incluirlo en la PR. Adjuntar la PR al chat y entregar su enlace.
 4. Dejar la PR abierta. El propietario decide cuándo fusionarla. El agente no fusiona la PR, no integra la rama directamente en `master` ni hace push a `master`.
 
 Mientras la PR no esté fusionada, mantener la tarea `en curso`, con «implementación verificada; integración pendiente en PR», aunque las comprobaciones locales hayan pasado. No declarar integración ni cierre completo por crear el commit, subir la rama o abrir la PR.
 
-Después del merge, comprobar en GitHub que la PR esté fusionada hacia `master` y sincronizar `master` local solo por avance rápido desde `origin/master`. GitHub es la fuente de verdad para estado, fecha y commit. Actualizar el tablero en una rama y mediante PR cuando el cambio cierre una fase o sea necesario para desbloquear una dependencia. Si la confirmación no cambia el tablero ni habilita trabajo, no abrir una PR solo para copiar metadatos; conservarlos en GitHub e incluirlos en la siguiente actualización documental sustantiva. Nunca escribir ni publicar directamente en `master`.
+Después del merge, comprobar en GitHub que la PR esté fusionada hacia `master` y sincronizar `master` local solo por avance rápido desde `origin/master`. Con la aceptación satisfecha y la integración comprobada, la dependencia queda cerrada y se puede iniciar la siguiente tarea aunque el tablero todavía indique integración pendiente. Informar del resultado en el chat. Nunca escribir ni publicar directamente en `master`.
 
-Si hace falta una PR dedicada para actualizar un estado que cierre una fase o desbloquee trabajo, esa PR será de registro terminal: al fusionarse, verificarla y sincronizar `master`, sin abrir otra PR solo para documentar su propio merge. Una PR cuyo único propósito es registrar una integración tampoco genera otra PR de registro. Los cierres anteriores conservan su evidencia histórica; no rehacer la integración de VS02 ni crear una PR retrospectiva. Las dependencias de las siguientes VSXX requieren la integración comprobada de sus predecesoras.
+No abrir una PR solo para registrar un merge, cambiar un estado del tablero o copiar metadatos, aunque cierre una fase o desbloquee trabajo. Actualizar el tablero y la evidencia del cierre anterior dentro de la siguiente PR con trabajo sustantivo. Esta actualización documental puede acompañar la siguiente VSXX sin mezclar sus implementaciones. Si no hay otra entrega prevista, GitHub y la confirmación en el chat conservan el cierre; no se crea una PR de registro. Las PR documentales con un cambio propio de contrato o de flujo sí son entregas independientes.
+
+GitHub es la fuente de verdad para estado, fecha y commit de integración; MEMORY resume el avance y el changelog de cada tarea conserva sus cambios y comprobaciones. README y documentos de contrato enlazan estas fuentes sin exigir copiar cada merge. Conservar los registros históricos, incluidas sus ramas de continuación y PR de cierre, como evidencia del flujo anterior; no repetir ni rehacer esas entregas.
+
+| Situación | Acción |
+| --- | --- |
+| Retomar la misma entrega antes de fusionarla | Reutilizar rama y PR, aunque cambie la sesión. |
+| Corregir una observación de revisión | Añadir commits y comprobaciones a la misma PR. |
+| Dependencia con PR todavía abierta o aceptación pendiente | Mantener la dependencia sin cerrar; no iniciar la tarea dependiente. |
+| PR fusionada y aceptación satisfecha | Comprobar GitHub, sincronizar master por avance rápido y continuar la dependencia. |
+| Tablero pendiente de reflejar el merge | Actualizarlo en la siguiente entrega; no bloquear trabajo por ese desfase. |
+| Solo hay metadatos o un estado que actualizar | No crear PR; conservar la evidencia en GitHub hasta la siguiente entrega. |
+| Última entrega fusionada, sin otra entrega prevista | Confirmar en GitHub y en el chat; no crear PR para cerrar el registro. |
+| Corrección posterior a la fusión o entrega independiente | Crear otra rama y PR para ese cambio sustantivo. |
 
 ## 1. Trazabilidad de tareas y evidencia
 
