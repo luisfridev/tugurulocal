@@ -30,7 +30,7 @@ La implementación incorpora Inicio, Negocios y páginas de categoría/zona, fil
 
 Las migraciones crean la relación ordenada de Inicio y amplían los eventos existentes. Se ejecutan incrementalmente, conservando cuentas, datos y medios DEMO. No requieren `migrate:fresh` ni volver a sembrar el contenido. El cierre debe comprobar la regresión VS02, medios revocados, selección y permisos, filtros/paginación/SEO, deduplicación de eventos y recorridos de Herd con teclado, móvil, tableta, escritorio y zoom. Registrar solo resultados ejecutados, incluida la revisión final Antislop, antes de declarar la implementación verificada.
 
-VS04 conserva sitemap y redirecciones internas y ya tiene su dependencia VS03 cerrada; Lugares públicos espera VS12. Los módulos de comercio, catálogo, recomendaciones y listas no se adelantan. La implementación VS03 fue fusionada por el propietario; esta actualización de su integración se entrega también mediante una PR documental abierta, según el flujo siguiente.
+VS04 conserva sitemap y redirecciones internas y ya tiene su dependencia VS03 cerrada; Lugares públicos espera VS12. Los módulos de comercio, catálogo, recomendaciones y listas no se adelantan. La actualización de flujo en curso se incorpora a la PR documental #10; no inicia ni reabre una VSXX.
 
 ### Antislop en la ejecución
 
@@ -53,9 +53,9 @@ Desde el 22 de octubre de 2026, pedir el cierre de una `VSXX` significa preparar
 
 Mientras la PR no esté fusionada, mantener la tarea `en curso`, con «implementación verificada; integración pendiente en PR», aunque las comprobaciones locales hayan pasado. No declarar integración ni cierre completo por crear el commit, subir la rama o abrir la PR.
 
-Al retomar el trabajo después de la fusión del propietario, comprobar en GitHub que la PR esté fusionada hacia `master`, obtener la fecha y el commit reales de integración y sincronizar `master` local por avance rápido desde `origin/master`. Solo entonces registrar la tarea `completada` con esa evidencia. La actualización documental posterior también se prepara en una rama y se entrega por PR; nunca se escribe ni se publica directamente en `master`.
+Después del merge, comprobar en GitHub que la PR esté fusionada hacia `master` y sincronizar `master` local solo por avance rápido desde `origin/master`. GitHub es la fuente de verdad para estado, fecha y commit. Actualizar el tablero en una rama y mediante PR cuando el cambio cierre una fase o sea necesario para desbloquear una dependencia. Si la confirmación no cambia el tablero ni habilita trabajo, no abrir una PR solo para copiar metadatos; conservarlos en GitHub e incluirlos en la siguiente actualización documental sustantiva. Nunca escribir ni publicar directamente en `master`.
 
-Esta regla se aplica a los próximos cierres y a la entrega de esta actualización documental mediante su propia PR abierta. Los cierres anteriores conservan su evidencia histórica: no rehacer la integración de VS02 ni crear una PR retrospectiva. Las dependencias de las siguientes VSXX requieren la integración comprobada de sus predecesoras.
+Si hace falta una PR dedicada para actualizar un estado que cierre una fase o desbloquee trabajo, esa PR será de registro terminal: al fusionarse, verificarla y sincronizar `master`, sin abrir otra PR solo para documentar su propio merge. Una PR cuyo único propósito es registrar una integración tampoco genera otra PR de registro. Los cierres anteriores conservan su evidencia histórica; no rehacer la integración de VS02 ni crear una PR retrospectiva. Las dependencias de las siguientes VSXX requieren la integración comprobada de sus predecesoras.
 
 ## 1. Trazabilidad de tareas y evidencia
 
