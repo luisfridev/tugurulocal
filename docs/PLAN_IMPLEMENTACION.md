@@ -30,7 +30,7 @@ La implementación incorpora Inicio, Negocios y páginas de categoría/zona, fil
 
 Las migraciones crean la relación ordenada de Inicio y amplían los eventos existentes. Se ejecutan incrementalmente, conservando cuentas, datos y medios DEMO. No requieren `migrate:fresh` ni volver a sembrar el contenido. El cierre debe comprobar la regresión VS02, medios revocados, selección y permisos, filtros/paginación/SEO, deduplicación de eventos y recorridos de Herd con teclado, móvil, tableta, escritorio y zoom. Registrar solo resultados ejecutados, incluida la revisión final Antislop, antes de declarar la implementación verificada.
 
-VS04 conserva sitemap y redirecciones internas y ya tiene su dependencia VS03 cerrada; Lugares públicos espera VS12. Los módulos de comercio, catálogo, recomendaciones y listas no se adelantan. La actualización de flujo en curso se incorpora a la PR documental #10; no inicia ni reabre una VSXX.
+VS04 conserva sitemap y redirecciones internas y ya tiene su dependencia VS03 cerrada; Lugares públicos espera VS12. Los módulos de comercio, catálogo, recomendaciones y listas no se adelantan. La PR #10 registra la integración de la #9 y actualiza el flujo general de PR; no inicia ni reabre una VSXX.
 
 ### Antislop en la ejecución
 

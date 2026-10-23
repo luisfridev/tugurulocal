@@ -78,7 +78,7 @@ Entrega documental mediante [PR #9](https://github.com/luisfridev/tugurulocal/pu
 
 La regla anterior ocasionó una PR de seguimiento (#10) solo para registrar el merge de la #9. Esta repetición mostró que el procedimiento podía generar una cadena de PR documentales. La actualización del flujo incorporada ahora en la PR #10 establece la fuente de verdad y el límite terminal.
 
-Actualización documental y del flujo mediante [PR #10](https://github.com/luisfridev/tugurulocal/pull/10), abierta hacia `master` desde `codex/registrar-integracion-pr9`, commit inicial `a223d375a49b56b1ea2e8429cdcc4a9db31e286e`. Incluye la evidencia de integración de la PR #9 y la regla para evitar PR recursivas. Permanece abierta para revisión y fusión del propietario; al fusionarse será terminal y no tendrá PR documental de seguimiento.
+Actualización documental y del flujo mediante [PR #10](https://github.com/luisfridev/tugurulocal/pull/10), dirigida a `master` desde `codex/registrar-integracion-pr9`, commit inicial `a223d375a49b56b1ea2e8429cdcc4a9db31e286e`. Incluye la evidencia de integración de la PR #9 y la regla para evitar PR recursivas. Se considera terminal: su fusión no requiere otra PR documental de seguimiento.
 
 ## Secuencia y dependencias
 
