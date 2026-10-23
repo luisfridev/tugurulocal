@@ -1,6 +1,6 @@
 # Tu Gurú Local — Tablero de entregas verticales
 
-**Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS03 completadas localmente; VS03 integrada en `master` mediante PR #4; fase Base cerrada y Editorial en curso. VS04 en curso, implementación verificada localmente y entrega por PR en preparación; VS05–VS17 pendientes. No hay lanzamiento ni verificación de producción.
+**Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS03 completadas localmente; VS03 integrada en `master` mediante PR #4; fase Base cerrada y Editorial en curso. VS04 en curso: implementación verificada; integración pendiente en [PR #11](https://github.com/luisfridev/tugurulocal/pull/11). VS05–VS17 pendientes. No hay lanzamiento ni verificación de producción.
 
 ## Uso, autoridad y cierre
 
@@ -231,7 +231,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 ### VS04 — Mantener URLs e indexación
 
-**Estado:** en curso. **Dependencias:** VS03 completada e integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T06.
+**Estado:** en curso: implementación verificada; integración pendiente en [PR #11](https://github.com/luisfridev/tugurulocal/pull/11). **Rama de entrega:** `codex/vs04-urls-indexacion-cont-20261023-2`. **Dependencias:** VS03 completada e integrada. **Trazabilidad:** R01–R02, R09 / AC01–AC02, AC09; T06.
 
 **Intervención 23-10-2026:** rama `codex/vs04-urls-indexacion`, desde `master` sincronizado en `28051c7`. El propietario aprobó cambios de slug solo en fichas; ciudad, categorías y zonas conservan sus restricciones. [Registro VS04](dev_changelog/VS04.md). Antislop `during`, revisión técnica y visual pendiente de ejecución; no acredita producción.
 
@@ -250,7 +250,9 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Pruebas y revisión:** sitemap, canonical/noindex, metadatos/JSON-LD, cambio de slug, colisiones y despublicación del destino. Revisar breadcrumbs y enlaces visibles de las pantallas existentes.
 
-**Evidencia de cierre local (23-10-2026):** pruebas enfocadas de SEO/slugs/concurrencia/dominio: 31 correctas y 253 aserciones; suite completa MySQL: 176 correctas y 2.291 aserciones, incluida la protección del rollback con reservas. Pint, build, Composer y diff correctos; 24 rutas propias. Ocho superficies en Herd a 390×844, 768×1024 y 1440×900 CSS, más reflujo a 320×600: sin desbordamiento horizontal, `lang=es`, un `main` y un `h1`; metadatos y breadcrumbs coherentes. Capturas locales comparables de dimensiones comprobadas, foco, filtros, paginación y retorno de Reportar operados con teclado; FAQ con Enter. Contraste de breadcrumbs 5,42:1 y foco 5,36:1 sobre lavanda. Vite activo. La migración incremental está aplicada localmente, sin reconstruir historial ni reiniciar datos. [Pruebas técnicas, Delivery Gate y límites del cierre](dev_changelog/VS04.md#continuación-cierre-local-y-entrega-por-pr-23-10-2026). La entrega por PR se registrará al crearla; no hay despliegue. Las cuatro comprobaciones asistidas ya aplazadas permanecen en VS15.
+**Evidencia de cierre local (23-10-2026):** pruebas enfocadas de SEO/slugs/concurrencia/dominio: 31 correctas y 253 aserciones; suite completa MySQL: 176 correctas y 2.291 aserciones, incluida la protección del rollback con reservas. Pint, build, Composer y diff correctos; 24 rutas propias. Ocho superficies en Herd a 390×844, 768×1024 y 1440×900 CSS, más reflujo a 320×600: sin desbordamiento horizontal, `lang=es`, un `main` y un `h1`; metadatos y breadcrumbs coherentes. Capturas locales comparables de dimensiones comprobadas, foco, filtros, paginación y retorno de Reportar operados con teclado; FAQ con Enter. Contraste de breadcrumbs 5,42:1 y foco 5,36:1 sobre lavanda. Vite activo. La migración incremental está aplicada localmente, sin reconstruir historial ni reiniciar datos. [Pruebas técnicas, Delivery Gate y límites del cierre](dev_changelog/VS04.md#continuación-cierre-local-y-entrega-por-pr-23-10-2026). Las cuatro comprobaciones asistidas ya aplazadas permanecen en VS15.
+
+**Entrega:** [PR #11: VS04, mantener URLs e indexación](https://github.com/luisfridev/tugurulocal/pull/11), abierta hacia `master` desde `codex/vs04-urls-indexacion-cont-20261023-2`. Commit inicial publicado `3cccc9f70c01e341f04b0990b759eb656aed10ab`; publicación mediante conexión GitHub por falta de autenticación del push CLI, con árbol `c4979e8660d7107e78a8217baed4a8e02d7a7f8b` idéntico al commit local inicial `4bfb397`. El registro de esta PR se incorpora en la misma rama y PR. Está adjunta al chat; queda abierta para revisión y fusión del propietario. VS04 no se marca completada ni se habilita VS05 hasta comprobar su integración. No hay despliegue.
 
 **Bloqueos:** ninguno adicional confirmado.
 

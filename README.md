@@ -1,6 +1,6 @@
 # Tu Gurú Local — proyecto nuevo
 
-Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00–VS03 completadas; VS04 verificada localmente y en preparación de su entrega por PR. El sitio no está publicado.** La alineación visual previa a VS04 está integrada en `master`. La raíz redirige temporalmente al Inicio de Playa del Carmen. Las superficies vacías, filtradas o con solo DEMO llevan `noindex`.
+Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00–VS03 completadas; VS04 en curso: implementación verificada; integración pendiente en [PR #11](https://github.com/luisfridev/tugurulocal/pull/11). El sitio no está publicado.** La alineación visual previa a VS04 está integrada en `master`. La raíz redirige temporalmente al Inicio de Playa del Carmen. Las superficies vacías, filtradas o con solo DEMO llevan `noindex`.
 
 ## Contratos y secuencia
 
