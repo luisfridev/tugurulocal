@@ -73,3 +73,7 @@ Antislop activo: `during`, regla del proyecto. Skills aplicadas: `antislop` como
 URLs revisadas: [Inicio](https://tugurulocal-nuevo.test/playa-del-carmen), [Negocios](https://tugurulocal-nuevo.test/playa-del-carmen/negocios), [Servicios](https://tugurulocal-nuevo.test/playa-del-carmen/servicios), [DEMO Centro](https://tugurulocal-nuevo.test/playa-del-carmen/zonas/demo-zona-centro), [vacío con filtro](https://tugurulocal-nuevo.test/playa-del-carmen/servicios?zona=quinta-avenida), [ficha DEMO](https://tugurulocal-nuevo.test/@demo-estudio-plano) y [404 de revisión](https://tugurulocal-nuevo.test/no-encontrada-visual-check). Capturas comparativas del navegador se inspeccionaron frente al manual y las referencias de `docs/design-ref/screenshots/`; `docs/dev_changelog/` conserva solo esta evidencia en Markdown.
 
 No hay despliegue ni verificación de producción. La diferencia de fuentes y las verificaciones accesibles pendientes no bloquean la apertura de la PR; deben permanecer visibles al revisar el alcance antes de la fusión.
+
+## Entrega para revisión
+
+PR [#8: Alineación visual de pantallas públicas](https://github.com/luisfridev/tugurulocal/pull/8), abierta hacia `master` desde `codex/alineacion-visual-superficies-publicas`. La implementación y las comprobaciones locales están documentadas arriba; la integración depende de la revisión y fusión del propietario. Este registro se actualiza en la misma PR.
