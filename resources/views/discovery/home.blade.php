@@ -62,5 +62,10 @@
             <a href="{{ \App\Support\PublicUrl::businesses($city) }}" class="mt-5 inline-flex min-h-12 items-center rounded-xl px-2 py-3 font-bold underline underline-offset-4">Ver negocios</a>
         </section>
     @endif
+        <section aria-labelledby="titulo-recomendar" class="mt-12 border-t border-brand-border pt-8 sm:mt-16 sm:pt-10">
+            <h2 id="titulo-recomendar" class="font-display text-2xl font-extrabold">¿Qué lugar recomiendas en Playa?</h2>
+            <p class="mt-3 max-w-2xl leading-relaxed text-brand-muted">Cuéntanos sobre un negocio o Lugar que valga la pena conocer. Nuestro equipo revisará tu propuesta.</p>
+            <a href="{{ route('submissions.create') }}" class="mt-5 inline-flex min-h-12 items-center rounded-xl bg-brand-action px-6 py-3 font-bold text-brand-text">Recomendar un negocio o Lugar</a>
+        </section>
     </div>
 </x-public-layout>

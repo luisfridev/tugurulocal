@@ -65,7 +65,7 @@ El panel administra ciudades, zonas, categorías, fichas y reportes. `php artisa
 
 Las fichas se publican manualmente, sin programación. Se pueden previsualizar, despublicar, archivar y recuperar; el historial conserva el contenido y exige nueva aprobación al recuperar una versión. VS04 permite cambiar el slug de una ficha publicada y reserva cada URL anterior: devuelve 301 directamente al slug vigente mientras la ficha sea pública, o 404 cuando pierde elegibilidad. Los Lugares permanecen privados hasta implementar sus negocios hijos verificados en VS12.
 
-Imágenes y PDF se gestionan con `filament/spatie-laravel-media-library-plugin` y permanecen en almacenamiento privado. El botón PDF tiene texto editable por ficha. `/@{listing}` muestra solo contenido publicado y aprobado; los medios pierden acceso público al despublicar. Los reportes se revisan desde el panel y no corrigen datos automáticamente. Su recepción está disponible para comprobaciones locales; en producción queda cerrada hasta aprobar la privacidad y conectar su ruta en VS05.
+Imágenes y PDF se gestionan con `filament/spatie-laravel-media-library-plugin` y permanecen en almacenamiento privado. El botón PDF tiene texto editable por ficha. `/@{listing}` muestra solo contenido publicado y aprobado; los medios pierden acceso público al despublicar. Los reportes se revisan desde el panel y no corrigen datos automáticamente. VS05 habilita su recepción pública en cualquier entorno, sin depender del aviso de privacidad.
 
 [El registro VS02](docs/dev_changelog/VS02.md) explica las comprobaciones, las URLs locales y los pendientes. La primera ficha temporal ya se eliminó. La ampliación de VS03 conserva las seis fichas DEMO originales y añade 26 públicas: quedan **30 negocios DEMO públicos, un borrador y un pausado**, con sus medios persistentes para etapas futuras, separados del contenido real de salida.
 
@@ -96,7 +96,15 @@ VS03 incorpora dos migraciones incrementales: crea `home_selections` y amplía `
 
 VS04 integra Spatie Laravel Sitemap 8.2.0 en `/sitemap.xml`, generado desde las consultas públicas en cada petición y sin rastreo, archivo estático ni cron. Solo incorpora URLs reales elegibles; un inventario compuesto únicamente por DEMO devuelve un XML sin URLs. Canonical, `noindex` y redirecciones continúan bajo las reglas propias del proyecto. GitHub confirmó la fusión de la PR #11 hacia `master` el 23-10-2026 a las 03:28:56 (America/Cancun), commit `7524bbc20e7cda895eb7795919bd0f90806c92bc`; [registro de integración y comprobaciones locales](docs/dev_changelog/VS04.md). No acredita producción.
 
-Lugares públicos, catálogo, recomendaciones, listas y comercio siguen sus fases previstas. La navegación solo enlaza superficies disponibles y `/premium` permanece oculta.
+Lugares públicos, catálogo, listas y comercio siguen sus fases previstas. La navegación solo enlaza superficies disponibles y `/premium` permanece oculta.
+
+### Recomendar y moderar: VS05
+
+`GET/POST /recomendar` recibe propuestas de negocio o Lugar en Playa del Carmen, siempre pendientes. Evidencia opcional por enlace HTTP/HTTPS, sin adjuntos; correo y WhatsApp opcionales y privados, sin mensajes automáticos. Instagram tiene consentimiento separado y desmarcado. Los formularios de recomendación y reporte funcionan sin aviso aprobado ni ruta de privacidad, también en producción simulada; el aviso y las reglas de conservación/eliminación se prepararán después de la primera publicación. VS05 no despliega.
+
+La migración incremental crea `submissions` y el selector de crédito en `listings`, sin reiniciar datos ni medios existentes. Aplicar con `php artisan migrate --no-interaction`. La reversión elimina las propuestas y el selector: usar únicamente en una base de pruebas desechable; con datos reales corresponde una migración correctiva.
+
+El super admin con 2FA revisa `/dashboard/recomendaciones`: detalle privado, coincidencias normalizadas no bloqueantes y decisiones individuales con motivo. Aprobar crea un borrador con los datos elegidos o vincula uno compatible sin modificarlo; publicar requiere la acción editorial posterior. Duplicado puede referenciar una ficha publicada sin alterarla. Se puede seleccionar o retirar un único crédito de Instagram aprobado y consentido por ficha; solo se muestra en la ficha pública. [Registro, comprobaciones y pendientes de VS05](docs/dev_changelog/VS05.md).
 
 ### Laravel Boost para Codex
 
@@ -110,4 +118,4 @@ El comando actualiza el bloque delimitado de Boost en `AGENTS.md` y los archivos
 
 ## Pendientes para el lanzamiento
 
-Implementar VS05–VS17 y aprobar contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
+Integrar VS05, implementar VS06–VS17 y aprobar contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento y logotipo oficial. Aviso de privacidad y reglas de conservación/eliminación después de la primera publicación. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.

@@ -79,6 +79,9 @@
 
         </div>
         <aside class="grid min-w-0 gap-6" aria-label="Información práctica">
+            @if($credit)
+                <p class="text-sm leading-6 text-brand-muted">Recomendación de <a href="https://www.instagram.com/{{ $credit }}/" rel="noopener noreferrer nofollow" class="inline-flex min-h-11 items-center rounded-lg font-semibold underline underline-offset-4">{{ '@'.$credit }}</a></p>
+            @endif
             <section class="rounded-[22px] border border-brand-border bg-white p-6 sm:px-[34px] sm:pt-[30px] sm:pb-7"><h2 class="font-display text-lg leading-7 font-bold">Información práctica</h2><dl class="mt-5 grid gap-5">
                 @if($listing->address)<div><dt class="text-sm font-semibold text-brand-muted">Dirección o referencia</dt><dd class="mt-1 whitespace-pre-line">{{ $listing->address }}</dd></div>
 @endif

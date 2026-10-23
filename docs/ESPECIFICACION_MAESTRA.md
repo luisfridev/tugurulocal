@@ -9,7 +9,7 @@ Tu Gurú Local ayuda a residentes y visitantes a descubrir negocios y Lugares p�
 
 El lanzamiento se desarrolla en módulos internos y se publica de una vez cuando todos los criterios de la sección 12 se cumplan. Empieza con un proyecto y una base MySQL nuevos; no importa código, datos, contenido ni redirecciones de otra aplicación. La interfaz, correos y mensajes al público estarán en español. Solo el super admin gestiona el contenido y los planes; el público puede enviar recomendaciones sin crear cuenta.
 
-Se incluyen: Inicio; listado de Negocios; cinco categorías y zonas; fichas de negocio y Lugar; catálogo Explorar con productos, servicios y ofertas; planes asistidos; campañas patrocinadas; lista editorial; blog; recomendaciones moderadas; SEO, analítica y páginas legales aprobadas. Quedan fuera cuentas públicas, favoritos, votos, ranking, reseñas propias, búsqueda por texto, panel de propietarios, cobro y renovación automáticos, sincronización de Google Maps, apps nativas y ciudades públicas adicionales. Ninguna pantalla mostrará controles, cifras o promesas de esas funciones pospuestas.
+Se incluyen: Inicio; listado de Negocios; cinco categorías y zonas; fichas de negocio y Lugar; catálogo Explorar con productos, servicios y ofertas; planes asistidos; campañas patrocinadas; lista editorial; blog; recomendaciones moderadas; SEO y analítica sin datos personales. El aviso de privacidad y la conservación/eliminación se preparan después de la primera publicación. Quedan fuera cuentas públicas, favoritos, votos, ranking, reseñas propias, búsqueda por texto, panel de propietarios, cobro y renovación automáticos, sincronización de Google Maps, apps nativas y ciudades públicas adicionales. Ninguna pantalla mostrará controles, cifras o promesas de esas funciones pospuestas.
 
 ## 2. Navegación, taxonomía y URLs (R01)
 
@@ -38,7 +38,7 @@ Un negocio puede pertenecer a varias de las cuatro categorías de negocio y tien
 | Blog | `/{city}/blog` y `/{city}/blog/{slug}` | Índice y entrada publicada. |
 | Recomendar | `/recomendar` | Formulario y confirmación. |
 | Planes | `/premium` | Solo cuando se complete la puerta comercial de la sección 9. |
-| Aviso de privacidad | `/aviso-de-privacidad` | Texto aprobado antes de recibir datos públicos. |
+| Aviso de privacidad | `/aviso-de-privacidad` (posterior) | Se preparará después de la primera publicación; no condiciona recomendaciones ni reportes. Sin ruta ni enlaces en VS05. |
 | Sitemap | `/sitemap.xml` | Solo URLs públicas indexables. |
 
 Los destinos específicos se resuelven antes de la categoría comodín. `negocios`, `explorar`, `zonas`, `listas` y `blog` son slugs reservados dentro de una ciudad. Las URLs de la aplicación anterior no reciben redirecciones. Un cambio de slug publicado **dentro de este proyecto** sí crea 301 a la nueva URL, sin revelar borradores.
@@ -63,7 +63,7 @@ La ficha publicada ofrece, solo si existen datos aprobados: nombre, resumen y de
 
 La ficha Gratis de negocio conserva toda la información práctica y el PDF publicado. Las fichas se publican manualmente de forma inmediata, sin programación. Las fichas en borrador, pausadas o archivadas no son públicas por URL directa, listas, catálogo o sitemap. El super admin puede previsualizar, publicar, despublicar, archivar y recuperar sin pérdida de historial. La atribución a quien recomendó requiere identificador social válido y consentimiento específico.
 
-Los reportes de datos incorrectos se envían desde un formulario de la ficha, sin adjuntos ni contacto personal solicitado. Quedan pendientes y solo el super admin los resuelve o descarta; no alteran la ficha automáticamente. Aplican CSRF, honeypot, tiempo mínimo de formulario y límites de 3/hora y 10/día por IP. La recepción pública exige aviso de privacidad aprobado; localmente se prueba con fixtures. Ciudades, zonas y categorías tienen gestión administrativa con permisos y auditoría. Inicialmente solo Playa del Carmen puede ser pública. Los medios se gestionan con `filament/spatie-laravel-media-library-plugin` y permanecen protegidos mientras la ficha sea privada.
+Los reportes de datos incorrectos se envían desde un formulario público de la ficha, sin adjuntos ni contacto personal solicitado. Quedan pendientes y solo el super admin los resuelve o descarta; no alteran la ficha automáticamente. Aplican CSRF, honeypot, token de sesión de 3 segundos a 2 horas y límites de 3/hora y 10/24 horas por IP. Su recepción no depende del entorno ni del aviso de privacidad. Ciudades, zonas y categorías tienen gestión administrativa con permisos y auditoría. Inicialmente solo Playa del Carmen puede ser pública. Los medios se gestionan con `filament/spatie-laravel-media-library-plugin` y permanecen protegidos mientras la ficha sea privada.
 
 ### Ampliación aprobada de VS02 (22-10-2026)
 
@@ -101,7 +101,9 @@ El editor permite párrafos, encabezados, listas, citas, enlaces, imágenes con 
 
 Cualquier visitante puede proponer un negocio o Lugar con datos básicos, ubicación, motivo, evidencia opcional, contacto privado opcional y consentimiento separado para atribución social. El envío queda pendiente y no crea una ficha publicada. El super admin aprueba, rechaza, marca duplicado o spam; al aprobar, crea o vincula un borrador que requiere publicación adicional. La confirmación no garantiza aceptación.
 
-El formulario protege con CSRF, honeypot, controles adicionales contra bots, validación de URL y archivos, detección de duplicados y límites iniciales de **3 envíos por hora y 10 por día por IP**. El límite se revisará con datos reales. Correo, IP, evidencia privada y notas internas no se publican. El contenido de terceros se escapa y modera.
+El formulario Blade de una página exige nombre, tipo negocio/Lugar, categoría compatible, ubicación y motivo; Playa del Carmen queda fija. Maps es opcional. Evidencia solo mediante enlace opcional HTTP/HTTPS, sin adjuntos, descargas ni incrustaciones. Correo y WhatsApp son opcionales y privados, sin mensajes automáticos. Instagram es opcional, con consentimiento separado y desmarcado para mostrar crédito. Solo se muestra un crédito seleccionado por el administrador por ficha publicada, con consentimiento e identificador válido.
+
+Recomendaciones y reportes están disponibles al público desde la primera versión, en cualquier entorno, sin depender de la existencia o aprobación del aviso. El aviso y las reglas de conservación y eliminación se prepararán después de la primera publicación. VS05 no crea su ruta ni enlaces y no incluye despliegue. El formulario protege con CSRF, honeypot, token ligado a sesión válido entre 3 segundos y 2 horas y límites independientes de **3 envíos por hora y 10 en 24 horas por IP**. Las coincidencias normalizadas se señalan al administrador sin bloquear el envío. No se guarda IP en `submissions`. Contacto, evidencia y notas quedan restringidos; analítica y auditoría solo registran referencias y acciones. La moderación transaccional impide decisiones repetidas/concurrentes. Aprobar permite seleccionar datos para un borrador nuevo o vincular uno compatible; marcar duplicado puede referenciar una ficha publicada sin modificarla. El contenido de terceros se escapa y modera. Formulario y confirmación llevan `noindex` y `private, no-store`, conservan datos válidos tras errores y no ofrecen seguimiento público.
 
 ## 8. Planes y patrocinios (R07)
 
@@ -125,7 +127,7 @@ El panel permite editar **precio mensual público en MXN** de Premium y Super Pr
 
 Cada página pública indexable tiene título, descripción, canonical, metadatos sociales y breadcrumbs coherentes. El sitemap incluye solo ciudad, categorías y zonas útiles, fichas, listas, índice/posts y Explorar con contenido real. Variantes de filtros, páginas vacías, borradores, programados y archivos llevan `noindex` y no entran al sitemap. El canonical de filtros apunta a la página base pertinente. Un cambio de slug publicado dentro del proyecto crea 301. Los datos estructurados (`BlogPosting`, negocio o Lugar y FAQ cuando aplique) reflejan contenido visible.
 
-La interfaz es adaptable, navegable por teclado, con foco visible, alternativas de imagen, contraste suficiente, objetivos táctiles utilizables, estado de carga y mensajes comprensibles. El carrusel se puede pausar y respeta movimiento reducido. Los medios y enlaces se validan; se optimizan imágenes, se limita tamaño de PDF y se evita HTML inseguro. Antes de salir se aprueban aviso de privacidad y textos legales aplicables.
+La interfaz es adaptable, navegable por teclado, con foco visible, alternativas de imagen, contraste suficiente, objetivos táctiles utilizables, estado de carga y mensajes comprensibles. El carrusel se puede pausar y respeta movimiento reducido. Los medios y enlaces se validan; se optimizan imágenes, se limita tamaño de PDF y se evita HTML inseguro. El aviso de privacidad y las reglas de conservación y eliminación se prepararán después de la primera publicación, sin condicionar los formularios públicos.
 
 Se miden consultas de fichas, listas y blog; clics de Maps, teléfono, WhatsApp, web y redes; aperturas de elementos de catálogo; envíos/moderación; e impresiones y clics de campañas. Los eventos no contienen datos personales. Los reportes distinguen intención de contacto de visitas o ventas confirmadas.
 

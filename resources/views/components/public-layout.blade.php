@@ -38,9 +38,10 @@
             <a href="{{ route('bootstrap') }}" class="inline-flex min-h-11 max-w-full items-center whitespace-nowrap rounded-lg font-display text-xl font-extrabold tracking-tight">Tu Gurú <span class="ml-1 text-brand-action">Local</span></a>
         </div>
     </header>
-    <nav aria-label="Navegación principal" class="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-white/15 bg-brand-header pb-[env(safe-area-inset-bottom)] text-white md:inset-x-auto md:bottom-auto md:right-[max(2rem,calc((100vw-72rem)/2))] md:top-0 md:z-50 md:flex md:h-16 md:border-0 md:bg-transparent md:pb-0">
+    <nav aria-label="Navegación principal" class="fixed inset-x-0 bottom-0 z-40 grid grid-cols-3 border-t border-white/15 bg-brand-header pb-[env(safe-area-inset-bottom)] text-white md:inset-x-auto md:bottom-auto md:right-[max(2rem,calc((100vw-72rem)/2))] md:top-0 md:z-50 md:flex md:h-16 md:border-0 md:bg-transparent md:pb-0">
         <a href="{{ route('cities.show', ['city' => 'playa-del-carmen']) }}" @if(request()->routeIs('cities.show')) aria-current="page" @endif class="public-nav-link relative flex min-h-[60px] min-w-0 items-center justify-center whitespace-nowrap px-5 py-3 text-sm font-semibold hover:bg-white/10 active:bg-white/20 md:min-h-11 md:rounded-xl md:text-base">Inicio</a>
         <a href="{{ route('businesses.index', ['city' => 'playa-del-carmen']) }}" @if(request()->routeIs('businesses.index', 'categories.show', 'areas.show')) aria-current="page" @endif class="public-nav-link relative flex min-h-[60px] min-w-0 items-center justify-center whitespace-nowrap px-5 py-3 text-sm font-semibold hover:bg-white/10 active:bg-white/20 md:min-h-11 md:rounded-xl md:text-base">Negocios</a>
+        <a href="{{ route('submissions.create') }}" @if(request()->routeIs('submissions.*')) aria-current="page" @endif class="public-nav-link relative flex min-h-[60px] min-w-0 items-center justify-center px-3 py-3 text-sm font-semibold hover:bg-white/10 active:bg-white/20 md:min-h-11 md:rounded-xl md:px-5 md:text-base">Recomendar</a>
     </nav>
     <main id="contenido" tabindex="-1" class="min-w-0">{{ $slot }}</main>
     <footer class="bg-brand-deep text-white">

@@ -1,6 +1,6 @@
 # Tu Gurú Local — Tablero de entregas verticales
 
-**Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS04 completadas; VS04 integrada en `master` mediante [PR #11](https://github.com/luisfridev/tugurulocal/pull/11); fase Base cerrada y Editorial en curso. VS05–VS17 pendientes; VS05 tiene su dependencia cerrada. No hay lanzamiento ni verificación de producción.
+**Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS04 completadas; VS04 integrada en `master` mediante [PR #11](https://github.com/luisfridev/tugurulocal/pull/11); fase Base cerrada y Editorial en curso. VS05 en curso con dependencia cerrada; VS06–VS17 pendientes. No hay lanzamiento ni verificación de producción.
 
 ## Uso, autoridad y cierre
 
@@ -117,7 +117,7 @@ Actualización documental y del flujo mediante [PR #10](https://github.com/luisf
 | VS02 | Publicar y consultar una ficha Gratis | completada | VS01 | Editorial |
 | VS03 | Descubrir negocios | completada | VS02 | Editorial |
 | VS04 | Mantener URLs e indexación | completada | VS03 | Editorial |
-| VS05 | Recomendar y moderar | pendiente | VS04 | Editorial |
+| VS05 | Recomendar y moderar | en curso | VS04 | Editorial |
 | VS06 | Activar y terminar planes | pendiente | VS05 | Comercio |
 | VS07 | Consultar planes comerciales | pendiente | VS06 | Comercio |
 | VS08 | Publicar productos y servicios | pendiente | VS06 | Comercio |
@@ -290,22 +290,24 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 ### VS05 — Recomendar y moderar
 
-**Estado:** pendiente, sin ejecución iniciada. **Dependencias:** VS04 completada e integrada mediante PR #11; dependencia cerrada. **Trazabilidad:** R06, R08–R09 / AC06, AC08–AC09; T05, T06, T13.
+**Estado:** en curso, implementación verificada; integración pendiente en PR. Revisión visual administrativa autenticada pendiente. **Dependencias:** VS04 completada e integrada mediante PR #11; dependencia cerrada. **Trazabilidad:** R06, R08–R09 / AC06, AC08–AC09; T05, T06, T13. [Registro VS05](dev_changelog/VS05.md).
 
 **Objetivo:** recibir una recomendación pendiente y permitir moderarla hacia un borrador sin publicación automática ni exposición de información privada.
 
-- [ ] Crear formulario GET/POST `/recomendar`, confirmación neutra y aviso de privacidad; impedir recepción pública de datos sin texto aprobado.
-- [ ] Aplicar CSRF, honeypot, controles adicionales antibot, validación de URLs/archivos, detección de duplicados y límites 3 por hora/10 por día por IP.
-- [ ] Implementar moderación aprobada/rechazada/duplicada/spam con responsable y motivo; aprobar crea o vincula borrador y exige publicación posterior separada.
-- [ ] Separar contacto/evidencia privada y consentimiento de atribución social con identificador válido; medir envío/moderación sin PII y mantener campos con acceso restringido.
+- [x] Crear formulario Blade GET/POST `/recomendar` y confirmación neutra, públicos sin aviso aprobado ni ruta de privacidad, también en producción simulada. Añadir Recomendar a Inicio y navegación.
+- [x] Aplicar CSRF, honeypot, token de sesión de 3 segundos a 2 horas, URLs HTTP/HTTPS, rechazo de archivos, coincidencias no bloqueantes y límites independientes 3/hora y 10/24 horas por IP.
+- [x] Implementar moderación aprobada/rechazada/duplicada/spam con responsable y motivo; aprobar crea o vincula borrador y exige publicación posterior separada.
+- [x] Separar contacto/evidencia privada y consentimiento de atribución social con identificador válido; medir envío/moderación sin PII y mantener campos con acceso restringido.
 
 **Aceptación y fallos:** envío público nunca crea ficha publicada; exceder un límite o enviar contenido inválido no elude validación. Sin consentimiento e identificador válido no hay crédito visible; correo, IP, notas y evidencia privada no aparecen en público.
 
 **Pruebas y revisión:** envío y errores, CSRF, bots, límites horarios/diarios, duplicados, archivos/URLs inválidos, decisiones de moderación, permisos y atribución. Revisar formulario con teclado virtual, foco y errores accesibles. Cerrar puerta Editorial.
 
-**Evidencia:** sin ejecución registrada.
+**Evidencia inicial (23-10-2026):** rama `codex/vs05-recomendar-moderar` desde master sincronizado `190d26c`, sin rama/PR previa ni cambios locales. Contratos actualizados antes del código. Antislop `during` (regla del proyecto), base/copywriting/UI/human/layoutmobile y skills Laravel/testing/Tailwind/Livewire. Implementación y comprobaciones en curso; sin despliegue.
 
-**Bloqueos:** aviso, retención y eliminación de datos requieren aprobación antes de recepción pública; desarrollo y pruebas locales pueden avanzar sin publicar el formulario.
+**Evidencia local final (23-10-2026):** migración incremental aplicada sin reiniciar datos. Suite MySQL completa: **217 pruebas, 2677 aserciones**, correctas; moderación enfocada final 13/144, concurrencia con dos procesos correcta, Pint y build correctos, 27 rutas propias y `git diff --check` correctos. Producción simulada recibe recomendaciones y reportes sin aviso/ruta legal y mantiene CSRF. Herd: formulario y reportes, errores/confirmaciones/límite, navegación y teclado; 390×844, 768×1024, 1440×900 y reflujo 320×600 sin overflow. Contrastes calculados; corrección de foco bajo cabecera verificada. Revisión Antislop por criterio y diferencias visuales en el registro. Se conservan una propuesta y un reporte sintéticos pendientes sobre DEMO para revisión local. Falta recorrido interior de Filament con sesión administrativa/2FA y las cuatro comprobaciones asistidas de VS15; no se declaran PASS ni se cierra Editorial. Sin producción.
+
+**Pendientes posteriores:** aviso y reglas de conservación/eliminación después de la primera publicación, sin condicionar disponibilidad de formularios. VS05 no crea ruta ni enlaces legales y no despliega. Esta decisión sustituye el bloqueo histórico de reportes registrado en VS02.
 
 ### VS06 — Activar y terminar planes
 
@@ -463,7 +465,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 - [ ] Crear taxonomía de blog separada con Guías locales y etiquetas; administrar ciudad, slug único por ciudad, extracto, cuerpo, firma marca/persona, medios, estado, fecha, SEO y revisiones recuperables.
 - [ ] Incorporar párrafos, encabezados, listas, citas, enlaces, imágenes con alt/pie, galerías, tablas simples y URLs validadas de YouTube/Vimeo; sanitizar HTML final sin aceptar incrustaciones arbitrarias.
 - [ ] Entregar índice paginado y post en `/{city}/blog` y `/{city}/blog/{slug}`, orden estable por fecha descendente/ID, enlaces internos públicos, BlogPosting y medición de consulta sin PII.
-- [ ] Aplicar publicación programada al alcanzar la hora sin depender del cron, privacidad previa, archivo y restauración autorizada con auditoría.
+- [ ] Aplicar publicación programada al alcanzar la hora sin depender del cron, contenido privado antes de su hora, archivo y restauración autorizada con auditoría.
 
 **Aceptación y fallos:** posts privados/futuros/de otra ciudad no se filtran por URL ni sitemap; restaurar revisión no borra auditoría. HTML o vídeos no válidos se rechazan/sanitizan y los enlaces internos no exponen borradores.
 
@@ -502,7 +504,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 - [ ] Verificar 40 negocios y al menos cinco con categoría principal en cada una de las cuatro categorías de negocio; tres Lugares con hijos ubicados dentro y comprobados.
 - [ ] Aprobar lista de baile con mínimo cinco fichas verificadas, cinco guías duraderas y tres campañas Super Premium reales o de cortesía con material, cupo y vigencia válidos.
 - [ ] Registrar fuentes, responsable y fecha de los datos editoriales; para medios, autorización del super admin y fecha manual de verificación; dejar vacíos datos no confirmados. No copiar demostraciones de capturas ni datos heredados.
-- [ ] Revisar enlaces, medios, condiciones comerciales, atribución, textos legales y versión móvil; establecer mantenimiento mensual de datos cambiantes y revisión completa trimestral según operación.
+- [ ] Revisar enlaces, medios, condiciones comerciales, atribución, protección de datos privados y versión móvil; establecer mantenimiento mensual de datos cambiantes y revisión completa trimestral según operación. Aviso y conservación/eliminación después de la primera publicación.
 
 **Aceptación y fallos:** inventario 40/3/5/5/3 comprobado; registro sin verificación no cuenta y permanece borrador. Cortesías consumen cupo pero no ingreso; materiales sin permiso no se publican.
 
@@ -510,7 +512,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Evidencia:** sin ejecución registrada.
 
-**Bloqueos:** inventario, fuentes, permisos y textos legales aún no aprobados. No declarar esta tarea completada con factories o contenido de ejemplo.
+**Bloqueos:** inventario, fuentes y permisos aún no aprobados. No declarar esta tarea completada con factories o contenido de ejemplo. Aviso y conservación/eliminación después de la primera publicación.
 
 ### VS17 — Preparar y realizar el lanzamiento único
 
@@ -518,18 +520,18 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Objetivo:** desplegar una sola vez todos los módulos incluidos y el contenido aprobado, con respaldo recuperable y verificación pública.
 
-- [ ] Completar alojamiento/dominio, logotipo oficial, entorno seguro y textos legales aprobados; secretos fuera de Git, Debugbar apagada, sesiones/2FA, almacenamiento, cola y programación configurados según el entorno elegido.
+- [ ] Completar alojamiento/dominio, logotipo oficial y entorno seguro; secretos fuera de Git, Debugbar apagada, sesiones/2FA, almacenamiento, cola y programación configurados según el entorno elegido. Aviso y conservación/eliminación después de la primera publicación.
 - [ ] Preparar respaldo y procedimiento de restauración/recuperación; ejecutar restauración comprobable antes del despliegue y documentar procedimiento de reversión sin exponer credenciales.
 - [ ] Revalidar inventario y vigencias al momento de salida, aprobación editorial y puerta comercial: `/premium` puede seguir oculta sin bloquear el lanzamiento si sus datos siguen pendientes.
 - [ ] Ejecutar controles finales, desplegar el conjunto y comprobar HTTP público, enlaces, medios, SEO, medición y privacidad en producción; registrar resultado separado de los checks locales y resolver fallos de salida.
 
-**Aceptación y fallos:** alojamiento, identidad final, contenido o privacidad faltantes impiden publicar; no se sustituye ningún módulo obligatorio por una pantalla incompleta. Sin precios/contacto aprobados no hay `/premium` ni CTA. Restauración fallida o verificación pública fallida impide declarar salida completada.
+**Aceptación y fallos:** alojamiento, identidad final o contenido faltantes impiden publicar; no se sustituye ningún módulo obligatorio por una pantalla incompleta. El aviso y conservación/eliminación se prepararán después de la primera publicación y no bloquean formularios. Sin precios/contacto aprobados no hay `/premium` ni CTA. Restauración fallida o verificación pública fallida impide declarar salida completada.
 
 **Pruebas y revisión:** suite MySQL, Pint, build, rutas, regresiones AC01–AC10 y recorrido responsive/teclado; restauración ensayada con evidencia, revisión editorial final y comprobaciones reales posteriores al despliegue. Registrar fecha, entorno y seguimiento de fallos de la salida.
 
 **Evidencia:** sin ejecución registrada.
 
-**Bloqueos:** alojamiento/dominio y acceso de despliegue, logotipo oficial, aprobaciones legales/editoriales y cierre VS16 pendientes; datos comerciales solo bloquean `/premium`. No hay resultados de producción registrados.
+**Bloqueos:** alojamiento/dominio y acceso de despliegue, logotipo oficial, aprobación editorial y cierre VS16 pendientes; datos comerciales solo bloquean `/premium`. Aviso y conservación/eliminación después de la primera publicación. No hay resultados de producción registrados.
 
 ## Cobertura de aceptación
 
@@ -553,7 +555,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 | Precios Premium/Super Premium e IVA | Propietario aporta valores; super admin aprueba ajustes | Activación pública de VS07 |
 | WhatsApp Business y responsable | Propietario aporta contacto/responsable; aprobación administrativa | Activación pública de VS07 |
 | Plazo de respuesta opcional | Equipo define y aprueba solo si se promete | Mostrar esa promesa en VS07 |
-| Aviso, retención, eliminación y textos legales | Propietario obtiene aprobación y registra versión autorizada | Recepción pública de VS05, analítica y VS17 |
+| Aviso, conservación y eliminación | Propietario prepara y aprueba después de la primera publicación | Trabajo posterior; no condiciona formularios de VS05 ni su disponibilidad |
 | Datos, fuentes, permisos y acuerdos/cortesías | Investigación y captura desde el inicio; aprobación editorial/comercial | VS16 y revalidación VS17 |
 | Logotipo oficial | Propietario entrega archivo maestro autorizado | VS17 |
 | Alojamiento, dominio y accesos | Propietario decide entorno; implementación configura sin guardar secretos | VS17 |

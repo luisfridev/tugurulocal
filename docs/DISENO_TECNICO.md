@@ -29,7 +29,7 @@ Todas las claves foráneas relevantes tienen índices y política explícita de 
 | `home_selections` | ciudad, negocio, posición y timestamps; pares ciudad/negocio y ciudad/posición únicos. Hasta seis por ciudad, ordenados manualmente y separados de listas y planes. | R01 |
 | `place_business_links` | Lugar, negocio, fuente o comprobación, fecha y super admin verificador; `business_listing_id` único. Validar misma ciudad, tipos correctos y vínculo real. | R04 |
 | `slug_redirects` | `source_path` único y reservado, `listing_id` y timestamps; origen **creado en este proyecto** que resuelve a la identidad de la ficha. Impide borrar la ficha referenciada y retirar la tabla cuando hay reservas. | R01–R02 |
-| `submissions` | datos enviados, contacto y evidencia privados, consentimiento de atribución, estado, moderador/fecha/motivo, ficha vinculada opcional. | R06 |
+| `submissions` | propuesta original, tipo/categoría/ubicación/motivo, contacto privado y evidencia solo por enlace opcional HTTP/HTTPS; Instagram y consentimiento separado; estado, moderador/fecha/motivo y ficha vinculada opcional. Sin IP ni archivos. Claves normalizadas para coincidencias no bloqueantes. `listings.credit_submission_id` selecciona como máximo un crédito aprobado y consentido. | R06 |
 | `catalog_items` | negocio, título, resumen, medio/precio opcionales, orden interno, estado y `published_at`. Índice negocio/estado; límite visible de diez. | R03 |
 | `offers` | negocio, tipo oferta/promoción, condiciones, `starts_at`, `ends_at`, estado y medio opcional; índice de vigencia y negocio. Exigir fin posterior al inicio. | R03 |
 | `editorial_lists` / `editorial_list_items` | ciudad, título, criterio, slug único por ciudad, estado, medios/SEO; pivot con posición única por lista y ficha única por lista. | R04 |
@@ -95,7 +95,7 @@ Los nombres concretos de clases pueden seguir las convenciones del Laravel nuevo
 | Lista / blog | GET `/{city}/listas/{slug}`, `/{city}/blog[/{slug}]` | Ciudad y estado publicados. |
 | Recomendar | GET/POST `/recomendar` | CSRF, honeypot, validación, 3/h y 10/d por IP; confirmación neutra. |
 | Planes | GET `/premium` | 404 y sin enlaces/SEO hasta aprobar configuración. |
-| Privacidad | GET `/aviso-de-privacidad` | Texto aprobado y enlazado desde formulario y pie. |
+| Privacidad posterior | Sin ruta en VS05 | Aviso, conservación y eliminación después de la primera publicación; no condicionan formularios. |
 | Utilidad | GET `/sitemap.xml`, 404 | Sitemap solo indexables; error en español con vuelta útil. |
 
 VS03 implementa raíz, ciudad, Negocios, categoría, zona y medios de taxonomías; conserva las rutas de ficha de VS02. Las demás superficies de la tabla siguen las fases previstas. Lugares públicos devuelve 404 hasta VS12. `ofertas` se añade a los slugs reservados y no crea una página pública.
@@ -137,7 +137,7 @@ Media Library organiza imagen principal, galería, PDF de menú/flyer, material 
 
 La ruta pública de taxonomías comprueba visibilidad, pertenencia del archivo, colección `icon`/`og_image`, autorización, alt, fecha manual no futura y existencia en disco privado. Solo acepta el original o el derivado `card` permitido y existente. Retirar autorización o desactivar la taxonomía cierra también la URL directa. Las respuestas usan `private, no-store`, `nosniff` y `noindex`; la ruta administrativa mantiene su autorización con 2FA.
 
-Las recomendaciones conservan contacto/evidencia en acceso restringido. Los límites usan caché por IP sin exponerla públicamente. Política de privacidad, retención y eliminación se aprueban antes del lanzamiento; no inventar un plazo legal. Copias de seguridad y restauración se prueban antes del despliegue. El reloj de la app y los tests cubre el cambio de día y los límites de vigencia de America/Cancun.
+Las recomendaciones conservan contacto/evidencia en acceso restringido y oculta en serialización. No descargan ni incrustan enlaces y rechazan todos los archivos. CSRF, honeypot y token cifrado ligado a sesión (3 segundos a 2 horas) protegen el envío. Los límites independientes usan caché por IP (3/hora y 10/24 horas), sin guardarla en submissions. GET/POST y confirmación llevan `noindex` y `private, no-store`. Recomendaciones y reportes funcionan también en producción sin aviso aprobado ni ruta de privacidad. Aviso, conservación y eliminación se prepararán después de la primera publicación, sin inventar plazos ni bloquear los formularios. VS05 no incluye despliegue. Copias de seguridad y restauración se prueban antes del despliegue. El reloj de la app y los tests cubre los límites de vigencia de America/Cancun.
 
 ## 7. Matriz mínima de pruebas
 

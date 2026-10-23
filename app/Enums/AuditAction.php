@@ -8,6 +8,9 @@ enum AuditAction: string
     case TaxonomyChanged = 'taxonomy.changed';
     case HomeSelectionChanged = 'home_selection.changed';
     case ReportResolved = 'report.resolved';
+    case SubmissionSent = 'submission.sent';
+    case SubmissionModerated = 'submission.moderated';
+    case SubmissionCreditChanged = 'submission.credit_changed';
 
     case AdminBootstrapped = 'admin.bootstrapped';
     case Login = 'auth.login';
@@ -28,6 +31,9 @@ enum AuditAction: string
             self::TaxonomyChanged => 'Ciudad, zona o categoría modificada',
             self::HomeSelectionChanged => 'Selección de Inicio modificada',
             self::ReportResolved => 'Reporte revisado',
+            self::SubmissionSent => 'Recomendación recibida',
+            self::SubmissionModerated => 'Recomendación moderada',
+            self::SubmissionCreditChanged => 'Crédito de recomendación modificado',
             self::AdminBootstrapped => 'Primera cuenta administrativa creada',
             self::Login => 'Inicio de sesión',
             self::LoginFailed => 'Acceso rechazado',

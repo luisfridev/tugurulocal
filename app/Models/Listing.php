@@ -15,7 +15,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 #[Fillable(self::FIELDS)]
-#[Hidden(['private_notes', 'media_permission', 'media_source', 'source_url', 'logo_permission', 'logo_source'])]
+#[Hidden(['private_notes', 'media_permission', 'media_source', 'source_url', 'logo_permission', 'logo_source', 'credit_submission_id'])]
 class Listing extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
