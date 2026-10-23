@@ -256,6 +256,8 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Integración comprobada (23-10-2026):** GitHub confirmó `merged=true`, destino `master`, fecha `2026-10-23T08:28:56Z` (03:28:56 en America/Cancun) y merge `7524bbc20e7cda895eb7795919bd0f90806c92bc`. Tras `git fetch origin`, cambio a `master` y `git merge --ff-only origin/master`, ambas referencias coinciden con ese merge; ya estaban actualizadas. El commit final de la PR es ancestro de `master` y sus árboles son idénticos. La continuación `codex/vs04-urls-indexacion-cont-20261023-3` parte de esa base limpia y registra el cierre de VS04 y la dependencia satisfecha de VS05, sin iniciar su ejecución. Antislop `during` (regla del proyecto), base y copywriting para evidencia y redacción. [Revisión documental y Delivery Gate](dev_changelog/VS04.md#continuación-registrar-integración-y-cierre-23-10-2026). La PR de este registro es terminal: su fusión solo requiere comprobación y sincronización, sin otra PR para registrar su propio merge.
 
+**PR del registro de integración:** [PR #12: VS04, registrar integración y cierre](https://github.com/luisfridev/tugurulocal/pull/12), abierta hacia `master` desde `codex/vs04-urls-indexacion-cont-20261023-3`, commit inicial publicado `a9bbaa79234dba7da63bbaad1134a76e59dfd018`. Se deja abierta para revisión y fusión del propietario; está adjunta al chat. Actualización exclusivamente documental y terminal: el cierre funcional de VS04 procede del merge de la PR #11.
+
 **Bloqueos:** ninguno adicional confirmado.
 
 ### VS05 — Recomendar y moderar
