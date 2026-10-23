@@ -3,12 +3,12 @@
 namespace Tests\Feature;
 
 use App\Actions\Listings\ResolveListingReport;
-use App\Actions\Listings\SubmitListingReport;
 use App\Models\Listing;
 use App\Models\ListingReport;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
@@ -85,13 +85,18 @@ class ListingReportTest extends TestCase
         $this->assertDatabaseCount('listing_reports', 10);
     }
 
-    public function test_production_collection_is_disabled_until_approved_privacy_route_exists(): void
+    public function test_production_collection_accepts_reports_without_privacy_approval_or_route_and_keeps_csrf(): void
     {
         $listing = Listing::factory()->published()->create();
+        $payload = $this->payload($listing);
         app()->instance('env', 'production');
-        config(['editorial.reports_privacy_approved' => false]);
-        $this->assertFalse(SubmitListingReport::available());
-        $this->get(route('listings.report', ['listing' => $listing->slug]))->assertNotFound();
-        $this->post(route('listings.report.store', ['listing' => $listing->slug]), [])->assertStatus(419);
+        $this->assertFalse(Route::has('privacy'));
+        $this->get('/aviso-de-privacidad')->assertNotFound();
+        $this->get('/@'.$listing->slug)->assertOk()->assertSee('Reportar datos incorrectos');
+        $this->get(route('listings.report', ['listing' => $listing->slug]))->assertOk()->assertDontSee('/aviso-de-privacidad');
+        $this->post(route('listings.report.store', ['listing' => $listing->slug]), $payload)->assertStatus(419);
+        $this->post(route('listings.report.store', ['listing' => $listing->slug]), $payload + ['_token' => session()->token()])->assertRedirect()->assertSessionHasNoErrors();
+        $this->assertDatabaseCount('listing_reports', 1);
+        $this->get(route('listings.report', ['listing' => $listing->slug]))->assertOk()->assertSee('Recibimos tu reporte.');
     }
 }

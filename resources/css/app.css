@@ -23,6 +23,7 @@
 }
 
 @layer base {
+    html { scroll-padding-block: 6rem; }
     a, button, input, select, textarea, summary { outline-offset: 4px; }
     :focus-visible { outline: 3px solid #8d4c94; box-shadow: 0 0 0 4px #fff; }
     a:hover { text-decoration-thickness: 2px; }

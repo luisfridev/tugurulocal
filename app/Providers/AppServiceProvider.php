@@ -39,6 +39,10 @@ class AppServiceProvider extends ServiceProvider
             Limit::perHour(3)->by('hour:'.hash('sha256', $request->ip())),
             Limit::perDay(10)->by('day:'.hash('sha256', $request->ip())),
         ]);
+        RateLimiter::for('submissions', fn (Request $request): array => [
+            Limit::perHour(3)->by('hour:'.hash('sha256', $request->ip())),
+            Limit::perDay(10)->by('day:'.hash('sha256', $request->ip())),
+        ]);
         User::observe(UserObserver::class);
         Media::observe(ListingMediaObserver::class);
         Event::listen(Login::class, [RecordAuthenticationEvent::class, 'login']);

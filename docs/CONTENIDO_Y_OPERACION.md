@@ -59,7 +59,7 @@ La lista de baile explica por qué cada opción entra; no es un filtro de catego
 | Plazo de respuesta | Panel si se desea prometer uno | Solo la promesa de plazo; no inventarlo. |
 | Alojamiento, dominio y credenciales de despliegue | Operación | Despliegue, no desarrollo local. |
 | Logotipo oficial | Sistema visual | Publicación de identidad final. |
-| Aviso de privacidad y textos legales aprobados | Páginas legales | Publicación del formulario y analítica. |
+| Aviso de privacidad, conservación y eliminación | Trabajo posterior a la primera publicación | No condiciona recomendaciones ni reportes; no crear ruta ni enlaces en VS05. |
 | Permisos y contenido real del inventario | Panel/editorial | Lanzamiento público. |
 
 Mientras no se completen precios, IVA, WhatsApp y responsable, /premium responde como página no disponible, no está en navegación ni sitemap y los CTA comerciales se ocultan. El plazo de respuesta solo se muestra si se aprueba uno. La implementación puede completarse y probarse localmente con estados de configuración ausente sin exponer valores de ejemplo al público.
@@ -70,5 +70,5 @@ Publicar un negocio exige logo autorizado con alt y fecha manual de verificació
 
 El propietario autoriza conservar cuatro negocios públicos DEMO, un borrador, uno pausado, zonas y medios sintéticos en local/testing. Ejecutar explícitamente `php artisan db:seed --class=DemoListingSeeder`, separado del seeder estructural; nunca en producción ni reiniciando la base. Repetirlo conserva cambios manuales y archivos. Registros is_demo y medios DEMO no cuentan para 40/3/5/5/3 y quedan excluidos de lecturas de producción. No crean cuentas ni contactos o cifras reales. Taxonomías admiten identidad opcional y texto enriquecido sanitizado.
 
-Antes de publicar, el super admin y quien implementa revisan el inventario y dejan constancia de fecha y resultado: fuentes y permisos; 40/3/5/5/3; vínculos de Lugares; oferta vigente/expirada; configuración comercial; etiquetas Patrocinado; rutas y SEO; privacidad y copias de seguridad; móvil, tableta, escritorio y teclado. El [plan de implementación](PLAN_IMPLEMENTACION.md) exige esta revisión como puerta del único lanzamiento. Si falta un bloque obligatorio, no se sustituye por contenido de las capturas.
+Antes de publicar, el super admin y quien implementa revisan el inventario y dejan constancia de fecha y resultado: fuentes y permisos; 40/3/5/5/3; vínculos de Lugares; oferta vigente/expirada; configuración comercial; etiquetas Patrocinado; rutas y SEO; protección de datos privados y copias de seguridad; móvil, tableta, escritorio y teclado. El aviso y las reglas de conservación/eliminación se preparan después de la primera publicación y no condicionan recomendaciones ni reportes. El [plan de implementación](PLAN_IMPLEMENTACION.md) exige esta revisión como puerta del único lanzamiento. Si falta un bloque obligatorio, no se sustituye por contenido de las capturas.
 

@@ -7,12 +7,18 @@ use App\Http\Controllers\ListingMediaController;
 use App\Http\Controllers\ListingReportController;
 use App\Http\Controllers\PublicTaxonomyMediaController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\TaxonomyMediaController;
 use App\Http\Middleware\EnsureEditorialAdmin;
+use App\Http\Middleware\PrivatePublicForm;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/playa-del-carmen', 302)->name('bootstrap');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+Route::middleware(PrivatePublicForm::class)->group(function (): void {
+    Route::get('/recomendar', [SubmissionController::class, 'create'])->name('submissions.create');
+    Route::post('/recomendar', [SubmissionController::class, 'store'])->middleware('throttle:submissions')->name('submissions.store');
+});
 
 Route::get('/dashboard/fichas/{listing}/previsualizar', [ListingController::class, 'preview'])
     ->middleware(EnsureEditorialAdmin::class)->name('listings.preview');
@@ -20,8 +26,8 @@ Route::get('/dashboard/identidad/{type}/{record}/medios/{media}', TaxonomyMediaC
     ->middleware(EnsureEditorialAdmin::class)->whereNumber(['record', 'media'])->name('taxonomy.media');
 Route::get('/@{listing}/medios/{media}', ListingMediaController::class)->whereNumber('media')->name('listings.media');
 Route::get('/@{listing}/contacto/{kind}', ListingContactController::class)->middleware('throttle:60,1')->name('listings.contact');
-Route::get('/@{listing}/reportar', [ListingReportController::class, 'create'])->name('listings.report');
-Route::post('/@{listing}/reportar', [ListingReportController::class, 'store'])->middleware('throttle:listing-reports')->name('listings.report.store');
+Route::get('/@{listing}/reportar', [ListingReportController::class, 'create'])->middleware(PrivatePublicForm::class)->name('listings.report');
+Route::post('/@{listing}/reportar', [ListingReportController::class, 'store'])->middleware([PrivatePublicForm::class, 'throttle:listing-reports'])->name('listings.report.store');
 Route::get('/@{listing}', [ListingController::class, 'show'])->name('listings.show');
 
 Route::get('/identidad/{type}/{record}/medios/{media}', PublicTaxonomyMediaController::class)

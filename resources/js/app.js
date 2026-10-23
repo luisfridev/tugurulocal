@@ -30,3 +30,22 @@ document.querySelectorAll('[data-discovery-filters]').forEach((form) => {
         status.textContent = '';
     });
 });
+
+document.querySelectorAll('[data-public-form]').forEach((form) => {
+    const button = form.querySelector('button[type="submit"]');
+    const status = form.querySelector('[data-public-form-status]');
+    const label = button.textContent;
+
+    form.addEventListener('submit', () => {
+        form.setAttribute('aria-busy', 'true');
+        button.textContent = 'Enviando recomendación…';
+        status.textContent = 'Estamos enviando tu propuesta. Espera la confirmación.';
+    });
+    window.addEventListener('pageshow', () => {
+        form.removeAttribute('aria-busy');
+        button.textContent = label;
+        status.textContent = '';
+    });
+});
+
+document.getElementById('form-errors')?.focus();

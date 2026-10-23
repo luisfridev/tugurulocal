@@ -19,9 +19,6 @@
 @endforeach
 </select></div>
                 <div><label for="explanation" class="block font-semibold">¿Qué información está incorrecta?</label><textarea id="explanation" name="explanation" required minlength="10" maxlength="2000" rows="6" aria-describedby="explanation-help" class="mt-2 w-full rounded-xl border border-brand-muted p-3">{{ old('explanation') }}</textarea><p id="explanation-help" class="mt-2 text-sm text-brand-muted">Entre 10 y 2000 caracteres. No compartas teléfonos, correos ni información privada de otras personas.</p></div>
-                @if(Route::has('privacy'))<a href="{{ route('privacy') }}" class="rounded-lg underline underline-offset-4">Consultar aviso de privacidad</a>
-@endif
-
                 <button class="min-h-12 rounded-xl bg-brand-action px-6 py-3 font-bold text-brand-text" type="submit">Enviar reporte</button>
             </form>
 

@@ -2,8 +2,8 @@
 
 namespace App\Support;
 
-use App\Actions\Listings\SubmitListingReport;
 use App\Models\Listing;
+use App\Models\Submission;
 
 class ListingPageData
 {
@@ -44,6 +44,16 @@ class ListingPageData
         $seo = PublicMetadata::make($title, $description, $canonical, PublicIndexability::listing($listing, $preview), ($cover ?? $logo)?->getUrl());
         $breadcrumbs = [['label' => 'Inicio', 'url' => PublicUrl::city()], ['label' => 'Negocios', 'url' => PublicUrl::businesses()], ['label' => $listing->name, 'url' => null]];
 
-        return compact('canonical', 'title', 'description', 'logo', 'cover', 'gallery', 'document', 'contacts', 'jsonLd', 'seo', 'breadcrumbs') + ['reportsAvailable' => ! $preview && SubmitListingReport::available()];
+        $credit = null;
+        if (! $preview && $listing->status === 'published' && $listing->credit_submission_id) {
+            $candidate = Submission::query()->whereKey($listing->credit_submission_id)->where('listing_id', $listing->id)
+                ->where('city_id', $listing->city_id)->where('type', $listing->type)
+                ->where('status', 'approved')->where('credit_consent', true)->value('instagram');
+            if (is_string($candidate) && preg_match(SubmissionIdentity::INSTAGRAM_PATTERN, $candidate)) {
+                $credit = $candidate;
+            }
+        }
+
+        return compact('canonical', 'title', 'description', 'logo', 'cover', 'gallery', 'document', 'contacts', 'jsonLd', 'seo', 'breadcrumbs', 'credit') + ['reportsAvailable' => ! $preview];
     }
 }

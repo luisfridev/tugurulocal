@@ -44,14 +44,15 @@ Antes de entregar, ejecuta la revisión final de Antislop y las listas de los co
 
 ### Cierre mediante pull requests
 
-Pedir el cierre de una `VSXX` significa preparar y dejar abierta su PR hacia `master` para revisión del propietario. El flujo vigente, simplificado el 23 de octubre de 2026, es:
+Pedir el cierre de una `VSXX` significa preparar los cambios locales verificados para revisión del propietario. Por decisión del propietario del 23 de octubre de 2026, hacer commit, push y crear o actualizar una PR requiere su instrucción explícita para cada acción y alcance. Implementar, verificar, corregir o pedir el cierre no concede esa autorización. El flujo vigente es:
 
 1. Completar implementación, comprobaciones aplicables y documentación en la rama de trabajo, conservando la evidencia real y los pendientes.
-2. Crear los commits y subir únicamente esa rama. Actualizar la PR existente o abrir una si aún no existe, con título `VSXX: descripción`. Su descripción explica los cambios, las pruebas ejecutadas con sus resultados y lo pendiente. Las correcciones de revisión y sus comprobaciones se incorporan a esa misma rama y PR.
-3. Registrar número, URL y rama de la PR en `docs/MEMORY.md` y `docs/dev_changelog/VSXX.md`; confirmar y subir ese registro a la misma rama para incluirlo en la PR. Adjuntar la PR al chat y entregar su enlace.
-4. Dejar la PR abierta. El propietario decide cuándo fusionarla. El agente no fusiona la PR, no integra la rama directamente en `master` ni hace push a `master`.
+2. Entregar los cambios locales sin confirmar, explicar qué cambió, qué se comprobó y qué falta, y dejar que el propietario los revise. El propietario decide cuándo autorizar los commits, el push y la creación o actualización de la PR; puede indicar varias acciones juntas. Autorizar un commit no autoriza el push ni una PR. Las correcciones posteriores también quedan locales hasta una nueva instrucción que las incluya.
+3. Ejecutar solo las acciones autorizadas. Para publicar, subir únicamente la rama de trabajo y reutilizar la PR existente; si autoriza crearla, abrirla hacia `master` con título `VSXX: descripción`. La PR reúne cambios, pruebas, documentación y pendientes de esa entrega.
+4. Cuando exista PR, registrar número, URL y rama en `docs/MEMORY.md` y `docs/dev_changelog/VSXX.md`; confirmar y subir ese registro solo si el alcance autorizado lo incluye. Adjuntar la PR al chat y entregar su enlace. Una PR existente no autoriza actualizaciones automáticas.
+5. Dejar la PR abierta. El propietario decide cuándo fusionarla. El agente no fusiona la PR, no integra la rama directamente en `master` ni hace push a `master`.
 
-Mientras la PR no esté fusionada, mantener la tarea `en curso`, con «implementación verificada; integración pendiente en PR», aunque las comprobaciones locales hayan pasado. No declarar integración ni cierre completo por crear el commit, subir la rama o abrir la PR.
+Mantener la tarea `en curso` hasta comprobar su integración. Con las comprobaciones completas y los cambios aún locales, indicar «implementación verificada; revisión local del propietario pendiente». Si existe PR sin fusionar, indicar «implementación verificada; integración pendiente en PR» y distinguir cualquier cambio local sin publicar. No declarar integración ni cierre completo por revisar los cambios, crear el commit, subir la rama o abrir la PR.
 
 Después del merge, comprobar en GitHub que la PR esté fusionada hacia `master` y sincronizar `master` local solo por avance rápido desde `origin/master`. Con la aceptación satisfecha y la integración comprobada, la dependencia queda cerrada y se puede iniciar la siguiente tarea aunque el tablero todavía indique integración pendiente. Informar del resultado en el chat. Nunca escribir ni publicar directamente en `master`.
 
@@ -62,13 +63,15 @@ GitHub es la fuente de verdad para estado, fecha y commit de integración; MEMOR
 | Situación | Acción |
 | --- | --- |
 | Retomar la misma entrega antes de fusionarla | Reutilizar rama y PR, aunque cambie la sesión. |
-| Corregir una observación de revisión | Añadir commits y comprobaciones a la misma PR. |
+| Implementación verificada o petición de cierre | Entregar cambios locales sin confirmar para revisión; esperar la instrucción de commit, push o PR. |
+| Corregir una observación de revisión | Corregir y verificar localmente; incorporar a la misma PR solo cuando el propietario autorice las acciones correspondientes. |
+| Autorización solo para commit | Crear el commit del alcance indicado; conservarlo local sin push ni cambios en la PR. |
 | Dependencia con PR todavía abierta o aceptación pendiente | Mantener la dependencia sin cerrar; no iniciar la tarea dependiente. |
 | PR fusionada y aceptación satisfecha | Comprobar GitHub, sincronizar master por avance rápido y continuar la dependencia. |
 | Tablero pendiente de reflejar el merge | Actualizarlo en la siguiente entrega; no bloquear trabajo por ese desfase. |
 | Solo hay metadatos o un estado que actualizar | No crear PR; conservar la evidencia en GitHub hasta la siguiente entrega. |
 | Última entrega fusionada, sin otra entrega prevista | Confirmar en GitHub y en el chat; no crear PR para cerrar el registro. |
-| Corrección posterior a la fusión o entrega independiente | Crear otra rama y PR para ese cambio sustantivo. |
+| Corrección posterior a la fusión o entrega independiente | Usar otra rama para ese cambio sustantivo; crear su PR cuando el propietario lo autorice. |
 
 ## 1. Trazabilidad de tareas y evidencia
 
@@ -81,7 +84,7 @@ Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una ag
 | **T03 · Editorial** | VS02, VS12 | R01–R02: gestión desde panel de ciudad, zonas y cinco categorías, business/place, slugs y medios con plugin Filament/Spatie y etiqueta PDF editable; Lugar público se completa con hijos verificados en VS12. | Migraciones, restricciones, taxonomía, medios y vínculos en MySQL. |
 | **T04 · Editorial** | VS02, VS03 | R01–R02/AC01–AC02: publicar ficha Gratis y descubrirla en ciudad/Negocios/categoría/zona con filtros y orden estable. | HTTP, estados privados, rutas, colisiones, filtros, cierre y permisos. |
 | **T05 · Editorial** | VS05 | R06/AC06: recomendar, limitar y moderar a borrador; atribución consentida y datos privados protegidos. | Validación, bots, límites, duplicados y publicación separada. |
-| **T06 · Transversal** | VS02–VS05, VS15 | R09/AC09: SEO y eventos desde cada superficie; consolidar URLs/sitemap en VS04, aviso de privacidad en VS05 y comprobar el conjunto en VS15. | Canonical, noindex, sitemap, 301 internos, metadatos y eventos sin PII. |
+| **T06 · Transversal** | VS02–VS05, VS15 | R09/AC09: SEO y eventos desde cada superficie; consolidar URLs/sitemap en VS04 y comprobar el conjunto en VS15. Aviso, conservación y eliminación después de la primera publicación, sin bloquear formularios. | Canonical, noindex, sitemap, 301 internos, metadatos y eventos sin PII. |
 | **T07 · Comercio** | VS06, VS07 | R07–R08: planes, recibos e ingresos separados; ajustes comerciales y /premium condicional. | Pago/prueba/cortesía, vencimiento, concurrencia, autorización y configuración parcial. |
 | **T08 · Comercio** | VS08, VS09 | R03/AC03: productos y ofertas en ficha/Explorar, máximo diez productos y ofertas elegibles por vigencia. | Cupo, filtros, orden, fechas, pérdida de plan y ausencia de /ofertas. |
 | **T09 · Comercio y Colecciones** | VS10, VS13 | R07/AC07: campañas Super Premium en VS10; bloques contextuales después de crear listas y Lugares en VS13. Cupos, contratos y Patrocinado verificables. | Solapamientos concurrentes, elegibilidad, etiquetas, caducidad e ingresos. |
@@ -95,12 +98,12 @@ Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una ag
 ## 2. Puertas de fase
 
 - **Base completa — VS00–VS01:** migraciones limpias, panel exclusivo, 2FA y MySQL de pruebas funcional. No se crean cuentas públicas.
-- **Editorial completa — VS02–VS05:** fichas Gratis, descubrimiento, URLs/SEO y recomendaciones moderadas con estados privados verificables; ningún enlace apunta a pantallas futuras. El formulario no recibe datos públicos sin aviso aprobado; el flujo puede probarse localmente mientras se obtiene el texto.
+- **Editorial completa (VS02–VS05):** fichas Gratis, descubrimiento, URLs/SEO y recomendaciones moderadas con estados privados verificables; ningún enlace apunta a pantallas futuras. Recomendaciones y reportes públicos funcionan desde la primera versión sin aviso ni aprobación previa. Evidencia por enlace opcional, sin adjuntos. VS05 no despliega.
 - **Comercio completo — VS06–VS10:** plan/ingreso separados, /premium condicional probada, catálogo elegible, cupos, fechas, Patrocinado y ajustes desde panel. VS07 y VS08 dependen de VS06; ambas ramas deben cerrarse. La falta de valores comerciales permite cerrar la implementación local con la puerta de /premium oculta, pero impide activarla públicamente. Los bloques contextuales quedan para Colecciones.
 - **Colecciones completas — VS11–VS14:** lista manual, Lugar con hijo verificado, bloque contextual independiente y blog programable, todos con rutas, SEO y permisos.
 - **Integración completa — VS15:** recorridos cruzados, retirada inmediata de beneficios y contenido inelegible, métricas privadas, responsive, accesibilidad y regresión global comprobados; no se atribuyen resultados de producción a tests locales.
-- **Contenido aprobado — VS16:** inventario real 40/3/5/5/3, distribución por categorías, vínculos, fuentes, medios y textos legales revisados y aprobados según operación.
-- **Salida aprobada — VS17:** revalidar inventario y vigencias, alojamiento, identidad final, privacidad, copias/restauración y pruebas integrales; desplegar una sola vez y verificar producción. Precios, IVA, WhatsApp o responsable faltantes mantienen /premium oculta; alojamiento, logotipo oficial o contenido obligatorio faltantes impiden despliegue.
+- **Contenido aprobado (VS16):** inventario real 40/3/5/5/3, distribución por categorías, vínculos, fuentes y medios revisados y aprobados según operación. El aviso y la conservación/eliminación quedan para después de la primera publicación.
+- **Salida aprobada (VS17):** revalidar inventario y vigencias, alojamiento, identidad final, protección de datos privados, copias/restauración y pruebas integrales; desplegar una sola vez y verificar producción. El aviso y conservación/eliminación se preparan después. Precios, IVA, WhatsApp o responsable faltantes mantienen /premium oculta; alojamiento, logotipo oficial o contenido obligatorio faltantes impiden despliegue.
 
 ## 3. Escenarios de regresión prioritarios
 
@@ -118,7 +121,7 @@ Las dependencias y checklists completos están en [MEMORY.md](MEMORY.md). Una ag
 
 Al comenzar cada tarea `VSXX`, crear o abrir `docs/dev_changelog/VSXX.md`; actualizar el mismo archivo al terminar cada intervención, con fecha, explicación comprensible de cambios y motivos, verificación real y pendientes. Enlazarlo desde su sección en [MEMORY.md](MEMORY.md), donde se actualizan estado, checklist y evidencia resumida. Anotar cambios, migraciones/configuración, comandos y pruebas ejecutadas con fecha y entorno, resultados de la revisión visual y riesgos pendientes. `docs/dev_changelog/` contiene únicamente registros Markdown: no guardar imágenes ni capturas. Documentar la revisión visual en texto con URLs locales, tamaños de pantalla, interacciones comprobadas y resultados observables. Una tarea completada exige evidencia real; conservar datos privados y secretos fuera de Git. No afirmar que producción funciona por un test local. Si una puerta falla, resolver el defecto antes de continuar al lanzamiento.
 
-En cada intervención, registrar también modo Antislop, skills aplicadas y motivo, resultados por criterio y pendientes de la [revisión final](#antislop-en-la-ejecución) en el mismo registro VSXX, con evidencia resumida en el tablero. Para una actualización general del flujo, usar el tablero y la PR correspondiente, sin abrir una VSXX ni crear registros vacíos.
+En cada intervención, registrar también modo Antislop, skills aplicadas y motivo, resultados por criterio y pendientes de la [revisión final](#antislop-en-la-ejecución) en el mismo registro VSXX, con evidencia resumida en el tablero. Para una actualización general del flujo, usar el tablero y, cuando el propietario autorice su publicación, la PR correspondiente, sin abrir una VSXX ni crear registros vacíos.
 
-Entregar el cierre mediante la [PR abierta para revisión del propietario](#cierre-mediante-pull-requests), con número, URL y rama registrados en ambos documentos y el enlace en el chat. Distinguir la implementación verificada de la integración comprobada: una PR sin fusionar conserva la tarea `en curso`.
+Entregar primero los cambios locales verificados para revisión del propietario según el [flujo de cierre](#cierre-mediante-pull-requests). Hacer commit, push y crear o actualizar la PR solo por su instrucción explícita. Cuando exista PR, registrar sus datos en ambos documentos y enlazarla en el chat. Distinguir la implementación verificada de la integración comprobada: la tarea sigue `en curso` hasta verificar su fusión.
 

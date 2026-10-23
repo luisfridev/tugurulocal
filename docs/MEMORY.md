@@ -1,6 +1,6 @@
 # Tu Gurú Local — Tablero de entregas verticales
 
-**Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS04 completadas; VS04 integrada en `master` mediante [PR #11](https://github.com/luisfridev/tugurulocal/pull/11); fase Base cerrada y Editorial en curso. VS05–VS17 pendientes; VS05 tiene su dependencia cerrada. No hay lanzamiento ni verificación de producción.
+**Fecha:** 23 de octubre de 2026. **Estado:** VS00–VS04 completadas; VS04 integrada en `master` mediante [PR #11](https://github.com/luisfridev/tugurulocal/pull/11); fase Base cerrada y Editorial en curso. VS05 en curso con dependencia cerrada; VS06–VS17 pendientes. No hay lanzamiento ni verificación de producción.
 
 ## Uso, autoridad y cierre
 
@@ -8,13 +8,33 @@ La [especificación maestra](ESPECIFICACION_MAESTRA.md) manda en producto; el [d
 
 Una entrega funcional conecta esquema y relaciones, acciones/consultas de dominio, administración Filament, experiencia pública, autorización y pruebas observables. SEO, medición aplicable, privacidad, medios autorizados y [sistema visual público](design.md) se incorporan al crear cada superficie; VS04 y VS15 completan y verifican el conjunto. VS00–VS01 son habilitadores técnicos mínimos, no fases para construir todas las capas por separado. Filament conserva sus patrones administrativos.
 
-Estados permitidos: `pendiente`, `en curso`, `bloqueada`, `completada`. Marcar `en curso` solo al empezar la ejecución con dependencias cerradas; una tarea `bloqueada` identifica causa, responsable de resolución y condición para continuar. Marcar `completada` solo con checklist y aceptación satisfechos, evidencia real y fusión de su PR hacia `master` comprobada en GitHub. Mientras la PR no esté fusionada, conservar `en curso` e indicar «implementación verificada; integración pendiente en PR». Este tablero resume el avance; GitHub acredita el estado, la fecha y el commit de integración. Si el tablero aún refleja el estado previo al merge, la comprobación en GitHub y la aceptación satisfecha permiten continuar: actualizar este archivo y el registro anterior en la siguiente entrega con trabajo sustantivo, sin una PR exclusiva para ese cambio. Los campos de evidencia permanecen vacíos de resultados hasta ejecutar verificaciones; no sustituirlos por expectativas. No guardar secretos, datos personales ni evidencia privada en este archivo.
+Estados permitidos: `pendiente`, `en curso`, `bloqueada`, `completada`. Marcar `en curso` solo al empezar la ejecución con dependencias cerradas; una tarea `bloqueada` identifica causa, responsable de resolución y condición para continuar. Marcar `completada` solo con checklist y aceptación satisfechos, evidencia real y fusión de su PR hacia `master` comprobada en GitHub. Con las comprobaciones completas y los cambios aún locales, conservar `en curso` e indicar «implementación verificada; revisión local del propietario pendiente». Si existe PR sin fusionar, indicar «implementación verificada; integración pendiente en PR» y distinguir los cambios locales sin publicar. Este tablero resume el avance; GitHub acredita el estado, la fecha y el commit de integración. Si el tablero aún refleja el estado previo al merge, la comprobación en GitHub y la aceptación satisfecha permiten continuar: actualizar este archivo y el registro anterior en la siguiente entrega con trabajo sustantivo, sin una PR exclusiva para ese cambio. Los campos de evidencia permanecen vacíos de resultados hasta ejecutar verificaciones; no sustituirlos por expectativas. No guardar secretos, datos personales ni evidencia privada en este archivo.
 
 Usar una rama y una PR por entrega, normalmente una `VSXX`. Antes de editar, comprobar Git y las dependencias y reutilizar la rama y PR existentes mientras la entrega no esté fusionada. Las nuevas sesiones, continuaciones y correcciones de revisión conservan ambas, incluido el nombre de una rama anterior. Crear `codex/vsXX-descripcion` desde `master` sincronizado solo para una entrega nueva; una corrección posterior a la fusión usa otra rama y PR con nombre descriptivo. Conservar cambios sin confirmar, no implementar en `master` ni mezclar implementaciones de tareas distintas. El cierre documental de la tarea anterior puede acompañar la siguiente entrega. Anotar la rama usada en el registro y la evidencia de la tarea.
 
-**Cierre por PR (flujo simplificado el 23-10-2026):** después de verificar y documentar la implementación, crear los commits y subir únicamente la rama de trabajo. Actualizar la PR existente o abrir una si aún no existe, hacia `master` y con título `VSXX: descripción`, cambios, pruebas y pendientes. Registrar número, URL y rama en esta tarea y en `docs/dev_changelog/VSXX.md`, subiendo ese registro a la misma PR; adjuntarla al chat y entregar el enlace. El propietario revisa y fusiona; el agente no fusiona, no integra directamente en `master` ni hace push a `master`. Tras el merge, comprobar GitHub y sincronizar `master` local por avance rápido desde `origin/master`. No abrir otra PR solo para registrar el merge, cambiar un estado o copiar metadatos, aunque cierre una fase o desbloquee trabajo. Incorporar el cierre documental en la siguiente PR con trabajo sustantivo; si no existe otra entrega, conservar la evidencia en GitHub e informar en el chat. El changelog mantiene las comprobaciones; README y contratos enlazan las fuentes sin exigir repetir sus estados. [Flujo completo](PLAN_IMPLEMENTACION.md#cierre-mediante-pull-requests).
+**Revisión local y publicación por instrucción del propietario (23-10-2026):** después de verificar y documentar la implementación, entregar los cambios locales sin confirmar para su revisión. El propietario decide cuándo hacer commit, push y crear o actualizar la PR; cada acción requiere su instrucción explícita para el alcance solicitado. Implementar, corregir, verificar o pedir el cierre no autoriza esas acciones. Una autorización no implica las demás ni publicaciones posteriores de nuevas correcciones. Cuando autorice publicar, usar únicamente la rama de trabajo y reutilizar la PR existente; crearla hacia `master` con título `VSXX: descripción` solo cuando lo indique. Registrar número, URL y rama en esta tarea y en `docs/dev_changelog/VSXX.md`; confirmar y publicar ese registro también requiere autorización. Adjuntar la PR al chat y entregar el enlace cuando exista. El propietario revisa y fusiona; el agente no fusiona, no integra directamente en `master` ni hace push a `master`. Tras el merge, comprobar GitHub y sincronizar `master` local por avance rápido desde `origin/master`. No abrir otra PR solo para registrar el merge, cambiar un estado o copiar metadatos, aunque cierre una fase o desbloquee trabajo. Incorporar el cierre documental en la siguiente entrega con trabajo sustantivo; si no existe otra entrega, conservar la evidencia en GitHub e informar en el chat. El changelog mantiene las comprobaciones; README y contratos enlazan las fuentes sin exigir repetir sus estados. [Flujo completo](PLAN_IMPLEMENTACION.md#cierre-mediante-pull-requests).
 
 Los registros fechados de ramas de continuación y PR de integración describen el procedimiento anterior. Conservan su valor histórico y no sustituyen las reglas vigentes de esta sección.
+
+### Revisión local antes de commit y PR (23-10-2026)
+
+El propietario sustituye la publicación automática al terminar una entrega por su revisión de los cambios locales. Decide cuándo hacer commit, push y crear o actualizar la PR. Se armonizan AGENTS, README, plan y este tablero, incluidos los casos de correcciones y registros documentales. Se conservan una rama y una PR por entrega, las dependencias, la fusión a cargo del propietario y la prohibición de PR solo para registrar merges.
+
+Cambio documental local preparado en `codex/vs05-recomendar-moderar`, con árbol limpio al comenzar esta intervención. Es una actualización general del flujo, sin iniciar ni reabrir una VSXX; no cambia la implementación de VS05. Tras recibir los cambios para revisión local, el propietario indicó hacer commit e incorporarlos a la PR #14 existente; esa instrucción autoriza su publicación en la misma rama, sin crear otra PR.
+
+Antislop `during` por regla del proyecto, con base y copywriting para instrucciones en español. Revisión documental local:
+
+| Criterio | Resultado y evidencia |
+| --- | --- |
+| Hechos y afirmaciones (R-17, R-18, R-36, R-38; C-5) | PASS: regla basada en la instrucción del propietario; rama y árbol inicial comprobados con Git. Sin afirmar integración ni producción. |
+| Precisión y propósito (R-16; C-1) | PASS: commit, push y creación o actualización de PR requieren instrucción explícita; una acción no autoriza las demás ni nuevas correcciones. |
+| Redacción (R-02; copywriting) | PASS: texto añadido sin rayas largas, frases de énfasis en mayúsculas ni comillas decorativas; agente y propietario tienen responsabilidades explícitas. |
+| Composición y coherencia (C-3; copywriting) | PASS: cuatro documentos distinguen revisión local, publicación autorizada e integración; la tabla del plan cubre autorización solo para commit y correcciones posteriores. |
+| Enlaces y alcance | PASS: enlaces locales de los cuatro documentos comprobados y `git diff --check` correcto; solo cambia documentación, con evidencia histórica conservada. |
+| CTA de producto (R-15) | No aplica: instrucciones internas, sin acciones públicas. |
+| Diseño, activos, diales, UI e interacciones (C-2, C-4 y criterios visuales) | No aplica: no cambia la aplicación; Herd, PHPUnit, Pint y build no se repiten para este cambio documental. |
+
+La primera entrega quedó local, sin commit ni publicación. La instrucción posterior del propietario autoriza confirmar y publicar estos cuatro documentos en la [PR #14](https://github.com/luisfridev/tugurulocal/pull/14), conservando la PR abierta para su revisión y fusión. Esta autorización corresponde a este cambio; las nuevas correcciones siguen sujetas al flujo de revisión local.
 
 ### Simplificación del flujo de PR (23-10-2026)
 
@@ -117,7 +137,7 @@ Actualización documental y del flujo mediante [PR #10](https://github.com/luisf
 | VS02 | Publicar y consultar una ficha Gratis | completada | VS01 | Editorial |
 | VS03 | Descubrir negocios | completada | VS02 | Editorial |
 | VS04 | Mantener URLs e indexación | completada | VS03 | Editorial |
-| VS05 | Recomendar y moderar | pendiente | VS04 | Editorial |
+| VS05 | Recomendar y moderar | en curso | VS04 | Editorial |
 | VS06 | Activar y terminar planes | pendiente | VS05 | Comercio |
 | VS07 | Consultar planes comerciales | pendiente | VS06 | Comercio |
 | VS08 | Publicar productos y servicios | pendiente | VS06 | Comercio |
@@ -290,22 +310,26 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 ### VS05 — Recomendar y moderar
 
-**Estado:** pendiente, sin ejecución iniciada. **Dependencias:** VS04 completada e integrada mediante PR #11; dependencia cerrada. **Trazabilidad:** R06, R08–R09 / AC06, AC08–AC09; T05, T06, T13.
+**Estado:** en curso, implementación verificada; integración pendiente en [PR #14](https://github.com/luisfridev/tugurulocal/pull/14), rama `codex/vs05-recomendar-moderar`, hacia `master`. Revisión visual pública y administrativa autenticada realizada; quedan las cuatro comprobaciones asistidas acordadas para VS15. **Dependencias:** VS04 completada e integrada mediante PR #11; dependencia cerrada. **Trazabilidad:** R06, R08–R09 / AC06, AC08–AC09; T05, T06, T13. [Registro VS05](dev_changelog/VS05.md).
 
 **Objetivo:** recibir una recomendación pendiente y permitir moderarla hacia un borrador sin publicación automática ni exposición de información privada.
 
-- [ ] Crear formulario GET/POST `/recomendar`, confirmación neutra y aviso de privacidad; impedir recepción pública de datos sin texto aprobado.
-- [ ] Aplicar CSRF, honeypot, controles adicionales antibot, validación de URLs/archivos, detección de duplicados y límites 3 por hora/10 por día por IP.
-- [ ] Implementar moderación aprobada/rechazada/duplicada/spam con responsable y motivo; aprobar crea o vincula borrador y exige publicación posterior separada.
-- [ ] Separar contacto/evidencia privada y consentimiento de atribución social con identificador válido; medir envío/moderación sin PII y mantener campos con acceso restringido.
+- [x] Crear formulario Blade GET/POST `/recomendar` y confirmación neutra, públicos sin aviso aprobado ni ruta de privacidad, también en producción simulada. Añadir Recomendar a Inicio y navegación.
+- [x] Aplicar CSRF, honeypot, token de sesión de 3 segundos a 2 horas, URLs HTTP/HTTPS, rechazo de archivos, coincidencias no bloqueantes y límites independientes 3/hora y 10/24 horas por IP.
+- [x] Implementar moderación aprobada/rechazada/duplicada/spam con responsable y motivo; aprobar crea o vincula borrador y exige publicación posterior separada.
+- [x] Separar contacto/evidencia privada y consentimiento de atribución social con identificador válido; medir envío/moderación sin PII y mantener campos con acceso restringido.
 
 **Aceptación y fallos:** envío público nunca crea ficha publicada; exceder un límite o enviar contenido inválido no elude validación. Sin consentimiento e identificador válido no hay crédito visible; correo, IP, notas y evidencia privada no aparecen en público.
 
 **Pruebas y revisión:** envío y errores, CSRF, bots, límites horarios/diarios, duplicados, archivos/URLs inválidos, decisiones de moderación, permisos y atribución. Revisar formulario con teclado virtual, foco y errores accesibles. Cerrar puerta Editorial.
 
-**Evidencia:** sin ejecución registrada.
+**Evidencia inicial (23-10-2026):** rama `codex/vs05-recomendar-moderar` desde master sincronizado `190d26c`, sin rama/PR previa ni cambios locales. Contratos actualizados antes del código. Antislop `during` (regla del proyecto), base/copywriting/UI/human/layoutmobile y skills Laravel/testing/Tailwind/Livewire. Implementación y comprobaciones en curso; sin despliegue.
 
-**Bloqueos:** aviso, retención y eliminación de datos requieren aprobación antes de recepción pública; desarrollo y pruebas locales pueden avanzar sin publicar el formulario.
+**Evidencia local final (23-10-2026):** migración incremental aplicada sin reiniciar datos. Suite MySQL completa: **217 pruebas, 2677 aserciones**, correctas; moderación enfocada final 13/144, concurrencia con dos procesos correcta, Pint y build correctos, 27 rutas propias y `git diff --check` correctos. Producción simulada recibe recomendaciones y reportes sin aviso/ruta legal y mantiene CSRF. Herd: formulario y reportes, errores/confirmaciones/límite, navegación y teclado; 390×844, 768×1024, 1440×900 y reflujo 320×600 sin overflow. Contrastes calculados; corrección de foco bajo cabecera verificada. Revisión Antislop por criterio y diferencias visuales en el registro. Se conservan una propuesta y un reporte sintéticos pendientes sobre DEMO para revisión local. Falta recorrido interior de Filament con sesión administrativa/2FA y las cuatro comprobaciones asistidas de VS15; no se declaran PASS ni se cierra Editorial. Sin producción.
+
+**Revisión autenticada posterior, misma PR #14 (23-10-2026):** el propietario inició sesión con 2FA. Se completó el recorrido Filament en móvil/tableta/escritorio: detalle, filtros/limpieza, vacío, apertura/cierre de decisiones, validación de motivo y aprobación por Enter. Se sustituyó el detalle Blade por secciones/entradas nativas y se precisaron las etiquetas de acción. Las coincidencias incluyen también evidencia normalizada y fuentes/web de ficha, sin consultas externas. Suite repetida: **217/2677**, moderación **13/144**, Pint y build correctos. La propuesta sintética ahora está aprobada y vinculada a un borrador privado, sin aprobación de contenido ni crédito; su URL pública devuelve 404. El reporte sintético permanece pendiente. Queda resuelto el pendiente administrativo anterior; solo se conservan para VS15 las cuatro comprobaciones asistidas. La PR sigue abierta y Editorial no se cierra antes de la fusión. [Detalle y cierre del Delivery Gate](dev_changelog/VS05.md#continuacion-revision-administrativa-autenticada).
+
+**Pendientes posteriores:** aviso y reglas de conservación/eliminación después de la primera publicación, sin condicionar disponibilidad de formularios. VS05 no crea ruta ni enlaces legales y no despliega. Esta decisión sustituye el bloqueo histórico de reportes registrado en VS02.
 
 ### VS06 — Activar y terminar planes
 
@@ -463,7 +487,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 - [ ] Crear taxonomía de blog separada con Guías locales y etiquetas; administrar ciudad, slug único por ciudad, extracto, cuerpo, firma marca/persona, medios, estado, fecha, SEO y revisiones recuperables.
 - [ ] Incorporar párrafos, encabezados, listas, citas, enlaces, imágenes con alt/pie, galerías, tablas simples y URLs validadas de YouTube/Vimeo; sanitizar HTML final sin aceptar incrustaciones arbitrarias.
 - [ ] Entregar índice paginado y post en `/{city}/blog` y `/{city}/blog/{slug}`, orden estable por fecha descendente/ID, enlaces internos públicos, BlogPosting y medición de consulta sin PII.
-- [ ] Aplicar publicación programada al alcanzar la hora sin depender del cron, privacidad previa, archivo y restauración autorizada con auditoría.
+- [ ] Aplicar publicación programada al alcanzar la hora sin depender del cron, contenido privado antes de su hora, archivo y restauración autorizada con auditoría.
 
 **Aceptación y fallos:** posts privados/futuros/de otra ciudad no se filtran por URL ni sitemap; restaurar revisión no borra auditoría. HTML o vídeos no válidos se rechazan/sanitizan y los enlaces internos no exponen borradores.
 
@@ -502,7 +526,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 - [ ] Verificar 40 negocios y al menos cinco con categoría principal en cada una de las cuatro categorías de negocio; tres Lugares con hijos ubicados dentro y comprobados.
 - [ ] Aprobar lista de baile con mínimo cinco fichas verificadas, cinco guías duraderas y tres campañas Super Premium reales o de cortesía con material, cupo y vigencia válidos.
 - [ ] Registrar fuentes, responsable y fecha de los datos editoriales; para medios, autorización del super admin y fecha manual de verificación; dejar vacíos datos no confirmados. No copiar demostraciones de capturas ni datos heredados.
-- [ ] Revisar enlaces, medios, condiciones comerciales, atribución, textos legales y versión móvil; establecer mantenimiento mensual de datos cambiantes y revisión completa trimestral según operación.
+- [ ] Revisar enlaces, medios, condiciones comerciales, atribución, protección de datos privados y versión móvil; establecer mantenimiento mensual de datos cambiantes y revisión completa trimestral según operación. Aviso y conservación/eliminación después de la primera publicación.
 
 **Aceptación y fallos:** inventario 40/3/5/5/3 comprobado; registro sin verificación no cuenta y permanece borrador. Cortesías consumen cupo pero no ingreso; materiales sin permiso no se publican.
 
@@ -510,7 +534,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Evidencia:** sin ejecución registrada.
 
-**Bloqueos:** inventario, fuentes, permisos y textos legales aún no aprobados. No declarar esta tarea completada con factories o contenido de ejemplo.
+**Bloqueos:** inventario, fuentes y permisos aún no aprobados. No declarar esta tarea completada con factories o contenido de ejemplo. Aviso y conservación/eliminación después de la primera publicación.
 
 ### VS17 — Preparar y realizar el lanzamiento único
 
@@ -518,18 +542,18 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 
 **Objetivo:** desplegar una sola vez todos los módulos incluidos y el contenido aprobado, con respaldo recuperable y verificación pública.
 
-- [ ] Completar alojamiento/dominio, logotipo oficial, entorno seguro y textos legales aprobados; secretos fuera de Git, Debugbar apagada, sesiones/2FA, almacenamiento, cola y programación configurados según el entorno elegido.
+- [ ] Completar alojamiento/dominio, logotipo oficial y entorno seguro; secretos fuera de Git, Debugbar apagada, sesiones/2FA, almacenamiento, cola y programación configurados según el entorno elegido. Aviso y conservación/eliminación después de la primera publicación.
 - [ ] Preparar respaldo y procedimiento de restauración/recuperación; ejecutar restauración comprobable antes del despliegue y documentar procedimiento de reversión sin exponer credenciales.
 - [ ] Revalidar inventario y vigencias al momento de salida, aprobación editorial y puerta comercial: `/premium` puede seguir oculta sin bloquear el lanzamiento si sus datos siguen pendientes.
 - [ ] Ejecutar controles finales, desplegar el conjunto y comprobar HTTP público, enlaces, medios, SEO, medición y privacidad en producción; registrar resultado separado de los checks locales y resolver fallos de salida.
 
-**Aceptación y fallos:** alojamiento, identidad final, contenido o privacidad faltantes impiden publicar; no se sustituye ningún módulo obligatorio por una pantalla incompleta. Sin precios/contacto aprobados no hay `/premium` ni CTA. Restauración fallida o verificación pública fallida impide declarar salida completada.
+**Aceptación y fallos:** alojamiento, identidad final o contenido faltantes impiden publicar; no se sustituye ningún módulo obligatorio por una pantalla incompleta. El aviso y conservación/eliminación se prepararán después de la primera publicación y no bloquean formularios. Sin precios/contacto aprobados no hay `/premium` ni CTA. Restauración fallida o verificación pública fallida impide declarar salida completada.
 
 **Pruebas y revisión:** suite MySQL, Pint, build, rutas, regresiones AC01–AC10 y recorrido responsive/teclado; restauración ensayada con evidencia, revisión editorial final y comprobaciones reales posteriores al despliegue. Registrar fecha, entorno y seguimiento de fallos de la salida.
 
 **Evidencia:** sin ejecución registrada.
 
-**Bloqueos:** alojamiento/dominio y acceso de despliegue, logotipo oficial, aprobaciones legales/editoriales y cierre VS16 pendientes; datos comerciales solo bloquean `/premium`. No hay resultados de producción registrados.
+**Bloqueos:** alojamiento/dominio y acceso de despliegue, logotipo oficial, aprobación editorial y cierre VS16 pendientes; datos comerciales solo bloquean `/premium`. Aviso y conservación/eliminación después de la primera publicación. No hay resultados de producción registrados.
 
 ## Cobertura de aceptación
 
@@ -553,7 +577,7 @@ Ejecutar en el orden de la tabla como recorrido predeterminado. VS07 y VS08 comp
 | Precios Premium/Super Premium e IVA | Propietario aporta valores; super admin aprueba ajustes | Activación pública de VS07 |
 | WhatsApp Business y responsable | Propietario aporta contacto/responsable; aprobación administrativa | Activación pública de VS07 |
 | Plazo de respuesta opcional | Equipo define y aprueba solo si se promete | Mostrar esa promesa en VS07 |
-| Aviso, retención, eliminación y textos legales | Propietario obtiene aprobación y registra versión autorizada | Recepción pública de VS05, analítica y VS17 |
+| Aviso, conservación y eliminación | Propietario prepara y aprueba después de la primera publicación | Trabajo posterior; no condiciona formularios de VS05 ni su disponibilidad |
 | Datos, fuentes, permisos y acuerdos/cortesías | Investigación y captura desde el inicio; aprobación editorial/comercial | VS16 y revalidación VS17 |
 | Logotipo oficial | Propietario entrega archivo maestro autorizado | VS17 |
 | Alojamiento, dominio y accesos | Propietario decide entorno; implementación configura sin guardar secretos | VS17 |
