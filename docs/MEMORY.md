@@ -74,7 +74,9 @@ Entrega de esta corrección: [PR #7: Docs, registrar integración del sistema de
 
 **Corrección documental de integración (23-10-2026):** rama `codex/registrar-integracion-alineacion`, creada desde `master` en el merge `3fbacd06087ef6166574efe239792cadeb394a9d`, con árbol limpio. Se actualizaron los documentos vigentes y se comprobó PR #8 en GitHub. Antislop `during` (regla del proyecto), base y copywriting; diez documentos con enlaces/anclas locales válidos y `git diff --check` correcto. Sin cambios de aplicación ni repetición de PHPUnit, Pint, build o revisión visual. [Registro, evidencia y pendientes](dev_changelog/ALINEACION_VISUAL.md#continuacion-registrar-integracion-en-master-23-de-octubre-de-2026).
 
-Entrega documental mediante [PR #9](https://github.com/luisfridev/tugurulocal/pull/9), abierta hacia `master` desde `codex/registrar-integracion-alineacion`, commit inicial `5951633333ca5817dfcb43f7165607dfc86642b6`. La PR queda abierta para revisión y fusión del propietario; no hubo despliegue.
+Entrega documental mediante [PR #9](https://github.com/luisfridev/tugurulocal/pull/9), desde `codex/registrar-integracion-alineacion`, commit inicial `5951633333ca5817dfcb43f7165607dfc86642b6`. El propietario la fusionó hacia `master` el 23-10-2026 a las 01:44:31 (America/Cancun), commit `cb84a1af562595423fb1137e3dd81c79dcf4f572`. Se comprobó el merge en GitHub, se ejecutó fetch y avance rápido local y `master` coincide con `origin/master`. No hubo despliegue.
+
+La comprobación posterior se registra en una rama documental desde ese merge; su PR llevará el registro de esta integración.
 
 ## Secuencia y dependencias
 
