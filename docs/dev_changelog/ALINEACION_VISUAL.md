@@ -1,6 +1,6 @@
 # Alineación visual de pantallas públicas
 
-**Fecha:** 23 de octubre de 2026. **Estado:** implementación verificada; integración pendiente en PR. Cuatro comprobaciones asistidas aplazadas a VS15 por decisión del propietario. **Rama:** `codex/alineacion-visual-superficies-publicas`. **Base:** `master` y `origin/master` en `0b986e22e4b37d3cb52aa9ba1ad87e56d82fcf2d`, con árbol limpio antes de crear la rama.
+**Fecha:** 23 de octubre de 2026. **Estado:** implementación verificada e integrada en `master` mediante PR #8. Cuatro comprobaciones asistidas aplazadas a VS15 por decisión del propietario. **Rama de implementación:** `codex/alineacion-visual-superficies-publicas`. **Base:** `master` y `origin/master` en `0b986e22e4b37d3cb52aa9ba1ad87e56d82fcf2d`, con árbol limpio antes de crear la rama.
 
 ## Objetivo y dirección
 
@@ -76,7 +76,7 @@ No hay despliegue ni verificación de producción. La diferencia de fuentes y la
 
 ## Entrega para revisión
 
-PR [#8: Alineación visual de pantallas públicas](https://github.com/luisfridev/tugurulocal/pull/8), abierta hacia `master` desde `codex/alineacion-visual-superficies-publicas`. La implementación y las comprobaciones locales están documentadas arriba; la integración depende de la revisión y fusión del propietario. Este registro se actualiza en la misma PR.
+PR [#8: Alineación visual de pantallas públicas](https://github.com/luisfridev/tugurulocal/pull/8), abierta hacia `master` desde `codex/alineacion-visual-superficies-publicas`. La implementación y las comprobaciones locales están documentadas arriba. La sección posterior registra su integración comprobada.
 
 ## Continuación: comprobaciones de accesibilidad (23-10-2026)
 
@@ -94,10 +94,28 @@ El navegador integrado ofrece controles de viewport y observación DOM/AX. No of
 | Delivery Gate R-03, R-19, R-35 y C-4 | Reflujo medido, semántica, foco en altura reducida y presencia de reglas: PASS dentro de los escenarios descritos. Zoom nativo 200 %, lectura hablada, teclado virtual y activación de movimiento reducido: pendientes; no se declara completada la revisión accesible. |
 | Registro y alcance documental | PASS: `git diff --check` correcto; se preserva la evidencia anterior, se distingue cada método de su límite y se corrige el SHA base transcrito. PHPUnit, Pint y build no se repiten porque no cambian fuentes de aplicación. |
 
-Para cerrar los cuatro pendientes se necesita comprobar, en un navegador/dispositivo con esos controles: zoom nativo al 200 % sin recortes; lectura de títulos y filtros y operación de la FAQ con lector de pantalla; hover sin desplazamiento con «Reducir movimiento» activado; y campo del reporte visible con el teclado del teléfono abierto. Estos resultados siguen pendientes de observación. La PR #8 continúa abierta y esta revisión no acredita producción.
+Para cerrar los cuatro pendientes se necesita comprobar, en un navegador/dispositivo con esos controles: zoom nativo al 200 % sin recortes; lectura de títulos y filtros y operación de la FAQ con lector de pantalla; hover sin desplazamiento con «Reducir movimiento» activado; y campo del reporte visible con el teclado del teléfono abierto. Estos resultados siguen pendientes de observación. En esta revisión la PR #8 seguía abierta; se integró después, como se registra en la continuación final. Ninguna revisión local acredita producción.
 
 ## Decisión: aplazar las cuatro comprobaciones a la validación final (23-10-2026)
 
-El propietario decidió omitir por ahora las pruebas de zoom nativo al 200 %, lector de pantalla, teclado virtual real y movimiento reducido activado. Se trasladan a [VS15: Validar recorridos integrados](../MEMORY.md#vs15--validar-recorridos-integrados), antes del lanzamiento. Siguen pendientes de ejecución y no se registran como PASS. Esta decisión permite revisar e integrar la alineación actual sin esperar esas cuatro pruebas; la puerta previa a VS04 sigue pendiente de la fusión y el registro de integración de la PR #8.
+El propietario decidió omitir por ahora las pruebas de zoom nativo al 200 %, lector de pantalla, teclado virtual real y movimiento reducido activado. Se trasladan a [VS15: Validar recorridos integrados](../MEMORY.md#vs15--validar-recorridos-integrados), antes del lanzamiento. Siguen pendientes de ejecución y no se registran como PASS. Esta decisión permitió revisar e integrar la alineación sin esperar esas cuatro pruebas. La integración de la PR #8 cerró la puerta previa a VS04.
 
 Antislop `during`, regla del proyecto; base y copywriting para documentar la decisión sin cambiar la evidencia anterior. Revisión documental: PASS en alcance, coherencia con el tablero y conservación de resultados y límites. `git diff --check`: PASS. No se modificó código ni se repitieron PHPUnit, Pint, build o revisión visual por este cambio documental. VS15 conserva su estado pendiente y no se crea un registro de ejecución anticipado.
+
+## Continuación: registrar integración en master (23 de octubre de 2026)
+
+GitHub confirmó que la [PR #8](https://github.com/luisfridev/tugurulocal/pull/8) está fusionada hacia `master`, con fecha `2026-10-23T06:29:09Z` (01:29:09 en America/Cancun) y merge `3fbacd06087ef6166574efe239792cadeb394a9d`. Ese merge es el `HEAD` de `master` y `origin/master` al iniciar esta corrección. VS03 y ambos hitos de la puerta de diseño están integrados; VS04 puede comenzar en su rama propia.
+
+Los cuatro controles asistidos siguen trasladados a VS15: zoom nativo al 200 %, lector de pantalla, teclado virtual real y movimiento reducido activado. No se marcan como completados ni bloquean la alineación ya integrada. Las pruebas de la PR #8 son locales; no hubo despliegue ni verificación de producción.
+
+Esta intervención documental corrige el estado vigente en el tablero, README, guía visual, plan, manual, stack y referencias de adopción/revisión; también aclara la fusión posterior de PR #5. Revisión Antislop `during` (regla del proyecto), base y copywriting:
+
+| Criterio | Resultado y evidencia |
+| --- | --- |
+| Precisión, fecha, destino y estado (R-16, R-17, R-36; C-5) | PASS: PR #8, merge, fecha y commit contrastados con GitHub; el merge coincide con HEAD y `origin/master` al iniciar la corrección. Las cuatro comprobaciones aplazadas permanecen pendientes en VS15. |
+| Coherencia y redacción (R-02; copywriting) | PASS: README, tablero, plan, GUIA_VISUAL, design.md, TECH-STACK y referencias de adopción/revisión describen la puerta integrada; VS04 figura pendiente y habilitada para iniciar en rama propia. |
+| Enlaces y anclas locales | PASS: destinos revisados en los diez documentos modificados; todos existen y las anclas Markdown/HTML resuelven. |
+| `git diff --check` | PASS: sin errores de whitespace. |
+| Aplicación, pruebas, UI y producción | No aplica: cambio exclusivamente documental. No se repiten PHPUnit, Pint, build ni Herd; no acredita producción. |
+
+La corrección conserva los registros de entrega como evidencia de su estado en aquel momento y añade las fusiones posteriores donde corresponde. No modifica código de aplicación, dependencias, datos ni las cuatro comprobaciones transferidas a VS15.

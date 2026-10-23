@@ -1,6 +1,6 @@
 # Sistema de diseño de Tu Gurú Local
 
-Fecha de extracción: 22 de octubre de 2026. Fuente visual principal: [sitio público Base44](https://preview--turu-guia-local.base44.app/). Estado: manual documentado; integración en el proyecto y alineación de la interfaz pendientes. No acredita producción.
+Fecha de extracción: 22 de octubre de 2026. Fuente visual principal: [sitio público Base44](https://preview--turu-guia-local.base44.app/). Estado: manual integrado mediante PR #6 y alineación de las superficies públicas integrada mediante [PR #8](https://github.com/luisfridev/tugurulocal/pull/8) en `master` el 23 de octubre de 2026 (merge `3fbacd06087ef6166574efe239792cadeb394a9d`). Cuatro comprobaciones asistidas se trasladaron a VS15 y siguen pendientes. No acredita producción.
 
 Este documento gobierna el diseño de la web pública y servirá de base al futuro panel de usuario. La [especificación maestra](ESPECIFICACION_MAESTRA.md) gobierna las funciones y [TECH-STACK.md](TECH-STACK.md), la tecnología. Filament conserva su sistema administrativo. Las pantallas de cuenta son referencias futuras y no autorizan cuentas públicas en el lanzamiento.
 

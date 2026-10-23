@@ -1,16 +1,16 @@
 # Implementar y comprobar el sistema visual
 
-Fecha: 22-10-2026. Manual: [design.md](../design.md). Fuente: [Base44](https://preview--turu-guia-local.base44.app/). Esta entrega documenta la referencia y prepara su adopción; no modifica aplicación, datos ni dependencias. No es una verificación de producción.
+Fecha de la extracción: 22-10-2026. Manual: [design.md](../design.md). Fuente: [Base44](https://preview--turu-guia-local.base44.app/). La entrega documental preparó la adopción sin modificar aplicación, datos ni dependencias; la alineación posterior se integró mediante PR #8. No es una verificación de producción.
 
 ## 1. Punto de partida y orden
 
 Base de esta intervención: `9647d0d2d47a4d7fbf6163f4c80ad89eebeb42dd`, con PR #5 de VS03 fusionada hacia master y fetch comprobado. Rama documental: `codex/sistema-diseno-referencia`. El árbol estaba limpio al comenzar. No se reabren VS02/VS03 ni se crean registros vacíos.
 
-Entrega: [PR #6](https://github.com/luisfridev/tugurulocal/pull/6), entregada abierta y fusionada por el propietario hacia `master` el 22-10-2026 a las 17:49:51 (America/Cancun), commit `e543736ed6074e72d5e927eda5131b800b69d30d`. Integración comprobada en GitHub el 23-10-2026. Commit inicial publicado `025b9b1e000c42c95bcfb75073f7393275aca215`; sus blobs y árbol coinciden con la entrega local. El registro de la PR quedó en `3493db6647631851fcfbb9856e714572f8461ead`, en la misma rama. La alineación sigue pendiente.
+Entrega documental: [PR #6](https://github.com/luisfridev/tugurulocal/pull/6), fusionada por el propietario hacia `master` el 22-10-2026 a las 17:49:51 (America/Cancun), commit `e543736ed6074e72d5e927eda5131b800b69d30d`. La alineación visual posterior se completó en [PR #8](https://github.com/luisfridev/tugurulocal/pull/8), fusionada el 23-10-2026 a las 01:29:09 (America/Cancun), commit `3fbacd06087ef6166574efe239792cadeb394a9d`. Cuatro comprobaciones asistidas siguen pendientes para VS15. Ninguna integración acredita producción.
 
-El [tablero](../MEMORY.md#puerta-transversal-de-diseno-antes-de-vs04) establece dos hitos: el manual ya está integrado y falta alinear las superficies existentes mediante una rama/PR independiente antes de VS04. La alineación aún no está implementada ni verificada. La [corrección documental del 23-10-2026](delivery-review.md#5-correccion-documental-de-integracion-23-10-2026) registra la comprobación y sus límites.
+El [tablero](../MEMORY.md#puerta-transversal-de-diseno-antes-de-vs04) establece dos hitos: manual y referencias, y alineación de las superficies existentes. Ambos están integrados antes de VS04. La [corrección documental del registro del manual](delivery-review.md#5-correccion-documental-de-integracion-23-10-2026) conserva la evidencia histórica; la integración posterior de la alineación se anota en la sección actual de estado.
 
-Secuencia concreta de la futura alineación:
+Secuencia de adopción visual aplicada en la alineación previa a VS04 (PR #8):
 
 1. Comprobar fusión del manual hacia master, sincronizar por avance rápido y crear `codex/alineacion-visual-publica`; conservar cualquier cambio pendiente.
 2. Confirmar versiones y permiso para cualquier nueva dependencia de fuentes. Preparar tokens y fuentes locales, sin cambiar el tema de Filament.
@@ -135,6 +135,6 @@ Ejecutado: navegación anónima por 17 páginas; 51 combinaciones; comparación 
 
 Límites explícitos: familias de fuente declaradas, sin certificación de archivo por glifo; CSSOM externo de Google Fonts inaccesible; hover/active solo declarados; reset válido y panel interno no accesibles anónimamente; carga/vacío/error remoto/disabled no auditados de forma exhaustiva. No se enviaron formularios, llamadas, mensajes, votos ni OAuth.
 
-La alineación debe verificar además zoom real 200 %, todos los controles con teclado, lector de pantalla, foco sobre cada fondo, teclado virtual/dispositivo cuando esté disponible, pausa/movimiento reducido si se añade el carrusel, estados de datos y contenido largo. Conservar estos puntos como pendientes hasta ejecutarlos. Backend o formularios nuevos llevarán las pruebas de su VSXX; no se anticipa su funcionamiento.
+La [revisión de alineación](../dev_changelog/ALINEACION_VISUAL.md) documenta los controles y estados comprobados en la entrega integrada. Para VS15 quedan cuatro comprobaciones aplazadas por decisión del propietario: zoom nativo al 200 %, lector de pantalla, teclado virtual real y movimiento reducido activado. Conservarlas como pendientes hasta ejecutarlas. Backend o formularios nuevos llevarán las pruebas de su VSXX; no se anticipa su funcionamiento.
 
-El registro de revisión final de esta entrega está en [delivery-review.md](delivery-review.md), con resultados por criterio y límites. La PR documental y el tablero registran integración pendiente; crear el manual no completa la alineación visual ni VS04.
+El registro de revisión de la extracción original está en [delivery-review.md](delivery-review.md), con resultados por criterio y límites. El manual no completó por sí solo la alineación; esta se realizó y se integró después mediante PR #8. VS04 continúa pendiente de implementación.

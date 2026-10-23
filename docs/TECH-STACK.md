@@ -22,7 +22,7 @@ PHP 8.4.25; Laravel 13.38.0; Livewire 4.4.8; Filament 5.10.3; Media Library 11.2
 
 ## Configuración y siguientes integraciones
 
-El [manual de diseño](design.md) y la [guía de adopción](design-ref/implementation-guide.md) documentan la referencia Base44 y su mapeo a Blade/Tailwind 4/DaisyUI 5. La adopción visual es una intervención posterior, previa a VS04. El código actual conserva Nunito Sans e Instrument Sans; Baloo 2 e Inter son familias objetivo declaradas por la referencia, aún no instaladas aquí. Revisar licencia y autorización de cualquier nueva dependencia al implementarlas. Esta extracción no modifica CSS, paquetes ni lockfiles.
+El [manual de diseño](design.md) y la [guía de adopción](design-ref/implementation-guide.md) documentan la referencia Base44 y su mapeo a Blade/Tailwind 4/DaisyUI 5. La alineación pública previa a VS04 está integrada mediante PR #8. El código conserva Nunito Sans e Instrument Sans; Baloo 2 e Inter son familias objetivo declaradas por la referencia, aún no instaladas aquí. Revisar licencia y autorización de cualquier nueva dependencia antes de instalarlas. La extracción documental original no modificó CSS, paquetes ni lockfiles.
 
 VS02 ampliada usa RichEditor y ColorPicker nativos de Filament 5, el plugin Spatie instalado para logo e identidad de taxonomías y el sanitizador Symfony ya instalado con lista restringida. No añade dependencias.
 
