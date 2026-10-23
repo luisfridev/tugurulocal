@@ -64,6 +64,8 @@ Antes de cada intervención con UI pública, registrar revisión/base de design.
 
 **Corrección del registro de integración (23-10-2026):** rama `codex/registrar-integracion-diseno`, desde `master` en `e543736ed6074e72d5e927eda5131b800b69d30d`. Se volvió a comprobar en GitHub que la PR #6 está cerrada, fusionada y dirigida a `master`, con fecha real `2026-10-22T22:49:51Z` (17:49:51 de America/Cancun). Se ejecutaron `git fetch origin` y `git merge --ff-only origin/master`; `master` ya estaba actualizado y el árbol estaba limpio antes de crear la rama. Se corrigen el tablero, la guía de implementación y la revisión de entrega. Antislop `during`, regla del proyecto; base y copywriting para coherencia, evidencia y redacción documental. [Comprobaciones y revisión final](design-ref/delivery-review.md#5-correccion-documental-de-integracion-23-10-2026). La alineación sigue pendiente y VS04 no comienza con esta corrección.
 
+Entrega de esta corrección: [PR #7: Docs, registrar integración del sistema de diseño](https://github.com/luisfridev/tugurulocal/pull/7), abierta hacia `master` desde `codex/registrar-integracion-diseno`, commit inicial `db26e258b05bdf26c660cf58b6892191d8de89af`. El registro se incorpora a la misma PR, adjunta al chat y pendiente de revisión y fusión del propietario. Esa revisión pendiente corresponde a esta corrección; el manual de la PR #6 ya está integrado.
+
 ## Secuencia y dependencias
 
 | ID | Entrega | Estado | Depende de | Fase |
