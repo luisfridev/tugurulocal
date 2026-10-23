@@ -1,6 +1,6 @@
 # Tu Gurú Local — proyecto nuevo
 
-Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00–VS03 completadas; VS04 en curso: implementación verificada; integración pendiente en [PR #11](https://github.com/luisfridev/tugurulocal/pull/11). El sitio no está publicado.** La alineación visual previa a VS04 está integrada en `master`. La raíz redirige temporalmente al Inicio de Playa del Carmen. Las superficies vacías, filtradas o con solo DEMO llevan `noindex`.
+Aplicación Laravel nueva para construir Tu Gurú Local desde cero. La única ciudad pública inicial será Playa del Carmen y habrá un solo lanzamiento cuando los módulos y el contenido de salida estén aprobados. **VS00–VS04 completadas; VS04 integrada en `master` mediante [PR #11](https://github.com/luisfridev/tugurulocal/pull/11). VS05 está pendiente con su dependencia cerrada. El sitio no está publicado.** La alineación visual previa a VS04 está integrada en `master`. La raíz redirige temporalmente al Inicio de Playa del Carmen. Las superficies vacías, filtradas o con solo DEMO llevan `noindex`.
 
 ## Contratos y secuencia
 
@@ -83,7 +83,7 @@ Publicar requiere logo propio autorizado, con alt y fecha manual de verificació
 
 La implementación local comenzó en `codex/vs03-descubrir-negocios`, creada desde la base integrada `b59d920`; la ampliación DEMO continuó en `codex/vs03-descubrir-negocios-cont-20261022-1` y la confirmación sin JavaScript en la continuación `-2`. La entrega se realizó desde `codex/vs03-descubrir-negocios-cont-20261022-3`. [El registro VS03](docs/dev_changelog/VS03.md) conserva las comprobaciones y la integración verificada.
 
-[PR #4 — VS03: Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4) fusionada hacia `master` el 22-10-2026 a las 16:17:35 (America/Cancun), commit `78e67bd3cee9e7b5389161ddb106ba354b306fef`. La continuación `codex/vs03-descubrir-negocios-cont-20261022-4` registra la integración comprobada. La puerta transversal de diseño también está integrada; VS04, URLs e indexación, está implementada y verificada localmente, pendiente de integración mediante PR.
+[PR #4: VS03, Descubrir negocios](https://github.com/luisfridev/tugurulocal/pull/4) fusionada hacia `master` el 22-10-2026 a las 16:17:35 (America/Cancun), commit `78e67bd3cee9e7b5389161ddb106ba354b306fef`. La continuación `codex/vs03-descubrir-negocios-cont-20261022-4` registra la integración comprobada. La puerta transversal de diseño también está integrada; VS04, URLs e indexación, se completó con la integración de la PR #11.
 
 - [Inicio de Playa del Carmen](http://tugurulocal-nuevo.test/playa-del-carmen) ofrece accesos a categorías y zonas con resultados, hasta seis seleccionados manualmente y hasta seis recientes sin repetir los seleccionados.
 - [Negocios](http://tugurulocal-nuevo.test/playa-del-carmen/negocios) admite `categoria`, `zona` y `page`. Las páginas de categoría y zona permiten filtrar el contexto restante. El botón «Aplicar» envía un formulario GET y vuelve a la primera página; «Limpiar filtros» conserva la página de origen.
@@ -94,7 +94,7 @@ La comprobación física del logo se realiza antes de contar y paginar. Los icon
 
 VS03 incorpora dos migraciones incrementales: crea `home_selections` y amplía `interaction_events`, haciendo opcional `listing_id` para conservar los eventos de ficha y admitir los de descubrimiento. Se aplican con `php artisan migrate --no-interaction`; no requieren reiniciar la base ni recrear datos o medios DEMO. La reversión de la ampliación de eventos se rechaza si ya existen eventos de descubrimiento sin ficha; en ese caso corresponde una migración correctiva.
 
-VS04 integra localmente Spatie Laravel Sitemap 8.2.0 en `/sitemap.xml`, generado desde las consultas públicas en cada petición y sin rastreo, archivo estático ni cron. Solo incorpora URLs reales elegibles; un inventario compuesto únicamente por DEMO devuelve un XML sin URLs. Canonical, `noindex` y redirecciones continúan bajo las reglas propias del proyecto. La fase sigue en curso; [registro y comprobaciones](docs/dev_changelog/VS04.md).
+VS04 integra Spatie Laravel Sitemap 8.2.0 en `/sitemap.xml`, generado desde las consultas públicas en cada petición y sin rastreo, archivo estático ni cron. Solo incorpora URLs reales elegibles; un inventario compuesto únicamente por DEMO devuelve un XML sin URLs. Canonical, `noindex` y redirecciones continúan bajo las reglas propias del proyecto. GitHub confirmó la fusión de la PR #11 hacia `master` el 23-10-2026 a las 03:28:56 (America/Cancun), commit `7524bbc20e7cda895eb7795919bd0f90806c92bc`; [registro de integración y comprobaciones locales](docs/dev_changelog/VS04.md). No acredita producción.
 
 Lugares públicos, catálogo, recomendaciones, listas y comercio siguen sus fases previstas. La navegación solo enlaza superficies disponibles y `/premium` permanece oculta.
 
@@ -110,4 +110,4 @@ El comando actualiza el bloque delimitado de Boost en `AGENTS.md` y los archivos
 
 ## Pendientes para el lanzamiento
 
-Integrar VS04 mediante su PR, implementar VS05–VS17 y aprobar contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
+Implementar VS05–VS17 y aprobar contenido verificado; importes mensuales Premium/Super Premium e IVA, WhatsApp Business y responsable, alojamiento, logotipo oficial y textos legales aprobados. `/premium` y sus CTA no existen públicamente hasta completar su puerta comercial. Ninguna prueba local equivale a verificación en producción.
