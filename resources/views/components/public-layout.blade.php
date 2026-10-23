@@ -25,6 +25,9 @@
 @endif
 
     <meta name="twitter:card" content="{{ $socialImage ? 'summary_large_image' : 'summary' }}">
+    <meta name="twitter:title" content="{{ $title }}">
+    @if($description)<meta name="twitter:description" content="{{ $description }}">@endif
+    @if($socialImage)<meta name="twitter:image" content="{{ $socialImage }}">@endif
     @vite(['resources/css/app.css','resources/js/app.js'])
     {{ $head ?? '' }}
 </head>

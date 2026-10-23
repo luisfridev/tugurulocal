@@ -6,11 +6,13 @@ use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ListingMediaController;
 use App\Http\Controllers\ListingReportController;
 use App\Http\Controllers\PublicTaxonomyMediaController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TaxonomyMediaController;
 use App\Http\Middleware\EnsureEditorialAdmin;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/playa-del-carmen', 302)->name('bootstrap');
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 Route::get('/dashboard/fichas/{listing}/previsualizar', [ListingController::class, 'preview'])
     ->middleware(EnsureEditorialAdmin::class)->name('listings.preview');

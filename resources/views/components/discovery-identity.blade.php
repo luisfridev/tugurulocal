@@ -14,7 +14,7 @@
                 <div class="taxonomy-content mt-4 max-w-2xl leading-6 wrap-anywhere">{!! $identity['description'] !!}</div>
             @endif
             @if($home)
-                <a href="{{ route('businesses.index', ['city' => $city->slug]) }}" class="mt-6 inline-flex min-h-12 max-w-full items-center justify-center rounded-xl border border-brand-text bg-brand-action px-6 py-3 text-center font-bold text-brand-text hover:underline active:brightness-95">Ver negocios</a>
+                <a href="{{ \App\Support\PublicUrl::businesses($city) }}" class="mt-6 inline-flex min-h-12 max-w-full items-center justify-center rounded-xl border border-brand-text bg-brand-action px-6 py-3 text-center font-bold text-brand-text hover:underline active:brightness-95">Ver negocios</a>
             @endif
         </div>
     </div>

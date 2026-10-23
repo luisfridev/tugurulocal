@@ -3,14 +3,20 @@
 namespace App\Http\Requests;
 
 use App\Actions\Listings\SubmitListingReport;
+use App\Queries\PublicListingQuery;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 class StoreListingReportRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize(PublicListingQuery $listings): bool
     {
-        return SubmitListingReport::available();
+        if (! SubmitListingReport::available()) {
+            return false;
+        }
+        $listings->find((string) $this->route('listing'));
+
+        return true;
     }
 
     public function rules(): array

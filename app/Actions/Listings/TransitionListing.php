@@ -24,6 +24,7 @@ class TransitionListing
         }
 
         return DB::transaction(function () use ($actor, $listing, $status): Listing {
+            City::query()->orderBy('id')->lockForUpdate()->firstOrFail();
             $listing = Listing::query()->lockForUpdate()->findOrFail($listing->id);
             if ($listing->status === 'archived' && $status !== 'draft') {
                 throw ValidationException::withMessages(['status' => 'Recupera la ficha como borrador antes de publicarla.']);
@@ -38,7 +39,7 @@ class TransitionListing
             $this->record->handle($listing, $actor, $status, ['status', 'published_at']);
 
             return $listing;
-        });
+        }, 3);
     }
 
     /** @param list<int> $categoryIds */

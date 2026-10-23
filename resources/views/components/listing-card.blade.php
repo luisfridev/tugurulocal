@@ -2,7 +2,7 @@
 
 @php($logo = $listing->getFirstMedia('logo'))
 <article class="min-w-0 rounded-3xl border border-brand-border bg-white">
-    <a href="{{ route('listings.show', ['listing' => $listing->slug]) }}" class="listing-row group flex min-w-0 items-start gap-4 rounded-3xl p-3.5 hover:bg-white active:bg-brand-page sm:items-center sm:gap-4 sm:p-4">
+    <a href="{{ \App\Support\PublicUrl::listing($listing) }}" class="listing-row group flex min-w-0 items-start gap-4 rounded-3xl p-3.5 hover:bg-white active:bg-brand-page sm:items-center sm:gap-4 sm:p-4">
         @if($logo)
             <img src="{{ $logo->getUrl($logo->hasGeneratedConversion('card') ? 'card' : '') }}" alt="{{ $listing->logo_alt ?: $listing->name }}" width="72" height="72" class="h-16 w-16 shrink-0 rounded-2xl border border-brand-border bg-white object-contain p-1" loading="lazy">
         @endif

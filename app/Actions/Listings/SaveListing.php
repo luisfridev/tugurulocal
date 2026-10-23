@@ -4,7 +4,9 @@ namespace App\Actions\Listings;
 
 use App\Models\Area;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Listing;
+use App\Models\SlugRedirect;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -22,6 +24,7 @@ class SaveListing
         Gate::forUser($actor)->authorize($listing ? 'update' : 'create', $listing ?? Listing::class);
 
         return DB::transaction(function () use ($actor, $data, $listing): Listing {
+            City::query()->orderBy('id')->lockForUpdate()->firstOrFail();
             $listing = $listing ? Listing::query()->lockForUpdate()->findOrFail($listing->id) : new Listing;
             $rules = [
                 'name' => ['required', 'string', 'max:255'], 'slug' => ['required', 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/', 'max:180', Rule::notIn(SaveTaxonomy::RESERVED), Rule::unique('listings')->ignore($listing->id)],
@@ -43,6 +46,9 @@ class SaveListing
                 $rules[$field] = ['nullable', 'url:http,https', 'max:2048'];
             }
             $valid = Validator::make($data, $rules, ['slug.regex' => 'Usa letras minúsculas, números y guiones en el slug.', 'slug.unique' => 'Este slug ya está en uso.'])->validate();
+            if (SlugRedirect::query()->where('source_path', '/@'.$valid['slug'])->exists()) {
+                throw ValidationException::withMessages(['slug' => 'Este slug está reservado por una URL anterior y no se puede reutilizar.']);
+            }
             $ids = array_values(array_unique(array_map('intval', $valid['category_ids'])));
             if (! in_array((int) $valid['primary_category_id'], $ids, true)) {
                 throw ValidationException::withMessages(['category_ids' => 'La categoría principal debe estar asociada.']);
@@ -57,7 +63,7 @@ class SaveListing
                 throw ValidationException::withMessages(['area_id' => 'La zona debe pertenecer a la ciudad de la ficha.']);
             }
             if ($listing->was_published && $listing->slug !== $valid['slug']) {
-                throw ValidationException::withMessages(['slug' => 'El slug publicado se conserva hasta habilitar redirecciones en VS04.']);
+                SlugRedirect::query()->create(['source_path' => '/@'.$listing->slug, 'listing_id' => $listing->id]);
             }
             if ((isset($valid['google_rating']) || isset($valid['google_review_count'])) && empty($valid['google_reviewed_at'])) {
                 throw ValidationException::withMessages(['google_reviewed_at' => 'Indica cuándo verificaste los datos de Google.']);
@@ -72,6 +78,6 @@ class SaveListing
             $this->record->handle($listing, $actor, 'saved', [...$changed, 'category_ids']);
 
             return $listing;
-        });
+        }, 3);
     }
 }

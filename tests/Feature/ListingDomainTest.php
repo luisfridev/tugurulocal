@@ -105,14 +105,15 @@ class ListingDomainTest extends TestCase
         $this->assertSame($base['slug'], $listing->fresh()->slug);
     }
 
-    public function test_slug_of_an_ever_published_listing_is_preserved_until_redirects_exist(): void
+    public function test_slug_of_an_ever_published_listing_reserves_its_previous_url(): void
     {
         $actor = User::factory()->superAdmin()->withAppAuthentication()->create();
         $listing = Listing::factory()->published()->create();
         $data = $listing->only(Listing::FIELDS) + ['category_ids' => [$listing->primary_category_id]];
         $data['slug'] = 'nuevo-slug';
-        $this->expectException(ValidationException::class);
         app(SaveListing::class)->handle($actor, $data, $listing);
+        $this->assertSame('nuevo-slug', $listing->fresh()->slug);
+        $this->assertDatabaseHas('slug_redirects', ['source_path' => '/@'.$listing->slug, 'listing_id' => $listing->id]);
     }
 
     public function test_unprivileged_and_mfa_missing_accounts_cannot_execute_domain_mutations(): void

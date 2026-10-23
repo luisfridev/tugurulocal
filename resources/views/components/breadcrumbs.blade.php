@@ -1,4 +1,8 @@
-@props(['items'])
+@props(['items', 'currentUrl' => null, 'structured' => true])
+
+@if($structured && $currentUrl)
+    <script type="application/ld+json">{!! json_encode(\App\Support\PublicMetadata::breadcrumbs($items, $currentUrl), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
+@endif
 
 <nav aria-label="Ubicación" class="mb-5 text-sm text-brand-muted">
     <ol class="flex flex-wrap items-center gap-x-2">

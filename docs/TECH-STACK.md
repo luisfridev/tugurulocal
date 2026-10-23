@@ -11,6 +11,7 @@
 | Administración | Filament 5 | Panel exclusivo del super admin; las políticas y reglas viven en la aplicación. |
 | UI | Tailwind CSS 4 y DaisyUI 5 | Tokens y componentes públicos según [design.md](design.md); Filament conserva sus patrones administrativos. |
 | Medios | Spatie Laravel Media Library y su integración compatible con Filament 5 | Imágenes, PDFs y derivados autorizados; VS02 integra el plugin instalado con disco privado y entrega autorizada. |
+| Sitemap | Spatie Laravel Sitemap 8 | VS04 usa su API manual para el XML dinámico; las consultas del proyecto deciden qué URLs son públicas e indexables. |
 | Correo | Resend | Pendiente de instalar hasta que un flujo real requiera correo; claves solo en entorno. |
 | Desarrollo | Laravel Boost y Laravel Debugbar | Ayuda local; Debugbar nunca habilitada en producción. |
 | Vídeo | URL validada de YouTube o Vimeo | Guardar enlace, no descargar ni alojar vídeos de terceros. |
@@ -25,6 +26,8 @@ PHP 8.4.25; Laravel 13.38.0; Livewire 4.4.8; Filament 5.10.3; Media Library 11.2
 El [manual de diseño](design.md) y la [guía de adopción](design-ref/implementation-guide.md) documentan la referencia Base44 y su mapeo a Blade/Tailwind 4/DaisyUI 5. La alineación pública previa a VS04 está integrada mediante PR #8. El código conserva Nunito Sans e Instrument Sans; Baloo 2 e Inter son familias objetivo declaradas por la referencia, aún no instaladas aquí. Revisar licencia y autorización de cualquier nueva dependencia antes de instalarlas. La extracción documental original no modificó CSS, paquetes ni lockfiles.
 
 VS02 ampliada usa RichEditor y ColorPicker nativos de Filament 5, el plugin Spatie instalado para logo e identidad de taxonomías y el sanitizador Symfony ya instalado con lista restringida. No añade dependencias.
+
+VS04 integra `spatie/laravel-sitemap:^8.2`, autorizado por el propietario el 23-10-2026 y fijado en 8.2.0. La instalación añade también `spatie/crawler` 9.4.2, `spatie/robots-txt` 2.5.5 y `symfony/dom-crawler` 8.1.5, sin actualizar ni eliminar los paquetes existentes. El sitemap usa `Sitemap`/`Url` directamente y no ejecuta el crawler. No necesita Node, Chromium ni un cron para generarse; no añade migraciones. Compatibilidad comprobada con PHP local 8.4.27 y Laravel 13.38.0; licencia MIT del paquete.
 
 VS00 creó Laravel limpio, manifiestos y entorno MySQL local. En su continuación del 21 de octubre de 2026 se configuró Boost para Codex: `boost.json`, guías en `AGENTS.md`, skills locales y servidor MCP del proyecto. Boost permanece como dependencia de desarrollo; Laravel Cloud no se seleccionó porque el alojamiento sigue pendiente. Confirmar las APIs efectivas de paquetes antes de escribir cada integración. Añadir solo dependencias con uso definido en la maestra o diseño técnico. Guardar instantes en UTC y convertir a **America/Cancun** para mostrar vigencias de Playa del Carmen; probar los límites de inicio/fin al implementar contenido temporal.
 

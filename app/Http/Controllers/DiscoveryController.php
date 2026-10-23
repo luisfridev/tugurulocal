@@ -10,7 +10,9 @@ use App\Models\HomeSelection;
 use App\Models\Listing;
 use App\Queries\PublicListingQuery;
 use App\Support\DiscoveryPageData;
+use App\Support\PublicIndexability;
 use App\Support\PublicTaxonomy;
+use App\Support\PublicUrl;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -31,10 +33,10 @@ class DiscoveryController extends Controller
             ->sortBy(fn (Listing $listing): int => array_search($listing->id, $selectedIds, true))->take(6)->values();
         $recent = $this->listings->prepare($this->cards($city)->whereNotIn('id', $featured->modelKeys())
             ->where('operating_status', '!=', 'permanently_closed')->orderByDesc('published_at')->orderByDesc('id')->limit(6)->get());
-        $baseUrl = route('cities.show', ['city' => $city->slug]);
+        $baseUrl = PublicUrl::city($city);
         $identity = $this->page->identity($city);
         $seo = $this->page->seo($city, $city->name, 'Negocios e información práctica de '.$city->name.'.', $baseUrl,
-            ! $this->listings->inCity($city)->where('is_demo', false)->exists());
+            ! PublicIndexability::discovery($this->listings->inCity($city)->get(['listings.id', 'is_demo'])));
         $breadcrumbs = [['label' => 'Inicio', 'url' => null]];
         $this->interactions->handle($request, 'city', $city);
 
@@ -75,8 +77,8 @@ class DiscoveryController extends Controller
         abort_unless((is_string($rawPage) || is_int($rawPage)) && preg_match('/^[1-9][0-9]*$/D', (string) $rawPage)
             && filter_var($rawPage, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 4294967295]]) !== false, 404);
         $pageNumber = (int) $rawPage;
-        $baseUrl = $category ? route('categories.show', ['city' => $city->slug, 'category' => $category->slug])
-            : ($area ? route('areas.show', ['city' => $city->slug, 'area' => $area->slug]) : route('businesses.index', ['city' => $city->slug]));
+        $baseUrl = $category ? PublicUrl::category($city, $category)
+            : ($area ? PublicUrl::area($city, $area) : PublicUrl::businesses($city));
         $query = $this->cards($city)
             ->when($filterCategory, fn (Builder $query): Builder => $query->whereHas('categories', fn (Builder $query): Builder => $query->where('categories.id', $filterCategory->id)))
             ->when($filterArea, fn (Builder $query): Builder => $query->where('area_id', $filterArea->id));
@@ -91,12 +93,12 @@ class DiscoveryController extends Controller
             $identity['tagline'] = 'Encuentra negocios por categoría y zona.';
             $identity['description'] = '';
         }
-        $canonical = $baseUrl.($filters === [] && $pageNumber > 1 ? '?page='.$pageNumber : '');
+        $canonical = PublicUrl::canonical($baseUrl, $pageNumber, $filters !== []);
         $seo = $this->page->seo($record, $title.($pageNumber > 1 ? ' · Página '.$pageNumber : ''), 'Consulta las fichas y los datos prácticos de negocios en '.$city->name.'.', $canonical,
-            $filters !== [] || ! $listings->getCollection()->contains(fn (Listing $listing): bool => ! $listing->is_demo));
-        $breadcrumbs = [['label' => 'Inicio', 'url' => route('cities.show', ['city' => $city->slug])]];
+            ! PublicIndexability::discovery($listings->getCollection(), $filters !== []));
+        $breadcrumbs = [['label' => 'Inicio', 'url' => PublicUrl::city($city)]];
         if ($category || $area) {
-            $breadcrumbs[] = ['label' => 'Negocios', 'url' => route('businesses.index', ['city' => $city->slug])];
+            $breadcrumbs[] = ['label' => 'Negocios', 'url' => PublicUrl::businesses($city)];
         }
         $breadcrumbs[] = ['label' => $category?->name ?? $area?->name ?? 'Negocios', 'url' => null];
         $this->interactions->handle($request, $category ? 'category' : ($area ? 'area' : 'businesses'), $city, $filterCategory, $filterArea, $pageNumber);
