@@ -72,6 +72,10 @@ Entrega de esta corrección: [PR #7: Docs, registrar integración del sistema de
 
 **Aplazamiento autorizado (23-10-2026):** el propietario decidió omitir por ahora zoom nativo 200 %, lector de pantalla, teclado virtual real y movimiento reducido activado. Se trasladan a la validación final de recorridos en VS15, antes del lanzamiento, como pendientes de ejecución. No se consideran pruebas aprobadas ni bloquearon la revisión e integración de la alineación, fusionada después mediante PR #8. Antislop `during`, base y copywriting; revisión de coherencia y `git diff --check` correctos. [Decisión y alcance](dev_changelog/ALINEACION_VISUAL.md#decisión-aplazar-las-cuatro-comprobaciones-a-la-validación-final-23-10-2026).
 
+**Corrección documental de integración (23-10-2026):** rama `codex/registrar-integracion-alineacion`, creada desde `master` en el merge `3fbacd06087ef6166574efe239792cadeb394a9d`, con árbol limpio. Se actualizaron los documentos vigentes y se comprobó PR #8 en GitHub. Antislop `during` (regla del proyecto), base y copywriting; diez documentos con enlaces/anclas locales válidos y `git diff --check` correcto. Sin cambios de aplicación ni repetición de PHPUnit, Pint, build o revisión visual. [Registro, evidencia y pendientes](dev_changelog/ALINEACION_VISUAL.md#continuacion-registrar-integracion-en-master-23-de-octubre-de-2026).
+
+Entrega documental mediante [PR #9](https://github.com/luisfridev/tugurulocal/pull/9), abierta hacia `master` desde `codex/registrar-integracion-alineacion`, commit inicial `5951633333ca5817dfcb43f7165607dfc86642b6`. La PR queda abierta para revisión y fusión del propietario; no hubo despliegue.
+
 ## Secuencia y dependencias
 
 | ID | Entrega | Estado | Depende de | Fase |

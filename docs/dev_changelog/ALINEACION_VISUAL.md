@@ -119,3 +119,5 @@ Esta intervención documental corrige el estado vigente en el tablero, README, g
 | Aplicación, pruebas, UI y producción | No aplica: cambio exclusivamente documental. No se repiten PHPUnit, Pint, build ni Herd; no acredita producción. |
 
 La corrección conserva los registros de entrega como evidencia de su estado en aquel momento y añade las fusiones posteriores donde corresponde. No modifica código de aplicación, dependencias, datos ni las cuatro comprobaciones transferidas a VS15.
+
+La corrección se entrega mediante [PR #9: Docs, registrar integración de la alineación visual](https://github.com/luisfridev/tugurulocal/pull/9), abierta hacia `master` desde `codex/registrar-integracion-alineacion`, commit inicial `5951633333ca5817dfcb43f7165607dfc86642b6`. El propietario conserva la revisión y fusión; el tablero mantiene esa integración documental como pendiente mientras la PR siga abierta.
