@@ -122,4 +122,12 @@ Esta intervención documental corrige el estado vigente en el tablero, README, g
 
 La corrección conserva los registros de entrega como evidencia de su estado en aquel momento y añade las fusiones posteriores donde corresponde. No modifica código de aplicación, dependencias, datos ni las cuatro comprobaciones transferidas a VS15.
 
-La corrección se entrega mediante [PR #9: Docs, registrar integración de la alineación visual](https://github.com/luisfridev/tugurulocal/pull/9), abierta hacia `master` desde `codex/registrar-integracion-alineacion`, commit inicial `5951633333ca5817dfcb43f7165607dfc86642b6`. El propietario conserva la revisión y fusión; el tablero mantiene esa integración documental como pendiente mientras la PR siga abierta.
+La corrección se entregó mediante [PR #9: Docs, registrar integración de la alineación visual](https://github.com/luisfridev/tugurulocal/pull/9), desde `codex/registrar-integracion-alineacion`, commit inicial `5951633333ca5817dfcb43f7165607dfc86642b6`. El propietario la fusionó hacia `master` el 23-10-2026 a las 01:44:31 (America/Cancun), commit `cb84a1af562595423fb1137e3dd81c79dcf4f572`.
+
+## Continuación: comprobar integración de la corrección documental (23-10-2026)
+
+GitHub confirmó que la PR #9 está cerrada, fusionada y dirigida a `master`, con fecha `2026-10-23T06:44:31Z` (01:44:31 en America/Cancun) y merge `cb84a1af562595423fb1137e3dd81c79dcf4f572`. Después de `git fetch origin`, se cambió a `master` y se ejecutó `git merge --ff-only origin/master`; la rama quedó sincronizada y el merge de la PR #9 es su HEAD.
+
+Se crea la rama `codex/registrar-integracion-pr9` desde ese commit para registrar la fecha y el SHA reales en el tablero y este registro. Antislop `during` (regla del proyecto), base y copywriting: comprobación documental y redacción. Enlaces y anclas locales: PASS en los diez documentos revisados; `git diff --check`: PASS. Esta intervención modifica solo MEMORY y este registro; PHPUnit, Pint, build y Herd no aplican. No cambian la aplicación, las cuatro comprobaciones aplazadas a VS15 ni el estado de producción.
+
+La actualización se entrega en [PR #10: Docs, registrar integración de PR #9](https://github.com/luisfridev/tugurulocal/pull/10), abierta hacia `master` desde `codex/registrar-integracion-pr9`, commit inicial `a223d375a49b56b1ea2e8429cdcc4a9db31e286e`. Queda pendiente de revisión y fusión del propietario.
